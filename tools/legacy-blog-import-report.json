@@ -1,0 +1,141 @@
+{
+  "imported": [
+    {
+      "slug": "earlier-works-are-better",
+      "urlPath": "/media/blog/estate-sales/earlier-works-are-better",
+      "publishDate": "2023-04-26",
+      "dateConfidence": "explicit-jsonld",
+      "imageCount": 1,
+      "redirectFrom": "/media/blog/estate-sales/earlier-works-are-better",
+      "redirectTo": "/blog/earlier-works-are-better/"
+    },
+    {
+      "slug": "love-for-loving-art",
+      "urlPath": "/media/blog/a-love-for-loving-art",
+      "publishDate": "2023-04-17",
+      "dateConfidence": "explicit-jsonld",
+      "imageCount": 1,
+      "redirectFrom": "/media/blog/a-love-for-loving-art",
+      "redirectTo": "/blog/love-for-loving-art/"
+    },
+    {
+      "slug": "time-in-space-the-stars-they-ve-seen",
+      "urlPath": "/media/blog/show-and-tell/time-in-space-the-stars-theyve-seen",
+      "publishDate": "2022-08-04",
+      "dateConfidence": "explicit-jsonld",
+      "imageCount": 1,
+      "redirectFrom": "/media/blog/show-and-tell/time-in-space-the-stars-theyve-seen",
+      "redirectTo": "/blog/time-in-space-the-stars-they-ve-seen/"
+    },
+    {
+      "slug": "faces-of-folklore",
+      "urlPath": "/media/blog/show-and-tell/faces-of-folklore",
+      "publishDate": "2022-04-13",
+      "dateConfidence": "explicit-jsonld",
+      "imageCount": 1,
+      "redirectFrom": "/media/blog/show-and-tell/faces-of-folklore",
+      "redirectTo": "/blog/faces-of-folklore/"
+    },
+    {
+      "slug": "free-hornung-and-m-ller-piano",
+      "urlPath": "/media/blog/estate-sales/free-hornung-mller-piano",
+      "publishDate": "2021-05-07",
+      "dateConfidence": "explicit-jsonld",
+      "imageCount": 2,
+      "redirectFrom": "/media/blog/estate-sales/free-hornung-mller-piano",
+      "redirectTo": "/blog/free-hornung-and-m-ller-piano/"
+    },
+    {
+      "slug": "video-appraising-apple-blossem-by-louis-betts",
+      "urlPath": "/media/blog/appraisals/painting-appraisal-apple-blossem",
+      "publishDate": "2020-02-21",
+      "dateConfidence": "explicit-jsonld",
+      "imageCount": 1,
+      "redirectFrom": "/media/blog/appraisals/painting-appraisal-apple-blossem",
+      "redirectTo": "/blog/video-appraising-apple-blossem-by-louis-betts/"
+    },
+    {
+      "slug": "what-to-do-before-an-antique-furniture-appraisal-and-why-get-one",
+      "urlPath": "/media/blog/appraisals/what-to-do-before-an-antique-furniture-appraisal-why-get-one",
+      "publishDate": "2019-07-26",
+      "dateConfidence": "explicit-jsonld",
+      "imageCount": 1,
+      "redirectFrom": "/media/blog/appraisals/what-to-do-before-an-antique-furniture-appraisal-why-get-one",
+      "redirectTo": "/blog/what-to-do-before-an-antique-furniture-appraisal-and-why-get-one/"
+    },
+    {
+      "slug": "how-to-tell-if-a-painting-is-valuable",
+      "urlPath": "/media/blog/appraisals/how-to-tell-if-a-painting-is-valuable",
+      "publishDate": "2019-07-26",
+      "dateConfidence": "explicit-jsonld",
+      "imageCount": 1,
+      "redirectFrom": "/media/blog/appraisals/how-to-tell-if-a-painting-is-valuable",
+      "redirectTo": "/blog/how-to-tell-if-a-painting-is-valuable/"
+    },
+    {
+      "slug": "how-to-get-antiques-appraised-in-oregon-by-gary-germer-and-associates",
+      "urlPath": "/media/blog/appraisals/how-to-get-antiques-appraised-in-oregon",
+      "publishDate": "2019-07-26",
+      "dateConfidence": "explicit-jsonld",
+      "imageCount": 1,
+      "redirectFrom": "/media/blog/appraisals/how-to-get-antiques-appraised-in-oregon",
+      "redirectTo": "/blog/how-to-get-antiques-appraised-in-oregon-by-gary-germer-and-associates/"
+    },
+    {
+      "slug": "how-to-have-an-estate-sale-in-portland-oregon-6-tips-for-success",
+      "urlPath": "/media/blog/estate-sales/how-to-have-an-estate-sale-in-portland-oregon-6-tips-for-success",
+      "publishDate": "2019-07-26",
+      "dateConfidence": "explicit-jsonld",
+      "imageCount": 1,
+      "redirectFrom": "/media/blog/estate-sales/how-to-have-an-estate-sale-in-portland-oregon-6-tips-for-success",
+      "redirectTo": "/blog/how-to-have-an-estate-sale-in-portland-oregon-6-tips-for-success/"
+    },
+    {
+      "slug": "we-found-a-pony-in-the-manure",
+      "urlPath": "/media/blog/show-and-tell/we-found-a-pony-in-the-manure",
+      "publishDate": "2019-02-05",
+      "dateConfidence": "explicit-jsonld",
+      "imageCount": 2,
+      "redirectFrom": "/media/blog/show-and-tell/we-found-a-pony-in-the-manure",
+      "redirectTo": "/blog/we-found-a-pony-in-the-manure/"
+    },
+    {
+      "slug": "ancient-aliens-at-our-next-estate-sale",
+      "urlPath": "/media/blog/estate-sales/ancient-aliens-at-our-next-estate-sale",
+      "publishDate": "2019-01-30",
+      "dateConfidence": "explicit-jsonld",
+      "imageCount": 2,
+      "redirectFrom": "/media/blog/estate-sales/ancient-aliens-at-our-next-estate-sale",
+      "redirectTo": "/blog/ancient-aliens-at-our-next-estate-sale/"
+    },
+    {
+      "slug": "rare-and-stunning-tiffany-and-co-184-piece-sterling-silver-flatware",
+      "urlPath": "/media/blog/show-and-tell/rare-and-stunning-tiffany-co-184-piece-sterling-silver-flatware",
+      "publishDate": "2018-01-08",
+      "dateConfidence": "explicit-jsonld",
+      "imageCount": 1,
+      "redirectFrom": "/media/blog/show-and-tell/rare-and-stunning-tiffany-co-184-piece-sterling-silver-flatware",
+      "redirectTo": "/blog/rare-and-stunning-tiffany-and-co-184-piece-sterling-silver-flatware/"
+    },
+    {
+      "slug": "makonde-tree-of-life-sculptures",
+      "urlPath": "/media/blog/show-and-tell/makonde-tree-of-life-sculptures",
+      "publishDate": "2017-10-31",
+      "dateConfidence": "explicit-jsonld",
+      "imageCount": 1,
+      "redirectFrom": "/media/blog/show-and-tell/makonde-tree-of-life-sculptures",
+      "redirectTo": "/blog/makonde-tree-of-life-sculptures/"
+    }
+  ],
+  "skipped": [],
+  "warnings": [
+    {
+      "slug": "earlier-works-are-better",
+      "issue": "body had no text paragraphs after normalization — reused JSON-LD description as body copy"
+    },
+    {
+      "slug": "love-for-loving-art",
+      "issue": "body had no text paragraphs after normalization — reused JSON-LD description as body copy"
+    }
+  ]
+}

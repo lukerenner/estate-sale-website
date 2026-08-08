@@ -1,0 +1,157 @@
+---
+permalink: /estate-sales/
+title: Previous Estate Sales — Portland, OR | Gary Germer & Associates
+description: "Browse past estate sales from Gary Germer & Associates across Portland, Lake Oswego, Camas, and the surrounding area. See the neighborhoods, homes, and collections we've handled over more than 30 years."
+ogTitle: Previous Estate Sales — Gary Germer & Associates
+ogDescription: "Browse past estate sales from Gary Germer & Associates across Portland and the surrounding area — a look at the neighborhoods, homes, and collections we've handled."
+ogImage: /assets/images/parlor-placeholder.jpg
+---
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+
+  <!-- ============================== HERO ============================== -->
+  <section class="hero sale-hero previous-sales-hero">
+    <div class="hero-media">
+      <img
+        src="/assets/images/parlor-placeholder.jpg"
+        srcset="/assets/images/parlor-placeholder-900.webp 900w, /assets/images/parlor-placeholder.webp 1613w"
+        sizes="100vw"
+        width="1613" height="1131"
+        alt="An ornate, antique-filled Portland parlor staged for a Gary Germer & Associates estate sale"
+        fetchpriority="high">
+    </div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+
+    <div class="hero-shell sale-hero-shell">
+      <div class="hero-copy">
+        <p class="eyebrow eyebrow-on-dark">Our Work</p>
+        <h1 class="hero-heading">Previous Estate Sales</h1>
+        <span class="hero-rule" aria-hidden="true"></span>
+        <p class="hero-lead">A look back at the homes, neighborhoods, and collections we&rsquo;ve been trusted to handle over more than 30 years. If you&rsquo;re weighing an estate sale of your own, this is the level of care and presentation your family can expect.</p>
+      </div>
+
+      <div class="hero-form-card sale-info-bar" id="get-a-consultation">
+        <h2>Considering an Estate Sale?</h2>
+        <form class="form-grid" action="https://formsubmit.co/info@garygermer.com" method="POST" novalidate>
+          <input type="hidden" name="_subject" value="New estate sale client inquiry — Previous Sales page">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="https://www.garygermer.com/thanks.html">
+          <div class="form-honey" aria-hidden="true">
+            <label for="prev-sales-company">Leave this field empty</label>
+            <input type="text" id="prev-sales-company" name="_honey" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="prev-sales-name">Name</label>
+            <input id="prev-sales-name" name="name" type="text" autocomplete="name" required>
+            <p class="field-error" role="alert">Please enter your name.</p>
+          </div>
+          <div class="field">
+            <label class="field-label" for="prev-sales-email">Email</label>
+            <input id="prev-sales-email" name="email" type="email" autocomplete="email" required>
+            <p class="field-error" role="alert">Please enter a valid email.</p>
+          </div>
+          <div class="field">
+            <label class="field-label" for="prev-sales-phone">Phone</label>
+            <input id="prev-sales-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel">
+          </div>
+          <div class="field">
+            <label class="field-label" for="prev-sales-timing">When are you considering a sale?</label>
+            <select id="prev-sales-timing" name="Timing" required>
+              <option value="" selected disabled>Select One&hellip;</option>
+              <option>Within 30 days</option>
+              <option>1&ndash;3 months</option>
+              <option>3&ndash;6 months</option>
+              <option>Just exploring</option>
+            </select>
+          </div>
+          <button class="button button-navy" type="submit">Request a Free Consultation</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= PAST SALES BY NEIGHBORHOOD ======================= -->
+  <section class="section" id="past-sales">
+    <div class="container">
+      <div class="stack-header text-center mx-auto">
+        <p class="eyebrow mx-auto">More Than 30 Years of Sales</p>
+        <h2 class="section-heading mx-auto">Browse by Neighborhood</h2>
+        <p class="section-body mx-auto">Every sale below is concluded &mdash; a record of the homes we&rsquo;ve worked with across Portland and the surrounding area. Filter to see sales near you.</p>
+      </div>
+
+      <div class="filter-bar" data-sale-filter role="group" aria-label="Filter sales by neighborhood">
+        <button type="button" class="filter-chip is-active" data-filter="all" aria-pressed="true">All Neighborhoods</button>
+        {% for n in collections.saleNeighborhoods %}
+        <button type="button" class="filter-chip" data-filter="{{ n.slug }}" aria-pressed="false">{{ n.label }}</button>
+        {% endfor %}
+      </div>
+
+      <div class="sale-grid" data-sale-grid>
+        {% for sale in collections.estateSales %}
+        {% set neighborhoodLabel = sale.data.neighborhood | neighborhoodLabel %}
+        <a class="sale-card reveal" href="{{ sale.url }}" data-neighborhood="{{ sale.data.neighborhood | neighborhoodGroup | slugify }}">
+          <div class="sale-card-media">
+            <img
+              src="{{ sale.data.heroImage.src }}"
+              srcset="{{ sale.data.heroImage.srcset900 }} 900w, {{ sale.data.heroImage.srcsetFull }} 1800w"
+              sizes="(max-width: 560px) 90vw, (max-width: 900px) 45vw, 23vw"
+              width="{{ sale.data.heroImage.width }}" height="{{ sale.data.heroImage.height }}"
+              loading="lazy"
+              alt="{{ sale.data.heroImage.alt }}">
+            <span class="sale-card-tag">{{ neighborhoodLabel }}</span>
+          </div>
+          <div class="sale-card-body">
+            <h3 class="sale-card-title">{{ sale.data.saleName }}</h3>
+            <p class="sale-card-meta">
+              <span class="sale-card-meta-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 21V9.5L12 4l8 5.5V21" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 21v-6h6v6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                {{ sale.data.neighborhood | cityLabel }}
+              </span>
+              <span class="sale-card-meta-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4" stroke-linecap="round"/></svg>
+                {{ sale.data.dates[sale.data.dates.length - 1].date | year }}
+              </span>
+            </p>
+            <span class="sale-card-link">View the Collection</span>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= FUTURE SALE NOTIFICATIONS ========================= -->
+  <section class="section discovery-band">
+    <div class="container">
+      <div class="discovery-frame discovery-frame--tight">
+        <h2 class="section-heading discovery-heading-divided"><span>Be the First to Hear About Future Estate Sales</span></h2>
+
+        <div class="discovery-signup" id="estate-alerts">
+          <p class="section-body">Get early access to upcoming sales, new photos, and extraordinary finds.</p>
+          <form class="discovery-signup-row" action="https://formsubmit.co/info@garygermer.com" method="POST">
+            <input type="hidden" name="_subject" value="New estate sale alert subscriber — Previous Sales page">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://www.garygermer.com/thanks.html">
+            <div class="form-honey" aria-hidden="true">
+              <label for="alerts-company">Leave this field empty</label>
+              <input type="text" id="alerts-company" name="_honey" tabindex="-1" autocomplete="off">
+            </div>
+            <div class="field">
+              <label class="field-label" for="alerts-name">Name</label>
+              <input id="alerts-name" name="name" type="text" placeholder="Name" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="alerts-email">Email</label>
+              <input id="alerts-email" name="email" type="email" placeholder="Email" autocomplete="email" required>
+            </div>
+            <button class="button button-navy" type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

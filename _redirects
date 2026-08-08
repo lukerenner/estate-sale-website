@@ -1,0 +1,127 @@
+# Netlify host-level redirects — maps every URL indexed on the outgoing
+# garygermer.com (Ucraft, "1.0") to the closest live destination on this
+# homepage. Real 301s, no stub HTML pages. See README.md for why Netlify
+# (not GitHub Pages, which can't do this without extra pages) is assumed.
+
+# Core service + intake routes -> the matching homepage section
+/our-services/appraisals        /#appraisals              301
+/our-services/consignment       /#consignment              301
+/start-an-appraisal             /#appraisals               301
+/start-a-consignment            /#consignment              301
+/our-services/speaking-engagements-and-clinics  /          301
+
+# Contact / consultation
+/consultation                   /#consultation             301
+/contact                        /#consultation             301
+/contact/mailing-list           /#estate-alerts            301
+/join-our-mailing-list          /#estate-alerts            301
+/give-us-a-review               /                          301
+/give-us-a-review/feedback      /                          301
+
+# Team / people
+/team                           /#about-gary               301
+
+# Media / video
+/media/video                    /#about-gary               301
+/media/video/amnw               /#about-gary                301
+
+# Estate sale + shop listings (dedicated pages not rebuilt in this phase)
+/estatesales                    /#upcoming-sales           301
+/online-stores                  /#garys-vault              301
+
+# Legacy estate sale slugs that were renamed for SEO during the bulk 1.0
+# archive import (2026-08-07) — 1.0 slug -> final neighborhood URL, skipping
+# the intermediate /portland-estate-sales/<renamed-slug>/ hop these used to
+# land on (that URL no longer exists either, per the neighborhood restructure
+# below). Full rationale for each rename is in REDIRECT_MAP.md. These MUST
+# stay above the wildcard rule: Netlify matches _redirects top-to-bottom and
+# takes the first match.
+/portland-estate-sales/august-1st-4th-2019                              /west-hills-estate-sales/gwyneth-gamble-booth-2019/                         301
+/portland-estate-sales/copy-of-margie-boule-gwyneth-gamble-booth-sale    /northeast-portland-estate-sales/historic-military-weapons/                 301
+/portland-estate-sales/march-12th-15th-2020                             /northeast-portland-estate-sales/pop-up-shop-2020/                          301
+/portland-estate-sales/march-18th-2019                                  /west-hills-estate-sales/nw-skyline-antiques/                                301
+/portland-estate-sales/may-2nd-4th-2019                                 /west-hills-estate-sales/bishopcroft-house/                                  301
+/portland-estate-sales/military-weapons-2                               /northeast-portland-estate-sales/military-collectibles-showroom/            301
+/portland-estate-sales/october-18th-2019                                /northeast-portland-estate-sales/parrot-collector/                          301
+
+# Non-sale / junk slugs from the 1.0 archive — no page was built for these.
+/portland-estate-sales/new-sale                                         /west-hills-estate-sales/birkendene/                                        301
+/portland-estate-sales/janet-edwards                                    /estatesales                                                                301
+/portland-estate-sales/july-11th-13th-2019                              /estatesales                                                                301
+
+# Neighborhood URL restructure (2026-08-07) — every estate-sale page moved
+# from the flat /portland-estate-sales/<slug>/ path to a neighborhood-scoped
+# path (/<neighborhood-group>-estate-sales/<slug>/) for SEO. This retires
+# /portland-estate-sales/ entirely, so every slug that ever lived there needs
+# an explicit 301 here — nothing is left on disk under that prefix for
+# Netlify to fall through to. Full rationale in REDIRECT_MAP.md.
+/portland-estate-sales/arthur-hill                                      /west-hills-estate-sales/arthur-hill/                                       301
+/portland-estate-sales/birkendene                                       /west-hills-estate-sales/birkendene/                                        301
+/portland-estate-sales/bertha-heights                                   /west-hills-estate-sales/bertha-heights/                                    301
+/portland-estate-sales/bishopcroft-house-estate-sale                    /west-hills-estate-sales/bishopcroft-house/                                 301
+/portland-estate-sales/council-crest-downsizing-sale                    /west-hills-estate-sales/council-crest/                                     301
+/portland-estate-sales/gwyneth-gamble-booth-downsizing-sale-2019        /west-hills-estate-sales/gwyneth-gamble-booth-2019/                         301
+/portland-estate-sales/kings-cumberland                                 /west-hills-estate-sales/kings-cumberland/                                  301
+/portland-estate-sales/margie-boule-gwyneth-gamble-booth-sale           /west-hills-estate-sales/margie-boule-moving-sale/                          301
+/portland-estate-sales/nancy-fisher                                     /west-hills-estate-sales/nancy-fisher/                                      301
+/portland-estate-sales/nw-skyline-antiques-estate-sale                  /west-hills-estate-sales/nw-skyline-antiques/                               301
+/portland-estate-sales/the-holiday-sale-of-ms-gwyneth-gamble-booth      /west-hills-estate-sales/gwyneth-gamble-booth-holiday/                      301
+/portland-estate-sales/west-hills-estate-sale-fall-of-2020              /west-hills-estate-sales/west-hills-fall-2020/                              301
+/portland-estate-sales/wilcox-manor                                     /west-hills-estate-sales/wilcox-manor/                                      301
+/portland-estate-sales/bixwood-manor                                    /northwest-portland-estate-sales/bixwood-manor/                             301
+/portland-estate-sales/langworthy-estate-sale                           /northwest-portland-estate-sales/langworthy/                                301
+/portland-estate-sales/portland-nob-hill-estate-sale                    /northwest-portland-estate-sales/nob-hill/                                  301
+/portland-estate-sales/corinne-gentner                                  /southwest-portland-estate-sales/corinne-gentner/                           301
+/portland-estate-sales/bridlemile-midcentury                            /southwest-portland-estate-sales/bridlemile-midcentury/                     301
+/portland-estate-sales/mary-mize                                        /southwest-portland-estate-sales/mary-mize/                                 301
+/portland-estate-sales/oakwood-gardens                                  /southwest-portland-estate-sales/oakwood-gardens/                           301
+/portland-estate-sales/asian-art                                        /northeast-portland-estate-sales/asian-art/                                 301
+/portland-estate-sales/broadway-woods                                   /northeast-portland-estate-sales/broadway-woods/                            301
+/portland-estate-sales/grant-park                                       /northeast-portland-estate-sales/grant-park/                                301
+/portland-estate-sales/parrot-collector-estate-sale                     /northeast-portland-estate-sales/parrot-collector/                          301
+/portland-estate-sales/historic-military-weapons-estate-sale            /northeast-portland-estate-sales/historic-military-weapons/                 301
+/portland-estate-sales/military-collectibles-showroom-sale              /northeast-portland-estate-sales/military-collectibles-showroom/            301
+/portland-estate-sales/peter-abrahams                                   /northeast-portland-estate-sales/peter-abrahams/                            301
+/portland-estate-sales/pop-up-shop-estate-sale-2020                     /northeast-portland-estate-sales/pop-up-shop-2020/                          301
+/portland-estate-sales/easter-weekend-pop-up                            /southeast-portland-estate-sales/easter-weekend-pop-up/                     301
+/portland-estate-sales/westmorland-manner-in-sellwood-portland-sale     /southeast-portland-estate-sales/westmoreland-manor/                        301
+/portland-estate-sales/lacamas-lake                                     /camas-estate-sales/lacamas-lake/                                           301
+/portland-estate-sales/westridge                                        /camas-estate-sales/westridge/                                              301
+/portland-estate-sales/lake-oswego-estate-sale                          /lake-oswego-dunthorpe-estate-sales/lake-oswego/                            301
+/portland-estate-sales/midmod-moapa                                     /lake-oswego-dunthorpe-estate-sales/midmod-moapa/                           301
+/portland-estate-sales/riverwood                                        /lake-oswego-dunthorpe-estate-sales/riverwood/                              301
+/portland-estate-sales/stafford-trail                                   /lake-oswego-dunthorpe-estate-sales/stafford-trail/                         301
+
+# Catch-all for anything still hitting /portland-estate-sales/* that isn't
+# one of the explicit slugs above (old query strings, guessed URLs, etc.) —
+# nothing is served from disk under this prefix anymore, so this only
+# matters as a last-resort fallback, not the primary routing mechanism.
+/portland-estate-sales/*        /#upcoming-sales           301
+
+# Blog — legacy post-by-post 301s (see REDIRECT_MAP.md "Blog import"), must
+# stay above the /media/blog/* catch-all so these explicit rules match first.
+/media/blog/estate-sales/earlier-works-are-better                                              /blog/earlier-works-are-better/                                                    301
+/media/blog/a-love-for-loving-art                                                              /blog/love-for-loving-art/                                                         301
+/media/blog/show-and-tell/time-in-space-the-stars-theyve-seen                                  /blog/time-in-space-the-stars-they-ve-seen/                                        301
+/media/blog/show-and-tell/faces-of-folklore                                                    /blog/faces-of-folklore/                                                           301
+/media/blog/estate-sales/free-hornung-mller-piano                                              /blog/free-hornung-and-m-ller-piano/                                               301
+/media/blog/appraisals/painting-appraisal-apple-blossem                                        /blog/video-appraising-apple-blossem-by-louis-betts/                               301
+/media/blog/appraisals/what-to-do-before-an-antique-furniture-appraisal-why-get-one            /blog/what-to-do-before-an-antique-furniture-appraisal-and-why-get-one/            301
+/media/blog/appraisals/how-to-tell-if-a-painting-is-valuable                                   /blog/how-to-tell-if-a-painting-is-valuable/                                       301
+/media/blog/appraisals/how-to-get-antiques-appraised-in-oregon                                 /blog/how-to-get-antiques-appraised-in-oregon-by-gary-germer-and-associates/       301
+/media/blog/estate-sales/how-to-have-an-estate-sale-in-portland-oregon-6-tips-for-success       /blog/how-to-have-an-estate-sale-in-portland-oregon-6-tips-for-success/            301
+/media/blog/show-and-tell/we-found-a-pony-in-the-manure                                        /blog/we-found-a-pony-in-the-manure/                                               301
+/media/blog/estate-sales/ancient-aliens-at-our-next-estate-sale                                /blog/ancient-aliens-at-our-next-estate-sale/                                      301
+/media/blog/show-and-tell/rare-and-stunning-tiffany-co-184-piece-sterling-silver-flatware       /blog/rare-and-stunning-tiffany-and-co-184-piece-sterling-silver-flatware/         301
+/media/blog/show-and-tell/makonde-tree-of-life-sculptures                                      /blog/makonde-tree-of-life-sculptures/                                             301
+
+# Blog / press catch-alls
+/blog                            /blog/                     301
+/media/blog                      /blog/                     301
+/media/blog/*                    /blog/                     301
+/media/press                     /                          301
+
+# Legal pages (not rebuilt in this phase — flagged in CONTENT_REVIEW.md)
+/privacy-policy                 /                          301
+/terms-and-conditions           /                          301
+/cookie-policy                  /                          301

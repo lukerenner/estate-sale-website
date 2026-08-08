@@ -1,0 +1,235 @@
+---
+permalink: /estate-sales/
+title: Previous Estate Sales — Portland, OR | Gary Germer & Associates
+description: "Browse past estate sales from Gary Germer & Associates across Portland, Lake Oswego, Camas, and the surrounding area. See the neighborhoods, homes, and collections we've handled over more than 30 years."
+ogTitle: Previous Estate Sales — Gary Germer & Associates
+ogDescription: "Browse past estate sales from Gary Germer & Associates across Portland and the surrounding area — a look at the neighborhoods, homes, and collections we've handled."
+ogImage: /assets/images/parlor-placeholder.jpg
+---
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+
+  {% set nextSale = collections.upcomingEstateSales[0] %}
+
+  <!-- ======================== UPCOMING SALES & EVENTS ======================== -->
+  <section class="hero sale-hero">
+    <div class="hero-media">
+      <img
+        src="/assets/images/parlor-placeholder.jpg"
+        srcset="/assets/images/parlor-placeholder-900.webp 900w, /assets/images/parlor-placeholder.webp 1613w"
+        sizes="100vw"
+        width="1613" height="1131"
+        alt="An ornate, antique-filled Portland parlor staged for a Gary Germer & Associates estate sale"
+        fetchpriority="high">
+    </div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+
+    <div class="hero-shell sale-hero-shell{% if not nextSale %} sale-hero-shell--single{% endif %}">
+      <div class="hero-copy">
+        <p class="eyebrow eyebrow-on-dark">Estate Sale Events</p>
+        <h1 class="hero-heading">Upcoming Estate Sales<br class="break-desktop"> and Events</h1>
+        <span class="hero-rule" aria-hidden="true"></span>
+        <p class="hero-lead">Gary Germer &amp; Associates regularly hosts a variety of events, including estate sales, auctions, and appraisal roundtables. Some are local to the Portland area. Others are held at our online storefront.</p>
+
+        <div class="hero-subscribe" id="get-notified">
+          <h2 class="hero-subscribe-heading">Get Notified of Future Sales</h2>
+          <form class="discovery-signup-row hero-subscribe-row" action="https://formsubmit.co/info@garygermer.com" method="POST">
+            <input type="hidden" name="_subject" value="New estate sale alert subscriber — Estate Sales hero">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://www.garygermer.com/thanks.html">
+            <div class="form-honey" aria-hidden="true">
+              <label for="hero-alerts-company">Leave this field empty</label>
+              <input type="text" id="hero-alerts-company" name="_honey" tabindex="-1" autocomplete="off">
+            </div>
+            <div class="field">
+              <label class="field-label" for="hero-alerts-name">Name</label>
+              <input id="hero-alerts-name" name="name" type="text" placeholder="Name" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="hero-alerts-email">Email</label>
+              <input id="hero-alerts-email" name="email" type="email" placeholder="Email" autocomplete="email" required>
+            </div>
+            <button class="button button-primary" type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      {% if nextSale %}
+      {% set sd = nextSale.data %}
+      <!-- Next upcoming sale, teased with the same sale-info-bar the sale's
+           own page uses for its "Upcoming" state — we only ever promote the
+           soonest one (see the upcomingEstateSales collection). -->
+      <div class="hero-form-card sale-info-bar is-upcoming hero-sale-card">
+        <h2 class="sale-info-flag-headline">{{ sd.dates | countdownHeadline }}</h2>
+
+        <div class="sale-info-item">
+          <span class="sale-info-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4" stroke-linecap="round"/></svg></span>
+          <span class="sale-info-text">
+            <span class="sale-info-label">Dates</span>
+            <span class="sale-info-value">{{ sd.dates | dateRangeLong }}</span>
+            <span class="sale-info-sub">{{ sd.dates | weekdayRangeLong }}</span>
+          </span>
+        </div>
+
+        {% if sd.dates[0].opens %}
+        <div class="sale-info-item">
+          <span class="sale-info-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3.2 2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="sale-info-text">
+            <span class="sale-info-label">Hours</span>
+            <span class="sale-info-value">{{ sd.dates[0].opens }}&ndash;{{ sd.dates[0].closes }}</span>
+            <span class="sale-info-sub">Each Day</span>
+          </span>
+        </div>
+        {% endif %}
+
+        <div class="sale-info-item sale-info-item-location">
+          <span class="sale-info-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-6.4 7-12a7 7 0 1 0-14 0c0 5.6 7 12 7 12Z"/><circle cx="12" cy="9" r="2.4"/></svg></span>
+          <span class="sale-info-text">
+            <span class="sale-info-label">Location</span>
+            <span class="sale-info-value">{{ sd.neighborhood | abbreviateOregon }}</span>
+            <span class="sale-info-sub sale-info-address-note">Address will be announced the morning of the sale.</span>
+          </span>
+        </div>
+
+        <div class="sale-info-actions sale-info-actions--single">
+          <a class="button button-primary" href="{{ nextSale.url }}">Preview the Sale</a>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </section>
+
+  <!-- ============================ TREASURE HUNT ============================ -->
+  <section class="split" id="treasure-hunt">
+    <div class="split-inner">
+    <div class="split-copy">
+      <div class="split-copy-inner">
+        <p class="eyebrow">Shopping Our Sales</p>
+        <h2 class="section-heading">Your Treasure Hunt Begins Here</h2>
+        <p class="section-body">Our estate sales are known for exceptional selections of fine art, antiques, and collectibles. If you aren&rsquo;t looking for a treasure, no worries &mdash; from books to kitchen appliances, our Portland sales are stocked with everyday goods too. Beyond our traditional sales, we host special events for holidays, exciting new collections online, and informational gatherings about the estate sale and appraisal industry.</p>
+        <p class="section-body">We&rsquo;ve had the honor and pleasure of running some great sales &mdash; including the estate of Academy Award winner Elmo Williams, the McGuire Furniture Company, and charitable estates for the Oregon Humane Society, among many more. Explore the dozens of sales we&rsquo;ve done in recent years below.</p>
+      </div>
+    </div>
+    <div class="split-media reveal">
+      <img
+        src="/assets/images/parlor-placeholder.jpg"
+        srcset="/assets/images/parlor-placeholder-900.webp 900w, /assets/images/parlor-placeholder.webp 1613w"
+        sizes="(max-width: 900px) 100vw, 50vw"
+        width="1613" height="1131"
+        loading="lazy"
+        alt="A Portland parlor staged for an estate sale">
+    </div>
+    </div>
+  </section>
+
+  <!-- ========================= HOW WE RUN OUR SALES ========================= -->
+  <section class="split split-reverse" id="how-we-run-sales">
+    <div class="split-inner">
+    <div class="split-copy">
+      <div class="split-copy-inner">
+        <p class="eyebrow">Attending a Sale</p>
+        <h2 class="section-heading">How We Run Our Estate Sales</h2>
+        <p class="section-body">Our estate sales operate on a first-come, first-served basis, which means we do not have a sign-up list. For crowd control, we begin handing out numbers about an hour before doors open, allowing a limited number of guests into the space at a time. Your number holds your place in line, so once you have it, you&rsquo;re free to leave and return once the doors open.</p>
+        <p class="section-body">We accept cash or credit cards for payment. All sales are final and must be picked up the day of the sale, unless other arrangements are discussed. We offer a holding area for you to place your goods while shopping, and we do not allow large bags, boxes, or backpacks, no exceptions.</p>
+        <p class="section-body">Our event space features rotating estate sale collections and art galleries brought into the showroom for your shopping convenience.</p>
+        <div class="about-cta split-cta-row">
+          <a class="button button-primary" href="#get-notified">Get Notified of Future Sales</a>
+          <a class="button button-secondary" href="#past-sales">Browse Past Sales</a>
+        </div>
+      </div>
+    </div>
+    <div class="split-media reveal">
+      <img
+        src="/assets/images/parlor-placeholder.jpg"
+        srcset="/assets/images/parlor-placeholder-900.webp 900w, /assets/images/parlor-placeholder.webp 1613w"
+        sizes="(max-width: 900px) 100vw, 50vw"
+        width="1613" height="1131"
+        loading="lazy"
+        alt="Guests browsing a Gary Germer & Associates estate sale in a Portland home">
+    </div>
+    </div>
+  </section>
+
+  <!-- ======================= PAST SALES BY NEIGHBORHOOD ======================= -->
+  <section class="section" id="past-sales">
+    <div class="container">
+      <div class="stack-header text-center mx-auto">
+        <p class="eyebrow mx-auto">Our Work</p>
+        <h2 class="section-heading mx-auto">Previous Estate Sales</h2>
+        <p class="section-body mx-auto">A look back at the homes, neighborhoods, and collections we&rsquo;ve been trusted to handle over more than 30 years. If you&rsquo;re weighing an estate sale of your own, this is the level of care and presentation your family can expect.</p>
+      </div>
+
+      <div class="filter-bar" data-sale-filter role="group" aria-label="Filter sales by neighborhood">
+        <button type="button" class="filter-chip is-active" data-filter="all" aria-pressed="true">All Neighborhoods</button>
+        {% for n in collections.saleNeighborhoods %}
+        <button type="button" class="filter-chip" data-filter="{{ n.slug }}" aria-pressed="false">{{ n.label }}</button>
+        {% endfor %}
+      </div>
+
+      <div class="sale-grid" data-sale-grid>
+        {% for sale in collections.estateSales %}
+        {% set neighborhoodLabel = sale.data.neighborhood | neighborhoodLabel %}
+        <a class="sale-card reveal" href="{{ sale.url }}" data-neighborhood="{{ sale.data.neighborhood | neighborhoodGroup | slugify }}">
+          <div class="sale-card-media">
+            <img
+              src="{{ sale.data.heroImage.src }}"
+              srcset="{{ sale.data.heroImage.srcset900 }} 900w, {{ sale.data.heroImage.srcsetFull }} 1800w"
+              sizes="(max-width: 560px) 90vw, (max-width: 900px) 45vw, 23vw"
+              width="{{ sale.data.heroImage.width }}" height="{{ sale.data.heroImage.height }}"
+              loading="lazy"
+              alt="{{ sale.data.heroImage.alt }}">
+            <span class="sale-card-tag">{{ neighborhoodLabel }}</span>
+          </div>
+          <div class="sale-card-body">
+            <h3 class="sale-card-title">{{ sale.data.saleName }}</h3>
+            <p class="sale-card-meta">
+              <span class="sale-card-meta-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 21V9.5L12 4l8 5.5V21" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 21v-6h6v6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                {{ sale.data.neighborhood | cityLabel }}
+              </span>
+              <span class="sale-card-meta-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4" stroke-linecap="round"/></svg>
+                {{ sale.data.dates[sale.data.dates.length - 1].date | year }}
+              </span>
+            </p>
+            <span class="sale-card-link">View the Collection</span>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= FUTURE SALE NOTIFICATIONS ========================= -->
+  <section class="section discovery-band">
+    <div class="container">
+      <div class="discovery-frame discovery-frame--tight">
+        <h2 class="section-heading discovery-heading-divided"><span>Be the First to Hear About Future Estate Sales</span></h2>
+
+        <div class="discovery-signup" id="estate-alerts">
+          <p class="section-body">Get early access to upcoming sales, new photos, and extraordinary finds.</p>
+          <form class="discovery-signup-row" action="https://formsubmit.co/info@garygermer.com" method="POST">
+            <input type="hidden" name="_subject" value="New estate sale alert subscriber — Previous Sales page">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://www.garygermer.com/thanks.html">
+            <div class="form-honey" aria-hidden="true">
+              <label for="alerts-company">Leave this field empty</label>
+              <input type="text" id="alerts-company" name="_honey" tabindex="-1" autocomplete="off">
+            </div>
+            <div class="field">
+              <label class="field-label" for="alerts-name">Name</label>
+              <input id="alerts-name" name="name" type="text" placeholder="Name" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="alerts-email">Email</label>
+              <input id="alerts-email" name="email" type="email" placeholder="Email" autocomplete="email" required>
+            </div>
+            <button class="button button-navy" type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

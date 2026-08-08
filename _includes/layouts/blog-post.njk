@@ -1,0 +1,127 @@
+{% extends "layouts/base.njk" %}
+
+{% block head %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "{{ title }}",
+  "description": "{{ description }}",
+  "image": ["https://www.garygermer.com{{ ogImage }}"],
+  "datePublished": "{{ publishDate }}",
+  "author": { "@type": "Organization", "name": "Gary Germer & Associates" },
+  "publisher": { "@type": "Organization", "name": "Gary Germer & Associates" },
+  "mainEntityOfPage": "https://www.garygermer.com{{ page.url }}"
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+  <!-- ============================== POST HERO ============================== -->
+  <section class="hero blog-hero">
+    <div class="hero-media">
+      <img
+        src="{{ heroImage.src }}"
+        srcset="{{ heroImage.srcset900 }} 900w, {{ heroImage.srcsetFull }} 1800w"
+        sizes="100vw"
+        width="{{ heroImage.width }}" height="{{ heroImage.height }}"
+        alt="{{ heroImage.alt }}"
+        fetchpriority="high">
+    </div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+
+    <div class="hero-shell blog-hero-shell">
+      <div class="hero-copy">
+        <p class="eyebrow eyebrow-on-dark">{{ category | blogFilterLabel(sourceType) }}</p>
+        <h1 class="hero-heading">{{ title }}</h1>
+        <span class="hero-rule" aria-hidden="true"></span>
+        <p class="hero-lead hero-lead-compact">{{ publishDate | dateDisplay }}</p>
+        {% if sourceType == "shop" and sold %}
+        <span class="blog-sold-badge">Sold</span>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= POST BODY ============================= -->
+  <section class="section">
+    <div class="container-narrow blog-post-body">
+      {{ content | safe }}
+
+      {% if sourceType == "youtube" %}
+      <div class="blog-video-embed">
+        <iframe src="https://www.youtube-nocookie.com/embed/{{ source.id }}" title="{{ title }}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      {% endif %}
+
+      {% include "partials/blog-cta.njk" %}
+    </div>
+  </section>
+
+  {% set related = collections.blogPosts | selectattr("data.category", "equalto", category) | rejectattr("url", "equalto", page.url) %}
+  {% if related | length %}
+  <!-- ========================== RELATED POSTS ========================== -->
+  <section class="section on-dark">
+    <div class="container">
+      <div class="stack-header text-center mx-auto">
+        <p class="eyebrow eyebrow-on-dark mx-auto">Keep Reading</p>
+        <h2 class="section-heading mx-auto">Related Posts</h2>
+      </div>
+      <div class="blog-grid blog-grid--related">
+        {% for post in related | slice(3) %}
+        {% set pd = post.data %}
+        <a class="blog-card reveal" href="{{ post.url }}">
+          <div class="blog-card-media">
+            <img
+              src="{{ pd.heroImage.src }}"
+              srcset="{{ pd.heroImage.srcset900 }} 900w, {{ pd.heroImage.srcsetFull }} 1800w"
+              sizes="(max-width: 560px) 90vw, (max-width: 900px) 45vw, 31vw"
+              width="{{ pd.heroImage.width }}" height="{{ pd.heroImage.height }}"
+              loading="lazy"
+              alt="{{ pd.heroImage.alt }}">
+            <span class="sale-card-tag">{{ pd.category | blogFilterLabel(pd.sourceType) }}</span>
+          </div>
+          <div class="blog-card-body">
+            <h3 class="blog-card-title">{{ pd.title }}</h3>
+            <span class="sale-card-link">Read the Post</span>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  <!-- ========================= FUTURE SALE NOTIFICATIONS ========================= -->
+  <section class="section discovery-band">
+    <div class="container">
+      <div class="discovery-frame discovery-frame--tight">
+        <h2 class="section-heading discovery-heading-divided"><span>Be the First to Hear About Future Estate Sales</span></h2>
+
+        <div class="discovery-signup" id="estate-alerts">
+          <p class="section-body">Get early access to upcoming sales, new photos, and extraordinary finds.</p>
+          <form class="discovery-signup-row" action="https://formsubmit.co/info@garygermer.com" method="POST">
+            <input type="hidden" name="_subject" value="New estate sale alert subscriber — Blog post page">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://www.garygermer.com/thanks.html">
+            <div class="form-honey" aria-hidden="true">
+              <label for="alerts-company">Leave this field empty</label>
+              <input type="text" id="alerts-company" name="_honey" tabindex="-1" autocomplete="off">
+            </div>
+            <div class="field">
+              <label class="field-label" for="alerts-name">Name</label>
+              <input id="alerts-name" name="name" type="text" placeholder="Name" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="alerts-email">Email</label>
+              <input id="alerts-email" name="email" type="email" placeholder="Email" autocomplete="email" required>
+            </div>
+            <button class="button button-navy" type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

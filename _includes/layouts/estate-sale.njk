@@ -1,0 +1,226 @@
+{% extends "layouts/base.njk" %}
+
+{% block head %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "{{ saleName }}",
+  "startDate": "{{ dates[0].date | isoDateTime(dates[0].opens24) }}",
+  "endDate": "{{ dates[dates.length - 1].date | isoDateTime(dates[dates.length - 1].closes24) }}",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "location": {
+    "@type": "Place",
+    "name": "{{ saleName }}",
+    "address": {
+      "@type": "PostalAddress",
+      {% if address.line1 %}"streetAddress": "{{ address.line1 }}",{% endif %}
+      "addressLocality": "{{ addressLocality }}",
+      "addressRegion": "{{ addressRegion }}",
+      {% if addressPostalCode %}"postalCode": "{{ addressPostalCode }}",{% endif %}
+      "addressCountry": "US"
+    }
+  },
+  "image": ["https://www.garygermer.com{{ ogImage }}"],
+  "description": "{{ description }}",
+  "organizer": {
+    "@type": "Organization",
+    "name": "Gary Germer & Associates",
+    "url": "https://www.garygermer.com/"
+  },
+  "url": "https://www.garygermer.com{{ page.url }}"
+}
+</script>
+{% endblock %}
+
+{% block prebody %}
+{#- One data object per sale — every field the JS behavior (status badge,
+   hero CTAs, calendar menu, map, video modal, photo lightbox) needs comes
+   straight from this template's front matter, so there's one source of
+   truth instead of a duplicated JS object + duplicated HTML per page. -#}
+<script>
+window.SALE_DATA = {{ {
+  slug: slug,
+  name: saleName,
+  status: status,
+  neighborhood: neighborhood | abbreviateOregon,
+  address: address,
+  mapQuery: mapQuery,
+  dates: dates,
+  intro: heroLead,
+  video: video,
+  canonicalUrl: "https://www.garygermer.com" + page.url,
+  gallery: gallery | galleryFullUrls(slug)
+} | json | safe }};
+</script>
+{% endblock %}
+
+{% block content %}
+
+  <!-- ============================== SALE HERO ============================== -->
+  <section class="hero sale-hero">
+    <div class="hero-media">
+      <img
+        src="{{ heroImage.src }}"
+        srcset="{{ heroImage.srcset900 }} 900w, {{ heroImage.srcsetFull }} 1800w"
+        sizes="100vw"
+        width="{{ heroImage.width }}" height="{{ heroImage.height }}"
+        alt="{{ heroImage.alt }}"
+        fetchpriority="high">
+    </div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+
+    <div class="hero-shell sale-hero-shell">
+      <div class="hero-copy">
+        <p class="eyebrow eyebrow-on-dark">{{ eyebrow }}</p>
+        <h1 class="hero-heading">{{ heroHeadingHtml | safe }}</h1>
+        <span class="hero-rule" aria-hidden="true"></span>
+        <p class="hero-lead{% if not video %} hero-lead-compact{% endif %}">{{ heroLead }}</p>
+      </div>
+
+      <div class="hero-form-card sale-info-bar" data-sale-info-bar>
+        <h2 class="sale-info-flag-headline" data-sale-flag-headline hidden></h2>
+
+        <div class="sale-info-item">
+          <span class="sale-info-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4" stroke-linecap="round"/></svg></span>
+          <span class="sale-info-text">
+            <span class="sale-info-label">Dates</span>
+            <span class="sale-info-value" data-sale-dates-value>{{ dates | dateRangeShort }}</span>
+            <span class="sale-info-sub" data-sale-dates-sub>{{ dates | weekdayRangeShort }}</span>
+          </span>
+        </div>
+
+        {% if dates[0].opens %}
+        <div class="sale-info-item" data-sale-hours-item>
+          <span class="sale-info-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3.2 2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="sale-info-text">
+            <span class="sale-info-label">Hours</span>
+            <span class="sale-info-value">{{ dates[0].opens }}&ndash;{{ dates[0].closes }}</span>
+            <span class="sale-info-sub">Each Day</span>
+          </span>
+        </div>
+        {% endif %}
+
+        <div class="sale-info-item sale-info-item-location">
+          <span class="sale-info-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-6.4 7-12a7 7 0 1 0-14 0c0 5.6 7 12 7 12Z"/><circle cx="12" cy="9" r="2.4"/></svg></span>
+          <span class="sale-info-text">
+            <span class="sale-info-label">Location</span>
+            <span class="sale-info-value" data-sale-address-value>{% if address.line1 %}{{ address.line1 }}<br>{{ address.line2 | abbreviateOregon }}{% else %}{{ neighborhood | abbreviateOregon }}{% endif %}</span>
+            <span class="sale-info-sub" data-sale-neighborhood-sub>{{ neighborhood | abbreviateOregon }}</span>
+            <span class="sale-info-sub sale-info-address-note" data-sale-address-note hidden>Address will be announced the morning of the sale.</span>
+          </span>
+        </div>
+
+        <div class="sale-info-actions" data-sale-info-actions>
+          <div class="sale-calendar-menu" data-sale-calendar-menu>
+            <button type="button" class="button button-primary sale-calendar-trigger" data-sale-calendar-trigger aria-haspopup="dialog" aria-expanded="false">
+              Add to Calendar
+              <svg class="sale-calendar-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+          {% if mapQuery %}
+          <a class="button button-secondary" href="https://www.google.com/maps/dir/?api=1&amp;destination={{ mapQuery | urlencode }}" target="_blank" rel="noopener" data-sale-directions>Get Directions</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% if video %}
+  <!-- ========================== ESTATE OVERVIEW ========================== -->
+  <section class="section" id="sale-overview">
+    <div class="container">
+      <div class="about-band-grid">
+        <div class="about-copy-panel">
+          <p class="eyebrow">About the Sale</p>
+          <h2 class="section-heading about-heading">{{ about.heading }}</h2>
+          <div class="about-bio">
+            {% for paragraph in about.paragraphs %}
+            <p>{{ paragraph | safe }}</p>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div>
+          <div class="about-portrait-wrap reveal">
+            <img
+              src="{{ videoPoster.src }}"
+              srcset="{{ videoPoster.srcsetWebp }} 800w"
+              sizes="(max-width: 900px) 60vw, 40vw"
+              width="{{ videoPoster.width }}" height="{{ videoPoster.height }}"
+              alt="{{ videoPoster.alt }}">
+            <button type="button" class="video-thumb-play" data-sale-video-trigger aria-label="Play video preview from {{ saleName }}">
+              <span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 5.5v13l11-6.5-11-6.5Z" fill="currentColor"/></svg></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  <!-- ========================== PHOTO COLLECTION ========================== -->
+  <section class="section on-dark" id="sale-gallery">
+    <div class="container">
+      <div class="gallery-heading-row">
+        <div>
+          <p class="eyebrow eyebrow-on-dark">Sale Highlights</p>
+          <h2 class="section-heading">Explore the Collection</h2>
+          <p class="sale-concluded-note" data-sale-concluded-note>This sale has concluded &mdash; browse the full photo collection below.</p>
+        </div>
+      </div>
+
+      <div class="gallery-grid" data-gallery-grid>
+        {% for photo in gallery %}
+        {% set imgBase = "/assets/images/estate-sales/" + slug + "/" + photo.base %}
+        <button type="button" class="gallery-tile" data-gallery-index="{{ loop.index0 }}" aria-label="Open photo {{ loop.index }} of {{ gallery.length }}"{% if loop.index0 >= 15 %} data-gallery-extra hidden{% endif %}>
+          <img src="{{ imgBase }}-480.webp" srcset="{{ imgBase }}-480.webp 480w, {{ imgBase }}-900.webp 900w" sizes="(max-width: 560px) 45vw, (max-width: 900px) 30vw, 18vw" width="{{ photo.width }}" height="{{ photo.height }}" loading="lazy" alt="{{ photo.alt }}">
+        </button>
+        {% endfor %}
+      </div>
+      {% if gallery.length > 15 %}
+      <button type="button" class="button button-secondary gallery-see-more" data-gallery-see-more>See More Images</button>
+      {% endif %}
+    </div>
+  </section>
+
+  <!-- ========================== IMPORTANT DETAILS ========================== -->
+  {% include "partials/sale-details.njk" %}
+
+  <!-- ========================= FUTURE SALE NOTIFICATIONS ========================= -->
+  <section class="section discovery-band">
+    <div class="container">
+      <div class="discovery-frame discovery-frame--tight">
+        <h2 class="section-heading discovery-heading-divided"><span>Be the First to Hear About Future Estate Sales</span></h2>
+
+        <div class="discovery-signup" id="estate-alerts">
+          <p class="section-body">Get early access to upcoming sales, new photos, and extraordinary finds.</p>
+          <form class="discovery-signup-row" action="https://formsubmit.co/info@garygermer.com" method="POST">
+            <input type="hidden" name="_subject" value="New estate sale alert subscriber — {{ saleName }} page">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://www.garygermer.com/thanks.html">
+            <div class="form-honey" aria-hidden="true">
+              <label for="alerts-company">Leave this field empty</label>
+              <input type="text" id="alerts-company" name="_honey" tabindex="-1" autocomplete="off">
+            </div>
+            <div class="field">
+              <label class="field-label" for="alerts-name">Name</label>
+              <input id="alerts-name" name="name" type="text" placeholder="Name" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="alerts-email">Email</label>
+              <input id="alerts-email" name="email" type="email" placeholder="Email" autocomplete="email" required>
+            </div>
+            <button class="button button-navy" type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="/estate-sale.js"></script>
+{% endblock %}

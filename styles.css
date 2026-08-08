@@ -1,0 +1,2409 @@
+/* ==========================================================================
+   Gary Germer & Associates — Design tokens
+   ========================================================================== */
+
+/* Instrument Serif, self-hosted (SIL Open Font License 1.1) — headlines only. */
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/instrument-serif-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/instrument-serif-latin-italic.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  /* Color: warm ivory ground, ink type, deep navy grounds, blue accent —
+     client-specified palette (see brief: Hero CTA / Hero CTA 2 / Page /
+     Secondary Background / Icon colors). */
+  --ink: #2e1e17;
+  --ink-soft: #3c4250;
+  --ivory: #fefcf6;
+  --ivory-deep: #f3eee0;
+  --surface-card: #ffffff;
+  --navy: #181e34;
+  --navy-deep: #12172a;
+  --navy-accent: #29345c;
+  --navy-accent-hover: #212a4a;
+  --blue: #004aad;
+  --blue-hover: #003985;
+  --blue-tint: #8fb0e8;
+  --border: #e3ddc9;
+  --border-dark: rgba(244, 243, 238, 0.16);
+  --text-muted: #5c6270;
+  --text-on-dark: #f4f3ee;
+  --text-on-dark-muted: rgba(244, 243, 238, 0.74);
+  --error: #b3261e;
+  --focus-ring: #004aad;
+  --focus-ring-on-dark: #8fb0e8;
+
+  /* Type — display serif matches the elevatorbeat.com system font stack. */
+  --font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --font-sans: "PT Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --star-gold: #fcbd17;
+
+  /* Scale anchored to the 1728px reference comp: 60 / 51.84 / 34.67 / 24 / 20 / 17.33 / 16 */
+  --fs-eyebrow: clamp(0.875rem, 0.84rem + 0.12vw, 1.0417rem);
+  --fs-small: clamp(0.9375rem, 0.9rem + 0.14vw, 1.0833rem);
+  --fs-body: clamp(1.0625rem, 1rem + 0.2vw, 1.25rem);
+  --fs-lead: clamp(1.25rem, 1.15rem + 0.35vw, 1.5rem);
+  --fs-h1: clamp(2.5rem, 1.15rem + 3.1vw, 3.75rem);
+  --fs-h2: clamp(2rem, 1.35rem + 1.85vw, 3.24rem);
+  --fs-h3: clamp(1.6rem, 1.25rem + 1.05vw, 2.1667rem);
+  --fs-h4: clamp(1.35rem, 1.2rem + 0.5vw, 1.5417rem);
+  --fs-quote: clamp(1.375rem, 1.2rem + 0.7vw, 1.875rem);
+  --fs-signup: clamp(1.375rem, 1.05rem + 1vw, 2.1667rem);
+
+  /* Spacing / grid */
+  --container: 1200px;
+  --container-narrow: 780px;
+  --page-x: clamp(24px, 5.5vw, 100px);
+  --section-y: clamp(80px, 11vh, 148px);
+  --gap-sm: clamp(14px, 1.6vw, 22px);
+  --gap-md: clamp(24px, 2.8vw, 42px);
+  --gap-lg: clamp(32px, 4.6vw, 72px);
+  /* The comp runs a uniform 72px block pad on the dark splits, About and
+     the consultation band; the photo column (512 x 718) sets their height. */
+  --band-y: clamp(48px, 5.5vw, 72px);
+  --media-w: 512px;
+  --media-ratio: 512 / 718;
+
+  /* Surfaces — slightly rounded throughout, one consistent scale.
+     Radii measured off the 1728px comp: photos/cards 18px, frames 12px,
+     buttons 10px, form controls 6px. */
+  --radius-card: 18px;
+  --radius-image: 18px;
+  --radius-frame: 12px;
+  --radius-control: 6px;
+  --radius-button: 10px;
+  --radius-pill: 999px;
+  --shadow-card: 0 24px 64px rgba(12, 14, 20, 0.14);
+  --shadow-soft: 0 12px 32px rgba(12, 14, 20, 0.08);
+  --shadow-photo: 0 20px 48px rgba(8, 10, 18, 0.28);
+  --border-w: 1px;
+
+  /* Motion */
+  --transition-fast: 0.18s ease;
+  --transition: 0.28s cubic-bezier(0.2, 0.6, 0.2, 1);
+
+  /* Chrome */
+  --header-h: 88px;
+  --header-h-scrolled: 76px;
+
+  /* Forms */
+  --control-h: 48px;
+  --control-radius: var(--radius-control);
+  --control-border: var(--border);
+}
+
+@media (prefers-color-scheme: dark) {
+  /* This site is intentionally a single warm-ivory/teal editorial system in
+     both modes — it does not invert to a dark UI shell. Only the browser's
+     native form-control chrome should follow the OS. */
+  :root { color-scheme: light; }
+}
+
+/* ==========================================================================
+   Reset / base
+   ========================================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+[id] { scroll-margin-top: calc(var(--header-h-scrolled) + 12px); }
+
+body {
+  margin: 0;
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.4;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg { display: block; max-width: 100%; }
+img { height: auto; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+ul { list-style: none; margin: 0; padding: 0; }
+p { margin: 0 0 1rem; }
+h1, h2, h3, h4 { margin: 0; font-family: var(--font-display); font-weight: 400; line-height: 1.1; letter-spacing: 0; }
+label { font-family: var(--font-sans); }
+
+:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.skip-link {
+  position: fixed;
+  left: 16px;
+  top: 12px;
+  z-index: 1000;
+  transform: translateY(-160%);
+  background: var(--ivory);
+  color: var(--ink);
+  padding: 12px 18px;
+  border-radius: var(--radius-control);
+  font-family: var(--font-sans);
+  font-weight: 700;
+  transition: transform var(--transition-fast);
+  box-shadow: var(--shadow-soft);
+}
+.skip-link:focus { transform: translateY(0); }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ==========================================================================
+   Layout primitives
+   ========================================================================== */
+.container {
+  width: min(calc(100% - (2 * var(--page-x))), var(--container));
+  margin-inline: auto;
+}
+.container-narrow {
+  width: min(calc(100% - (2 * var(--page-x))), var(--container-narrow));
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: var(--section-y);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--ink);
+}
+.eyebrow::before { content: "\2014"; }
+.eyebrow-on-dark { color: var(--text-on-dark); }
+.eyebrow-navy { color: var(--navy-accent); }
+
+.section-heading {
+  max-width: 40ch;
+  margin-top: 0.3rem;
+  font-size: var(--fs-h2);
+}
+.section-body {
+  max-width: 54ch;
+  margin-top: 1.25rem;
+  font-size: var(--fs-body);
+  color: var(--ink);
+}
+.on-dark .section-body,
+.section-body-on-dark { color: var(--text-on-dark); }
+
+/* Buttons */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  /* 16px label in a 56px pill with ~40px of side padding — measured off the
+     comp's "Estate Sale Planning" chip (253 x 60). */
+  padding: 0 2.2em;
+  border-radius: var(--radius-button);
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 1.0625rem;
+  letter-spacing: normal;
+  transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
+  text-align: center;
+  min-height: 56px;
+}
+.button:focus-visible { outline-offset: 2px; }
+.button:hover { transform: translateY(-3px); }
+.button:active { transform: translateY(-1px); }
+
+/* Hero CTA — solid blue */
+.button-primary {
+  background: var(--blue);
+  color: #fff;
+  box-shadow: var(--shadow-soft);
+}
+.button-primary:hover { background: var(--blue-hover); box-shadow: var(--shadow-card); }
+
+/* Hero CTA 2 — white background, blue text. Also doubles as the
+   secondary content CTA inside on-dark split sections and on card
+   image overlays (matches the reference exactly in both places). */
+.button-on-dark {
+  background: var(--surface-card);
+  color: var(--blue);
+  border: 1px solid transparent;
+}
+.button-on-dark:hover { background: var(--blue); color: #fff; box-shadow: var(--shadow-card); }
+
+/* In the comp the blue label is reserved for the hero pair. The same white
+   chip inside a dark split or over a card photo is set in ink navy — bold in
+   the splits, regular over photography. */
+.split-cta-row .button-on-dark { color: var(--navy); background: var(--ivory); }
+.discovery-card .button-on-dark {
+  color: var(--navy);
+  background: var(--ivory);
+  font-weight: 400;
+  font-size: 1.0625rem;
+  min-height: 53px;
+  padding-inline: 2.8em;
+}
+
+/* Hero CTA 3 — solid navy. Used for form submits and other emphatic
+   secondary conversions (Subscribe, Watch Our Videos). */
+.button-navy {
+  background: var(--navy-accent);
+  color: #fff;
+  box-shadow: var(--shadow-soft);
+}
+.button-navy:hover { background: var(--navy-accent-hover); box-shadow: var(--shadow-card); }
+
+/* Outline — transparent, currentColor border. On light grounds this
+   reads as navy-on-cream; inside .on-dark sections it flips to
+   white-on-navy automatically. */
+.button-secondary {
+  background: transparent;
+  color: var(--navy-accent);
+  border: 1px solid var(--navy-accent);
+  font-weight: 400;
+}
+.button-secondary:hover { background: var(--navy-accent); color: #fff; }
+.on-dark .button-secondary,
+.site-footer .button-secondary {
+  color: var(--text-on-dark);
+  border-color: rgba(244, 243, 238, 0.6);
+}
+.on-dark .button-secondary:hover,
+.site-footer .button-secondary:hover { background: var(--text-on-dark); color: var(--navy); border-color: var(--text-on-dark); }
+
+.button-ghost {
+  background: transparent;
+  color: var(--navy-accent);
+  padding-inline: 0;
+  border-radius: 0;
+  min-height: auto;
+}
+.button-ghost::after { content: "\2192"; transition: transform var(--transition-fast); }
+.button-ghost:hover::after { transform: translateX(4px); }
+
+/* Split-section primitive: media + copy, reversible */
+/* The comp's dark splits are a fixed 512 x 718 photo with 72px of block pad
+   above and below (862px band) and the copy optically centred against it.
+   The photo column is a fixed track so the copy measure stays at ~525px
+   instead of drifting to half the container. */
+.split { display: flex; }
+.split-inner {
+  width: min(calc(100% - (2 * var(--page-x))), var(--container));
+  margin-inline: auto;
+  padding-block: var(--band-y);
+  display: grid;
+  grid-template-columns: 1fr var(--media-w);
+  align-items: center;
+  gap: clamp(32px, 8.7vw, 150px);
+}
+.split-reverse .split-inner { direction: rtl; }
+.split-reverse .split-inner > * { direction: ltr; }
+.split-media { position: relative; display: flex; justify-content: flex-end; }
+.split-reverse .split-media { justify-content: flex-start; }
+.split-media img {
+  width: 100%;
+  max-width: var(--media-w);
+  aspect-ratio: var(--media-ratio);
+  object-fit: cover;
+  border-radius: var(--radius-image);
+  box-shadow: var(--shadow-photo);
+}
+.split-copy { display: flex; align-items: center; }
+.split-copy-inner { max-width: 525px; }
+.split-copy-inner .section-body { max-width: none; }
+@media (max-width: 900px) {
+  .split-inner { grid-template-columns: 1fr; gap: clamp(28px, 6vw, 48px); }
+  .split-media img { max-width: 420px; margin-inline: auto; }
+}
+
+/* How Can We Help — editorial index */
+/* The comp holds this index in a ~1080px block centred inside the container
+   — narrower than the sections around it, with 48px gutters and the rule
+   sitting midway in each gutter. */
+#how-can-we-help { padding-block: clamp(48px, 4vw, 64px) clamp(64px, 7vw, 112px); }
+.pathway-grid {
+  margin-top: clamp(32px, 3.5vw, 50px);
+  max-width: 1080px;
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 48px;
+}
+@media (max-width: 980px) {
+  .pathway-grid { grid-template-columns: repeat(2, 1fr); gap: var(--gap-lg) var(--gap-md); }
+}
+@media (max-width: 560px) {
+  .pathway-grid { grid-template-columns: repeat(2, 1fr); gap: 28px 18px; }
+}
+.pathway-card {
+  display: flex;
+  flex-direction: column;
+  padding-block: 4px;
+  padding-inline-start: 24px;
+  border-inline-start: 1px solid transparent;
+  transition: transform var(--transition-fast);
+}
+.pathway-card:hover { transform: translateY(-3px); }
+.pathway-card:hover .pathway-icon { color: var(--blue-hover); }
+.pathway-card:not(:first-child) { border-inline-start-color: var(--border); }
+@media (max-width: 980px) {
+  .pathway-card:nth-child(odd) { border-inline-start-color: transparent; padding-inline-start: 0; }
+  .pathway-card:nth-child(even) { border-inline-start-color: var(--border); padding-inline-start: 24px; }
+}
+@media (max-width: 560px) {
+  .pathway-card,
+  .pathway-card:nth-child(odd),
+  .pathway-card:nth-child(even) { border-inline-start: 0; padding-inline-start: 0; padding-top: 0; border-top: 0; }
+  .pathway-icon { width: 26px; height: 26px; margin-bottom: 1rem; }
+  .pathway-title { font-size: 1.1rem; max-width: none; }
+  .pathway-body { margin-top: 0.55rem; }
+  .pathway-link { padding-top: 1rem; }
+}
+.pathway-icon {
+  width: 32px;
+  height: 32px;
+  color: var(--blue);
+  margin-bottom: 1.6rem;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+.pathway-card:hover .pathway-icon { transform: translateY(-2px) scale(1.04); }
+.pathway-icon svg { width: 100%; height: 100%; }
+/* Titles run two lines in the comp, so the measure is capped well short of
+   the column rather than left to wrap on its own. */
+.pathway-title {
+  font-family: var(--font-sans);
+  font-size: 1.34rem;
+  line-height: 1.32;
+  font-weight: 700;
+  color: var(--navy-accent);
+  max-width: 16ch;
+}
+.pathway-body {
+  margin-top: 1.15rem;
+  color: var(--ink);
+  font-size: var(--fs-small);
+  line-height: 1.45;
+  max-width: none;
+}
+.pathway-link {
+  display: inline-flex;
+  margin-top: auto;
+  padding-top: 2rem;
+  font-weight: 700;
+  font-size: var(--fs-body);
+  color: var(--blue);
+}
+.pathway-link::after { content: "\2192"; margin-left: 0.5em; transition: transform var(--transition-fast); }
+.pathway-card:hover .pathway-link::after { transform: translateX(4px); }
+
+/* Service item list (Appraisals) */
+.service-list { margin-top: 2.2rem; display: grid; gap: 1.3rem; }
+.service-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85em;
+  font-size: var(--fs-body);
+}
+.service-item svg { flex: none; width: 22px; height: 22px; color: var(--blue); }
+
+/* Testimonial composition */
+/* The section heading lives inside the left column in the comp, so the
+   right-hand pair rides up level with it instead of starting below it. */
+#testimonials { padding-block: clamp(48px, 5.5vw, 86px) clamp(48px, 5vw, 78px); }
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: 1.072fr 1fr;
+  gap: clamp(16px, 2vw, 28px) clamp(32px, 3.4vw, 53px);
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .testimonial-grid { grid-template-columns: 1fr; }
+  .google-badge { order: -1; margin-bottom: 0.5rem; }
+}
+.testimonial-primary-col { display: flex; flex-direction: column; gap: clamp(16px, 2vw, 28px); }
+.testimonial-primary-col .section-heading { margin-top: 0; margin-bottom: clamp(20px, 2.6vw, 34px); }
+/* Comp drops the right-hand pair ~87px so it starts level with the second
+   line of the heading rather than the first — a deliberate stagger. */
+.testimonial-secondaries { display: grid; gap: clamp(16px, 2vw, 28px); }
+@media (min-width: 901px) {
+  .testimonial-secondaries { margin-top: clamp(0px, 5vw, 87px); }
+}
+.testimonial {
+  position: relative;
+  max-width: none;
+  background: var(--ivory);
+  color: var(--ink);
+  border: 0;
+  border-radius: var(--radius-card);
+  padding: clamp(18px, 2vw, 26px);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.testimonial-mark {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 1.6rem + 2.2vw, 4.4rem);
+  line-height: 0.7;
+  color: var(--star-gold);
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+.testimonial-primary { }
+.testimonial-quote {
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--ink);
+}
+.testimonial-attribution {
+  margin-top: auto;
+  padding-top: 0.6rem;
+  font-size: var(--fs-small);
+  color: var(--ink);
+  font-weight: 400;
+}
+/* 592 x 56 bar in the comp, label hard left and the rating group hard
+   right — not a small badge floated to the left edge. */
+.google-badge {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.9em;
+  min-height: 56px;
+  background: var(--ivory);
+  border-radius: var(--radius-frame);
+  padding: 0.4em 1.1em;
+}
+/* Set in the sans in the comp, not the display serif. */
+.google-badge-label {
+  font-family: var(--font-sans);
+  font-size: clamp(1.3rem, 1rem + 1vw, 1.75rem);
+  font-weight: 700;
+  color: #5d5d5d;
+}
+.testimonial-proof-badge {
+  width: clamp(200px, 24vw, 300px);
+  height: auto;
+}
+
+/* Form panel */
+.form-grid { display: grid; gap: 1.4rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
+@media (max-width: 520px) { .form-row { grid-template-columns: 1fr; } }
+.field { display: grid; gap: 0.55rem; }
+.field-label { font-size: var(--fs-small); font-weight: 700; }
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  min-height: var(--control-h);
+  padding: 0.7em 0.95em;
+  border: 1px solid var(--control-border);
+  border-radius: var(--control-radius);
+  font: inherit;
+  font-size: var(--fs-small);
+  background: var(--surface-card);
+  color: var(--ink);
+}
+.field select {
+  height: var(--control-h);
+  padding-block: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  /* Solid caret in the comp, not a hairline chevron. */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M0 0h12L6 8Z' fill='%231b2133'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9em center;
+  background-size: 13px;
+  padding-inline-end: 2.6em;
+}
+.field textarea { min-height: 108px; resize: vertical; }
+.field input:focus-visible,
+.field select:focus-visible,
+.field textarea:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 1px; }
+.field-error {
+  font-size: var(--fs-small);
+  color: var(--error);
+  display: none;
+}
+.field.has-error input,
+.field.has-error select,
+.field.has-error textarea { border-color: var(--error); }
+.field.has-error .field-error { display: block; }
+.field-file {
+  border: 1px dashed var(--control-border);
+  border-radius: var(--control-radius);
+  padding: 1rem;
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+  background: var(--surface-card);
+}
+.field-file input { min-height: auto; border: 0; padding: 0; background: none; }
+.form-note { font-size: var(--fs-small); color: var(--text-muted); margin-top: 0.4rem; }
+.consultation-form-panel .field input,
+.consultation-form-panel .field select,
+.consultation-form-panel .field textarea {
+  border-color: var(--navy-accent);
+  background: transparent;
+}
+.about-cta + .form-note,
+.about-cta + .form-note-on-dark { margin-top: 1.8rem; font-style: italic; font-family: var(--font-sans); font-weight: 600; font-size: var(--fs-lead); }
+.form-note-on-dark { font-size: var(--fs-small); color: var(--text-on-dark-muted); margin-top: 0.4rem; }
+.form-honey { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+
+/* Discovery feature cards — light section, everything held inside one
+   bordered, rounded frame per the reference. The heading straddles the
+   frame's top edge, legend-style. */
+/* Frame: 1176 x 583 in the comp with a visible navy hairline, a shallow
+   12px radius, 28px side pad and a deep 122px head so the legend heading
+   clears the cards. */
+.discovery-band { padding-block: clamp(28px, 2.6vw, 40px) clamp(40px, 3.6vw, 58px); }
+.discovery-frame {
+  position: relative;
+  max-width: 1176px;
+  margin-inline: auto;
+  margin-top: clamp(14px, 1.4vw, 18px);
+  border: 1px solid rgba(41, 52, 92, 0.5);
+  border-radius: var(--radius-frame);
+  padding: clamp(28px, 3vw, 40px) clamp(20px, 2vw, 28px);
+  padding-top: clamp(64px, 8.5vw, 122px);
+}
+/* Without discovery-cards below the heading, the card-clearance padding-top
+   leaves a much bigger gap than the heading itself needs. */
+.discovery-frame--tight { padding-top: clamp(48px, 4.5vw, 64px); }
+.discovery-heading-divided {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(92%, 960px);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(16px, 3vw, 40px);
+  text-align: center;
+  color: var(--navy-accent);
+}
+.discovery-heading-divided::before,
+.discovery-heading-divided::after {
+  content: "";
+  flex: 1 1 auto;
+  height: 1px;
+  background: rgba(41, 52, 92, 0.5);
+  max-width: 220px;
+}
+.discovery-heading-divided span {
+  background: var(--ivory);
+  padding-inline: 0.6em;
+}
+.discovery-cards {
+  margin-top: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+@media (max-width: 760px) { .discovery-cards { grid-template-columns: 1fr; gap: var(--gap-md); } }
+.discovery-card {
+  position: relative;
+  border-radius: var(--radius-image);
+  overflow: hidden;
+  aspect-ratio: 2 / 1;
+  display: flex;
+  align-items: stretch;
+  box-shadow: var(--shadow-photo);
+}
+.discovery-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+/* The comp knocks these photographs well back — desaturated and roughly
+   60% veiled — so the serif title and the cream chip carry the card. */
+.discovery-card img { filter: saturate(0.5) brightness(0.94); }
+.discovery-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(14, 18, 34, 0.5) 0%, rgba(14, 18, 34, 0.56) 40%, rgba(14, 18, 34, 0.72) 100%);
+}
+.discovery-card-link {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  text-align: center;
+  /* Reserve the crest zone so the title clears the icon and the block sits
+     below centre, as it does in the comp. */
+  padding-top: clamp(34px, 3.4vw, 56px);
+}
+.discovery-card-icon {
+  position: absolute;
+  top: clamp(24px, 3vw, 42px);
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  width: 24px;
+  height: 24px;
+  z-index: 3;
+}
+.discovery-card-body { padding: clamp(24px, 3vw, 40px); color: var(--text-on-dark); }
+.discovery-card-title { font-family: var(--font-display); font-size: clamp(1.9rem, 1.2rem + 2.1vw, 3.25rem); }
+.discovery-card .button { margin-top: clamp(1.3rem, 4vw, 3.8rem); }
+.discovery-card:hover img,
+.discovery-card:focus-within img { transform: scale(1.04); }
+
+/* Below desktop, the title's vw-scaled font can outgrow the rigid 2/1
+   aspect box before the card width shrinks enough to compensate — the
+   icon and the CTA end up clipped. Let the card size to its content
+   instead once wrapped titles get taller than the box has room for. */
+@media (max-width: 980px) {
+  .discovery-card { aspect-ratio: auto; }
+  .discovery-card-link { position: static; padding: clamp(52px, 9vw, 68px) 0 clamp(20px, 4vw, 32px); }
+  .discovery-card-icon { top: clamp(20px, 3.5vw, 28px); }
+  .discovery-card-title { font-size: clamp(1.6rem, 1.1rem + 3.2vw, 2.35rem); }
+  .discovery-card .button { margin-top: clamp(1rem, 3vw, 1.6rem); }
+}
+
+.discovery-signup {
+  margin-top: clamp(36px, 4.5vw, 58px);
+  text-align: center;
+}
+/* When the signup sits directly under the heading with no discovery-cards
+   above it, the frame's heading-clearance padding-top already provides the
+   gap — this margin would double it up. */
+.discovery-heading-divided + .discovery-signup { margin-top: 0; }
+.discovery-signup .section-body {
+  margin-top: 0;
+  color: var(--navy-accent);
+  font-size: var(--fs-signup);
+  /* Set regular in the comp — the semibold reads as a second heading. */
+  font-weight: 400;
+  max-width: none;
+}
+.discovery-signup-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  margin: 1.6rem auto 0;
+}
+.discovery-signup-row .field-label {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.discovery-signup-row .field input {
+  width: 195px;
+  min-height: 40px;
+  padding: 0.4em 1em;
+  border: 1px solid var(--navy-accent);
+  border-radius: var(--control-radius);
+  background: transparent;
+  text-align: left;
+  font-size: var(--fs-small);
+}
+.discovery-signup-row .field input::placeholder { color: var(--navy-accent); opacity: 1; transition: opacity var(--transition-fast); }
+.discovery-signup-row .field input:focus::placeholder { opacity: 0; }
+.discovery-signup-row .button { min-height: 40px; padding-inline: 2.6em; }
+
+/* ==========================================================================
+   Header / nav
+   The <header> markup (nav links, "Online Shop", etc.) lives in one place,
+   _includes/partials/header.njk, and every page — including the homepage —
+   includes it via _includes/layouts/base.njk. Styling changes here in
+   styles.css apply everywhere since all pages share this stylesheet.
+
+   Below 901px the header shows only the hamburger, which opens a full-screen
+   nav overlay; at 901px and up the nav links show inline and the hamburger
+   is hidden. The header auto-hides on scroll-down, reappearing on
+   scroll-up — see the "header" and "mobile nav" sections of script.js.
+
+   It's also transparent over the hero at the top of the page (every page
+   that uses this header opens on a dark photo hero with a scrim) and turns
+   solid ivory the moment the page scrolls (.is-scrolled, toggled by
+   script.js). The brand mark and hamburger swap for a light/dark pair to
+   match — see .brand-mark-transparent / .brand-mark-solid below.
+   ========================================================================== */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  color: var(--text-on-dark);
+  transition: background var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast), color var(--transition-fast);
+}
+.site-header.is-scrolled {
+  background: var(--ivory);
+  border-color: var(--border);
+  box-shadow: var(--shadow-soft);
+  color: var(--ink);
+}
+.site-header.is-hidden { transform: translateY(-100%); }
+.nav-shell {
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  transition: height var(--transition-fast);
+}
+.site-header.is-scrolled .nav-shell { height: var(--header-h-scrolled); }
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.2rem, 1.1rem + 0.35vw, 1.4rem);
+  letter-spacing: 0.005em;
+  color: inherit;
+  white-space: nowrap;
+  flex: none;
+}
+.brand-mark { height: 42px; width: auto; flex: none; }
+.brand-mark-solid { display: none; }
+.site-header.is-scrolled .brand-mark-transparent { display: none; }
+.site-header.is-scrolled .brand-mark-solid { display: block; }
+
+.site-nav {
+  display: flex;
+  position: fixed;
+  inset: 0;
+  background: var(--ivory);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  transform: translateX(100%);
+  transition: transform var(--transition);
+  padding: var(--page-x);
+}
+.nav-open .site-nav { transform: translateX(0); }
+.site-nav a { white-space: nowrap; font-size: 1.25rem; }
+.site-nav a {
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition: color var(--transition-fast);
+}
+@media (max-width: 900px) {
+  .site-nav a { color: var(--ink-soft); }
+  .site-nav a:hover { color: var(--blue); }
+}
+.nav-cta {
+  margin-top: 8px;
+  padding: 0.7em 1.3em;
+  font-size: clamp(0.9375rem, 0.88rem + 0.22vw, 1.0625rem);
+  white-space: nowrap;
+  flex: none;
+}
+.site-nav a.nav-cta,
+.site-nav a.nav-cta:hover { color: #fff; }
+
+.nav-toggle {
+  position: relative;
+  display: inline-flex;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-control);
+  z-index: 110;
+}
+.nav-toggle svg { width: 22px; height: 22px; }
+.nav-toggle .icon-close { display: none; }
+.nav-open .nav-toggle .icon-menu { display: none; }
+.nav-open .nav-toggle .icon-close { display: block; }
+
+body.nav-lock { overflow: hidden; }
+
+@media (min-width: 901px) {
+  .site-nav {
+    position: static;
+    flex-direction: row;
+    inset: auto;
+    background: none;
+    transform: none;
+    padding: 0;
+    gap: clamp(20px, 2.4vw, 36px);
+  }
+  .site-nav a { font-size: 1.0625rem; color: inherit; }
+  .site-nav a:hover { color: var(--blue); }
+  .nav-toggle { display: none; }
+}
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+.hero {
+  position: relative;
+  min-height: clamp(520px, 84vh, 840px);
+  display: flex;
+  align-items: center;
+  color: var(--text-on-dark);
+  overflow: hidden;
+  padding-top: var(--header-h);
+}
+.hero-media { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+.hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 38%;
+  animation: heroZoom 20s ease-out forwards;
+}
+@keyframes heroZoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.05); }
+}
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, rgba(6, 8, 14, 0.74) 0%, rgba(6, 8, 14, 0.56) 42%, rgba(6, 8, 14, 0.4) 100%);
+}
+.hero-shell {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr minmax(300px, 322px);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: center;
+  padding-block: clamp(28px, 4vh, 56px);
+}
+.hero-copy { max-width: none; }
+.hero-heading {
+  font-size: var(--fs-h1);
+  line-height: 0.98;
+  letter-spacing: -0.01em;
+  text-shadow: 0 2px 28px rgba(0, 0, 0, 0.4);
+}
+.hero-subheading {
+  margin-top: 0.9rem;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--fs-lead);
+  color: var(--text-on-dark);
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.4);
+}
+.hero-lead {
+  margin-top: 1.6rem;
+  font-size: var(--fs-lead);
+  color: var(--text-on-dark);
+  /* The comp breaks this to four lines at ~550px, not the 640px a 50ch
+     measure produces. */
+  max-width: 555px;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.4);
+}
+.hero-ctas { margin-top: 2.4rem; display: flex; flex-wrap: wrap; gap: 1.1rem; }
+.hero-ctas .button { min-height: 52px; }
+.hero-proof {
+  margin-top: 1.4rem;
+  font-size: var(--fs-small);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--text-on-dark);
+}
+.hero-proof strong { font-weight: inherit; font-style: inherit; }
+
+.hero-form-card {
+  background: rgba(254, 252, 246, 0.68);
+  backdrop-filter: blur(14px) saturate(1.15);
+  -webkit-backdrop-filter: blur(14px) saturate(1.15);
+  color: var(--ink);
+  border-radius: var(--radius-card);
+  padding: clamp(22px, 2vw, 30px);
+  box-shadow: var(--shadow-card);
+  max-width: 322px;
+  margin-left: auto;
+}
+.hero-form-card h2 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: 400;
+  margin-bottom: 1.1rem;
+  text-align: center;
+}
+.hero-form-card .form-grid { gap: 0.9rem; }
+.hero-form-card .field { gap: 0.35rem; }
+.hero-form-card .field-label { font-size: var(--fs-eyebrow); }
+.hero-form-card .field input,
+.hero-form-card .field select {
+  background: var(--surface-card);
+  min-height: 44px;
+  padding: 0.55em 0.8em;
+}
+.hero-form-card .form-note { margin-top: 1rem; }
+.hero-form-card .button {
+  width: 100%;
+  justify-content: center;
+  margin-top: 0.4rem;
+  min-height: 46px;
+  padding-inline: 1em;
+  font-size: var(--fs-small);
+  white-space: nowrap;
+}
+
+@media (max-width: 980px) {
+  .hero-shell { grid-template-columns: 1fr; }
+  .hero { min-height: 0; padding-bottom: clamp(40px, 8vw, 64px); }
+  .hero-copy { max-width: none; }
+  .hero-form-card { margin-inline: auto; }
+}
+
+@media (max-width: 480px) {
+  .hero-ctas { flex-wrap: nowrap; gap: 0.6rem; }
+  .hero-ctas .button {
+    flex: 1 1 0;
+    padding: 0 0.7em;
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+    min-height: 46px;
+    white-space: nowrap;
+  }
+}
+
+/* ---- Home hero: full-viewport editorial scale matching the estate-sale
+   hero (see .sale-hero below) — same container-bound shell, oversized
+   heading, rule divider and card size. Mobile keeps the homepage's own
+   collapse-behind-CTA card behavior (.hero-form-card:not(.sale-info-bar)
+   above), so only desktop/tablet sizing is mirrored here; ≤980px resets
+   back to that existing stacked/collapsible treatment. ---- */
+.home-hero { min-height: 100svh; height: 100svh; }
+.home-hero-shell {
+  width: min(calc(100% - (2 * var(--page-x))), var(--container));
+  max-width: none;
+  margin-inline: auto;
+  padding-block: 0;
+  grid-template-columns: minmax(0, 56fr) minmax(440px, 44fr);
+  gap: clamp(48px, 6vw, 110px);
+}
+.home-hero .hero-copy { max-width: 650px; transform: translateY(-2vh); }
+.home-hero .hero-heading {
+  max-width: 680px;
+  font-size: clamp(4rem, 5.3vw, 5.5rem);
+  line-height: 0.96;
+  letter-spacing: -0.035em;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.65);
+}
+.home-hero .hero-rule {
+  display: block;
+  width: 56px;
+  height: 2px;
+  margin: clamp(20px, 2.4vw, 28px) 0;
+  background: var(--text-on-dark-muted);
+}
+.home-hero .hero-subheading { margin-top: 0; text-shadow: 0 2px 18px rgba(0, 0, 0, 0.65); }
+.home-hero .hero-lead {
+  margin-top: 1rem;
+  max-width: 570px;
+  font-size: clamp(1.5625rem, 1.4375rem + 0.4375vw, 1.875rem);
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.65);
+}
+.home-hero-card {
+  max-width: 470px;
+  padding: clamp(19px, 2vw, 28.5px);
+  background: rgba(254, 252, 246, 0.86);
+  border: 1px solid var(--border-dark);
+}
+
+@media (max-width: 1180px) {
+  .home-hero-shell { grid-template-columns: minmax(0, 1fr) minmax(400px, 460px); gap: clamp(32px, 4vw, 60px); }
+  .home-hero-card { max-width: 460px; }
+}
+
+@media (max-width: 980px) {
+  .home-hero { min-height: 0; height: auto; }
+  .home-hero-shell { grid-template-columns: 1fr; gap: 0; padding-block: clamp(28px, 4vh, 56px); }
+  .home-hero .hero-copy { max-width: none; transform: none; }
+  .home-hero .hero-heading { font-size: clamp(2.125rem, 7vw, 2.75rem); line-height: 1.03; letter-spacing: -0.02em; max-width: none; }
+  .home-hero .hero-rule { margin: 6px 0; }
+  .home-hero .hero-lead { font-size: 1rem; line-height: 1.42; max-width: 500px; }
+  .home-hero-card { max-width: 322px; }
+}
+
+/* ==========================================================================
+   About Gary
+   ========================================================================== */
+/* The comp pairs a ~585px bio measure with a wide, near-square 572 x 504
+   portrait crop, both hung from the top of the band — not a tall portrait
+   frame vertically centred against the copy. */
+#about-gary { padding-block: var(--band-y); }
+.about-band-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 585px) 572px;
+  justify-content: space-between;
+  gap: clamp(32px, 4vw, 68px);
+  align-items: center;
+}
+@media (max-width: 1100px) { .about-band-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr); } }
+@media (max-width: 900px) { .about-band-grid { grid-template-columns: 1fr; } }
+
+.about-copy-panel {
+  display: flex;
+  flex-direction: column;
+}
+.about-heading { font-size: var(--fs-h2); }
+.about-portrait-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-image);
+  background: var(--navy-deep);
+  aspect-ratio: 572 / 504;
+  box-shadow: var(--shadow-photo);
+}
+.about-portrait-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
+.about-bio { margin-top: 0.75rem; color: var(--ink); font-size: var(--fs-small); max-width: none; }
+.about-bio p { margin-bottom: 0.6rem; }
+.about-cta { margin-top: 1rem; }
+.split-cta-row { display: flex; flex-wrap: wrap; gap: 1.4rem; }
+.split-cta-row .button { min-height: 60px; }
+
+.video-row {
+  margin-top: clamp(20px, 2.6vw, 34px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.video-thumbs-row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 3vw, 48px);
+}
+@media (max-width: 560px) { .video-thumbs-row { grid-template-columns: 1fr; } }
+.video-row-cta { margin-top: 2.1rem; }
+
+.video-thumb {
+  position: relative;
+  border-radius: var(--radius-frame);
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+}
+.video-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.video-thumb-play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.video-thumb-play span {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition-fast);
+}
+.video-thumb-play svg { width: 24px; height: 24px; color: #fff; margin-left: 3px; }
+.video-thumb:hover .video-thumb-play span,
+.video-thumb:focus-visible .video-thumb-play span { transform: scale(1.08); }
+.video-thumb-player {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-frame);
+  background: #000;
+}
+
+/* ==========================================================================
+   Consultation (final section)
+   ========================================================================== */
+/* The eyebrow and heading sit inside the left column here, so the photo
+   column runs the full height of the band — same 512 x 718 plate as the
+   splits — rather than starting level with the form panel. */
+.consultation {
+  background: var(--ivory);
+  padding-block: var(--band-y);
+}
+.consultation .section-heading { color: var(--navy-accent); }
+.consultation-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--media-w);
+  gap: clamp(32px, 3.4vw, 58px);
+  align-items: center;
+  margin-top: 0;
+}
+@media (max-width: 980px) { .consultation-grid { grid-template-columns: 1fr; } }
+.consultation-copy-col { display: flex; flex-direction: column; }
+.consultation-copy-col .stack-header { max-width: none; margin-bottom: clamp(20px, 2.4vw, 32px); }
+.consultation-form-panel {
+  background: transparent;
+  border: 1px solid var(--navy-accent);
+  border-radius: var(--radius-frame);
+  padding: clamp(18px, 2vw, 24px);
+}
+.consultation-form-panel .form-grid { gap: 1rem; }
+.consultation-aside { display: grid; gap: var(--gap-lg); }
+.consultation-media {
+  border-radius: var(--radius-image);
+  overflow: hidden;
+  max-width: var(--media-w);
+  aspect-ratio: var(--media-ratio);
+  box-shadow: var(--shadow-photo);
+}
+.consultation-media img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ==========================================================================
+   Footer
+   The <footer> markup (columns, "Online Shop", etc.) lives in one place,
+   _includes/partials/footer.njk, and every page — including the homepage —
+   includes it via _includes/layouts/base.njk. Styling changes here in
+   styles.css apply everywhere since all pages share this stylesheet.
+   ========================================================================== */
+.site-footer {
+  background: var(--navy);
+  color: var(--text-on-dark);
+  padding-block: clamp(36px, 4vw, 52px) 28px;
+}
+.site-footer .container { width: min(calc(100% - 2 * clamp(24px, 4vw, 70px)), 1600px); }
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap-lg) var(--gap-md);
+}
+.footer-grid > div {
+  padding-left: var(--gap-md);
+  border-left: 1px solid var(--border-dark);
+}
+.footer-grid > div:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+@media (max-width: 900px) {
+  .footer-grid { grid-template-columns: 1fr; gap: var(--gap-lg); }
+  .footer-grid > div { padding-left: 0; border-left: 0; }
+}
+.footer-brand { grid-column: span 1; }
+.footer-brand .brand {
+  display: block;
+  color: var(--text-on-dark);
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 1.05rem + 1vw, 1.75rem);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.footer-brand-sub {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.55em;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-on-dark-muted);
+  margin-top: 0.2em;
+}
+.footer-tagline { margin-top: 1rem; font-size: clamp(0.9375rem, 0.87rem + 0.3vw, 1.0625rem); color: var(--text-on-dark-muted); max-width: 300px; }
+.footer-address { margin-top: 0.75rem; font-size: clamp(0.9375rem, 0.87rem + 0.28vw, 1.0625rem); color: var(--text-on-dark-muted); line-height: 1.5; }
+.footer-address:first-of-type { margin-top: 1.4rem; }
+.footer-address a { color: inherit; }
+.footer-address a:hover { color: var(--text-on-dark); }
+.footer-col { min-width: 0; overflow-wrap: anywhere; }
+.footer-heading {
+  font-size: var(--fs-lead);
+  max-width: 20ch;
+}
+.footer-col-body { margin-top: 0.7rem; font-size: clamp(0.9375rem, 0.87rem + 0.28vw, 1.0625rem); color: var(--text-on-dark-muted); }
+.footer-social { display: flex; gap: 0.85rem; margin-top: 1.4rem; }
+/* Rounded squares in the comp, not circles. */
+.footer-social a {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-frame);
+  color: var(--text-on-dark-muted);
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+.footer-social a:hover { color: var(--text-on-dark); border-color: var(--text-on-dark); }
+.footer-social svg { width: 16px; height: 16px; }
+
+.footer-signup-row {
+  display: flex;
+  align-items: stretch;
+  margin-top: 1.4rem;
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-control);
+}
+.footer-signup-row input {
+  flex: 1 1 auto;
+  min-width: 0;
+  background: transparent;
+  border: 0;
+  padding: 0.9em 1em;
+  font: inherit;
+  font-size: clamp(0.9375rem, 0.87rem + 0.28vw, 1.0625rem);
+  color: var(--text-on-dark);
+}
+.footer-signup-row input::placeholder { color: var(--text-on-dark-muted); }
+.footer-signup-row input:focus-visible { outline: 3px solid var(--focus-ring-on-dark); outline-offset: -3px; }
+.footer-signup-submit {
+  flex: 0 0 auto;
+  width: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-on-dark);
+  border-left: 1px solid var(--border-dark);
+  transition: background var(--transition-fast);
+}
+.footer-signup-submit:hover { background: var(--navy-accent); }
+.footer-signup-submit svg { width: 18px; height: 18px; }
+
+.footer-message-form { display: grid; gap: 0.7rem; margin-top: 1.4rem; }
+.footer-message-form input,
+.footer-message-form textarea {
+  background: transparent;
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-control);
+  padding: 0.75em 1em;
+  font: inherit;
+  font-size: clamp(0.9375rem, 0.87rem + 0.28vw, 1.0625rem);
+  color: var(--text-on-dark);
+  resize: vertical;
+}
+.footer-message-form input::placeholder,
+.footer-message-form textarea::placeholder { color: var(--text-on-dark-muted); }
+.footer-message-form input:focus-visible,
+.footer-message-form textarea:focus-visible { outline: 3px solid var(--focus-ring-on-dark); outline-offset: 1px; }
+.footer-message-submit {
+  width: 100%;
+  min-height: 52px;
+  margin-top: 0.3rem;
+}
+
+.footer-bottom {
+  margin-top: clamp(32px, 4vw, 48px);
+  padding-top: 22px;
+  border-top: 1px solid var(--border-dark);
+  font-size: var(--fs-small);
+  color: var(--text-on-dark-muted);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.footer-legal { display: flex; gap: 0.6rem; align-items: center; }
+.footer-legal a { color: var(--text-on-dark-muted); }
+.footer-legal a:hover { color: var(--text-on-dark); }
+
+/* ==========================================================================
+   Dark section helper (Appraisals panel, Discovery band)
+   ========================================================================== */
+.on-dark { background: var(--navy); color: var(--text-on-dark); }
+.on-dark h2, .on-dark h3 { color: var(--text-on-dark); }
+.discovery-band { background: var(--ivory); color: var(--ink); }
+
+.on-dark :focus-visible,
+.site-footer :focus-visible,
+.video-panel :focus-visible,
+.hero-ctas :focus-visible,
+.hero-proof :focus-visible { outline-color: var(--focus-ring-on-dark); }
+
+/* ==========================================================================
+   Utility
+   ========================================================================== */
+.text-center { text-align: center; }
+.mx-auto { margin-inline: auto; }
+.stack-header { max-width: 640px; }
+.stack-header.text-center { margin-inline: auto; }
+.discovery-heading-lead { max-width: 20ch; }
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ==========================================================================
+   Mobile pass
+   ========================================================================== */
+
+/* Eyebrow sits right on top of the header on mobile, everywhere. */
+@media (max-width: 640px) {
+  .section-heading { margin-top: 0.05rem; }
+  .testimonial-primary-col .section-heading { margin-top: 0; }
+}
+
+/* Photo-first ordering: image leads the copy on mobile, desktop keeps the
+   image in its second-column position. */
+@media (max-width: 900px) {
+  #estate-services .split-media,
+  #appraisals .split-media,
+  #consignment .split-media { order: -1; }
+}
+@media (max-width: 900px) {
+  .about-portrait-wrap { order: -1; }
+}
+
+/* Hero form collapses behind the hero CTAs on mobile and unfolds in place
+   when a CTA is tapped (see script.js).
+
+   Scoped away from .sale-info-bar: the estate-sale card borrows
+   .hero-form-card purely for its surface styling, is never collapsible, and
+   independently uses an `is-open` class to mean "sale is open today" (see
+   STATUS_CLASS in estate-sale.js). Unscoped, these rules hid the card
+   outright on mobile for every status except Open Today, and overrode the
+   card's own mobile padding/margin in that one state. */
+@media (max-width: 980px) {
+  .consultation-aside { display: none; }
+  .hero-form-card:not(.sale-info-bar) {
+    max-height: 0;
+    opacity: 0;
+    padding-block: 0;
+    margin-top: 0;
+    overflow: hidden;
+    pointer-events: none;
+    transition: max-height 0.45s ease, opacity 0.3s ease, padding-block 0.45s ease, margin-top 0.45s ease;
+  }
+  .hero-form-card:not(.sale-info-bar).is-open {
+    max-height: 900px;
+    opacity: 1;
+    padding-block: clamp(22px, 2vw, 30px);
+    margin-top: 1.75rem;
+    pointer-events: auto;
+  }
+}
+
+/* CTA pairs stay on one line at phone widths, matching the hero pair. */
+@media (max-width: 480px) {
+  .split-cta-row { flex-wrap: nowrap; gap: 0.6rem; }
+  .split-cta-row .button {
+    flex: 1 1 0;
+    padding: 0 0.7em;
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+    min-height: 46px;
+    white-space: nowrap;
+  }
+}
+
+/* Subscribe row: Name / Email / Subscribe share one line instead of
+   wrapping to their own rows. */
+@media (max-width: 640px) {
+  .discovery-signup-row { flex-wrap: nowrap; gap: 0.5rem; }
+  .discovery-signup-row .field { flex: 1 1 0; min-width: 0; }
+  .discovery-signup-row .field input { width: 100%; min-width: 0; padding: 0.45em 0.6em; font-size: 0.85rem; }
+  .discovery-signup-row .button { flex: 0 0 auto; padding-inline: 1.1em; font-size: 0.85rem; min-height: 42px; white-space: nowrap; }
+}
+
+/* Footer: brand block runs full width as its own section; the remaining
+   columns form a second, two-column section below the social icons. */
+@media (max-width: 640px) {
+  .footer-brand { grid-column: 1 / -1; margin-bottom: 6px; }
+  .footer-tagline { max-width: none; }
+}
+
+/* ==========================================================================
+   Estate Sale Detail Page
+   Page-specific rules only — every surface, radius, shadow, spacing token,
+   and type scale below is pulled from the tokens/components already defined
+   above. Nothing here introduces a new color, font, or container width.
+   ========================================================================== */
+
+/* ---- Hero: status badge ------------------------------------------------ */
+.sale-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  padding: 0.35em 0.95em;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-sans);
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  background: var(--ivory-deep);
+  color: var(--navy-accent);
+}
+.sale-status-badge::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--blue);
+  flex: none;
+}
+.sale-status-badge.is-ended { background: var(--border); color: var(--text-muted); }
+.sale-status-badge.is-ended::before { background: var(--text-muted); }
+.sale-status-badge.is-final::before { background: var(--error); }
+
+/* ---- Hero: full-viewport editorial layout with a vertical event-details
+   card (reuses .hero-form-card as its surface — the same ivory glass panel
+   as the homepage's hero form, restructured into a tall card that sits
+   beside the copy instead of a strip beneath it). --- */
+.sale-hero { min-height: 100svh; height: 100svh; }
+.sale-hero-shell {
+  /* Same measure as .container so the hero's gutters line up with every
+     section below it — it used to run out to 1440px, which read as the copy
+     and info card hugging the frame on wide screens. */
+  width: min(calc(100% - (2 * var(--page-x))), var(--container));
+  max-width: none;
+  margin-inline: auto;
+  padding-block: 0;
+  grid-template-columns: minmax(0, 56fr) minmax(440px, 44fr);
+  gap: clamp(48px, 6vw, 110px);
+}
+.sale-hero-shell .hero-copy { max-width: 650px; transform: translateY(-2vh); }
+.sale-hero .hero-scrim {
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.68) 0%, rgba(0, 0, 0, 0.54) 43%, rgba(0, 0, 0, 0.3) 68%, rgba(0, 0, 0, 0.26) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.22) 100%);
+}
+.sale-hero .hero-heading {
+  max-width: 680px;
+  font-size: clamp(4rem, 5.3vw, 5.5rem);
+  line-height: 0.96;
+  letter-spacing: -0.035em;
+}
+.sale-hero .hero-rule {
+  display: block;
+  width: 56px;
+  height: 2px;
+  margin: clamp(20px, 2.4vw, 28px) 0;
+  background: var(--text-on-dark-muted);
+}
+.sale-hero .hero-heading,
+.sale-hero .hero-lead { text-shadow: 0 2px 18px rgba(0, 0, 0, 0.65); }
+.sale-hero .hero-lead {
+  margin-top: 0;
+  max-width: 570px;
+  font-size: clamp(1.5625rem, 1.4375rem + 0.4375vw, 1.875rem);
+}
+/* No-video pages fold the "About the Sale" copy into the hero instead of a
+   separate section below (see estate-sale.njk) — the full paragraph runs
+   much longer than the old teaser line, so it needs a smaller size to still
+   clear the fold. */
+.sale-hero .hero-lead.hero-lead-compact {
+  max-width: 600px;
+  font-size: clamp(1.0625rem, 0.95rem + 0.5vw, 1.3125rem);
+  line-height: 1.44;
+}
+
+/* Single-column hero variant — no side form-card, just copy (see
+   estate-sales/ "Upcoming Estate Sales & Events" block). */
+.sale-hero-shell--single { grid-template-columns: minmax(0, 1fr); }
+.sale-hero-shell--single .hero-copy { max-width: 720px; transform: none; }
+
+/* Simple name/email sign-up under a hero's copy, no card — the hero itself
+   already provides the dark backdrop, so inputs sit directly on it.
+   Styled as a quiet label (like .sale-info-label), not a second headline —
+   it sits directly under the hero-lead paragraph and shouldn't compete with
+   the H1 for attention. */
+.hero-subscribe { margin-top: clamp(28px, 3vw, 40px); max-width: 640px; }
+.hero-subscribe-heading {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: var(--fs-small);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-on-dark-muted);
+  margin-bottom: 0.8rem;
+}
+.hero-subscribe-row { justify-content: flex-start; flex-wrap: nowrap; margin: 0; }
+/* Same pill inputs as .discovery-signup-row, but opaque so they read
+   clearly against the hero photo instead of the light discovery-band. */
+.hero-subscribe-row .field input { background: var(--surface-card); }
+
+.sale-info-bar {
+  max-width: 470px;
+  width: 100%;
+  min-height: 0;
+  margin: 0 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(19px, 2vw, 28.5px);
+  background: rgba(254, 252, 246, 0.86);
+  border: 1px solid var(--border-dark);
+}
+.sale-info-item {
+  display: grid;
+  grid-template-columns: 76px 1fr;
+  align-items: center;
+  column-gap: 24px;
+  padding-bottom: clamp(12px, 1.2vw, 15px);
+  margin-bottom: clamp(12px, 1.2vw, 15px);
+  border-bottom: 1px solid var(--border);
+}
+.sale-info-item-location { padding-bottom: 0; margin-bottom: 0; border-bottom: 0; }
+/* A neighborhood string ("Forest Heights, Portland, OR") runs longer than
+   the street addresses this line usually holds — let it wrap instead of
+   overflowing the card, same as the released-address <br> case already does. */
+.sale-info-item-location .sale-info-value { white-space: normal; }
+.sale-info-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--ivory-deep);
+  border: 1px solid var(--border);
+  color: var(--blue);
+  flex: none;
+}
+.sale-info-icon svg { width: 26px; height: 26px; }
+.sale-info-text { display: flex; flex-direction: column; gap: 0.2rem; white-space: nowrap; }
+.sale-info-label {
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.sale-info-value {
+  font-family: var(--font-display);
+  font-size: clamp(1.9375rem, 1.2rem + 1.6vw, 2.25rem);
+  font-weight: 400;
+  line-height: 1.12;
+  color: var(--ink);
+}
+.sale-info-sub { font-family: var(--font-sans); font-size: var(--fs-body); color: var(--text-muted); }
+.sale-info-address-note { margin-top: 0.3rem; font-style: italic; white-space: normal; }
+/* margin-top is deliberately 2x the item padding-bottom/margin-bottom (not
+   its own clamp value) so the gap above the CTAs reads as the same rhythm
+   as the gap between any two info rows, e.g. "Each Day" to "Location". */
+.sale-info-actions { display: grid; grid-template-columns: 1.1fr 1fr; gap: 16px; margin-top: clamp(19px, 2vw, 28.5px); }
+.sale-info-actions .button {
+  width: 100%;
+  min-height: 60px;
+  padding-inline: clamp(1em, 1.4vw, 1.4em);
+  font-size: 1.0625rem;
+  white-space: nowrap;
+}
+/* Upcoming, before the address is public: only Add to Calendar remains, so
+   let it take the full row instead of sitting in a half-empty grid. */
+.sale-info-actions--single { grid-template-columns: 1fr; }
+
+/* ---- Card: flag headline (Upcoming countdown / Concluded notice) -------
+   Selector is scoped past `.hero-form-card h2` (same specificity tier as
+   the shared hero-card heading rule) so this fully owns its own sizing
+   instead of silently inheriting fs-h3/margin from that shared rule.
+   Sized (not var(--fs-h2), which is tuned for vw-scaled headings) to keep
+   the longest variant — "This Sale Has Already Ended" — on one line inside
+   this card's fixed ~470px width at every desktop/tablet viewport. */
+.sale-info-bar .sale-info-flag-headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 1.1rem + 1vw, 1.85rem);
+  font-weight: 400;
+  line-height: 1.15;
+  text-align: center;
+  color: var(--ink);
+  white-space: nowrap;
+  margin-bottom: clamp(19px, 2vw, 28.5px);
+}
+/* Upcoming and Concluded cards both run shorter than the Live one (one CTA
+   or a slim sign-up instead of two full-size buttons) — let them size to
+   content instead of matching the Live card's fixed height. */
+.sale-info-bar.is-upcoming,
+.sale-info-bar.is-ended { min-height: 0; }
+
+/* ---- Card: hero teaser variant (/estate-sales/) ------------------------
+   Same card, but it sits directly beside that page's H1 instead of being
+   the whole hero's payload like on a sale's own page — turned down a step
+   so its numbers read as supporting detail, not a second headline
+   competing with the H1 for the loudest thing on the page. */
+.hero-sale-card .sale-info-flag-headline { font-size: clamp(1.55rem, 1.2rem + 1.1vw, 1.95rem); margin-bottom: clamp(18px, 2vw, 25px); }
+.hero-sale-card .sale-info-value { font-size: clamp(1.5rem, 1.1rem + 0.9vw, 1.75rem); }
+.hero-sale-card .sale-info-icon { width: 52px; height: 52px; }
+.hero-sale-card .sale-info-icon svg { width: 22px; height: 22px; }
+.hero-sale-card .sale-info-item { grid-template-columns: 64px 1fr; column-gap: 18px; }
+
+/* ---- Card: "Don't miss another sale" sign-up (Concluded state) --------- */
+.sale-info-actions--subscribe { display: block; }
+.sale-info-subscribe-lead {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 1rem + 0.8vw, 1.5rem);
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: clamp(14px, 1.8vw, 18px);
+}
+/* Grid columns/collapse come from the shared .form-row utility (see
+   markup); this just adds the gap/spacing this compact card variant needs. */
+.sale-info-subscribe-fields { gap: 14px; margin-bottom: 14px; }
+.sale-info-actions--subscribe .button { width: 100%; }
+@media (max-width: 480px) {
+  .sale-info-subscribe-fields { gap: 10px; }
+}
+
+/* ---- Hero: Add to Calendar trigger --------------------------------------
+   The options open in a modal (.sale-calendar-modal, below), not an
+   anchored dropdown — the sale-hero section clips overflow (needed for the
+   full-bleed photo), so a dropdown positioned under a button that sits near
+   the bottom of that 100svh section gets silently cut off. */
+.sale-calendar-menu { flex: none; }
+.sale-calendar-trigger { gap: 0.5em; }
+.sale-calendar-caret { width: 14px; height: 14px; flex: none; transition: transform var(--transition-fast); }
+.sale-calendar-trigger[aria-expanded="true"] .sale-calendar-caret { transform: rotate(180deg); }
+
+/* ---- Shared full-screen overlay (calendar modal, video modal, lightbox) */
+.sale-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(9, 11, 20, 0.94);
+  padding: clamp(16px, 4vw, 48px);
+}
+.sale-overlay[hidden] { display: none; }
+
+/* ---- Calendar modal ------------------------------------------------------ */
+.sale-calendar-modal-inner {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  background: var(--surface-card);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: clamp(28px, 3vw, 36px) clamp(24px, 2.6vw, 30px);
+}
+.sale-calendar-modal-close { position: absolute; top: -60px; right: 0; }
+@media (max-width: 640px) { .sale-calendar-modal-close { top: -50px; } }
+.sale-calendar-modal-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: 400;
+  text-align: center;
+  color: var(--ink);
+  margin-bottom: 1.4rem;
+}
+.sale-calendar-modal-options { display: flex; flex-direction: column; gap: 0.5rem; }
+.sale-calendar-modal-options a,
+.sale-calendar-modal-options button {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  font-weight: 400;
+  color: var(--ink);
+  text-align: left;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+.sale-calendar-modal-options svg { width: 20px; height: 20px; flex: none; color: var(--blue); }
+.sale-calendar-modal-options a:hover,
+.sale-calendar-modal-options button:hover { background: var(--ivory-deep); border-color: var(--blue); }
+
+@media (max-width: 1180px) {
+  .sale-hero-shell { grid-template-columns: minmax(0, 1fr) minmax(400px, 460px); gap: clamp(32px, 4vw, 60px); }
+  .sale-info-bar { max-width: 460px; min-height: auto; }
+}
+
+@media (max-width: 980px) {
+  /* Above the fold is the whole job here: the info card (dates/hours/address
+     + CTAs) is the page's payload, so the stacked shell is top-anchored to
+     the header rather than centered in the section. Centering made the card's
+     position depend on the section's height, which is how its CTAs ended up
+     chopped off; anchoring makes the card bottom a fixed distance from the
+     top of the viewport instead. The section still runs taller than the
+     viewport so the photo bleeds past the fold and hints at the scroll. */
+  .sale-hero {
+    height: auto;
+    min-height: calc(100svh + 56px);
+    align-items: flex-start;
+    padding-bottom: clamp(32px, 6vw, 56px);
+  }
+  .sale-hero-shell {
+    width: min(calc(100% - (2 * var(--page-x))), 640px);
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+    padding-block: 14px;
+  }
+  .sale-hero-shell .hero-copy { transform: none; }
+  .sale-hero .eyebrow { display: none; }
+  .sale-hero .hero-heading { font-size: clamp(2.125rem, 7vw, 2.75rem); line-height: 1.03; letter-spacing: -0.02em; }
+  .sale-hero .hero-rule { margin: 6px 0; }
+  .sale-hero .hero-lead { font-size: 1rem; line-height: 1.42; max-width: 500px; }
+  .sale-hero .hero-lead.hero-lead-compact { font-size: 0.875rem; line-height: 1.48; max-width: 520px; }
+  .sale-info-bar { max-width: none; min-height: 0; margin: 0 auto; padding: 20px; }
+  .sale-info-bar .sale-info-flag-headline { font-size: clamp(1.75rem, 6vw, 2.25rem); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 16px; white-space: normal; }
+  .sale-info-item { grid-template-columns: 40px minmax(0, 1fr); column-gap: 16px; padding-bottom: 13px; margin-bottom: 13px; }
+  .sale-info-item-location { padding-bottom: 0; margin-bottom: 0; border-bottom: 0; }
+  .sale-info-icon { width: 40px; height: 40px; }
+  .sale-info-icon svg { width: 18px; height: 18px; }
+  .sale-info-text { gap: 0.15rem; min-width: 0; }
+  .sale-info-label { font-size: 0.8125rem; }
+  .sale-info-value { font-size: 1.3125rem; line-height: 1.15; white-space: normal; }
+  .sale-info-sub { font-size: 0.9375rem; }
+  .sale-info-actions { margin-top: 16px; grid-template-columns: 1fr 1fr; gap: 12px; }
+  /* Re-assert the single-CTA span: the desktop rule sits earlier in the file,
+     so this block's 1fr 1fr would otherwise win at equal specificity. */
+  .sale-info-actions--single { grid-template-columns: 1fr; }
+  /* Concluded state: the sign-up's fields stack on mobile, which is what
+     pushed that card's Subscribe button to the fold. Drop the visible labels
+     (the placeholders already read "Name"/"Email") using the same
+     visually-hidden treatment as .discovery-signup-row's fields. */
+  .sale-info-subscribe-lead { margin-bottom: 12px; }
+  .sale-info-subscribe-fields .field-label {
+    position: absolute;
+    width: 1px; height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+}
+/* Short phones (SE-class, and anything in landscape-ish territory): the trims
+   above aren't enough on their own, so give up the supporting lead copy and
+   squeeze the card's own rhythm rather than let the CTAs fall below the fold.
+   Everything load-bearing — headline, dates, hours, address, both CTAs —
+   stays. */
+@media (max-width: 980px) and (max-height: 740px) {
+  .sale-hero-shell { gap: 14px; padding-block: 10px; }
+  .sale-hero .hero-lead { display: none; }
+  .sale-hero .hero-rule { margin: 4px 0 0; }
+  .sale-info-bar { padding: 16px; }
+  .sale-info-bar .sale-info-flag-headline { margin-bottom: 12px; }
+  .sale-info-item { padding-bottom: 10px; margin-bottom: 10px; }
+  .sale-info-actions { margin-top: 12px; }
+}
+@media (max-width: 480px) {
+  /* Matches .hero-ctas/.split-cta-row's phone-width pair sizing above. */
+  .sale-info-actions .button {
+    padding: 0 0.7em;
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+    min-height: 46px;
+    white-space: nowrap;
+  }
+}
+
+/* ---- Overview: location panel below the media (reuses .about-*) ------- */
+.sale-location-panel {
+  margin-top: clamp(18px, 2.4vw, 28px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(14px, 2vw, 24px);
+  align-items: center;
+}
+.sale-location-panel-address { font-size: var(--fs-small); color: var(--ink); }
+.sale-location-panel-address p { margin: 0 0 0.3rem; }
+.sale-location-panel-link {
+  display: inline-flex;
+  margin-top: 0.6rem;
+  font-weight: 700;
+  font-size: var(--fs-small);
+  color: var(--blue);
+}
+.sale-location-panel-link::after { content: "\2192"; margin-left: 0.4em; transition: transform var(--transition-fast); }
+.sale-location-panel-link:hover::after { transform: translateX(4px); }
+.sale-location-panel-map {
+  border-radius: var(--radius-frame);
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  box-shadow: var(--shadow-soft);
+}
+.sale-location-panel-map iframe { width: 100%; height: 100%; border: 0; display: block; }
+@media (max-width: 640px) { .sale-location-panel { grid-template-columns: 1fr; } }
+
+/* ---- Gallery: dark section heading row + curated grid ------------------ */
+.gallery-heading-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--gap-md);
+  flex-wrap: wrap;
+}
+.sale-concluded-note {
+  margin-top: 0.5em;
+  color: var(--text-on-dark);
+  opacity: 0.72;
+  font-size: 0.95rem;
+}
+.gallery-grid {
+  margin-top: clamp(28px, 3vw, 44px);
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--gap-sm);
+}
+.gallery-tile {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-image);
+  overflow: hidden;
+  box-shadow: var(--shadow-photo);
+  cursor: pointer;
+}
+.gallery-tile[hidden] { display: none; }
+.gallery-tile img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+.gallery-tile:hover img,
+.gallery-tile:focus-visible img { transform: scale(1.05); }
+.gallery-tile:focus-visible { outline: 3px solid var(--focus-ring-on-dark); outline-offset: 3px; }
+@media (max-width: 900px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 560px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } }
+
+.gallery-see-more {
+  display: flex;
+  margin: clamp(28px, 3vw, 44px) auto 0;
+}
+
+/* ---- Lightbox (photo gallery overlay) ----------------------------------- */
+.sale-lightbox { flex-direction: column; }
+.sale-lightbox-stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1400px;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+.sale-lightbox-image {
+  max-width: 100%;
+  max-height: 76vh;
+  width: auto;
+  height: auto;
+  border-radius: var(--radius-image);
+  box-shadow: var(--shadow-card);
+}
+.sale-lightbox-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(24, 30, 52, 0.72);
+  color: #fff;
+  flex: none;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+.sale-lightbox-btn:hover { background: var(--blue); }
+.sale-lightbox-btn svg { width: 20px; height: 20px; }
+.sale-lightbox-close { position: absolute; top: 0; right: 0; z-index: 2; }
+.sale-lightbox-prev,
+.sale-lightbox-next { position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; }
+.sale-lightbox-prev { left: clamp(0px, 1vw, 12px); }
+.sale-lightbox-next { right: clamp(0px, 1vw, 12px); }
+.sale-lightbox-footer { margin-top: 1.2rem; max-width: 640px; text-align: center; }
+.sale-lightbox-caption { font-size: var(--fs-small); color: var(--text-on-dark); margin-bottom: 0.3rem; }
+.sale-lightbox-counter { font-size: var(--fs-eyebrow); color: var(--text-on-dark-muted); margin: 0; }
+@media (max-width: 640px) {
+  .sale-lightbox-btn { width: 38px; height: 38px; }
+  .sale-lightbox-btn svg { width: 17px; height: 17px; }
+  .sale-lightbox-close { top: -4px; }
+}
+
+/* ---- Video modal (About-style play button opens this) ------------------ */
+.sale-video-modal-inner { position: relative; width: 100%; max-width: 960px; }
+.sale-video-modal-frame {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-frame);
+  border: 0;
+  background: #000;
+}
+.sale-video-modal-close { position: absolute; top: -60px; right: 0; }
+@media (max-width: 640px) { .sale-video-modal-close { top: -50px; } }
+
+/* ---- Important Details: 8-item variant of .pathway-grid ---------------- */
+.detail-grid { grid-template-columns: repeat(4, 1fr); }
+.pathway-title-mobile-break { display: inline; }
+.detail-card { border-inline-start-color: transparent; }
+.detail-grid .detail-card:not(:nth-child(4n+1)) { border-inline-start-color: var(--border); }
+.detail-card:hover { transform: none; }
+.detail-card:hover .pathway-icon { transform: none; color: var(--blue); }
+@media (max-width: 980px) {
+  .detail-grid { grid-template-columns: repeat(2, 1fr); }
+  .detail-grid .detail-card,
+  .detail-grid .detail-card:nth-child(odd),
+  .detail-grid .detail-card:nth-child(even) {
+    border-inline-start: 0;
+    padding-inline-start: 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid transparent;
+  }
+  .detail-grid .detail-card:nth-child(-n+2) { border-top-color: transparent; padding-top: 0; }
+  .detail-grid .detail-card:nth-child(n+3) { border-top-color: var(--border); }
+  .pathway-title-mobile-break { display: block; }
+}
+
+/* (The old .hero-form-card.sale-info-bar un-collapse override lived here. It
+   only undid three of the five properties the homepage's collapse rules set,
+   which is why the sale card still inherited their padding-block/margin-top.
+   Those rules are now scoped with :not(.sale-info-bar) at their source, so
+   nothing needs undoing.) */
+
+/* ==========================================================================
+   Previous Estate Sales — index page
+   Neighborhood filter chips + card grid over the full sale archive.
+   ========================================================================== */
+
+/* .stack-header's shared 640px cap (meant for narrower prose blocks) reads
+   noticeably narrower than the filter chips sitting right below it — widen
+   it here to match, same fix as .trust-bar's heading below. */
+#past-sales .stack-header { max-width: none; }
+#past-sales .section-body { max-width: none; }
+
+.filter-bar {
+  margin-top: clamp(28px, 3vw, 40px);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+}
+.filter-chip {
+  padding: 0.55em 1.2em;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--navy-accent);
+  background: transparent;
+  color: var(--navy-accent);
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+}
+.filter-chip:hover { background: rgba(41, 52, 92, 0.08); }
+.filter-chip.is-active { background: var(--navy-accent); border-color: var(--navy-accent); color: #fff; }
+
+.sale-grid {
+  margin-top: clamp(36px, 4vw, 56px);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap-md);
+}
+@media (max-width: 1100px) { .sale-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 760px) { .sale-grid { grid-template-columns: repeat(2, 1fr); gap: var(--gap-sm); } }
+@media (max-width: 480px) { .sale-grid { grid-template-columns: 1fr; } }
+.sale-grid .sale-card[hidden] { display: none; }
+
+.sale-card {
+  display: flex;
+  flex-direction: column;
+  color: inherit;
+  transition: transform var(--transition-fast);
+}
+.sale-card:hover { transform: translateY(-3px); }
+.sale-card-media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-image);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+.sale-card-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+.sale-card:hover .sale-card-media img,
+.sale-card:focus-visible .sale-card-media img { transform: scale(1.05); }
+.sale-card-tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 0.4em 0.9em;
+  border-radius: var(--radius-pill);
+  background: rgba(254, 252, 246, 0.92);
+  color: var(--navy);
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+.sale-card-body { padding-top: 1rem; display: flex; flex-direction: column; flex: 1; }
+.sale-card-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h4);
+  font-weight: 400;
+  line-height: 1.2;
+  min-height: calc(1.2em * 2);
+}
+.sale-card-meta {
+  margin-top: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  color: var(--text-muted);
+  font-size: var(--fs-small);
+}
+.sale-card-meta-item { display: inline-flex; align-items: center; gap: 0.4em; }
+.sale-card-meta-item svg { width: 15px; height: 15px; flex: none; }
+.sale-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  margin-top: auto;
+  padding-top: 0.9rem;
+  color: var(--navy-accent);
+  font-weight: 700;
+  font-size: var(--fs-small);
+}
+.sale-card-link::after { content: "\2192"; transition: transform var(--transition-fast); }
+.sale-card:hover .sale-card-link::after { transform: translateX(4px); }
+
+/* ==========================================================================
+   Estate Sale Services page — /our-services/estate-sales/
+   ========================================================================== */
+
+/* ---- Trust bar: centered heading over an evenly-gapped grid of client
+   names. A single flex-wrap row with inline dividers used to be the layout
+   here, but dividers only read cleanly on a single row — once the list
+   wrapped to a second line the leftover border-inline-start on wrapped
+   items staggered against the row above. A wrapping grid with consistent
+   gap in both directions reads clean at any item count or width. ---- */
+.trust-bar { padding-block: clamp(64px, 7vw, 112px); }
+/* Narrower gutter so this supporting line has room to settle onto fewer
+   lines despite running 50% larger than the base lead size. */
+.trust-bar .container { width: min(calc(100% - (2 * clamp(16px, 3vw, 48px))), var(--container)); }
+/* .stack-header's shared 640px cap (meant for narrower prose blocks) was
+   clipping this heading to well under the trust-list's full container
+   width below it — widen it here to match. */
+.trust-bar .stack-header { max-width: none; }
+.trust-bar .section-heading { max-width: 100%; font-size: calc(var(--fs-lead) * 1.5); font-weight: 400; }
+.trust-list {
+  margin-top: clamp(32px, 3.5vw, 50px);
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: clamp(14px, 2vw, 32px);
+}
+.trust-list li {
+  font-family: var(--font-sans);
+  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.3125rem);
+  font-weight: 700;
+  color: var(--navy-accent);
+  text-align: center;
+  line-height: 1.32;
+}
+@media (max-width: 900px) {
+  .trust-list { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .trust-list { grid-template-columns: 1fr; gap: 14px; }
+}
+.trust-bar-cta { margin-top: clamp(28px, 3vw, 40px); text-align: center; }
+
+/* ---- "A Managed Process, / Start to Finish." break — desktop only; the
+   split stacks to a single narrow column below 900px, where the phrase
+   wraps naturally on its own without a forced break. ---- */
+.break-desktop { display: none; }
+@media (min-width: 901px) { .break-desktop { display: inline; } }
+
+/* ---- Mobile: photo above copy in every split section on this page. ---- */
+@media (max-width: 900px) {
+  #process .split-media,
+  #maximizing-value .split-media,
+  #commitment .split-media { order: -1; }
+}
+
+/* ---- FAQ: eyebrow/heading column + native details/summary accordion,
+   answers laid out two columns wide. A single narrow column of 12 items
+   used to run the section tall while leaving most of the row's width empty
+   next to each answer; two columns use the row width the section already
+   reserves and roughly halve the scroll. ---- */
+.faq-section { background: var(--ivory-deep); }
+.faq-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 300px) 1fr;
+  gap: clamp(28px, 4vw, 64px);
+  align-items: start;
+}
+@media (max-width: 900px) { .faq-grid { grid-template-columns: 1fr; } }
+.faq-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(32px, 4vw, 56px);
+  border-top: 1px solid var(--border);
+}
+@media (max-width: 700px) { .faq-list { grid-template-columns: 1fr; } }
+.faq-item {
+  border-bottom: 1px solid var(--border);
+  padding-block: clamp(16px, 1.8vw, 22px);
+}
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: var(--fs-body);
+  color: var(--ink);
+}
+.faq-question::-webkit-details-marker { display: none; }
+.faq-question::marker { content: ""; }
+.faq-icon { position: relative; flex: none; width: 16px; height: 16px; }
+.faq-icon::before,
+.faq-icon::after {
+  content: "";
+  position: absolute;
+  background: var(--navy-accent);
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+.faq-icon::before { top: 50%; left: 0; width: 100%; height: 2px; transform: translateY(-50%); }
+.faq-icon::after { left: 50%; top: 0; width: 2px; height: 100%; transform: translateX(-50%); }
+.faq-item[open] .faq-icon::after { opacity: 0; transform: translateX(-50%) rotate(90deg); }
+.faq-answer { margin-top: 0.9rem; max-width: 46ch; }
+.faq-answer p { margin: 0; color: var(--text-muted); font-size: var(--fs-small); }
+.faq-answer a { color: var(--blue); font-weight: 700; }
+
+/* ---- Fee structure: a centered glass card (same frosted-ivory surface as
+   the hero form card) sitting in front of a full-bleed photo, rather than
+   plain centered text on the page ground. ---- */
+.fee-structure { position: relative; overflow: hidden; padding-block: var(--section-y); }
+.fee-structure-media { position: absolute; inset: 0; z-index: 0; }
+.fee-structure-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%; }
+.fee-structure-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(6, 8, 14, 0.62) 0%, rgba(6, 8, 14, 0.5) 100%);
+}
+.fee-card {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  margin-inline: auto;
+  text-align: center;
+  background: rgba(254, 252, 246, 0.88);
+  backdrop-filter: blur(14px) saturate(1.15);
+  -webkit-backdrop-filter: blur(14px) saturate(1.15);
+  border-radius: var(--radius-card);
+  padding: clamp(32px, 4.5vw, 56px);
+  box-shadow: var(--shadow-card);
+}
+.fee-card-heading {
+  margin-top: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--fs-h2);
+  color: var(--ink);
+}
+.fee-card-body {
+  margin-top: 1.1rem;
+  font-size: var(--fs-body);
+  color: var(--ink);
+}
+.fee-card .about-cta { margin-top: 1.6rem; display: flex; justify-content: center; }
+
+/* ==========================================================================
+   Blog — index grid, post layout
+   Reuses .hero/.filter-bar/.filter-chip/.discovery-signup/.eyebrow/.section
+   as-is; new classes here are a 3-col sibling of .sale-grid/.sale-card plus
+   post-body/CTA/media styling.
+   ========================================================================== */
+
+.blog-grid {
+  margin-top: clamp(36px, 4vw, 56px);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap-md);
+}
+@media (max-width: 900px) { .blog-grid { grid-template-columns: repeat(2, 1fr); gap: var(--gap-sm); } }
+@media (max-width: 560px) { .blog-grid { grid-template-columns: 1fr; } }
+.blog-grid .blog-card[hidden] { display: none; }
+
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  color: inherit;
+  transition: transform var(--transition-fast);
+}
+.blog-card:hover { transform: translateY(-3px); }
+.blog-card-media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-image);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+.blog-card-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+.blog-card:hover .blog-card-media img,
+.blog-card:focus-visible .blog-card-media img { transform: scale(1.05); }
+.blog-card-body { padding-top: 1rem; display: flex; flex-direction: column; flex: 1; }
+.blog-card-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--fs-h4);
+  line-height: 1.2;
+  min-height: calc(1.2em * 2);
+}
+.blog-card-excerpt { margin-top: 0.6rem; color: var(--text-muted); font-size: var(--fs-small); }
+.blog-grid--related { margin-top: clamp(28px, 3vw, 44px); }
+.blog-grid--related .blog-card-title,
+.blog-grid--related .blog-card-title ~ .sale-card-link { color: var(--text-on-dark); }
+
+.blog-hero .hero-heading { max-width: 20ch; }
+.blog-sold-badge {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 1rem;
+  padding: 0.35em 0.95em;
+  border-radius: var(--radius-pill);
+  background: var(--border);
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+}
+
+.blog-post-body {
+  font-size: var(--fs-body);
+  color: var(--ink);
+  line-height: 1.7;
+}
+.blog-post-body p { margin: 0 0 1.4rem; }
+.blog-post-body h2 {
+  margin-top: 2.6rem;
+  margin-bottom: 1rem;
+  font-size: var(--fs-h3);
+}
+.blog-post-body h3 {
+  margin-top: 2rem;
+  margin-bottom: 0.9rem;
+  font-size: var(--fs-h4);
+}
+.blog-post-body ul, .blog-post-body ol { margin: 0 0 1.4rem; padding-left: 1.4rem; list-style: disc; }
+.blog-post-body ol { list-style: decimal; }
+.blog-post-body li { margin-bottom: 0.5rem; }
+.blog-post-body a { color: var(--blue); text-decoration: underline; text-underline-offset: 0.15em; }
+.blog-post-body a:hover { color: var(--blue-hover); }
+.blog-body-image {
+  width: 100%;
+  height: auto;
+  margin: 2rem 0;
+  border-radius: var(--radius-image);
+  box-shadow: var(--shadow-soft);
+}
+
+.pullquote {
+  margin: 2.4rem 0;
+  padding: 0 0 0 1.4rem;
+  border-left: 3px solid var(--navy-accent);
+  font-family: var(--font-display);
+  font-size: var(--fs-quote);
+  font-style: italic;
+  color: var(--navy-accent);
+}
+
+.blog-video-embed {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  margin: 2rem 0;
+  border-radius: var(--radius-image);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+.blog-video-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.blog-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: var(--gap-sm);
+  margin: 2rem 0;
+}
+.blog-gallery img { border-radius: var(--radius-image); box-shadow: var(--shadow-soft); }
+
+.blog-cta-card {
+  margin: 2.4rem 0;
+  padding: clamp(24px, 3vw, 36px);
+  background: var(--ivory-deep);
+  border-radius: var(--radius-frame);
+  text-align: center;
+}
+.blog-cta-eyebrow {
+  margin: 0 0 0.6rem;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: var(--fs-eyebrow);
+  color: var(--navy-accent);
+}
+.blog-cta-title {
+  margin: 0 0 1.2rem;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--fs-h4);
+}
+.blog-cta-body { margin: 0 0 1.2rem; color: var(--ink); }

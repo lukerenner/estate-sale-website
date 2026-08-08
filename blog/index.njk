@@ -1,0 +1,131 @@
+---
+permalink: /blog/
+title: Blog — Estate Sale Finds, Appraisal Tips & Show & Tell | Gary Germer & Associates
+description: "Stories from Gary Germer & Associates' estate sales, appraisal insights, notable finds, and shop highlights from over 30 years in the Portland estate sale and appraisal business."
+ogTitle: The Gary Germer & Associates Blog
+ogDescription: "Estate sale stories, appraisal tips, and notable finds from Gary Germer & Associates."
+ogImage: /assets/images/parlor-placeholder.jpg
+---
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+
+  <!-- ================================ BLOG HERO ================================ -->
+  <section class="hero sale-hero">
+    <div class="hero-media">
+      <img
+        src="/assets/images/parlor-placeholder.jpg"
+        srcset="/assets/images/parlor-placeholder-900.webp 900w, /assets/images/parlor-placeholder.webp 1613w"
+        sizes="100vw"
+        width="1613" height="1131"
+        alt="An ornate, antique-filled Portland parlor staged for a Gary Germer & Associates estate sale"
+        fetchpriority="high">
+    </div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+
+    <div class="hero-shell sale-hero-shell sale-hero-shell--single">
+      <div class="hero-copy">
+        <p class="eyebrow eyebrow-on-dark">The Blog</p>
+        <h1 class="hero-heading">Estate Sale Finds<br class="break-desktop"> &amp; Appraisal Stories</h1>
+        <span class="hero-rule" aria-hidden="true"></span>
+        <p class="hero-lead">Notable finds, appraisal insights, and behind-the-scenes stories from more than 30 years of Gary Germer &amp; Associates estate sales.</p>
+
+        <div class="hero-subscribe" id="get-notified">
+          <h2 class="hero-subscribe-heading">Get Notified of Future Sales</h2>
+          <form class="discovery-signup-row hero-subscribe-row" action="https://formsubmit.co/info@garygermer.com" method="POST">
+            <input type="hidden" name="_subject" value="New estate sale alert subscriber — Blog hero">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://www.garygermer.com/thanks.html">
+            <div class="form-honey" aria-hidden="true">
+              <label for="blog-hero-alerts-company">Leave this field empty</label>
+              <input type="text" id="blog-hero-alerts-company" name="_honey" tabindex="-1" autocomplete="off">
+            </div>
+            <div class="field">
+              <label class="field-label" for="blog-hero-alerts-name">Name</label>
+              <input id="blog-hero-alerts-name" name="name" type="text" placeholder="Name" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="blog-hero-alerts-email">Email</label>
+              <input id="blog-hero-alerts-email" name="email" type="email" placeholder="Email" autocomplete="email" required>
+            </div>
+            <button class="button button-primary" type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= POSTS BY CATEGORY ============================= -->
+  <section class="section" id="all-posts">
+    <div class="container">
+      <div class="stack-header text-center mx-auto">
+        <p class="eyebrow mx-auto">Recent Posts</p>
+        <h2 class="section-heading mx-auto">From the Blog</h2>
+        <p class="section-body mx-auto">Estate sale highlights, appraisal how-tos, shop finds, and video walkthroughs — all in one place.</p>
+      </div>
+
+      <div class="filter-bar" data-blog-filter role="group" aria-label="Filter posts by category">
+        <button type="button" class="filter-chip is-active" data-filter="all" aria-pressed="true">All Posts</button>
+        {% for c in collections.blogCategories %}
+        <button type="button" class="filter-chip" data-filter="{{ c.slug }}" aria-pressed="false">{{ c.label }}</button>
+        {% endfor %}
+      </div>
+
+      <div class="blog-grid" data-blog-grid>
+        {% for post in collections.blogPosts %}
+        {% set pd = post.data %}
+        <a class="blog-card reveal" href="{{ post.url }}" data-category="{{ pd.category | blogFilterLabel(pd.sourceType) | slugify }}">
+          <div class="blog-card-media">
+            <img
+              src="{{ pd.heroImage.src }}"
+              srcset="{{ pd.heroImage.srcset900 }} 900w, {{ pd.heroImage.srcsetFull }} 1800w"
+              sizes="(max-width: 560px) 90vw, (max-width: 900px) 45vw, 31vw"
+              width="{{ pd.heroImage.width }}" height="{{ pd.heroImage.height }}"
+              loading="lazy"
+              alt="{{ pd.heroImage.alt }}">
+            <span class="sale-card-tag">{{ pd.category | blogFilterLabel(pd.sourceType) }}</span>
+            {% if pd.sourceType == "shop" and pd.sold %}<span class="blog-sold-badge">Sold</span>{% endif %}
+          </div>
+          <div class="blog-card-body">
+            <h3 class="blog-card-title">{{ pd.title }}</h3>
+            <p class="blog-card-excerpt">{{ pd.description | truncate(110) }}</p>
+            <span class="sale-card-link">Read the Post</span>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= FUTURE SALE NOTIFICATIONS ========================= -->
+  <section class="section discovery-band">
+    <div class="container">
+      <div class="discovery-frame discovery-frame--tight">
+        <h2 class="section-heading discovery-heading-divided"><span>Be the First to Hear About Future Estate Sales</span></h2>
+
+        <div class="discovery-signup" id="estate-alerts">
+          <p class="section-body">Get early access to upcoming sales, new photos, and extraordinary finds.</p>
+          <form class="discovery-signup-row" action="https://formsubmit.co/info@garygermer.com" method="POST">
+            <input type="hidden" name="_subject" value="New estate sale alert subscriber — Blog page">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://www.garygermer.com/thanks.html">
+            <div class="form-honey" aria-hidden="true">
+              <label for="alerts-company">Leave this field empty</label>
+              <input type="text" id="alerts-company" name="_honey" tabindex="-1" autocomplete="off">
+            </div>
+            <div class="field">
+              <label class="field-label" for="alerts-name">Name</label>
+              <input id="alerts-name" name="name" type="text" placeholder="Name" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label class="field-label" for="alerts-email">Email</label>
+              <input id="alerts-email" name="email" type="email" placeholder="Email" autocomplete="email" required>
+            </div>
+            <button class="button button-navy" type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

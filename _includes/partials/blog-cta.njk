@@ -1,0 +1,18 @@
+{% if sourceType == "estate-sale" %}
+<div class="blog-cta-card">
+  <p class="blog-cta-eyebrow">From the Sale</p>
+  <h3 class="blog-cta-title">{{ saleName }}</h3>
+  <a class="button button-primary" href="{{ saleUrl }}">View the Sale</a>
+</div>
+{% elif sourceType == "shop" %}
+<div class="blog-cta-card">
+  {% if sold %}
+  <p class="blog-cta-eyebrow">This Item Has Sold</p>
+  <p class="blog-cta-body">Browse our online shop for more finds like this one.</p>
+  <a class="button button-secondary" href="https://shop.garygermer.com/collections/newly-listed">Browse the Shop</a>
+  {% else %}
+  <p class="blog-cta-eyebrow">Available Now &mdash; {{ price }}</p>
+  <a class="button button-primary" href="{{ shopUrl }}">Shop This Item</a>
+  {% endif %}
+</div>
+{% endif %}
