@@ -15,20 +15,20 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install cwebp / imagemagick (image pipeline deps)
-        run: sudo apt-get update && sudo apt-get install -y webp imagemagick
+      - name: Install cwebp / imagemagick / ffmpeg (image + video pipeline deps)
+        run: sudo apt-get update && sudo apt-get install -y webp imagemagick ffmpeg
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Run blog sync (estate sales + shop + YouTube RSS only)
+      - name: Run blog sync (estate sales + shop + YouTube RSS + AM Northwest)
         run: node tools/generate-blog-posts.mjs
 
       - name: Commit and push any new/changed posts
         run: |
           git config user.name "gg-blog-sync-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add blog/posts assets/images/blog tools/blog-sync-checkpoint.json
+          git add blog/posts assets/images/blog assets/videos/blog tools/blog-sync-checkpoint.json
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else

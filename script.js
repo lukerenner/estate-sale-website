@@ -183,7 +183,8 @@
     function applyFilter(filter) {
       var shown = 0;
       grid.querySelectorAll(cfg.cardSelector).forEach(function (card) {
-        var matches = filter === "all" || card.dataset[cfg.cardKey] === filter;
+        var cardValues = (card.dataset[cfg.cardKey] || "").split(/\s+/);
+        var matches = filter === "all" || cardValues.indexOf(filter) !== -1;
         var overLimit = cfg.limit && filter === "all" && !expanded && matches && ++shown > cfg.limit;
         card.hidden = !matches || overLimit;
       });

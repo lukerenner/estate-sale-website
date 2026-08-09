@@ -1,0 +1,36 @@
+---
+permalink: /404.html
+title: "Page Not Found | Gary Germer & Associates"
+description: "The page you're looking for couldn't be found. Return to the Gary Germer & Associates homepage."
+ogTitle: "Page Not Found | Gary Germer & Associates"
+ogDescription: "The page you're looking for couldn't be found. Return to the Gary Germer & Associates homepage."
+ogImage: /assets/images/parlor-placeholder.jpg
+---
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+
+  <!-- ============================== 404 ============================== -->
+  <section class="hero notfound-hero">
+    <div class="hero-media">
+      <img
+        src="/assets/images/parlor-placeholder.jpg"
+        srcset="/assets/images/parlor-placeholder-900.webp 900w, /assets/images/parlor-placeholder.webp 1613w"
+        sizes="100vw"
+        width="1613" height="1131"
+        alt="An ornate, antique-filled Portland parlor with a crystal chandelier and period furnishings"
+        fetchpriority="high">
+    </div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+
+    <div class="container hero-shell notfound-shell">
+      <div class="hero-form-card notfound-card">
+        <p class="eyebrow eyebrow-navy">404</p>
+        <h1>Page Not Found</h1>
+        <p>The page you're looking for has moved, been renamed, or never existed. Let's get you back on track.</p>
+        <a class="button button-navy" href="/">Return Home</a>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

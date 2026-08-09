@@ -120,8 +120,3 @@
 /media/blog                      /blog/                     301
 /media/blog/*                    /blog/                     301
 /media/press                     /                          301
-
-# Legal pages (not rebuilt in this phase — flagged in CONTENT_REVIEW.md)
-/privacy-policy                 /                          301
-/terms-and-conditions           /                          301
-/cookie-policy                  /                          301

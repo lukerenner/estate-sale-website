@@ -48,7 +48,7 @@ ogImage: /assets/images/parlor-placeholder.jpg
       <div class="blog-grid" data-blog-grid>
         {% for post in collections.blogPosts %}
         {% set pd = post.data %}
-        <a class="blog-card reveal" href="{{ post.url }}" data-category="{{ pd.category | blogFilterLabel(pd.sourceType, pd.title) | slugify }}">
+        <a class="blog-card reveal" href="{{ post.url }}" data-category="{{ pd.category | blogFilterLabel(pd.sourceType, pd.title) | slugify }}{% if pd.sourceType == 'amnw' %} video{% endif %}">
           <div class="blog-card-media{% if pd.sourceType == 'youtube' or pd.sourceType == 'amnw' %} blog-card-media--video{% elif pd.sourceType == 'shop' %} blog-card-media--shop{% endif %}">
             {% if pd.sourceType == "shop" %}
             <span class="edge-extend edge-extend-left"><img class="edge-extend-img" src="{{ pd.heroImage.src }}" alt="" aria-hidden="true" loading="lazy"></span>
