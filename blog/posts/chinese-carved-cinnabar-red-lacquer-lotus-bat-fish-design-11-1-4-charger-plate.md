@@ -9,6 +9,7 @@ ogDescription: "Chinese red lacquered cinnabar charger plate with lotus flower, 
 ogImage: /assets/images/blog/chinese-carved-cinnabar-red-lacquer-lotus-bat-fish-design-11-1-4-charger-plate/chinese-carved-cinnabar-red-lacquer-lotus-bat-fish-design-11-1-4-charger-plate-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 12
 source:
   id: 8092606791856
   handle: chinese-lacquer-cinnabar-carved-charger-plate

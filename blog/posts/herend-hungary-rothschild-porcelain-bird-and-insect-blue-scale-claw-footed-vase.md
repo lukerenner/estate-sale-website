@@ -9,6 +9,7 @@ ogDescription: "Hand-painted porcelain empire-style claw footed vase crafted by 
 ogImage: /assets/images/blog/herend-hungary-rothschild-porcelain-bird-and-insect-blue-scale-claw-footed-vase/herend-hungary-rothschild-porcelain-bird-and-insect-blue-scale-claw-footed-vase-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 9
 source:
   id: 8092497772720
   handle: herend-hungary-rothschild-porcelain-bird-insect-blue-scale-claw-footed-vase

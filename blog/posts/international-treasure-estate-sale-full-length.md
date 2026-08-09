@@ -16,7 +16,7 @@ heroImage:
   src: /assets/images/blog/international-treasure-estate-sale-full-length/international-treasure-estate-sale-full-length-hero.jpg
   srcset900: /assets/images/blog/international-treasure-estate-sale-full-length/international-treasure-estate-sale-full-length-hero-900.webp
   srcsetFull: /assets/images/blog/international-treasure-estate-sale-full-length/international-treasure-estate-sale-full-length-hero.webp
-  width: 1280
+  width: 985
   height: 720
   alt: "International Treasure Estate Sale (Full length)"
 ---

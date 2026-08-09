@@ -9,6 +9,7 @@ ogDescription: "Vintage mid-20th century Chinese cloisonné enamel bowl or brush
 ogImage: /assets/images/blog/chinese-turquoise-cloisonne-vase-flower-brush-washer-bowl-custom-stand/chinese-turquoise-cloisonne-vase-flower-brush-washer-bowl-custom-stand-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 12
 source:
   id: 8087227924656
   handle: chinese-turquoise-cloisonne-vase-flower-brush-washer-bowl-custom-stand

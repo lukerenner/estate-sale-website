@@ -9,6 +9,7 @@ ogDescription: "Vintage Mexican Aztec or folk art decorative walking stick cane.
 ogImage: /assets/images/blog/antique-tijuana-mexico-1932-aztec-native-painted-wood-walking-stick-cane/antique-tijuana-mexico-1932-aztec-native-painted-wood-walking-stick-cane-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 12
 source:
   id: 8090187694256
   handle: native-american-carved-wood-painted-walking-stick-cane

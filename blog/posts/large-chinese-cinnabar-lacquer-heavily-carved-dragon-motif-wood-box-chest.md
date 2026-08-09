@@ -9,6 +9,7 @@ ogDescription: "Early 20th century Chinese wood and red Cinnabar lacquer chest w
 ogImage: /assets/images/blog/large-chinese-cinnabar-lacquer-heavily-carved-dragon-motif-wood-box-chest/large-chinese-cinnabar-lacquer-heavily-carved-dragon-motif-wood-box-chest-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 12
 source:
   id: 8090176389296
   handle: chinese-cinnabar-lacquer-carved-dragon-motif-chest

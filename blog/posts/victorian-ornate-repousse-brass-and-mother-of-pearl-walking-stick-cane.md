@@ -9,6 +9,7 @@ ogDescription: "Victorian era wood walking stick cane with mother of pearl and b
 ogImage: /assets/images/blog/victorian-ornate-repousse-brass-and-mother-of-pearl-walking-stick-cane/victorian-ornate-repousse-brass-and-mother-of-pearl-walking-stick-cane-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 8
 source:
   id: 8090180386992
   handle: victorian-ornate-repousse-brass-mother-of-pearl-walking-stick-cane

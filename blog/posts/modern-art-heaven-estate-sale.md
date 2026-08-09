@@ -16,7 +16,7 @@ heroImage:
   src: /assets/images/blog/modern-art-heaven-estate-sale/modern-art-heaven-estate-sale-hero.jpg
   srcset900: /assets/images/blog/modern-art-heaven-estate-sale/modern-art-heaven-estate-sale-hero-900.webp
   srcsetFull: /assets/images/blog/modern-art-heaven-estate-sale/modern-art-heaven-estate-sale-hero.webp
-  width: 1280
+  width: 540
   height: 720
   alt: "Modern Art Heaven Estate Sale"
 ---

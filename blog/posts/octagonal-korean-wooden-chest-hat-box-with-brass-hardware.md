@@ -9,6 +9,7 @@ ogDescription: "Lovely octagonal Korean hat box with gorgeous ornamental brass d
 ogImage: /assets/images/blog/octagonal-korean-wooden-chest-hat-box-with-brass-hardware/octagonal-korean-wooden-chest-hat-box-with-brass-hardware-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 9
 source:
   id: 8089623134384
   handle: octagonal-korean-wooden-chest-with-brass-hardware

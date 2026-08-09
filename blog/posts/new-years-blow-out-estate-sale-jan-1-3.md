@@ -16,7 +16,7 @@ heroImage:
   src: /assets/images/blog/new-years-blow-out-estate-sale-jan-1-3/new-years-blow-out-estate-sale-jan-1-3-hero.jpg
   srcset900: /assets/images/blog/new-years-blow-out-estate-sale-jan-1-3/new-years-blow-out-estate-sale-jan-1-3-hero-900.webp
   srcsetFull: /assets/images/blog/new-years-blow-out-estate-sale-jan-1-3/new-years-blow-out-estate-sale-jan-1-3-hero.webp
-  width: 1280
+  width: 1042
   height: 720
   alt: "New Years Blow Out Estate Sale! JAN 1-3!"
 ---

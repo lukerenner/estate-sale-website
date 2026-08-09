@@ -9,6 +9,7 @@ ogDescription: "Vintage Bodum Ottoni tea kettle designed by Carsten Jørgensen.
 ogImage: /assets/images/blog/bodum-carsten-jorgensen-ottoni-green-finial-stainless-18-10-tea-kettle/bodum-carsten-jorgensen-ottoni-green-finial-stainless-18-10-tea-kettle-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 11
 source:
   id: 8086964797616
   handle: bodum-carsten-jorgensen-ottoni-green-finial-stainless-18-10-tea-kettle

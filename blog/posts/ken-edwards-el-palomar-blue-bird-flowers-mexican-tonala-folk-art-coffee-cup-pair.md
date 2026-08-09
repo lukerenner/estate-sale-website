@@ -9,6 +9,7 @@ ogDescription: "Set of 2 incredibly sweet vintage Ken Edwards Mexican pottery, c
 ogImage: /assets/images/blog/ken-edwards-el-palomar-blue-bird-flowers-mexican-tonala-folk-art-coffee-cup-pair/ken-edwards-el-palomar-blue-bird-flowers-mexican-tonala-folk-art-coffee-cup-pair-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 11
 source:
   id: 8097880309936
   handle: ken-edwards-el-palomar-blue-bird-flowers-mexican-tonala-folk-art-coffee-cup-pair

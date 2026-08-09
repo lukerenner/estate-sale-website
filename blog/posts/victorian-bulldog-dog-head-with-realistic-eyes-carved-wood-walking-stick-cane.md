@@ -9,6 +9,7 @@ ogDescription: "Victorian era walking stick with dog head handle. Finely carved 
 ogImage: /assets/images/blog/victorian-bulldog-dog-head-with-realistic-eyes-carved-wood-walking-stick-cane/victorian-bulldog-dog-head-with-realistic-eyes-carved-wood-walking-stick-cane-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 12
 source:
   id: 8092175270064
   handle: carved-wood-dog-walking-stick-cane

@@ -9,6 +9,7 @@ ogDescription: "This gorgeous Korean Tansu-style chest with iron hardware featur
 ogImage: /assets/images/blog/vintage-korean-tansu-chest-with-iron-hardware/vintage-korean-tansu-chest-with-iron-hardware-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 12
 source:
   id: 8089633587376
   handle: vintage-korean-tansu-chest-with-iron-hardware

@@ -9,6 +9,7 @@ ogDescription: "Antique 19th-century monoxyl (single-piece wood) folk art cane, 
 ogImage: /assets/images/blog/antique-carved-male-ebenezer-inset-eyes-figure-monoxyl-wood-walking-stick-cane/antique-carved-male-ebenezer-inset-eyes-figure-monoxyl-wood-walking-stick-cane-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 8
 source:
   id: 8091940356272
   handle: wood-walking-stick-cane-hidden-cork-screw-copy

@@ -9,6 +9,7 @@ ogDescription: "Vintage shoe horn featuring a natural Ox horn tongue and stag an
 ogImage: /assets/images/blog/vintage-deer-stag-antler-handle-wood-natural-ox-horn-shoehorn-stick/vintage-deer-stag-antler-handle-wood-natural-ox-horn-shoehorn-stick-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 6
 source:
   id: 8092615901360
   handle: deer-stag-antler-handle-wood-shoehorn-stick

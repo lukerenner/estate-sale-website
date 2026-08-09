@@ -9,6 +9,7 @@ ogDescription: "Vintage walking stick cane with intricately hand carved wood dee
 ogImage: /assets/images/blog/deer-stag-head-carved-wood-handle-vintage-walking-stick-cane/deer-stag-head-carved-wood-handle-vintage-walking-stick-cane-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 12
 source:
   id: 8090219511984
   handle: deer-walking-stick-cane

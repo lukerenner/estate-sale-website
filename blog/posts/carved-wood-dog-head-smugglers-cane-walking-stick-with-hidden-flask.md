@@ -9,6 +9,7 @@ ogDescription: "Vintage, Victorian style decorative walking stick featuring a ca
 ogImage: /assets/images/blog/carved-wood-dog-head-smugglers-cane-walking-stick-with-hidden-flask/carved-wood-dog-head-smugglers-cane-walking-stick-with-hidden-flask-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 10
 source:
   id: 8089629720752
   handle: carved-wood-dog-head-smugglers-cane-walking-stick-with-hidden-flask

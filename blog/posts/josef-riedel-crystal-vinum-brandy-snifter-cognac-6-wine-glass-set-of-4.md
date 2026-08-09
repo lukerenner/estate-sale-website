@@ -9,6 +9,7 @@ ogDescription: "Josef Riedel crystal Brandy Snifter set of 4 in Vinum pattern. E
 ogImage: /assets/images/blog/josef-riedel-crystal-vinum-brandy-snifter-cognac-6-wine-glass-set-of-4/josef-riedel-crystal-vinum-brandy-snifter-cognac-6-wine-glass-set-of-4-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 7
 source:
   id: 8082532204720
   handle: josef-riedel-crystal-vinum-brandy-snifter-cognac-6-wine-glass-set-of-4

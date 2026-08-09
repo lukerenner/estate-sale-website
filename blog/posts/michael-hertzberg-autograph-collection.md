@@ -17,7 +17,7 @@ heroImage:
   srcset900: /assets/images/blog/michael-hertzberg-autograph-collection/michael-hertzberg-autograph-collection-hero-900.webp
   srcsetFull: /assets/images/blog/michael-hertzberg-autograph-collection/michael-hertzberg-autograph-collection-hero.webp
   width: 1280
-  height: 720
+  height: 614
   alt: "Michael Hertzberg Autograph Collection"
 ---
 

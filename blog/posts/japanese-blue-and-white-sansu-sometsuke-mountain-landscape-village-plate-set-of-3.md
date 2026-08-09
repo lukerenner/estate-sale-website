@@ -9,6 +9,7 @@ ogDescription: "Unique and beautiful, antique set of 3 Japanese Sansui Sometsuke
 ogImage: /assets/images/blog/japanese-blue-and-white-sansu-sometsuke-mountain-landscape-village-plate-set-of-3/japanese-blue-and-white-sansu-sometsuke-mountain-landscape-village-plate-set-of-3-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 10
 source:
   id: 8089428983984
   handle: japanese-blue-white-sansu-sometsuke-mountain-landscape-village-plate-set-of-3

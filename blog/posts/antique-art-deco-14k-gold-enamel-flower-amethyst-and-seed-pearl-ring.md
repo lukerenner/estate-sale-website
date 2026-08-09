@@ -9,6 +9,7 @@ ogDescription: "Wonderful antique Art Deco ring in 14k gold featuring a large, o
 ogImage: /assets/images/blog/antique-art-deco-14k-gold-enamel-flower-amethyst-and-seed-pearl-ring/antique-art-deco-14k-gold-enamel-flower-amethyst-and-seed-pearl-ring-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 10
 source:
   id: 8082744475824
   handle: antique-art-deco-14k-gold-enamel-flower-amethyst-seed-pearl-ring

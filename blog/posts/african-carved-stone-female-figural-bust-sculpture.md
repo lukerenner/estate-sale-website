@@ -9,6 +9,7 @@ ogDescription: "African hand carved bust made from a variegated stone showing de
 ogImage: /assets/images/blog/african-carved-stone-female-figural-bust-sculpture/african-carved-stone-female-figural-bust-sculpture-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 10
 source:
   id: 8086956900528
   handle: african-carved-marble-female-figural-bust-sculpture

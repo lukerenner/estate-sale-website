@@ -16,7 +16,7 @@ heroImage:
   src: /assets/images/blog/international-treasure-estate-sale-shortened/international-treasure-estate-sale-shortened-hero.jpg
   srcset900: /assets/images/blog/international-treasure-estate-sale-shortened/international-treasure-estate-sale-shortened-hero-900.webp
   srcsetFull: /assets/images/blog/international-treasure-estate-sale-shortened/international-treasure-estate-sale-shortened-hero.webp
-  width: 1280
+  width: 985
   height: 720
   alt: "International Treasure Estate Sale (Shortened)"
 ---

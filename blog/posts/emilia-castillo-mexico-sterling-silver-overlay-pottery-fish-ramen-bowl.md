@@ -9,6 +9,7 @@ ogDescription: "Emilia Castillo \"Plata Pura\" sterling silver overlay ceramic f
 ogImage: /assets/images/blog/emilia-castillo-mexico-sterling-silver-overlay-pottery-fish-ramen-bowl/emilia-castillo-mexico-sterling-silver-overlay-pottery-fish-ramen-bowl-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 12
 source:
   id: 8092498100400
   handle: emilia-castillo-mexico-sterling-silver-overlay-pottery-fish-ramen-bowl

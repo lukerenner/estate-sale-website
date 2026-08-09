@@ -9,6 +9,7 @@ ogDescription: "Marvelous antique statue of a bodhisattva. With a serene express
 ogImage: /assets/images/blog/antique-sandstone-bodhisattva-statue/antique-sandstone-bodhisattva-statue-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 9
 source:
   id: 8099046293680
   handle: antique-sandstone-bodhisattva-statue

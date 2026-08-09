@@ -9,6 +9,7 @@ ogDescription: "Standing at two feet tall, this statue is a fantastic small scal
 ogImage: /assets/images/blog/terracotta-warrior-replica-kneeling-archer-statue/terracotta-warrior-replica-kneeling-archer-statue-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 8
 source:
   id: 8097878671536
   handle: terracotta-warrior-statue

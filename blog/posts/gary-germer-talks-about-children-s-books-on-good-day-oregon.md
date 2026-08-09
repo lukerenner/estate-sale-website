@@ -16,8 +16,8 @@ heroImage:
   src: /assets/images/blog/gary-germer-talks-about-children-s-books-on-good-day-oregon/gary-germer-talks-about-children-s-books-on-good-day-oregon-hero.jpg
   srcset900: /assets/images/blog/gary-germer-talks-about-children-s-books-on-good-day-oregon/gary-germer-talks-about-children-s-books-on-good-day-oregon-hero-900.webp
   srcsetFull: /assets/images/blog/gary-germer-talks-about-children-s-books-on-good-day-oregon/gary-germer-talks-about-children-s-books-on-good-day-oregon-hero.webp
-  width: 1280
-  height: 720
+  width: 480
+  height: 318
   alt: "Gary Germer Talks About Children's Books on Good Day Oregon"
 ---
 

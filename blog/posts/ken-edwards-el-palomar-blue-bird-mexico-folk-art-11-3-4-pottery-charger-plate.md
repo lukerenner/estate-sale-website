@@ -9,6 +9,7 @@ ogDescription: "Large serving platter or charger plate designed by well known ce
 ogImage: /assets/images/blog/ken-edwards-el-palomar-blue-bird-mexico-folk-art-11-3-4-pottery-charger-plate/ken-edwards-el-palomar-blue-bird-mexico-folk-art-11-3-4-pottery-charger-plate-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 8
 source:
   id: 8097901215920
   handle: ken-edwards-el-palomar-blue-bird-flower-mexican-folk-art-11-3-4-pottery-platter-1

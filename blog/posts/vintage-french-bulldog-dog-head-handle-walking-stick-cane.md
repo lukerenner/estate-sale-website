@@ -9,6 +9,7 @@ ogDescription: "Vintage walking cane stick with French Bulldog handle. Dog head 
 ogImage: /assets/images/blog/vintage-french-bulldog-dog-head-handle-walking-stick-cane/vintage-french-bulldog-dog-head-handle-walking-stick-cane-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 8
 source:
   id: 8090213712048
   handle: french-bulldog-walking-stick-cane

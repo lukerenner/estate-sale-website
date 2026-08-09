@@ -9,6 +9,7 @@ ogDescription: "Antique Victorian wood walking stick cane with flower and foliag
 ogImage: /assets/images/blog/victorian-wood-floral-chased-gold-plated-knob-children-s-walking-stick-cane/victorian-wood-floral-chased-gold-plated-knob-children-s-walking-stick-cane-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 8
 source:
   id: 8090182222000
   handle: victorian-wood-brass-floral-chased-knob-walking-stick-cane

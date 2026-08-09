@@ -9,6 +9,7 @@ ogDescription: "Exquisitely crafted and spectacularly colorful, this magnificent
 ogImage: /assets/images/blog/monumental-hand-carved-indian-polychrome-jhula-swing/monumental-hand-carved-indian-polychrome-jhula-swing-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 12
 source:
   id: 8096359350448
   handle: monumental-hand-carved-indian-polychrome-jhula-swing

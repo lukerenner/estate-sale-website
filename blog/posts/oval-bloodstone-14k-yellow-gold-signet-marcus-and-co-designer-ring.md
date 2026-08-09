@@ -9,6 +9,7 @@ ogDescription: "Georgian style minimalist signet ring with oval Bloodstone showi
 ogImage: /assets/images/blog/oval-bloodstone-14k-yellow-gold-signet-marcus-and-co-designer-ring/oval-bloodstone-14k-yellow-gold-signet-marcus-and-co-designer-ring-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 12
 source:
   id: 8084846870704
   handle: oval-bloodstone-14k-yellow-gold-signet-marcus-co-designer-ring

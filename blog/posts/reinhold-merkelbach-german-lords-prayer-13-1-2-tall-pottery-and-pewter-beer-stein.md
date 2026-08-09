@@ -9,6 +9,7 @@ ogDescription: "Vintage Reinhold Merkelbach German stoneware beer stein featurin
 ogImage: /assets/images/blog/reinhold-merkelbach-german-lords-prayer-13-1-2-tall-pottery-and-pewter-beer-stein/reinhold-merkelbach-german-lords-prayer-13-1-2-tall-pottery-and-pewter-beer-stein-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 10
 source:
   id: 8082378129584
   handle: reinhold-merkelbach-german-lords-prayer-13-1-2-tall-pottery-pewter-beer-stein

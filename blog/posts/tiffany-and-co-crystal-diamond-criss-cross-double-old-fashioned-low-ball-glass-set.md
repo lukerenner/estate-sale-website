@@ -9,6 +9,7 @@ ogDescription: "Tiffany & Co. set of 4 crystal old fashioned, low ball double sh
 ogImage: /assets/images/blog/tiffany-and-co-crystal-diamond-criss-cross-double-old-fashioned-low-ball-glass-set/tiffany-and-co-crystal-diamond-criss-cross-double-old-fashioned-low-ball-glass-set-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 8
 source:
   id: 8089624117424
   handle: tiffany-co-crystal-etched-diamond-criss-cross-old-fashioned-glass-set-of-4-copy

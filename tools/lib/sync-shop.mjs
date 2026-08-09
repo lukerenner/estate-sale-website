@@ -99,8 +99,12 @@ export async function syncShop({ postsDir = "blog/posts", imagesRoot = "assets/i
 
     const hero = manifest[0];
     const price = product.variants && product.variants[0] ? `$${product.variants[0].price}` : "";
-    const description = htmlToMarkdown(product.body_html).split("\n\n")[0] || product.title;
     const bodyMarkdown = htmlToMarkdown(product.body_html);
+    // Some listings open with a boilerplate condition-assessment disclaimer
+    // rather than descriptive text — skip it and use the next paragraph so
+    // the card excerpt and og:description say something about the item.
+    const paragraphs = bodyMarkdown.split("\n\n").map((p) => p.trim()).filter(Boolean);
+    const description = paragraphs.find((p) => !/^PLEASE VIEW ALL PHOTOS FOR PROPER CONDITION ASSESSMENT\.?$/i.test(p)) || product.title;
     const galleryTag = manifest.length > 1 ? `\n\n{% blogGallery "${slug}", ${manifest.length} %}\n` : "";
 
     const lines = [
@@ -114,6 +118,7 @@ export async function syncShop({ postsDir = "blog/posts", imagesRoot = "assets/i
       `ogImage: /assets/images/blog/${slug}/${hero.base}-900.webp`,
       "category: show-and-tell",
       "sourceType: shop",
+      `galleryCount: ${manifest.length}`,
       "source:",
       `  id: ${product.id}`,
       `  handle: ${product.handle}`,

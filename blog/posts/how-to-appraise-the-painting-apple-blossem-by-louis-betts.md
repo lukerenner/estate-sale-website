@@ -17,7 +17,7 @@ heroImage:
   srcset900: /assets/images/blog/how-to-appraise-the-painting-apple-blossem-by-louis-betts/how-to-appraise-the-painting-apple-blossem-by-louis-betts-hero-900.webp
   srcsetFull: /assets/images/blog/how-to-appraise-the-painting-apple-blossem-by-louis-betts/how-to-appraise-the-painting-apple-blossem-by-louis-betts-hero.webp
   width: 1280
-  height: 720
+  height: 716
   alt: "How to Appraise the Painting Apple Blossem by Louis Betts"
 ---
 

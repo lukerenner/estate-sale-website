@@ -18,61 +18,186 @@
 
 {% block content %}
 
-  <!-- ============================== POST HERO ============================== -->
-  <section class="hero blog-hero">
-    <div class="hero-media">
+  {% if sourceType == "shop" %}
+  <!-- ========================== POST HERO (shop item) ========================== -->
+  <section class="section blog-hero-shop" data-shop-gallery>
+    <div class="container">
+      <div class="blog-hero-shop-grid">
+        <div class="blog-hero-shop-copy blog-post-body">
+          <p class="eyebrow eyebrow-navy">{{ price }}</p>
+          <h1 class="blog-hero-shop-heading">{{ title | titleCase }}</h1>
+          <span class="blog-hero-shop-rule" aria-hidden="true"></span>
+          <div class="blog-post-content blog-post-content--shop">
+            {{ content | safe }}
+          </div>
+          <div class="blog-hero-shop-ctas">
+            {% if sold %}
+            <p class="blog-hero-shop-unavailable">This object is no longer available.</p>
+            {% else %}
+            <a class="button button-primary" href="{{ shopUrl }}">Shop This Item</a>
+            {% endif %}
+            <a class="button button-secondary" href="https://shop.garygermer.com/">Visit Our Online Store</a>
+          </div>
+        </div>
+        <div class="blog-hero-shop-media">
+          <div class="shop-gallery-main">
+            <img
+              data-shop-gallery-main
+              src="{{ heroImage.src }}"
+              srcset="{{ heroImage.srcset900 }} 900w, {{ heroImage.srcsetFull }} 1800w"
+              sizes="(max-width: 860px) 92vw, 460px"
+              width="{{ heroImage.width }}" height="{{ heroImage.height }}"
+              alt="{{ heroImage.alt }}"
+              fetchpriority="high">
+          </div>
+          {% if galleryCount and galleryCount > 1 %}
+          <div class="shop-gallery-thumbs">
+            {% for i in range(1, galleryCount + 1) %}
+            {% set base = slug + "-" + (i | pad2) %}
+            <button
+              type="button"
+              class="shop-gallery-thumb{% if loop.first %} is-active{% endif %}"
+              data-shop-gallery-thumb
+              data-full-src="/assets/images/blog/{{ slug }}/{{ base }}-1400.webp"
+              data-full-srcset="/assets/images/blog/{{ slug }}/{{ base }}-900.webp 900w, /assets/images/blog/{{ slug }}/{{ base }}-1400.webp 1400w"
+              aria-label="Show photo {{ i }} of {{ galleryCount }}">
+              <img src="/assets/images/blog/{{ slug }}/{{ base }}-480.webp" alt="" loading="lazy">
+            </button>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+  {% elif sourceType == "youtube" %}
+  <!-- ========================== POST HERO (video) ========================== -->
+  <section class="section blog-hero-video">
+    <div class="blog-hero-video-bg">
       <img
         src="{{ heroImage.src }}"
         srcset="{{ heroImage.srcset900 }} 900w, {{ heroImage.srcsetFull }} 1800w"
         sizes="100vw"
         width="{{ heroImage.width }}" height="{{ heroImage.height }}"
-        alt="{{ heroImage.alt }}"
+        alt=""
         fetchpriority="high">
     </div>
-    <div class="hero-scrim" aria-hidden="true"></div>
-
-    <div class="hero-shell blog-hero-shell">
-      <div class="hero-copy">
-        <p class="eyebrow eyebrow-on-dark">{{ category | blogFilterLabel(sourceType) }}</p>
-        <h1 class="hero-heading">{{ title }}</h1>
-        <span class="hero-rule" aria-hidden="true"></span>
-        <p class="hero-lead hero-lead-compact">{{ publishDate | dateDisplay }}</p>
-        {% if sourceType == "shop" and sold %}
-        <span class="blog-sold-badge">Sold</span>
-        {% endif %}
+    <div class="blog-hero-video-scrim" aria-hidden="true"></div>
+    <div class="container">
+      <div class="blog-hero-video-grid">
+        <div class="blog-hero-video-copy blog-post-body">
+          <h1 class="blog-hero-video-heading">{{ title | titleCase }}</h1>
+          <span class="blog-hero-video-rule" aria-hidden="true"></span>
+          <div class="blog-post-content">
+            {{ content | safe }}
+          </div>
+        </div>
+        <div class="blog-hero-video-media">
+          <div class="blog-video-embed">
+            <iframe src="https://www.youtube-nocookie.com/embed/{{ source.id }}" title="{{ title }}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
       </div>
+    </div>
+  </section>
+  {% elif sourceType == "amnw" %}
+  <!-- ========================== POST HERO (AM Northwest video) ========================== -->
+  <section class="section blog-hero-video">
+    <div class="blog-hero-video-bg">
+      <img
+        src="{{ heroImage.src }}"
+        srcset="{{ heroImage.srcset900 }} 900w, {{ heroImage.srcsetFull }} 1800w"
+        sizes="100vw"
+        width="{{ heroImage.width }}" height="{{ heroImage.height }}"
+        alt=""
+        fetchpriority="high">
+    </div>
+    <div class="blog-hero-video-scrim" aria-hidden="true"></div>
+    <div class="container">
+      <div class="blog-hero-video-grid">
+        <div class="blog-hero-video-copy blog-post-body">
+          <h1 class="blog-hero-video-heading">{{ title | titleCase }}</h1>
+          <span class="blog-hero-video-rule" aria-hidden="true"></span>
+          <div class="blog-post-content">
+            {{ content | safe }}
+          </div>
+        </div>
+        <div class="blog-hero-video-media">
+          <div class="blog-video-embed">
+            <video controls preload="metadata" poster="{{ heroImage.src }}">
+              <source src="{{ source.video }}" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% else %}
+  <!-- ============================== POST TITLE ============================== -->
+  <section class="section blog-article-header">
+    <div class="container blog-article-header-inner blog-post-body">
+      <p class="eyebrow eyebrow-navy">{{ category | blogFilterLabel(sourceType, title) }}</p>
+      <h1 class="blog-article-heading">{{ title | titleCase }}</h1>
+      <span class="blog-article-rule" aria-hidden="true"></span>
+      <p class="blog-article-date">{{ publishDate | dateDisplay }}</p>
     </div>
   </section>
 
   <!-- ============================= POST BODY ============================= -->
-  <section class="section">
-    <div class="container-narrow blog-post-body">
-      {{ content | safe }}
+  <section class="section blog-article-body">
+    <div class="container blog-article-hero-wrap">
+      <img
+        class="blog-article-hero-image"
+        src="{{ heroImage.src }}"
+        srcset="{{ heroImage.srcset900 }} 900w, {{ heroImage.srcsetFull }} 1800w"
+        sizes="(max-width: 1200px) 100vw, 1200px"
+        width="{{ heroImage.width }}" height="{{ heroImage.height }}"
+        alt="{{ heroImage.alt }}"
+        fetchpriority="high">
+    </div>
 
-      {% if sourceType == "youtube" %}
-      <div class="blog-video-embed">
-        <iframe src="https://www.youtube-nocookie.com/embed/{{ source.id }}" title="{{ title }}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="container-narrow blog-post-body">
+      <div class="blog-post-content">
+        {{ content | safe }}
       </div>
-      {% endif %}
 
       {% include "partials/blog-cta.njk" %}
+
+      {% set shareUrl = "https://www.garygermer.com" + page.url %}
+      {% set shareTitle = title | titleCase %}
+      <div class="blog-share">
+        <span class="blog-share-label">Share This Post</span>
+        <div class="blog-share-links">
+          <a href="https://www.facebook.com/sharer/sharer.php?u={{ shareUrl | urlencode }}" target="_blank" rel="noopener" aria-label="Share on Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M14.5 21v-7h2.4l.4-3H14.5V9c0-.9.3-1.6 1.7-1.6h1.4V4.7C17.3 4.6 16.2 4.5 15 4.5c-2.5 0-4.2 1.5-4.2 4.2V11H8.5v3H10.8v7"/></svg></a>
+          <a href="https://twitter.com/intent/tweet?url={{ shareUrl | urlencode }}&amp;text={{ shareTitle | urlencode }}" target="_blank" rel="noopener" aria-label="Share on X"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M5 4.5 19 19.5M19 4.5 5 19.5" stroke-linecap="round"/></svg></a>
+          <a href="https://pinterest.com/pin/create/button/?url={{ shareUrl | urlencode }}&amp;media={{ ("https://www.garygermer.com" + ogImage) | urlencode }}&amp;description={{ shareTitle | urlencode }}" target="_blank" rel="noopener" aria-label="Share on Pinterest"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M9.6 17.8c.4-.9 1.4-4.6 1.4-4.6s-.35-.7-.35-1.75c0-1.65.95-2.9 2.15-2.9 1 0 1.5.75 1.5 1.65 0 1-.65 2.5-1 3.9-.3 1.15.6 2.1 1.7 2.1 2.05 0 3.4-2.6 3.4-5.7 0-2.35-1.6-4.1-4.4-4.1-3.2 0-5.2 2.4-5.2 5.1 0 .9.3 1.55.75 2.05.2.25.25.35.15.65-.05.2-.15.65-.2.85-.05.25-.25.35-.45.25-1.25-.5-1.85-1.9-1.85-3.45 0-2.55 2.15-5.65 6.45-5.65 3.45 0 5.7 2.5 5.7 5.15 0 3.55-1.95 6.2-4.8 6.2-1 0-1.9-.55-2.25-1.15 0 0-.55 2.15-.65 2.55-.15.55-.45 1.1-.75 1.55" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a href="mailto:?subject={{ shareTitle | urlencode }}&amp;body={{ shareUrl | urlencode }}" aria-label="Share by Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="m4 6.5 8 6.5 8-6.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
     </div>
   </section>
+  {% endif %}
 
-  {% set related = collections.blogPosts | selectattr("data.category", "equalto", category) | rejectattr("url", "equalto", page.url) %}
-  {% if related | length %}
+  {% set thisPost = { url: page.url, data: { title: title, category: category, sourceType: sourceType } } %}
+  {% set related = thisPost | relatedPosts(collections.blogPosts) %}
+  {% if related.length %}
   <!-- ========================== RELATED POSTS ========================== -->
-  <section class="section on-dark">
+  <section class="section">
     <div class="container">
       <div class="stack-header text-center mx-auto">
-        <p class="eyebrow eyebrow-on-dark mx-auto">Keep Reading</p>
-        <h2 class="section-heading mx-auto">Related Posts</h2>
+        <h2 class="section-heading mx-auto">More to Discover</h2>
       </div>
       <div class="blog-grid blog-grid--related">
-        {% for post in related | slice(3) %}
+        {% for post in related %}
         {% set pd = post.data %}
         <a class="blog-card reveal" href="{{ post.url }}">
-          <div class="blog-card-media">
+          <div class="blog-card-media{% if pd.sourceType == 'youtube' or pd.sourceType == 'amnw' %} blog-card-media--video{% elif pd.sourceType == 'shop' %} blog-card-media--shop{% endif %}">
+            {% if pd.sourceType == "shop" %}
+            <span class="edge-extend edge-extend-left"><img class="edge-extend-img" src="{{ pd.heroImage.src }}" alt="" aria-hidden="true" loading="lazy"></span>
+            <span class="edge-extend edge-extend-right"><img class="edge-extend-img" src="{{ pd.heroImage.src }}" alt="" aria-hidden="true" loading="lazy"></span>
+            <span class="edge-extend edge-extend-top"><img class="edge-extend-img" src="{{ pd.heroImage.src }}" alt="" aria-hidden="true" loading="lazy"></span>
+            <span class="edge-extend edge-extend-bottom"><img class="edge-extend-img" src="{{ pd.heroImage.src }}" alt="" aria-hidden="true" loading="lazy"></span>
+            {% endif %}
             <img
               src="{{ pd.heroImage.src }}"
               srcset="{{ pd.heroImage.srcset900 }} 900w, {{ pd.heroImage.srcsetFull }} 1800w"
@@ -80,10 +205,11 @@
               width="{{ pd.heroImage.width }}" height="{{ pd.heroImage.height }}"
               loading="lazy"
               alt="{{ pd.heroImage.alt }}">
-            <span class="sale-card-tag">{{ pd.category | blogFilterLabel(pd.sourceType) }}</span>
+            <span class="sale-card-tag">{{ pd.category | blogFilterLabel(pd.sourceType, pd.title) }}</span>
           </div>
           <div class="blog-card-body">
-            <h3 class="blog-card-title">{{ pd.title }}</h3>
+            <time class="blog-card-date" datetime="{{ pd.publishDate }}">{{ pd.publishDate | dateDisplay }}</time>
+            <h3 class="blog-card-title">{{ pd.title | titleCase }}</h3>
             <span class="sale-card-link">Read the Post</span>
           </div>
         </a>

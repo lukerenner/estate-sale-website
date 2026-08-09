@@ -9,6 +9,7 @@ ogDescription: "Tiffany & Co. set of 4 thin-walled crystal water glasses with a 
 ogImage: /assets/images/blog/tiffany-and-co-crystal-etched-diamond-criss-cross-water-glass-tumbler-set-of-4/tiffany-and-co-crystal-etched-diamond-criss-cross-water-glass-tumbler-set-of-4-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 10
 source:
   id: 8089613959344
   handle: tiffany-co-etched-diamond-criss-cross-water-glass-tumbler-set-of-4

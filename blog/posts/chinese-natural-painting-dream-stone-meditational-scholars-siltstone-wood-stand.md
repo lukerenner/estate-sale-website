@@ -9,6 +9,7 @@ ogDescription: "Chinese dream stone or siltstone boulder with custom carved wood
 ogImage: /assets/images/blog/chinese-natural-painting-dream-stone-meditational-scholars-siltstone-wood-stand/chinese-natural-painting-dream-stone-meditational-scholars-siltstone-wood-stand-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 12
 source:
   id: 8087232512176
   handle: chinese-dream-stone

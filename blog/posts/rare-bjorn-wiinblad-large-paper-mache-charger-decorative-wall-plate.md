@@ -9,6 +9,7 @@ ogDescription: "Marvelous large hand painted paper mache charger featuring the w
 ogImage: /assets/images/blog/rare-bjorn-wiinblad-large-paper-mache-charger-decorative-wall-plate/rare-bjorn-wiinblad-large-paper-mache-charger-decorative-wall-plate-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 12
 source:
   id: 8082177032368
   handle: bjorn-wiinblad-large-decorative-wall-plate

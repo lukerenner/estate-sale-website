@@ -16,8 +16,8 @@ heroImage:
   src: /assets/images/blog/sneak-peek-at-gary-germer-and-associates-new-location/sneak-peek-at-gary-germer-and-associates-new-location-hero.jpg
   srcset900: /assets/images/blog/sneak-peek-at-gary-germer-and-associates-new-location/sneak-peek-at-gary-germer-and-associates-new-location-hero-900.webp
   srcsetFull: /assets/images/blog/sneak-peek-at-gary-germer-and-associates-new-location/sneak-peek-at-gary-germer-and-associates-new-location-hero.webp
-  width: 1280
-  height: 720
+  width: 343
+  height: 360
   alt: "Sneak Peek at Gary Germer & Associates New Location"
 ---
 

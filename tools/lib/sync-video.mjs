@@ -72,7 +72,11 @@ export function writeVideoPost({ id, title, description, published, thumb }, { p
     // still has the live embed as the primary media.
   }
 
-  const desc = (description || title).slice(0, 300);
+  const fullDesc = (description || title).trim();
+  // Front-matter description/ogDescription are meta-tag/excerpt length —
+  // truncate those on a word boundary with an ellipsis rather than an
+  // arbitrary mid-word character cut. The post body keeps the full text.
+  const desc = fullDesc.length <= 300 ? fullDesc : fullDesc.slice(0, 300).replace(/\s+\S*$/, "") + "…";
   const lines = [
     "layout: layouts/blog-post.njk",
     `permalink: /blog/${slug}/`,
@@ -95,7 +99,7 @@ export function writeVideoPost({ id, title, description, published, thumb }, { p
     `  height: ${heroHeight}`,
     `  alt: ${yamlString(title)}`,
   ];
-  const content = "---\n" + lines.join("\n") + "\n---\n\n" + desc + "\n";
+  const content = "---\n" + lines.join("\n") + "\n---\n\n" + fullDesc + "\n";
   writeFileSync(path.join(postsDir, `${slug}.md`), content);
   return slug;
 }

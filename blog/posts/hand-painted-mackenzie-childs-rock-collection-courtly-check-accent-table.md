@@ -9,6 +9,7 @@ ogDescription: "Add character to your space with this quirky and colorful MacKen
 ogImage: /assets/images/blog/hand-painted-mackenzie-childs-rock-collection-courtly-check-accent-table/hand-painted-mackenzie-childs-rock-collection-courtly-check-accent-table-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 12
 source:
   id: 8087878238384
   handle: hand-painted-mackenzie-childs-rock-collection-courtly-check-accent-table

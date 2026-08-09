@@ -9,6 +9,7 @@ ogDescription: "Orvieto Italian Maiolica pottery, hand painted ceramic lidded tr
 ogImage: /assets/images/blog/deruta-orvieto-italian-blue-and-white-maiolica-pottery-small-lidded-trinket-dish/deruta-orvieto-italian-blue-and-white-maiolica-pottery-small-lidded-trinket-dish-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 7
 source:
   id: 8089410994352
   handle: deruta-orvieto-italian-blue-white-maiolica-pottery-small-lidded-trinket-dish

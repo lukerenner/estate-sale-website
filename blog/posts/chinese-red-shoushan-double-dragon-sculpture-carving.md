@@ -9,6 +9,7 @@ ogDescription: "Old Chinese red Shoushan stone carving depicting a double dragon
 ogImage: /assets/images/blog/chinese-red-shoushan-double-dragon-sculpture-carving/chinese-red-shoushan-double-dragon-sculpture-carving-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 8
 source:
   id: 8089036193968
   handle: chinese-red-shoushan-double-dragon-sculpture-carving

@@ -9,6 +9,7 @@ ogDescription: "German regional walking stick cane featuring a stag-horn or antl
 ogImage: /assets/images/blog/german-stag-antler-handle-walking-tippling-stick-cane-with-hidden-cork-screw/german-stag-antler-handle-walking-tippling-stick-cane-with-hidden-cork-screw-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 11
 source:
   id: 8092698869936
   handle: german-antler-handle-wood-walking-tippling-stick-cane-with-hidden-cork-screw

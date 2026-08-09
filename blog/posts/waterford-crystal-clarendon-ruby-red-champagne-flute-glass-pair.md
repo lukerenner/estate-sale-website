@@ -9,6 +9,7 @@ ogDescription: "Pair of Waterford Crystal Clarendon champagne flutes in Ruby Red
 ogImage: /assets/images/blog/waterford-crystal-clarendon-ruby-red-champagne-flute-glass-pair/waterford-crystal-clarendon-ruby-red-champagne-flute-glass-pair-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 8
 source:
   id: 8086963093680
   handle: waterford-crystal-clarendon-ruby-red-champagne-flute-glass-pair

@@ -16,8 +16,8 @@ heroImage:
   src: /assets/images/blog/the-stylish-skyline-stunner-estate-sale/the-stylish-skyline-stunner-estate-sale-hero.jpg
   srcset900: /assets/images/blog/the-stylish-skyline-stunner-estate-sale/the-stylish-skyline-stunner-estate-sale-hero-900.webp
   srcsetFull: /assets/images/blog/the-stylish-skyline-stunner-estate-sale/the-stylish-skyline-stunner-estate-sale-hero.webp
-  width: 1280
-  height: 720
+  width: 480
+  height: 280
   alt: "The Stylish Skyline Stunner Estate Sale"
 ---
 

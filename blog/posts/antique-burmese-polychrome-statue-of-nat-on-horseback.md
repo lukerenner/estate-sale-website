@@ -9,6 +9,7 @@ ogDescription: "This remarkable polychrome gilt sculpture from Burma (Myanmar) l
 ogImage: /assets/images/blog/antique-burmese-polychrome-statue-of-nat-on-horseback/antique-burmese-polychrome-statue-of-nat-on-horseback-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 12
 source:
   id: 8097839186096
   handle: prince-on-horseback-gilt-and-polychrome-burmese-statue

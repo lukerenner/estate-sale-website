@@ -9,6 +9,7 @@ ogDescription: "Pair of small vintage Chinese cloisonné bowls. Each features an
 ogImage: /assets/images/blog/chinese-small-cloisonne-flower-branch-green-interior-bowl-pair/chinese-small-cloisonne-flower-branch-green-interior-bowl-pair-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 9
 source:
   id: 8087225761968
   handle: chinese-small-cloisonne-flower-bowl-pair

@@ -9,6 +9,7 @@ ogDescription: "Raku fired crackle glaze studio pottery vase in white with gray 
 ogImage: /assets/images/blog/raku-fired-crackle-glaze-studio-art-pottery-lidded-vessel-jar-signed/raku-fired-crackle-glaze-studio-art-pottery-lidded-vessel-jar-signed-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 10
 source:
   id: 8082308006064
   handle: raku-fired-crackle-glaze-studio-art-pottery-lidded-vessel-jar-signed

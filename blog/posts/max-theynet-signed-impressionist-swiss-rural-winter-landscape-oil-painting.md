@@ -9,6 +9,7 @@ ogDescription: "Max Robert Theynet (Swiss, 1875-1949) early 20th century, impres
 ogImage: /assets/images/blog/max-theynet-signed-impressionist-swiss-rural-winter-landscape-oil-painting/max-theynet-signed-impressionist-swiss-rural-winter-landscape-oil-painting-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 10
 source:
   id: 8090174128304
   handle: max-theynet-signed-impressionist-rural-winter-landscape-framed-oil-painting

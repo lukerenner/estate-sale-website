@@ -1,0 +1,27 @@
+---
+layout: layouts/blog-post.njk
+permalink: /blog/how-to-barter-like-a-pro/
+slug: how-to-barter-like-a-pro
+title: "How to Barter Like a Pro"
+description: "Knowing how to do it right could save you big on your next garage-sale or flea-market shopping spree! Antique Appraiser Gary Germer joined us to share tips on how to barter like a pro! Bartering: Garage or Estate Sales, Flea markets, Second hand/antique shops Rule #1 Golden Rule Always be polite,…"
+ogTitle: "How to Barter Like a Pro"
+ogDescription: "Knowing how to do it right could save you big on your next garage-sale or flea-market shopping spree! Antique Appraiser Gary Germer joined us to share tips on how to barter like a pro! Bartering: Garage or Estate Sales, Flea markets, Second hand/antique shops Rule #1 Golden Rule Always be polite,…"
+ogImage: /assets/images/blog/how-to-barter-like-a-pro/how-to-barter-like-a-pro-hero.jpg
+category: show-and-tell
+sourceType: amnw
+source:
+  url: "https://katu.com/amnw/am-northwest-lifestyle-health/how-to-barter-like-a-pro"
+  video: /assets/videos/blog/how-to-barter-like-a-pro.mp4
+publishDate: "2019-06-28"
+heroImage:
+  src: /assets/images/blog/how-to-barter-like-a-pro/how-to-barter-like-a-pro-hero.jpg
+  srcset900: /assets/images/blog/how-to-barter-like-a-pro/how-to-barter-like-a-pro-hero-900.webp
+  srcsetFull: /assets/images/blog/how-to-barter-like-a-pro/how-to-barter-like-a-pro-hero.webp
+  width: 1320
+  height: 743
+  alt: "How to Barter Like a Pro"
+---
+
+Knowing how to do it right could save you big on your next garage-sale or flea-market shopping spree! Antique Appraiser Gary Germer joined us to share tips on how to barter like a pro! Bartering: Garage or Estate Sales, Flea markets, Second hand/antique shops Rule #1 Golden Rule Always be polite, respectful and reasonable. You will get a LOT farther getting the person to like you than if they fear you. Never be insulting to the person or about the item you want to buy. (modern TV shows, like Storage wars, Pawn stars, etc indicate being abrupt and rude is the norm) Rule #2 Ask for Discount. Don’t be shy. Doesn’t hurt to ask, but don’t offer too little. Less than 1/2 of asking price is considered insulting. Offer less than you are willing to pay to leave room for negotiation. Note to Seller: try to take nothing personally. Often different cultures behave, in what appears to us as very rude in bartering. 1st generation Chinese are ruthless. Don’t take it personal. It is business and they usually expect you to be just as direct back to them. Ask politely “what is your best price on this?” or “Can you give me a better price?” Which then you can counter with a lower offer and negotiate from there. Be prepared that they believe your question and give you their best price and will not take less than that. Conversely you can say “would you take X for this?” most hard core barterers hate doing this because they think they want the seller to give lower price and then they start negotiation. Stupid things people say that make no sense: Im not sure it will fit in my room, will you take less? (smaller price does not make for a smaller item) My husband will kill me if I buy this, will you take less (no, I don’t want to be an accomplice to murder) I cant come back tomorrow, will you take 1/2 now. (No, I have others coming back tomorrow for it) Note to Seller: If someone asks “what is your best price” the correct answer is “what are you willing to pay?” If someone says incredulously, “You want $25 for this piece of furniture?” You say, “yes, $25 or the price of a large pizza.” Rule #3 The power of silence once you make an offer, then shut up. The next person to talk, looses. You can make cow noises, but wait for the other person to speak. Rule #4 Never hold onto the item you are bartering for (unless you are in danger of someone else grabbing it) it shows you are too eager. Don’t be desperate, be prepared to hear No and be willing to walk away if it is not a good deal. Note to Seller: try to get the person to hold the item while negotiating, it makes them feel they own it and are less likely not to make a deal. Rule #5 Cash is King/ make things easy for the seller to sell to you. Cash deals are most welcome, Paypal takes a discount, Checks make everyone nervous. Also, make things easier by taking the items right then, Don’t expect layaway or delivery. Making the sale easy for the seller will get you a better price. Note to Seller: Never hold anything for a person without a Non Refundable deposit. Make it easy for the buyer to buy, offer help loading if need be, boxes, bags and wrapping paper for them to take their things. Never wrap for them, make them do it. Rule #6: Be Prepared, Be Educated Know what you are looking at, what you are looking for and what you are willing to pay. (very quick research on ebay can be helpful) Have a target price you are willing to pay.and stick to it. It is better to miss out on a good deal than to buy a bad deal. There are always good deals to be found. You need to recognize a good deal if it is sitting in front of you. Rule #7 Timing People are more motivated to discount on the last day than when they open on the first day. Usually they are just wanting to get rid of it on the last day. Especially if it is big, heavy or greasy. Note to seller: NEVER discount on the first day. Last day you are Monte Hall.
+
+Originally aired on [AM Northwest](https://katu.com/amnw/am-northwest-lifestyle-health/how-to-barter-like-a-pro), KATU.

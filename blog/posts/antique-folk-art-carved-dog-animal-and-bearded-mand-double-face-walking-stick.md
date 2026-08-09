@@ -9,6 +9,7 @@ ogDescription: "Antique, late 19th century folk art walking stick carved from a 
 ogImage: /assets/images/blog/antique-folk-art-carved-dog-animal-and-bearded-mand-double-face-walking-stick/antique-folk-art-carved-dog-animal-and-bearded-mand-double-face-walking-stick-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 10
 source:
   id: 8093414555824
   handle: antique-folk-art-carved-animal-bearded-man-walking-stick

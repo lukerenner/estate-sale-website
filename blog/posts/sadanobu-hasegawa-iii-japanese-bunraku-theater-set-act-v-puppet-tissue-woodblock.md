@@ -9,6 +9,7 @@ ogDescription: "Hasegawa Sadanobu III (1881–1963), 1920's original Japanese 
 ogImage: /assets/images/blog/sadanobu-hasegawa-iii-japanese-bunraku-theater-set-act-v-puppet-tissue-woodblock/sadanobu-hasegawa-iii-japanese-bunraku-theater-set-act-v-puppet-tissue-woodblock-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 5
 source:
   id: 8092709355696
   handle: japanese-woodblock-print-with-puppet-tissue-drawings

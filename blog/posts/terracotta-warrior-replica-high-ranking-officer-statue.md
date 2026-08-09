@@ -9,6 +9,7 @@ ogDescription: "Standing at nearly 30 inches tall, this statue is a fantastic sm
 ogImage: /assets/images/blog/terracotta-warrior-replica-high-ranking-officer-statue/terracotta-warrior-replica-high-ranking-officer-statue-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 10
 source:
   id: 8098907324592
   handle: terracotta-warrior-replica-high-ranking-officer-statue

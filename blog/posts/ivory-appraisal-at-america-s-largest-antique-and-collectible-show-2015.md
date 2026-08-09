@@ -3,9 +3,9 @@ layout: layouts/blog-post.njk
 permalink: /blog/ivory-appraisal-at-america-s-largest-antique-and-collectible-show-2015/
 slug: ivory-appraisal-at-america-s-largest-antique-and-collectible-show-2015
 title: "Ivory Appraisal at America's Largest Antique & Collectible Show 2015"
-description: "Gary Germer giving a live appraisal on an ivory sculpture from India.  Gary Germer Appraisers is a fine art, jewelry, antique, & estate appraisal service in Portland, OR. FILMED IN 2015. On July 6, 2016, a near-total ban on commercial trade in African elephant ivory went into effect in the United St"
+description: "Gary Germer giving a live appraisal on an ivory sculpture from India. Gary Germer Appraisers is a fine art, jewelry, antique, & estate appraisal service in Portland, OR. FILMED IN 2015. On July 6, 2016, a near-total ban on commercial trade in African elephant ivory went into effect in the United…"
 ogTitle: "Ivory Appraisal at America's Largest Antique & Collectible Show 2015"
-ogDescription: "Gary Germer giving a live appraisal on an ivory sculpture from India.  Gary Germer Appraisers is a fine art, jewelry, antique, & estate appraisal service in Portland, OR. FILMED IN 2015. On July 6, 2016, a near-total ban on commercial trade in African elephant ivory went into effect in the United St"
+ogDescription: "Gary Germer giving a live appraisal on an ivory sculpture from India. Gary Germer Appraisers is a fine art, jewelry, antique, & estate appraisal service in Portland, OR. FILMED IN 2015. On July 6, 2016, a near-total ban on commercial trade in African elephant ivory went into effect in the United…"
 ogImage: /assets/images/blog/ivory-appraisal-at-america-s-largest-antique-and-collectible-show-2015/ivory-appraisal-at-america-s-largest-antique-and-collectible-show-2015-hero.jpg
 category: show-and-tell
 sourceType: youtube
@@ -21,4 +21,10 @@ heroImage:
   alt: "Ivory Appraisal at America's Largest Antique & Collectible Show 2015"
 ---
 
-Gary Germer giving a live appraisal on an ivory sculpture from India.  Gary Germer Appraisers is a fine art, jewelry, antique, & estate appraisal service in Portland, OR. FILMED IN 2015. On July 6, 2016, a near-total ban on commercial trade in African elephant ivory went into effect in the United St
+Gary Germer giving a live appraisal on an ivory sculpture from India.  Gary Germer Appraisers is a fine art, jewelry, antique, & estate appraisal service in Portland, OR. FILMED IN 2015. On July 6, 2016, a near-total ban on commercial trade in African elephant ivory went into effect in the United States. FOR MORE INFO: https://www.fws.gov/international/travel-and-trade/ivory-ban-questions-and-answers.html
+
+Gary Germer & Associates
+407 N. Broadway, Portland, OR, 97227
+info@garygermer.com
+503-235-0946
+www.garygermer.com

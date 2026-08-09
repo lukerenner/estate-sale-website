@@ -9,6 +9,7 @@ ogDescription: "Victorian-style walking cane features an ornate brass Derby hand
 ogImage: /assets/images/blog/victorian-floral-embossed-brass-walking-tippling-stick-cane-w-hidden-cork-screw/victorian-floral-embossed-brass-walking-tippling-stick-cane-w-hidden-cork-screw-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 11
 source:
   id: 8092703097008
   handle: victorian-floral-embossed-brass-walking-tippling-stick-cane-w-hidden-cork-screw

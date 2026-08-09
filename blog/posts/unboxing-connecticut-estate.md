@@ -3,9 +3,9 @@ layout: layouts/blog-post.njk
 permalink: /blog/unboxing-connecticut-estate/
 slug: unboxing-connecticut-estate
 title: "Unboxing Connecticut Estate"
-description: "Gary Germer is getting into the #unboxing video trend! He literally goes through hundreds of boxes uncovering treasures that are buried in private estates. Come and explore one of the recent estates he acquired from a politician in Connecticut as he unboxes art glass, Asian antiques, and vintage pol"
+description: "Gary Germer is getting into the #unboxing video trend! He literally goes through hundreds of boxes uncovering treasures that are buried in private estates. Come and explore one of the recent estates he acquired from a politician in Connecticut as he unboxes art glass, Asian antiques, and vintage…"
 ogTitle: "Unboxing Connecticut Estate"
-ogDescription: "Gary Germer is getting into the #unboxing video trend! He literally goes through hundreds of boxes uncovering treasures that are buried in private estates. Come and explore one of the recent estates he acquired from a politician in Connecticut as he unboxes art glass, Asian antiques, and vintage pol"
+ogDescription: "Gary Germer is getting into the #unboxing video trend! He literally goes through hundreds of boxes uncovering treasures that are buried in private estates. Come and explore one of the recent estates he acquired from a politician in Connecticut as he unboxes art glass, Asian antiques, and vintage…"
 ogImage: /assets/images/blog/unboxing-connecticut-estate/unboxing-connecticut-estate-hero.jpg
 category: show-and-tell
 sourceType: youtube
@@ -16,9 +16,15 @@ heroImage:
   src: /assets/images/blog/unboxing-connecticut-estate/unboxing-connecticut-estate-hero.jpg
   srcset900: /assets/images/blog/unboxing-connecticut-estate/unboxing-connecticut-estate-hero-900.webp
   srcsetFull: /assets/images/blog/unboxing-connecticut-estate/unboxing-connecticut-estate-hero.webp
-  width: 1280
+  width: 988
   height: 720
   alt: "Unboxing Connecticut Estate"
 ---
 
-Gary Germer is getting into the #unboxing video trend! He literally goes through hundreds of boxes uncovering treasures that are buried in private estates. Come and explore one of the recent estates he acquired from a politician in Connecticut as he unboxes art glass, Asian antiques, and vintage pol
+Gary Germer is getting into the #unboxing video trend! He literally goes through hundreds of boxes uncovering treasures that are buried in private estates. Come and explore one of the recent estates he acquired from a politician in Connecticut as he unboxes art glass, Asian antiques, and vintage political souvenirs.
+
+More info: https://www.garygermer.com/
+Store: https://shop.garygermer.com/
+Facebook: https://www.facebook.com/GaryGermer/
+TikTok: https://www.tiktok.com/@garygermer
+Instagram:  https://www.instagram.com/garysvault_garygermer/

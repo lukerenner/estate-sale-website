@@ -9,6 +9,7 @@ ogDescription: "Exceptional Chinese Cloisonne decorative plate. Enameled brass s
 ogImage: /assets/images/blog/chinese-cloisonne-flower-basket-design-decorative-plate-custom-wood-stand/chinese-cloisonne-flower-basket-design-decorative-plate-custom-wood-stand-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 11
 source:
   id: 8087226319024
   handle: chinese-cloisonne-flower-basket-design-decorative-plate-custom-wood-stand

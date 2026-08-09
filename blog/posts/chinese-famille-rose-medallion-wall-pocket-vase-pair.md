@@ -9,6 +9,7 @@ ogDescription: "20th century Chinese Famille Rose porcelain wall pocket vase pai
 ogImage: /assets/images/blog/chinese-famille-rose-medallion-wall-pocket-vase-pair/chinese-famille-rose-medallion-wall-pocket-vase-pair-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 12
 source:
   id: 8092610625712
   handle: chinese-famille-rose-medallion-wall-pocket-vase-pair

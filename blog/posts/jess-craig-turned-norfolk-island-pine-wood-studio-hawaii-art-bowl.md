@@ -9,6 +9,7 @@ ogDescription: "Stunning turned Norfolk Island Pine wood bowl, crafted by artist
 ogImage: /assets/images/blog/jess-craig-turned-norfolk-island-pine-wood-studio-hawaii-art-bowl/jess-craig-turned-norfolk-island-pine-wood-studio-hawaii-art-bowl-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 12
 source:
   id: 8092618588336
   handle: jess-craig-turned-norfolk-island-pine-wood-studio-hawaii-art-bowl

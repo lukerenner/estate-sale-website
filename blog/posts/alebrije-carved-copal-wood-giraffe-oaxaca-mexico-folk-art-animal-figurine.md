@@ -9,6 +9,7 @@ ogDescription: "Wonderful hand-carved and hand-painted Oaxacan Alebrije folk art
 ogImage: /assets/images/blog/alebrije-carved-copal-wood-giraffe-oaxaca-mexico-folk-art-animal-figurine/alebrije-carved-copal-wood-giraffe-oaxaca-mexico-folk-art-animal-figurine-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 12
 source:
   id: 8092480110768
   handle: alebrije-carved-copal-wood-giraffe-oaxaca-mexico-folk-art-animal-figurine

@@ -16,8 +16,8 @@ heroImage:
   src: /assets/images/blog/gary-germer-and-associates-video-tour-of-retail-gallery/gary-germer-and-associates-video-tour-of-retail-gallery-hero.jpg
   srcset900: /assets/images/blog/gary-germer-and-associates-video-tour-of-retail-gallery/gary-germer-and-associates-video-tour-of-retail-gallery-hero-900.webp
   srcsetFull: /assets/images/blog/gary-germer-and-associates-video-tour-of-retail-gallery/gary-germer-and-associates-video-tour-of-retail-gallery-hero.webp
-  width: 1280
-  height: 720
+  width: 154
+  height: 270
   alt: "Gary Germer & Associates Video Tour of Retail Gallery"
 ---
 

@@ -9,6 +9,7 @@ ogDescription: "Vintage wood walking stick cane with lovely Tiger's Eye crystal 
 ogImage: /assets/images/blog/vintage-tigers-eye-crystal-ball-knob-wood-walking-stick-cane/vintage-tigers-eye-crystal-ball-knob-wood-walking-stick-cane-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 9
 source:
   id: 8089637912752
   handle: crescent-moon-star-inlaid-wood-mother-of-pearl-cane-walking-stick

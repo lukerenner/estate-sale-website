@@ -9,6 +9,7 @@ ogDescription: "Stunning handmade Moroccan Thuya burl wood jewelry box with lock
 ogImage: /assets/images/blog/moroccan-thuya-burl-wood-marquetry-mother-of-pearl-inlaid-jewelry-lock-box/moroccan-thuya-burl-wood-marquetry-mother-of-pearl-inlaid-jewelry-lock-box-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 12
 source:
   id: 8089044943024
   handle: moroccan-thuya-burl-wood-marquetry-mother-of-pearl-inlaid-jewelry-lock-box

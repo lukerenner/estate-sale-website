@@ -16,7 +16,7 @@ heroImage:
   src: /assets/images/blog/adventurer-s-sellwood-sale/adventurer-s-sellwood-sale-hero.jpg
   srcset900: /assets/images/blog/adventurer-s-sellwood-sale/adventurer-s-sellwood-sale-hero-900.webp
   srcsetFull: /assets/images/blog/adventurer-s-sellwood-sale/adventurer-s-sellwood-sale-hero.webp
-  width: 1280
+  width: 960
   height: 720
   alt: "Adventurer's Sellwood Sale!"
 ---

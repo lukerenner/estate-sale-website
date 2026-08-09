@@ -9,6 +9,7 @@ ogDescription: "Tiffany & Co. set of 4 thin-walled crystal glasses with a mid-ce
 ogImage: /assets/images/blog/tiffany-and-co-etched-diamond-criss-cross-mcm-style-glass-tumbler-set-of-4/tiffany-and-co-etched-diamond-criss-cross-mcm-style-glass-tumbler-set-of-4-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 10
 source:
   id: 8089610191024
   handle: tiffany-co-etched-diamond-criss-cross-mcm-style-glass-tumbler-set-of-4

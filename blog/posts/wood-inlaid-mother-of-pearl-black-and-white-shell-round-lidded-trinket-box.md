@@ -9,6 +9,7 @@ ogDescription: "Pretty little lidded box for simple storage of your trinkets or 
 ogImage: /assets/images/blog/wood-inlaid-mother-of-pearl-black-and-white-shell-round-lidded-trinket-box/wood-inlaid-mother-of-pearl-black-and-white-shell-round-lidded-trinket-box-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 10
 source:
   id: 8089454084272
   handle: wood-inlaid-mother-of-pearl-black-white-shell-round-lidded-trinket-box

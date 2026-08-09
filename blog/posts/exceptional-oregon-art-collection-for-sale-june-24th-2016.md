@@ -16,8 +16,8 @@ heroImage:
   src: /assets/images/blog/exceptional-oregon-art-collection-for-sale-june-24th-2016/exceptional-oregon-art-collection-for-sale-june-24th-2016-hero.jpg
   srcset900: /assets/images/blog/exceptional-oregon-art-collection-for-sale-june-24th-2016/exceptional-oregon-art-collection-for-sale-june-24th-2016-hero-900.webp
   srcsetFull: /assets/images/blog/exceptional-oregon-art-collection-for-sale-june-24th-2016/exceptional-oregon-art-collection-for-sale-june-24th-2016-hero.webp
-  width: 1280
-  height: 720
+  width: 254
+  height: 272
   alt: "Exceptional Oregon Art Collection for Sale June 24th 2016"
 ---
 

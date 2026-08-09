@@ -3,12 +3,13 @@ layout: layouts/blog-post.njk
 permalink: /blog/nice-the-beatles-at-the-been-volume-6-vinyl-record/
 slug: nice-the-beatles-at-the-been-volume-6-vinyl-record
 title: "NICE The Beatles At The Been Volume 6 Vinyl Record"
-description: "PLEASE VIEW ALL PHOTOS FOR PROPER CONDITION ASSESSMENT."
+description: "Vinyl is in excellent condition. Jacket may have creases. Please refer to photos."
 ogTitle: "NICE The Beatles At The Been Volume 6 Vinyl Record"
-ogDescription: "PLEASE VIEW ALL PHOTOS FOR PROPER CONDITION ASSESSMENT."
+ogDescription: "Vinyl is in excellent condition. Jacket may have creases. Please refer to photos."
 ogImage: /assets/images/blog/nice-the-beatles-at-the-been-volume-6-vinyl-record/nice-the-beatles-at-the-been-volume-6-vinyl-record-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 4
 source:
   id: 8079444934832
   handle: nice-the-beatles-at-the-been-volume-6-vinyl-record

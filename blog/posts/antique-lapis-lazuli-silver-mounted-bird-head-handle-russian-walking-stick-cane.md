@@ -9,6 +9,7 @@ ogDescription: "Stunning antique Lapis Lazuli metal mounted walking stick, attri
 ogImage: /assets/images/blog/antique-lapis-lazuli-silver-mounted-bird-head-handle-russian-walking-stick-cane/antique-lapis-lazuli-silver-mounted-bird-head-handle-russian-walking-stick-cane-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 9
 source:
   id: 8092448456880
   handle: lapis-lazuli-carved-bird-head-handle-walking-stick-cane

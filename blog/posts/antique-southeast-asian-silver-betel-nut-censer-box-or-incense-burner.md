@@ -9,6 +9,7 @@ ogDescription: "Southeast Asian silver betel nut box or incense burner with lid.
 ogImage: /assets/images/blog/antique-southeast-asian-silver-betel-nut-censer-box-or-incense-burner/antique-southeast-asian-silver-betel-nut-censer-box-or-incense-burner-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 12
 source:
   id: 8092619473072
   handle: antique-india-silver-incense-burner

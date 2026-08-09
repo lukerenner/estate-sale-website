@@ -9,6 +9,7 @@ ogDescription: "Old walking stick cane in dark wood, possibly rosewood with alte
 ogImage: /assets/images/blog/crescent-moon-and-star-inlaid-wood-mother-of-pearl-cane-walking-stick/crescent-moon-and-star-inlaid-wood-mother-of-pearl-cane-walking-stick-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 12
 source:
   id: 8089633325232
   handle: carved-wood-dog-head-smugglers-cane-walking-stick-with-hidden-flask-copy

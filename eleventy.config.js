@@ -9,6 +9,46 @@ function slugify(str) {
     .replace(/(^-|-$)/g, "");
 }
 
+// Blog post titles come from Shopify listing titles and legacy video/blog
+// titles, which lean on SHOUTED words for eBay-style emphasis rather than
+// real title case. Rather than hand-editing ~170 front-matter strings (a
+// one-time fix that the next synced post would immediately fall out of),
+// this runs at render time so every post — past and future, regardless of
+// how sync-shop/sync-video/import-legacy-* wrote it — displays consistently.
+var TITLE_CASE_ACRONYMS = new Set(["FBI", "MCM"]);
+var TITLE_CASE_MINOR_WORDS = new Set([
+  "a", "an", "the", "and", "but", "or", "nor", "for", "so", "yet",
+  "at", "by", "in", "of", "on", "to", "up", "as", "via",
+]);
+function titleCase(str) {
+  var tokens = (str || "").split(/(\s+)/);
+  var wordIndexes = tokens.map((t, i) => (/\S/.test(t) ? i : -1)).filter((i) => i >= 0);
+  var lastWordIndex = wordIndexes[wordIndexes.length - 1];
+  return tokens
+    .map(function (token, i) {
+      if (!/\S/.test(token)) return token; // whitespace run, pass through
+      var match = /^([^A-Za-z']*)([A-Za-z'’]+)(.*)$/.exec(token);
+      if (!match) return token; // no letters (e.g. a bare number/measurement) — leave as-is
+      var lead = match[1], core = match[2], trail = match[3];
+      var isFirstOrLast = i === wordIndexes[0] || i === lastWordIndex;
+      var upperCore = core.toUpperCase();
+      if (TITLE_CASE_ACRONYMS.has(upperCore)) return lead + upperCore + trail;
+      if (/\d/.test(token)) return token; // measurements like 14k, 11x14 — untouched
+      if (core === upperCore && core.length > 1) {
+        // SHOUTED word — fold to normal capitalized case.
+        return lead + core.charAt(0).toUpperCase() + core.slice(1).toLowerCase() + trail;
+      }
+      if (!isFirstOrLast && TITLE_CASE_MINOR_WORDS.has(core.toLowerCase())) {
+        return lead + core.toLowerCase() + trail;
+      }
+      if (/^[a-z]/.test(core)) {
+        return lead + core.charAt(0).toUpperCase() + core.slice(1) + trail;
+      }
+      return token; // already has intentional internal caps (MacKenzie, McCormick) — leave it
+    })
+    .join("");
+}
+
 // Category vs. sourceType are independent front-matter axes on a blog post
 // (see PLAN); the filter bar's 5 chips are a computed view over both, in
 // this fixed display order — sourceType wins when it implies its own chip
@@ -18,12 +58,66 @@ var BLOG_CATEGORY_LABELS = {
   "appraisals": "Appraisals",
   "show-and-tell": "Show & Tell",
 };
-var BLOG_CHIP_ORDER = ["Estate Sales", "Appraisals", "Show & Tell", "Shop Finds", "Video"];
+var BLOG_CHIP_ORDER = ["Estate Sales", "Appraisals", "Show & Tell", "For Sale", "Video", "AM Northwest"];
 
-function blogFilterLabel(category, sourceType) {
-  if (sourceType === "shop") return "Shop Finds";
+// A video titled "... Estate ..." is an estate-sale preview/recap, not a
+// generic "Video" — the filter chip should read Estate Sales for it even
+// though sourceType is youtube. Checked by title so this applies to every
+// past and future video sync'd by sync-video.mjs, without needing anyone to
+// remember to set category: estate-sales by hand on each one.
+function blogFilterLabel(category, sourceType, title) {
+  if (sourceType === "youtube" && /\bestate\b/i.test(title || "")) return "Estate Sales";
+  if (sourceType === "shop") return "For Sale";
   if (sourceType === "youtube") return "Video";
+  if (sourceType === "amnw") return "AM Northwest";
   return BLOG_CATEGORY_LABELS[category] || category;
+}
+
+// Related-posts matching runs on title words alone (posts have no tags
+// field) — common English filler and site-wide boilerplate words ("estate",
+// "sale", "gary", "germer") are stripped so two unrelated posts don't count
+// as related just for both being estate-sale posts.
+var RELATED_STOP_WORDS = new Set([
+  "a", "an", "and", "are", "as", "at", "be", "by", "for", "from", "has",
+  "he", "in", "is", "it", "its", "of", "on", "our", "that", "the", "this",
+  "to", "was", "we", "were", "will", "with", "you", "your", "new",
+  "estate", "sale", "sales", "gary", "germer", "associates", "preview",
+]);
+function relatedKeywords(title) {
+  return new Set(
+    (title || "")
+      .toLowerCase()
+      .replace(/['’]/g, "")
+      .split(/[^a-z0-9]+/)
+      .filter((w) => w.length > 2 && !RELATED_STOP_WORDS.has(w))
+  );
+}
+
+// Related posts, ranked by shared title keywords first (so a Japanese
+// porcelain bowl surfaces other "japanese"/"porcelain"/"bowl" posts ahead of
+// same-category posts about unrelated objects), then by matching filter
+// category, then most recent — always fills up to `limit` even when nothing
+// shares a keyword, so the section never has fewer than before this change.
+function relatedPosts(post, allPosts, limit) {
+  limit = limit || 3;
+  var thisWords = relatedKeywords(post.data.title);
+  var thisLabel = blogFilterLabel(post.data.category, post.data.sourceType, post.data.title);
+  return allPosts
+    .filter((p) => p.url !== post.url)
+    .map((p) => {
+      var words = relatedKeywords(p.data.title);
+      var overlap = 0;
+      thisWords.forEach((w) => { if (words.has(w)) overlap++; });
+      var sameCategory = blogFilterLabel(p.data.category, p.data.sourceType, p.data.title) === thisLabel;
+      return { post: p, overlap: overlap, sameCategory: sameCategory };
+    })
+    .sort((a, b) => {
+      if (b.overlap !== a.overlap) return b.overlap - a.overlap;
+      if (a.sameCategory !== b.sameCategory) return (b.sameCategory ? 1 : 0) - (a.sameCategory ? 1 : 0);
+      return (b.post.data.publishDate || "").localeCompare(a.post.data.publishDate || "");
+    })
+    .slice(0, limit)
+    .map((s) => s.post);
 }
 
 // Reads a WebP's real pixel size (for width/height attrs on {% blogImage %}
@@ -110,8 +204,12 @@ module.exports = function (eleventyConfig) {
     })
   );
 
+  // Sorted by the front-matter publishDate (a "YYYY-MM-DD" string, so plain
+  // comparison works) — NOT Eleventy's built-in .date, which falls back to
+  // file mtime/creation order when no `date:` front-matter key is set, and
+  // none of these posts set one.
   eleventyConfig.addCollection("blogPosts", (api) =>
-    api.getFilteredByGlob("blog/posts/*.md").sort((a, b) => b.date - a.date)
+    api.getFilteredByGlob("blog/posts/*.md").sort((a, b) => (b.data.publishDate || "").localeCompare(a.data.publishDate || ""))
   );
 
   // The 5 filter-bar chip values actually present in collections.blogPosts,
@@ -122,7 +220,7 @@ module.exports = function (eleventyConfig) {
     var posts = api.getFilteredByGlob("blog/posts/*.md");
     var present = {};
     posts.forEach(function (post) {
-      present[blogFilterLabel(post.data.category, post.data.sourceType)] = true;
+      present[blogFilterLabel(post.data.category, post.data.sourceType, post.data.title)] = true;
     });
     return BLOG_CHIP_ORDER.filter((label) => present[label]).map((label) => ({
       label: label,
@@ -204,6 +302,14 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("slugify", slugify);
 
   eleventyConfig.addFilter("blogFilterLabel", blogFilterLabel);
+
+  eleventyConfig.addFilter("relatedPosts", relatedPosts);
+
+  eleventyConfig.addFilter("titleCase", titleCase);
+
+  eleventyConfig.addFilter("pad2", function (n) {
+    return String(n).padStart(2, "0");
+  });
 
   eleventyConfig.addFilter("year", function (isoDate) {
     return (isoDate || "").slice(0, 4);

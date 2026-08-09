@@ -9,6 +9,7 @@ ogDescription: "10823"
 ogImage: /assets/images/blog/dog-head-with-inset-eyes-carved-wood-cane/dog-head-with-inset-eyes-carved-wood-cane-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 10
 source:
   id: 8097909211312
   handle: dog-head-with-inset-eyes-carved-wood-cane

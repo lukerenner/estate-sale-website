@@ -9,6 +9,7 @@ ogDescription: "Incredibly sweet Vintage Ken Edwards Mexican pottery, dinner or 
 ogImage: /assets/images/blog/ken-edwards-el-palomar-blue-bird-flower-mexican-folk-art-11-3-4-pottery-platter/ken-edwards-el-palomar-blue-bird-flower-mexican-folk-art-11-3-4-pottery-platter-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 6
 source:
   id: 8097897152688
   handle: ken-edwards-el-palomar-blue-bird-tonala-mexico-stoneware-pottery-plate

@@ -16,7 +16,7 @@ heroImage:
   src: /assets/images/blog/gary-s-vault-fresh-finds-tim-biskup/gary-s-vault-fresh-finds-tim-biskup-hero.jpg
   srcset900: /assets/images/blog/gary-s-vault-fresh-finds-tim-biskup/gary-s-vault-fresh-finds-tim-biskup-hero-900.webp
   srcsetFull: /assets/images/blog/gary-s-vault-fresh-finds-tim-biskup/gary-s-vault-fresh-finds-tim-biskup-hero.webp
-  width: 1280
+  width: 407
   height: 720
   alt: "Gary's Vault Fresh Finds: Tim Biskup"
 ---

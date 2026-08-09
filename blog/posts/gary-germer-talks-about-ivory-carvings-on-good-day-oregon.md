@@ -16,8 +16,8 @@ heroImage:
   src: /assets/images/blog/gary-germer-talks-about-ivory-carvings-on-good-day-oregon/gary-germer-talks-about-ivory-carvings-on-good-day-oregon-hero.jpg
   srcset900: /assets/images/blog/gary-germer-talks-about-ivory-carvings-on-good-day-oregon/gary-germer-talks-about-ivory-carvings-on-good-day-oregon-hero-900.webp
   srcsetFull: /assets/images/blog/gary-germer-talks-about-ivory-carvings-on-good-day-oregon/gary-germer-talks-about-ivory-carvings-on-good-day-oregon-hero.webp
-  width: 1280
-  height: 720
+  width: 474
+  height: 319
   alt: "Gary Germer Talks About Ivory Carvings on Good Day Oregon"
 ---
 

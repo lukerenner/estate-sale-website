@@ -9,6 +9,7 @@ ogDescription: "Susi Singer (1891-1955, Austrian/American, AKA Selma Singer-Schi
 ogImage: /assets/images/blog/susi-singer-terracotta-madonna-with-blue-flower-and-child-1951-statue/susi-singer-terracotta-madonna-with-blue-flower-and-child-1951-statue-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 12
 source:
   id: 8089488785584
   handle: susi-singer-terracotta-madonna-with-blue-flower-child-1951-statue

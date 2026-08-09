@@ -9,6 +9,7 @@ ogDescription: "Venetian decorative wine glass, also referred to as 'Facon-de-Ve
 ogImage: /assets/images/blog/venetian-hand-blown-art-glass-decorative-tipetto-wine-goblet-with-blue-wings/venetian-hand-blown-art-glass-decorative-tipetto-wine-goblet-with-blue-wings-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 8
 source:
   id: 8085232517296
   handle: venetian-ceremonial-blue-dragon-glass-wine-goblet

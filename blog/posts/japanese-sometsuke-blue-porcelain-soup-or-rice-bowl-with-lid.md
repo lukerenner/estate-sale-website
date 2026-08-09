@@ -9,6 +9,7 @@ ogDescription: "Small Japanese _sometsuke_ style porcelain lidded rice or soup
 ogImage: /assets/images/blog/japanese-sometsuke-blue-porcelain-soup-or-rice-bowl-with-lid/japanese-sometsuke-blue-porcelain-soup-or-rice-bowl-with-lid-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 11
 source:
   id: 8087232282800
   handle: japanese-sometsuke-blue-porcelain-soup-or-rice-bowl-with-lid

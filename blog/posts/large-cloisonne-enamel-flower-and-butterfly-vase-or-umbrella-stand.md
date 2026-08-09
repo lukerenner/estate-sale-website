@@ -9,6 +9,7 @@ ogDescription: "Chinese cloisonné enamel vase with cylindrical shape. Could fun
 ogImage: /assets/images/blog/large-cloisonne-enamel-flower-and-butterfly-vase-or-umbrella-stand/large-cloisonne-enamel-flower-and-butterfly-vase-or-umbrella-stand-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 12
 source:
   id: 8087055499440
   handle: large-cloisonne-enamel-flower-butterfly-vase

@@ -172,11 +172,24 @@
      independent attribute pairs so neither page's markup fakes the other's. */
   [
     { filterAttr: "data-sale-filter", gridAttr: "data-sale-grid", cardSelector: ".sale-card", cardKey: "neighborhood" },
-    { filterAttr: "data-blog-filter", gridAttr: "data-blog-grid", cardSelector: ".blog-card", cardKey: "category" },
+    { filterAttr: "data-blog-filter", gridAttr: "data-blog-grid", cardSelector: ".blog-card", cardKey: "category", limit: 10, showMoreSelector: "[data-blog-show-more]" },
   ].forEach(function (cfg) {
     var filterBar = document.querySelector("[" + cfg.filterAttr + "]");
     var grid = document.querySelector("[" + cfg.gridAttr + "]");
     if (!filterBar || !grid) return;
+    var showMoreBtn = cfg.showMoreSelector ? document.querySelector(cfg.showMoreSelector) : null;
+    var expanded = false;
+
+    function applyFilter(filter) {
+      var shown = 0;
+      grid.querySelectorAll(cfg.cardSelector).forEach(function (card) {
+        var matches = filter === "all" || card.dataset[cfg.cardKey] === filter;
+        var overLimit = cfg.limit && filter === "all" && !expanded && matches && ++shown > cfg.limit;
+        card.hidden = !matches || overLimit;
+      });
+      if (showMoreBtn) showMoreBtn.hidden = !(cfg.limit && filter === "all" && !expanded && shown > cfg.limit);
+    }
+
     filterBar.addEventListener("click", function (e) {
       var chip = e.target.closest(".filter-chip");
       if (!chip) return;
@@ -186,10 +199,34 @@
       });
       chip.classList.add("is-active");
       chip.setAttribute("aria-pressed", "true");
-      var filter = chip.dataset.filter;
-      grid.querySelectorAll(cfg.cardSelector).forEach(function (card) {
-        card.hidden = !(filter === "all" || card.dataset[cfg.cardKey] === filter);
+      expanded = false;
+      applyFilter(chip.dataset.filter);
+    });
+
+    if (showMoreBtn) {
+      showMoreBtn.addEventListener("click", function () {
+        expanded = true;
+        applyFilter("all");
       });
+    }
+
+    applyFilter("all");
+  });
+
+  /* ---------------------------------------------- shop item PDP gallery */
+  document.querySelectorAll("[data-shop-gallery]").forEach(function (gallery) {
+    var mainImg = gallery.querySelector("[data-shop-gallery-main]");
+    var bgImgs = gallery.querySelectorAll("[data-shop-gallery-bg]");
+    if (!mainImg) return;
+    gallery.addEventListener("click", function (e) {
+      var thumb = e.target.closest("[data-shop-gallery-thumb]");
+      if (!thumb) return;
+      gallery.querySelectorAll("[data-shop-gallery-thumb]").forEach(function (t) {
+        t.classList.toggle("is-active", t === thumb);
+      });
+      mainImg.src = thumb.dataset.fullSrc;
+      mainImg.srcset = thumb.dataset.fullSrcset;
+      bgImgs.forEach(function (bg) { bg.src = thumb.dataset.fullSrc; });
     });
   });
 

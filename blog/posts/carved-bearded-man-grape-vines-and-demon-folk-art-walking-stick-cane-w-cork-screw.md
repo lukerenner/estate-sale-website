@@ -9,6 +9,7 @@ ogDescription: "Wonderful 19th century Americana folk art cane with incredibly d
 ogImage: /assets/images/blog/carved-bearded-man-grape-vines-and-demon-folk-art-walking-stick-cane-w-cork-screw/carved-bearded-man-grape-vines-and-demon-folk-art-walking-stick-cane-w-cork-screw-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 12
 source:
   id: 8092707651760
   handle: bearded-man-demon-grapevine-carved-folk-art-walking-stick-cane-w-cork-screw

@@ -9,6 +9,7 @@ ogDescription: "Vintage, Victorian style decorative walking stick featuring heav
 ogImage: /assets/images/blog/vintage-brass-horse-head-wood-walking-stick-cane-hidden-cork-screw/vintage-brass-horse-head-wood-walking-stick-cane-hidden-cork-screw-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 11
 source:
   id: 8089638535344
   handle: copy-11

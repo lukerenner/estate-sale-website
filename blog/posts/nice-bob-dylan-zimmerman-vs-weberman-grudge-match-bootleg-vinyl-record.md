@@ -3,12 +3,13 @@ layout: layouts/blog-post.njk
 permalink: /blog/nice-bob-dylan-zimmerman-vs-weberman-grudge-match-bootleg-vinyl-record/
 slug: nice-bob-dylan-zimmerman-vs-weberman-grudge-match-bootleg-vinyl-record
 title: "NICE Bob Dylan Zimmerman Vs. Weberman Grudge Match! Bootleg Vinyl Record"
-description: "PLEASE VIEW ALL PHOTOS FOR PROPER CONDITION ASSESSMENT."
+description: "Vinyl is in excellent condition. Jacket may have creases. Please refer to photos."
 ogTitle: "NICE Bob Dylan Zimmerman Vs. Weberman Grudge Match! Bootleg Vinyl Record"
-ogDescription: "PLEASE VIEW ALL PHOTOS FOR PROPER CONDITION ASSESSMENT."
+ogDescription: "Vinyl is in excellent condition. Jacket may have creases. Please refer to photos."
 ogImage: /assets/images/blog/nice-bob-dylan-zimmerman-vs-weberman-grudge-match-bootleg-vinyl-record/nice-bob-dylan-zimmerman-vs-weberman-grudge-match-bootleg-vinyl-record-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 4
 source:
   id: 8079444639920
   handle: nice-bob-dylan-zimmerman-vs-weberman-grudge-match-bootleg-vinyl-record

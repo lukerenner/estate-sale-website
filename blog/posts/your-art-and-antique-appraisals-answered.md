@@ -16,8 +16,8 @@ heroImage:
   src: /assets/images/blog/your-art-and-antique-appraisals-answered/your-art-and-antique-appraisals-answered-hero.jpg
   srcset900: /assets/images/blog/your-art-and-antique-appraisals-answered/your-art-and-antique-appraisals-answered-hero-900.webp
   srcsetFull: /assets/images/blog/your-art-and-antique-appraisals-answered/your-art-and-antique-appraisals-answered-hero.webp
-  width: 1280
-  height: 720
+  width: 371
+  height: 264
   alt: "Your Art & Antique Appraisals Answered"
 ---
 

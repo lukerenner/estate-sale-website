@@ -9,6 +9,7 @@ ogDescription: "Ken Edwards Mexican folk art pottery casserole serving dish with
 ogImage: /assets/images/blog/ken-edwards-el-palomar-blue-bird-tonala-mexico-folk-art-pottery-casserole/ken-edwards-el-palomar-blue-bird-tonala-mexico-folk-art-pottery-casserole-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 11
 source:
   id: 8086960341168
   handle: ken-edwards-el-palomar-blue-bird-tonala-mexico-folk-art-pottery-casserole

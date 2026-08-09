@@ -9,6 +9,7 @@ ogDescription: "17th Century German pewter resurrection plate with eagle touch m
 ogImage: /assets/images/blog/antique-german-17th-century-pewter-resurrection-relief-georg-seger-plate/antique-german-17th-century-pewter-resurrection-relief-georg-seger-plate-01-900.webp
 category: show-and-tell
 sourceType: shop
+galleryCount: 7
 source:
   id: 6126898643120
   handle: 17th-century-german-pewter-resurrection-plate-touch-mark-of-georg-seger-1600s
