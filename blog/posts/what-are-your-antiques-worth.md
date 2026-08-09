@@ -22,6 +22,13 @@ heroImage:
   alt: "What Are Your Antiques Worth?"
 ---
 
-Antique appraiser Gary Germer is a wealth of information when it comes to knowing what vintage treasures are worth. He joined us to share his helpful tips. -Ebay is great: Go to main page, click on "Advanced" by the search bar Type in what you have Click the button that says "Sold" and then “Search”. It will show all the same items that have sold in the last few weeks. -Pay for Worthpoint.com You can pay for a month and get a lot of info if you are working on an estate -Books: AbeBooks.com or Alibris.com -Art: Mutual Art.com (a pay site) -Google Search and Google Search by photo. -Also, buy a loupe and a strong magnet to help sort out silver and jewelry.
+Antique appraiser Gary Germer is a wealth of information when it comes to knowing what vintage treasures are worth. He joined us to share his helpful tips.
+
+- **eBay is great:** go to the main page, click "Advanced" by the search bar, type in what you have, and click the button that says "Sold," then "Search." It will show all the same items that have sold in the last few weeks.
+- **Pay for Worthpoint.com:** you can pay for a month and get a lot of info if you're working on an estate.
+- **Books:** AbeBooks.com or Alibris.com.
+- **Art:** MutualArt.com (a pay site).
+- **Google Search**, including Google Search by photo.
+- Also, buy a loupe and a strong magnet to help sort out silver and jewelry.
 
 Originally aired on [AM Northwest](https://katu.com/amnw/am-northwest-lifestyle-health/what-are-your-antiques-worth), KATU.

@@ -164,6 +164,30 @@
     });
   });
 
+  /* ------------------------------------------------- hero video autoplay
+     The markup already asks for unmuted autoplay; this only handles the
+     case where the browser refuses it (no media-engagement history for the
+     domain — the common case for a first-time visitor). play() rejects, and
+     we reveal a play button so the visitor is never left looking at a
+     stalled poster wondering what to click. That click is a real gesture,
+     so playback then starts with sound. */
+  document.querySelectorAll("[data-video-autoplay]").forEach(function (wrap) {
+    var video = wrap.querySelector("video");
+    var button = wrap.querySelector("[data-video-play]");
+    if (!video || !button) return;
+
+    video.addEventListener("play", function () { button.hidden = true; });
+    button.addEventListener("click", function () {
+      video.muted = false;
+      video.play();
+    });
+
+    var attempt = video.play();
+    if (attempt && attempt.catch) {
+      attempt.catch(function () { button.hidden = false; });
+    }
+  });
+
   /* ------------------------------------------------ grid filter bars ---
      Generic chip-filter behavior shared by the previous-sales neighborhood
      filter (data-sale-filter/data-sale-grid, cards keyed on

@@ -799,14 +799,11 @@ label { font-family: var(--font-sans); }
    section) would otherwise render white-on-white nav text at scroll-top.
    Flip the transparent header's text/logo to the brand blue so it reads
    against a light background — :has() targets this structurally instead
-   of needing a bodyClass hook added to every light-top page. .blog-hero-video
-   keeps its own dark photo background (see below) without using the base
-   .hero class, so it's named here too — it stays in the "dark, needs
-   white nav text" group. */
-body:not(:has(.hero, .blog-hero-video)) .site-header { color: var(--blue); }
-body:not(:has(.hero, .blog-hero-video)) .site-header:not(.is-scrolled) { background: transparent; border-color: transparent; }
-body:not(:has(.hero, .blog-hero-video)) .site-header .brand-mark-transparent { display: none; }
-body:not(:has(.hero, .blog-hero-video)) .site-header .brand-mark-solid { display: block; }
+   of needing a bodyClass hook added to every light-top page. */
+body:not(:has(.hero)) .site-header { color: var(--blue); }
+body:not(:has(.hero)) .site-header:not(.is-scrolled) { background: transparent; border-color: transparent; }
+body:not(:has(.hero)) .site-header .brand-mark-transparent { display: none; }
+body:not(:has(.hero)) .site-header .brand-mark-solid { display: block; }
 .nav-shell {
   height: var(--header-h);
   display: flex;
@@ -1196,7 +1193,7 @@ body.nav-lock { overflow: hidden; }
   justify-content: center;
   transition: transform var(--transition-fast);
 }
-.video-thumb-play svg { width: 24px; height: 24px; color: #fff; margin-left: 3px; }
+.video-thumb-play svg { width: 24px; height: 24px; color: #fff; margin-left: 1px; }
 .video-thumb:hover .video-thumb-play span,
 .video-thumb:focus-visible .video-thumb-play span { transform: scale(1.08); }
 .video-thumb-player {
@@ -2057,11 +2054,29 @@ body.nav-lock { overflow: hidden; }
 #past-sales .section-body { max-width: none; }
 
 .filter-bar {
-  margin-top: clamp(28px, 3vw, 40px);
+  margin-top: var(--gap-md);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.6rem;
+  gap: var(--gap-sm);
+}
+/* Below the wrap point these chips stacked three rows deep and pushed the
+   first card off the bottom of the screen. One scrollable row keeps the whole
+   set reachable while costing a single row of height. */
+@media (max-width: 720px) {
+  .filter-bar {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    scrollbar-width: none;
+    /* Bleed to the viewport edges so the row reads as scrollable and the
+       first/last chip aren't clipped against the container padding. */
+    margin-inline: calc(var(--page-x) * -1);
+    padding-inline: var(--page-x);
+    scroll-padding-inline: var(--page-x);
+  }
+  .filter-bar::-webkit-scrollbar { display: none; }
+  .filter-chip { flex: none; }
 }
 .filter-chip {
   padding: 0.55em 1.2em;
@@ -2307,15 +2322,21 @@ body.nav-lock { overflow: hidden; }
    post-body/CTA/media styling.
    ========================================================================== */
 
+/* One grid for both the index and the related strip. They previously ran
+   2-up and 3-up off separate rules with different gap scales and different
+   breakpoints, so the same card component changed size and rhythm depending
+   on which page you were on. */
 .blog-grid {
-  margin-top: clamp(36px, 4vw, 56px);
+  margin-top: var(--gap-lg);
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--gap-lg);
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap-md);
 }
+@media (max-width: 900px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 560px) { .blog-grid { grid-template-columns: 1fr; } }
+.blog-grid-2up { grid-template-columns: repeat(2, 1fr); }
 .blog-grid .blog-card[hidden] { display: none; }
-.blog-show-more-row { margin-top: clamp(28px, 3vw, 44px); display: flex; justify-content: center; }
+.blog-show-more-row { margin-top: var(--gap-md); display: flex; justify-content: center; }
 
 .blog-card {
   display: flex;
@@ -2324,20 +2345,21 @@ body.nav-lock { overflow: hidden; }
   transition: transform var(--transition-fast);
 }
 .blog-card:hover { transform: translateY(-3px); }
+/* One ratio for every card, matching .post-media's 16/9 lead. Video cards
+   used to opt into 16/9 while photo and shop cards stayed 4/3, so a mixed
+   row (which the index always is) came out ragged. Video thumbnails are
+   sourced pre-trimmed of their native black bars — see
+   tools/lib/sync-video.mjs — so they fill this box exactly. */
 .blog-card-media {
   position: relative;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9;
   border-radius: var(--radius-image);
   overflow: hidden;
   box-shadow: var(--shadow-soft);
 }
-/* Video thumbnails are sourced pre-trimmed of their native black bars (see
-   tools/lib/sync-video.mjs) and shown at their native 16:9 box, zoomed to
-   fill via cover — matches the photo cards instead of pillarboxing. */
-.blog-card-media--video { aspect-ratio: 16 / 9; }
 /* Shop-item photos are shot in a mix of portrait (standing figures,
    statues, canes) and landscape orientation against a plain backdrop —
-   cover-fit on the shared 4:3 box was centering the crop and cutting
+   cover-fit on the shared card box was centering the crop and cutting
    heads off the top of tall portrait shots. Contain-fit keeps the whole
    photo in frame at its natural aspect ratio; whichever pair of gutters
    that leaves (left/right for a tall photo, top/bottom for a wide one)
@@ -2424,56 +2446,82 @@ body.nav-lock { overflow: hidden; }
   line-height: 1.2;
   margin-top: 0.4rem;
 }
-.blog-card-excerpt { margin-top: 0.6rem; color: var(--text-muted); font-size: var(--fs-small); }
-.blog-grid--related {
-  margin-top: clamp(28px, 3vw, 44px);
-  /* Fixed at 3 related posts — keep its own 3-col layout independent of
-     the main index grid's 2-col sizing. */
-  grid-template-columns: repeat(3, 1fr);
+.blog-card-excerpt {
+  margin-top: 0.6rem;
+  color: var(--text-muted);
+  font-size: var(--fs-small);
+  /* Clip at the end of the second line rather than mid-line, so the
+     description uses the full two lines it's given. */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
 }
-@media (max-width: 900px) { .blog-grid--related { grid-template-columns: repeat(2, 1fr); gap: var(--gap-sm); } }
-@media (max-width: 560px) { .blog-grid--related { grid-template-columns: 1fr; } }
 
-/* ---- Article/editorial post title + body: a plain light header (no
-   full-bleed photo/scrim) followed by the hero photo as the first thing
-   in the article body — the image reads as part of the piece being read,
-   not as a washed-out banner behind the title. Not built on .hero, same
-   reasoning as .blog-hero-shop above. ---- */
-.blog-article-header {
-  padding-top: calc(var(--header-h) + clamp(24px, 4vh, 48px));
+/* ================= BLOG POST SYSTEM =================
+   One skeleton for every post type. The page used to carry three separate
+   header implementations (article / video / shop), each with its own
+   padding-top, heading size and container width — that drift is what put a
+   1200px-wide article hero above a 780px text column while video heroes were
+   780px. Geometry lives here once; post types differ only in what media they
+   drop into .post-media.
+
+   "Above the fold" here means the lead — title plus hero media — not the whole
+   article; long posts are expected to run past it.
+   ==================================================== */
+.post-header {
+  padding-top: calc(var(--header-h) + var(--gap-md));
   padding-bottom: 0;
 }
-.blog-article-heading {
-  margin-top: 0.5rem;
-  font-size: var(--fs-h1);
-  line-height: 1.02;
+.eyebrow-sep { margin: 0 0.5em; opacity: 0.5; }
+/* No measure cap: the title runs the full width of its header container,
+   which is the same container the lead media sits in — container-narrow for
+   an article or video (so the title matches the hero exactly), the full
+   container for a shop item (so it spans both product columns). */
+.post-title {
+  margin-top: 0.35rem;
+  font-size: var(--fs-h2);
+  line-height: 1.05;
   letter-spacing: -0.01em;
-  max-width: 34ch;
   color: var(--navy);
 }
-.blog-article-rule {
-  display: block;
-  width: 56px;
-  height: 2px;
-  margin: clamp(16px, 2vw, 22px) 0 clamp(14px, 1.6vw, 18px);
-  background: var(--navy-accent);
+/* Shop-item price, set as a secondary header under the title: same display
+   face as .post-title, sized down ~30% rather than dropped to the body font,
+   so it still reads as a heading and not a caption. */
+.post-price {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: calc(var(--fs-h2) * 0.7);
+  line-height: 1.1;
+  color: var(--navy);
 }
-.blog-article-date { color: var(--text-muted); font-size: var(--fs-small); }
-.blog-article-body { padding-top: clamp(24px, 3.5vh, 44px); padding-bottom: clamp(24px, 3.5vh, 44px); }
-.blog-article-body + .section { padding-top: clamp(32px, 5.5vh, 74px); }
-/* Full container width (not the narrower text column below) and a fixed
-   landscape crop — the point is for the photo to read as the dominant
-   element of the article, the way a hero would, rather than as just
-   another inline body image sized to the paragraph measure. */
-.blog-article-hero-wrap { margin-bottom: clamp(32px, 4.5vw, 56px); }
-.blog-article-hero-image {
+/* The index's centred stack-header carries its own measure. */
+.post-header .stack-header .section-heading { max-width: 20ch; }
+
+.post-body { padding-top: var(--gap-md); padding-bottom: var(--gap-md); }
+.post-body + .section { padding-top: var(--section-y); }
+
+/* Lead media — photo or player — sits in the same 780px column as the body
+   copy and share row beneath it, so a post reads as a single column rather
+   than a wide banner stacked on a narrow article. */
+.post-media { margin-bottom: var(--gap-md); }
+.post-hero-image,
+.post-media .blog-video-embed {
   display: block;
   width: 100%;
+  margin: 0 auto;
   aspect-ratio: 16 / 9;
   object-fit: cover;
   border-radius: var(--radius-image);
   box-shadow: var(--shadow-soft);
 }
+/* Height guard, not the usual case: converts the space actually left below
+   the header into the widest 16/9 box that still clears the fold, so the lead
+   is never pushed off-screen on a short window. On a normal viewport it
+   exceeds the column width and does nothing. */
+.post-media > * { max-width: min(100%, calc((100vh - 310px) * 16 / 9)); }
+
 .blog-sold-badge {
   display: inline-flex;
   align-items: center;
@@ -2487,144 +2535,36 @@ body.nav-lock { overflow: hidden; }
   font-weight: 700;
 }
 
-/* ---- Shop-item ("for sale") post hero: unlike the photo-banner
-   .blog-hero above, this is a plain light section (no full-bleed image/
-   dark scrim) so the product photo and buy CTA land above the fold
-   immediately instead of behind a tall banner. Not built on .hero — that
-   class assumes a dark photographic background the copy needs a scrim to
-   read against, which doesn't apply here. ---- */
-.blog-hero-shop {
-  /* First section on the page, under the fixed transparent header — .hero
-     pages get this via .hero's own padding-top; this section needs the
-     same clearance since it isn't one. Kept tight (not var(--section-y))
-     so the whole listing — copy, price CTA, photo, thumbnails — has the
-     best shot at clearing the fold together. */
-  padding-top: calc(var(--header-h) + clamp(14px, 2.2vh, 28px));
-  padding-bottom: clamp(12px, 2vh, 24px);
-}
-/* The section immediately after the hero (Related Posts, or whatever
-   comes next) inherits the standard .section top padding meant for
-   heroes with their own full-bleed bottom margin — stacked with this
-   hero's own padding-bottom that read as a gap large enough to look like
-   missing content. Halve it instead of stacking two full paddings. */
-.blog-hero-shop + .section { padding-top: clamp(32px, 5.5vh, 74px); }
-.blog-hero-shop-grid {
+/* ---- Shop item: the one post type that is genuinely a different document
+   (a product photo beside buy CTAs) rather than an article. It keeps the
+   two-column split but inherits .post-header and .post-body above, so its
+   vertical rhythm matches every other post. ---- */
+.shop-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: clamp(24px, 3.5vw, 48px);
+  gap: var(--gap-md);
   align-items: start;
 }
 @media (min-width: 860px) {
-  /* Narrower media column than a generic PDP split — gives the title/copy
-     column more room so the (now smaller) heading doesn't need to wrap as
-     tall relative to the photo beside it. */
-  .blog-hero-shop-grid { grid-template-columns: minmax(0, 1fr) minmax(300px, 380px); }
+  .shop-grid { grid-template-columns: minmax(0, 520px) minmax(0, 1fr); gap: var(--gap-lg); }
 }
-/* Grid items default to min-width:auto — the thumbnail row's flex-shrink:0
-   children (below) make its min-content width the sum of every thumbnail,
-   which without this would force the whole column (and page, pre-860px)
-   wider than the viewport instead of letting overflow-x:auto scroll it. */
-.blog-hero-shop-media { min-width: 0; }
-.blog-hero-shop-heading {
-  max-width: 18ch;
-  /* ~12% down from --fs-h2 — at full size, four lines of display serif
-     made the object's name read as more important than the object photo
-     beside it. */
-  font-size: clamp(1.75rem, 1.15rem + 1.65vw, 2.85rem);
-  line-height: 1.05;
-  letter-spacing: -0.01em;
-  color: var(--navy);
-}
-.blog-hero-shop-rule {
-  display: block;
-  width: 56px;
-  height: 2px;
-  margin: clamp(14px, 1.6vw, 20px) 0 clamp(16px, 2vw, 24px);
-  background: var(--navy-accent);
-}
-/* Tighter than the article-reading rhythm of .blog-post-body elsewhere —
-   this copy shares the fold with a product photo and a CTA, so paragraph
-   spacing is trimmed to help everything clear the fold together. */
-.blog-hero-shop-copy.blog-post-body { font-size: var(--fs-small); line-height: 1.55; }
-.blog-hero-shop-copy .blog-post-content p { margin-bottom: 0.9rem; }
-.blog-hero-shop-ctas {
+.shop-grid-media { min-width: 0; }
+.shop-grid-copy.blog-post-body { font-size: var(--fs-small); line-height: 1.55; }
+.shop-grid-copy .blog-post-content p { margin-bottom: 0.9rem; }
+.shop-ctas {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 0.9rem;
-  margin-top: 0.6rem;
+  gap: var(--gap-sm);
+  margin-top: var(--gap-sm);
 }
-.blog-hero-shop-unavailable {
+.shop-unavailable {
   margin: 0;
   font-family: var(--font-sans);
   font-size: var(--fs-lead);
   color: var(--text-muted);
 }
-@media (max-width: 859px) {
-  .blog-hero-shop-media { order: -1; }
-}
 
-/* ---- Video-post hero: same "everything clears the fold together" goal
-   as .blog-hero-shop above — the old layout put a tall photo-banner hero
-   *and* a separate padded body section *above* the actual video, so the
-   video itself never cleared the fold. Here the embed is playable
-   immediately in column 2. Unlike the shop hero this one keeps the
-   full-bleed hero photo (as its background, scrimmed for the copy) rather
-   than going to a plain light section — the photo was worth keeping, it
-   just needed the video pulled up alongside it instead of buried below. */
-.blog-hero-video {
-  position: relative;
-  overflow: hidden;
-  padding-top: calc(var(--header-h) + clamp(14px, 2.2vh, 28px));
-  padding-bottom: clamp(20px, 3vh, 40px);
-  color: var(--text-on-dark);
-}
-.blog-hero-video-bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
-.blog-hero-video-bg img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%; }
-.blog-hero-video-scrim {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: linear-gradient(115deg, rgba(6, 8, 14, 0.76) 0%, rgba(6, 8, 14, 0.58) 45%, rgba(6, 8, 14, 0.4) 100%);
-}
-.blog-hero-video > .container { position: relative; z-index: 1; }
-.blog-hero-video + .section { padding-top: clamp(32px, 5.5vh, 74px); }
-.blog-hero-video-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: clamp(24px, 3.5vw, 48px);
-  align-items: center;
-}
-@media (min-width: 860px) {
-  .blog-hero-video-grid { grid-template-columns: minmax(240px, 1fr) minmax(360px, 560px); }
-}
-.blog-hero-video-heading {
-  max-width: 20ch;
-  font-size: clamp(1.75rem, 1.15rem + 1.65vw, 2.85rem);
-  line-height: 1.05;
-  letter-spacing: -0.01em;
-  color: var(--text-on-dark);
-  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.4);
-}
-.blog-hero-video-rule {
-  display: block;
-  width: 56px;
-  height: 2px;
-  margin: clamp(14px, 1.6vw, 20px) 0 clamp(16px, 2vw, 24px);
-  background: var(--text-on-dark-muted);
-}
-.blog-hero-video-copy.blog-post-body {
-  font-size: var(--fs-small);
-  line-height: 1.55;
-  color: var(--text-on-dark);
-  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.4);
-}
-.blog-hero-video-copy .blog-post-content p { margin-bottom: 0.9rem; }
-.blog-hero-video-copy .blog-post-content a:not(.button) { color: var(--text-on-dark); text-decoration-color: var(--text-on-dark-muted); }
-.blog-hero-video-media .blog-video-embed { margin: 0; box-shadow: 0 18px 48px rgba(6, 8, 14, 0.4); }
-@media (max-width: 859px) {
-  .blog-hero-video-media { order: -1; }
-}
 
 .blog-post-body {
   font-size: var(--fs-body);
@@ -2677,6 +2617,32 @@ body.nav-lock { overflow: hidden; }
   overflow: hidden;
   box-shadow: var(--shadow-soft);
 }
+/* Only shown when the browser blocked unmuted autoplay (see script.js).
+   Matches the scale of YouTube's own blocked-autoplay button so both kinds
+   of video post fail the same way. */
+.video-play-fallback {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(60px, 8vw, 84px);
+  height: clamp(60px, 8vw, 84px);
+  border: 0;
+  border-radius: 50%;
+  background: rgba(244, 243, 238, 0.94);
+  color: var(--navy);
+  box-shadow: 0 12px 32px rgba(6, 8, 14, 0.35);
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.video-play-fallback[hidden] { display: none; }
+.video-play-fallback:hover { transform: translate(-50%, -50%) scale(1.06); background: #fff; }
+.video-play-fallback svg { width: 42%; height: 42%; margin-left: 4%; }
+
 .blog-video-embed iframe,
 .blog-video-embed video {
   position: absolute;
@@ -2696,13 +2662,13 @@ body.nav-lock { overflow: hidden; }
 }
 .blog-gallery img { border-radius: var(--radius-image); box-shadow: var(--shadow-soft); }
 
-/* Shop-item posts: description + CTA on the left, a proper big-image +
-   click-through-thumbnails product gallery on the right — both inside
-   .blog-hero-shop-grid (see above), matching the Shopify PDP this content
-   is sourced from. The {% blogGallery %} shortcode's grid is still in the
-   markdown body for anyone reading the raw content, but this main image +
-   thumbnails — built from front-matter galleryCount, not parsed out of
-   the rendered body — is the one actually shown. */
+/* Shop-item posts: a proper big-image + click-through-thumbnails product
+   gallery beside the description and CTAs, both inside .shop-grid (see
+   above), matching the Shopify PDP this content is sourced from. The
+   {% blogGallery %} shortcode's grid is still in the markdown body for
+   anyone reading the raw content, but this main image + thumbnails — built
+   from front-matter galleryCount, not parsed out of the rendered body — is
+   the one actually shown. */
 .blog-post-content--shop .blog-gallery { display: none; }
 
 .shop-gallery-main {
@@ -2774,7 +2740,7 @@ body.nav-lock { overflow: hidden; }
   color: var(--navy-accent);
   transition: color var(--transition-fast), border-color var(--transition-fast);
 }
-.blog-share-links a:hover { color: var(--text-on-dark); background: var(--navy-accent); border-color: var(--navy-accent); }
+.blog-share-links a:hover { color: var(--navy-accent-hover); border-color: var(--navy-accent-hover); }
 .blog-share-links svg { width: 16px; height: 16px; }
 
 .blog-cta-card {

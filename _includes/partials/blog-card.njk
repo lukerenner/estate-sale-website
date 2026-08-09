@@ -1,0 +1,38 @@
+{# Single source of truth for a blog card. The index grid and the related-posts
+   grid rendered near-identical 25-line copies of this markup, which is how they
+   drifted apart (different image `sizes`, one showing the sold badge and the
+   other not). Callers vary only what genuinely differs: the `sizes` hint, and
+   whether the excerpt and the filter hook are wanted. #}
+{% macro blogCard(post, sizes, showExcerpt, filterable) %}
+{% set pd = post.data %}
+{% set label = pd.category | blogFilterLabel(pd.sourceType, pd.title) %}
+{% set isVideo = pd.sourceType == "youtube" or pd.sourceType == "amnw" %}
+<a class="blog-card reveal" href="{{ post.url }}"{% if filterable %} data-category="{{ label | slugify }}{% if pd.sourceType == 'amnw' %} video{% endif %}"{% endif %}>
+  <div class="blog-card-media{% if pd.sourceType == 'shop' %} blog-card-media--shop{% endif %}">
+    {% if pd.sourceType == "shop" %}
+    <span class="edge-extend edge-extend-left"><img class="edge-extend-img" src="{{ pd.heroImage.src }}" alt="" aria-hidden="true" loading="lazy"></span>
+    <span class="edge-extend edge-extend-right"><img class="edge-extend-img" src="{{ pd.heroImage.src }}" alt="" aria-hidden="true" loading="lazy"></span>
+    <span class="edge-extend edge-extend-top"><img class="edge-extend-img" src="{{ pd.heroImage.src }}" alt="" aria-hidden="true" loading="lazy"></span>
+    <span class="edge-extend edge-extend-bottom"><img class="edge-extend-img" src="{{ pd.heroImage.src }}" alt="" aria-hidden="true" loading="lazy"></span>
+    {% endif %}
+    <img
+      src="{{ pd.heroImage.src }}"
+      srcset="{{ pd.heroImage.srcset900 }} 900w, {{ pd.heroImage.srcsetFull }} 1800w"
+      sizes="{{ sizes }}"
+      width="{{ pd.heroImage.width }}" height="{{ pd.heroImage.height }}"
+      loading="lazy"
+      alt="{{ pd.heroImage.alt }}">
+    <span class="sale-card-tag">{{ label }}</span>
+    {% if pd.sourceType == "shop" and pd.sold %}<span class="blog-sold-badge">Sold</span>{% endif %}
+    {% if isVideo %}
+    <span class="video-thumb-play" aria-hidden="true"><span><svg viewBox="0 0 24 24" fill="none"><path d="M8 5.5v13l11-6.5-11-6.5Z" fill="currentColor"/></svg></span></span>
+    {% endif %}
+  </div>
+  <div class="blog-card-body">
+    <time class="blog-card-date" datetime="{{ pd.publishDate }}">{{ pd.publishDate | dateDisplay }}</time>
+    <h3 class="blog-card-title">{{ pd.title | titleCase }}</h3>
+    {% if showExcerpt %}<p class="blog-card-excerpt">{{ pd.description | safe }}</p>{% endif %}
+    <span class="sale-card-link">{% if pd.sourceType == "estate-sale" %}View the Sale{% else %}Read the Post{% endif %}</span>
+  </div>
+</a>
+{% endmacro %}

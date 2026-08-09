@@ -2,18 +2,19 @@
 
 {% block content %}
 
+  {# Runs on the same .post-header / .post-body system as blog posts — a legal
+     page is another title-then-prose document, and giving it its own header
+     classes is what let it drift from the rest of the site. #}
   <!-- ============================== PAGE TITLE ============================== -->
-  <section class="section blog-article-header">
-    <div class="container blog-article-header-inner blog-post-body">
-      <p class="eyebrow eyebrow-navy">Gary Germer &amp; Associates</p>
-      <h1 class="blog-article-heading">{{ title | titleCase }}</h1>
-      <span class="blog-article-rule" aria-hidden="true"></span>
-      <p class="blog-article-date">Last updated {{ updated | dateDisplay }}</p>
+  <section class="section post-header">
+    <div class="container-narrow">
+      <p class="eyebrow eyebrow-navy">Gary Germer &amp; Associates<span class="eyebrow-sep">·</span>Updated {{ updated | dateDisplay }}</p>
+      <h1 class="post-title">{{ title | titleCase }}</h1>
     </div>
   </section>
 
   <!-- ============================= PAGE BODY ============================= -->
-  <section class="section blog-article-body">
+  <section class="section post-body">
     <div class="container-narrow blog-post-body">
       <div class="blog-post-content">
         {{ content | safe }}
@@ -21,35 +22,7 @@
     </div>
   </section>
 
-  <!-- ========================= FUTURE SALE NOTIFICATIONS ========================= -->
-  <section class="section discovery-band">
-    <div class="container">
-      <div class="discovery-frame discovery-frame--tight">
-        <h2 class="section-heading discovery-heading-divided"><span>Be the First to Hear About Future Estate Sales</span></h2>
-
-        <div class="discovery-signup" id="estate-alerts">
-          <p class="section-body">Get early access to upcoming sales, new photos, and extraordinary finds.</p>
-          <form class="discovery-signup-row" action="https://formsubmit.co/info@garygermer.com" method="POST">
-            <input type="hidden" name="_subject" value="New estate sale alert subscriber — Legal page">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_next" value="https://www.garygermer.com/thanks.html">
-            <div class="form-honey" aria-hidden="true">
-              <label for="alerts-company">Leave this field empty</label>
-              <input type="text" id="alerts-company" name="_honey" tabindex="-1" autocomplete="off">
-            </div>
-            <div class="field">
-              <label class="field-label" for="alerts-name">Name</label>
-              <input id="alerts-name" name="name" type="text" placeholder="Name" autocomplete="name" required>
-            </div>
-            <div class="field">
-              <label class="field-label" for="alerts-email">Email</label>
-              <input id="alerts-email" name="email" type="email" placeholder="Email" autocomplete="email" required>
-            </div>
-            <button class="button button-navy" type="submit">Subscribe</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
+  {% set signupSubject = "Legal page" %}
+  {% include "partials/signup-band.njk" %}
 
 {% endblock %}

@@ -1,0 +1,32 @@
+{# The estate-alert signup band, previously pasted verbatim into the blog index
+   and every blog post — identical but for the notification subject line. Set
+   `signupSubject` before including to label where the submission came from. #}
+<section class="section discovery-band">
+  <div class="container">
+    <div class="discovery-frame discovery-frame--tight">
+      <h2 class="section-heading discovery-heading-divided"><span>Be the First to Hear About Future Estate Sales</span></h2>
+
+      <div class="discovery-signup" id="estate-alerts">
+        <p class="section-body">Get early access to upcoming sales, new photos, and extraordinary finds.</p>
+        <form class="discovery-signup-row" action="https://formsubmit.co/info@garygermer.com" method="POST">
+          <input type="hidden" name="_subject" value="New estate sale alert subscriber — {{ signupSubject | default('Blog') }}">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://www.garygermer.com/thanks.html">
+          <div class="form-honey" aria-hidden="true">
+            <label for="alerts-company">Leave this field empty</label>
+            <input type="text" id="alerts-company" name="_honey" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="field">
+            <label class="field-label" for="alerts-name">Name</label>
+            <input id="alerts-name" name="name" type="text" placeholder="Name" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="alerts-email">Email</label>
+            <input id="alerts-email" name="email" type="email" placeholder="Email" autocomplete="email" required>
+          </div>
+          <button class="button button-navy" type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

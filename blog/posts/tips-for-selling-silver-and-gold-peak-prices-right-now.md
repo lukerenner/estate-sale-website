@@ -22,6 +22,12 @@ heroImage:
   alt: "Tips for Selling Silver & Gold (Peak Prices Right Now!)"
 ---
 
-Gold and silver prices are peaking, so antique appraiser Gary Germer joined us to share tips about how to know what's worth selling. Check out Gary’s YouTube video: The Secret Formula Gold & Silver Dealers Don't Want You To Know! Converting Troy Ounces to Grams: Grams = Troy ounces x 31.1035 Convert troy ounce (spot price).into grams by dividing by 31.1. Weigh your pieces and multiply by how many grams you have. Same formula for gold, except you multiply by karat instead of sterling value Pennies and coins. Pennies pre 1984 are 95% pure copper and are worth about 2 cents each in copper weight Silver coins 1964 and older are 90% pure silver 1964-1969 they are 40% For more information about Gary, visit his website www.garygermer.com .
+Gold and silver prices are peaking, so antique appraiser Gary Germer joined us to share tips about how to know what's worth selling. Check out Gary's YouTube video, "The Secret Formula Gold & Silver Dealers Don't Want You To Know!"
+
+**Converting troy ounces to grams:** grams = troy ounces × 31.1035. Convert the troy ounce spot price into grams by dividing by 31.1, then weigh your pieces and multiply by how many grams you have. Same formula for gold, except you multiply by karat instead of sterling value.
+
+**Pennies and coins:** pennies minted before 1984 are 95% pure copper and are worth about 2 cents each in copper weight. Silver coins from 1964 and older are 90% pure silver; coins from 1964-1969 are 40% silver.
+
+For more information about Gary, visit his website, www.garygermer.com.
 
 Originally aired on [AM Northwest](https://katu.com/amnw/am-northwest-lifestyle-health/tips-for-selling-silver-gold-peak-prices-right-now), KATU.

@@ -57,7 +57,7 @@ exist yet:
 | Consignment | `#consignment` | Consignment split section |
 | About Gary | `#about-gary` | About Gary section |
 | Upcoming Sales | `#upcoming-sales` | Discovery card |
-| Gary's Vault | `#garys-vault` | Discovery card |
+| Online Shop | `#shop` | Discovery card (renamed from "Gary's Vault" — 2026-08-09, per direction from Luke: that branding isn't used much anymore, and every reference to the old "Online Store" wording was unified to "Online Shop") |
 | Contact Us (footer) | `#consultation` | Final consultation form |
 | Get Sale Alerts (footer) | `#estate-alerts` | Estate Sale Alerts signup |
 | Request a Consultation (header CTA) | `#consultation` | Final consultation form |
@@ -81,7 +81,6 @@ the real one the future page should use:
 | Meet Gary and the Team (About Gary CTA) | `/team` | Same |
 | Watch the Videos (About Gary CTA) | Actual YouTube channel/video (external, already live) | Preserves the current live destination rather than inventing a future in-site video library page |
 | View Current Sales (Discovery card) | `/upcoming-sales` | Dedicated sale-listing page not part of this phase |
-| Shop the Collection (Discovery card) | `/vault` | Dedicated shop page not part of this phase |
 
 ## Retired current-site routes
 

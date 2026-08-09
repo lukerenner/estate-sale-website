@@ -204,20 +204,42 @@ module.exports = function (eleventyConfig) {
     })
   );
 
+  // Estate sales have exactly one page (estate-sales/*.njk) — no separate
+  // blog-post stub. This adapts each sale into the same {url, data{...}}
+  // shape blog-card.njk and relatedPosts() expect, so a sale's card on the
+  // blog index links straight to the sale itself instead of to a duplicate
+  // page that exists only to hold a card.
+  function estateSaleAsBlogPost(sale) {
+    var lastDate = sale.data.dates[sale.data.dates.length - 1].date;
+    return {
+      url: sale.url,
+      data: {
+        title: sale.data.saleName,
+        description: sale.data.description,
+        category: "estate-sales",
+        sourceType: "estate-sale",
+        publishDate: lastDate,
+        heroImage: sale.data.heroImage,
+      },
+    };
+  }
+
   // Sorted by the front-matter publishDate (a "YYYY-MM-DD" string, so plain
   // comparison works) — NOT Eleventy's built-in .date, which falls back to
   // file mtime/creation order when no `date:` front-matter key is set, and
   // none of these posts set one.
-  eleventyConfig.addCollection("blogPosts", (api) =>
-    api.getFilteredByGlob("blog/posts/*.md").sort((a, b) => (b.data.publishDate || "").localeCompare(a.data.publishDate || ""))
-  );
+  eleventyConfig.addCollection("blogPosts", (api) => {
+    var posts = api.getFilteredByGlob("blog/posts/*.md");
+    var sales = api.getFilteredByGlob("estate-sales/*.njk").map(estateSaleAsBlogPost);
+    return posts.concat(sales).sort((a, b) => (b.data.publishDate || "").localeCompare(a.data.publishDate || ""));
+  });
 
   // The 5 filter-bar chip values actually present in collections.blogPosts,
   // in the fixed display order — mirrors saleNeighborhoods' dedupe/slugify
   // pattern, but over the blogFilterLabel computed view instead of a raw
   // front-matter field.
   eleventyConfig.addCollection("blogCategories", (api) => {
-    var posts = api.getFilteredByGlob("blog/posts/*.md");
+    var posts = api.getFilteredByGlob("blog/posts/*.md").concat(api.getFilteredByGlob("estate-sales/*.njk").map(estateSaleAsBlogPost));
     var present = {};
     posts.forEach(function (post) {
       present[blogFilterLabel(post.data.category, post.data.sourceType, post.data.title)] = true;

@@ -8,14 +8,18 @@ ogDescription: "Estate sale stories, appraisal tips, and notable finds from Gary
 ogImage: /assets/images/parlor-placeholder.jpg
 ---
 {% extends "layouts/base.njk" %}
+{% import "partials/blog-card.njk" as cards %}
 
 {% block content %}
 
   <!-- ============================= POSTS BY CATEGORY ============================= -->
-  <section class="section" id="all-posts">
+  <section class="section post-header" id="all-posts">
     <div class="container">
       <div class="stack-header text-center mx-auto">
-        <h2 class="section-heading mx-auto">Articles, Videos, and New Discoveries to Explore</h2>
+        {# h1, not h2: this is the page's own title. It was a section heading,
+           which left the blog index as the only page on the site without a
+           top-level heading. #}
+        <h1 class="section-heading mx-auto">Articles, Videos, and New Discoveries to Explore</h1>
         <p class="section-body mx-auto">Estate sale highlights, appraisal how-tos, shop finds, and video walkthroughs — all in one place. Subscribe to our newsletter to stay informed.</p>
 
         <form class="discovery-signup-row" id="get-notified" action="https://formsubmit.co/info@garygermer.com" method="POST">
@@ -45,34 +49,9 @@ ogImage: /assets/images/parlor-placeholder.jpg
         {% endfor %}
       </div>
 
-      <div class="blog-grid" data-blog-grid>
+      <div class="blog-grid blog-grid-2up" data-blog-grid>
         {% for post in collections.blogPosts %}
-        {% set pd = post.data %}
-        <a class="blog-card reveal" href="{{ post.url }}" data-category="{{ pd.category | blogFilterLabel(pd.sourceType, pd.title) | slugify }}{% if pd.sourceType == 'amnw' %} video{% endif %}">
-          <div class="blog-card-media{% if pd.sourceType == 'youtube' or pd.sourceType == 'amnw' %} blog-card-media--video{% elif pd.sourceType == 'shop' %} blog-card-media--shop{% endif %}">
-            {% if pd.sourceType == "shop" %}
-            <span class="edge-extend edge-extend-left"><img class="edge-extend-img" src="{{ pd.heroImage.src }}" alt="" aria-hidden="true" loading="lazy"></span>
-            <span class="edge-extend edge-extend-right"><img class="edge-extend-img" src="{{ pd.heroImage.src }}" alt="" aria-hidden="true" loading="lazy"></span>
-            <span class="edge-extend edge-extend-top"><img class="edge-extend-img" src="{{ pd.heroImage.src }}" alt="" aria-hidden="true" loading="lazy"></span>
-            <span class="edge-extend edge-extend-bottom"><img class="edge-extend-img" src="{{ pd.heroImage.src }}" alt="" aria-hidden="true" loading="lazy"></span>
-            {% endif %}
-            <img
-              src="{{ pd.heroImage.src }}"
-              srcset="{{ pd.heroImage.srcset900 }} 900w, {{ pd.heroImage.srcsetFull }} 1800w"
-              sizes="(max-width: 560px) 92vw, (max-width: 900px) 46vw, 42vw"
-              width="{{ pd.heroImage.width }}" height="{{ pd.heroImage.height }}"
-              loading="lazy"
-              alt="{{ pd.heroImage.alt }}">
-            <span class="sale-card-tag">{{ pd.category | blogFilterLabel(pd.sourceType, pd.title) }}</span>
-            {% if pd.sourceType == "shop" and pd.sold %}<span class="blog-sold-badge">Sold</span>{% endif %}
-          </div>
-          <div class="blog-card-body">
-            <time class="blog-card-date" datetime="{{ pd.publishDate }}">{{ pd.publishDate | dateDisplay }}</time>
-            <h3 class="blog-card-title">{{ pd.title | titleCase }}</h3>
-            <p class="blog-card-excerpt">{{ pd.description | truncate(110) }}</p>
-            <span class="sale-card-link">Read the Post</span>
-          </div>
-        </a>
+        {{ cards.blogCard(post, "(max-width: 560px) 92vw, 46vw", true, true) }}
         {% endfor %}
       </div>
 
@@ -82,35 +61,7 @@ ogImage: /assets/images/parlor-placeholder.jpg
     </div>
   </section>
 
-  <!-- ========================= FUTURE SALE NOTIFICATIONS ========================= -->
-  <section class="section discovery-band">
-    <div class="container">
-      <div class="discovery-frame discovery-frame--tight">
-        <h2 class="section-heading discovery-heading-divided"><span>Be the First to Hear About Future Estate Sales</span></h2>
-
-        <div class="discovery-signup" id="estate-alerts">
-          <p class="section-body">Get early access to upcoming sales, new photos, and extraordinary finds.</p>
-          <form class="discovery-signup-row" action="https://formsubmit.co/info@garygermer.com" method="POST">
-            <input type="hidden" name="_subject" value="New estate sale alert subscriber — Blog page">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_next" value="https://www.garygermer.com/thanks.html">
-            <div class="form-honey" aria-hidden="true">
-              <label for="alerts-company">Leave this field empty</label>
-              <input type="text" id="alerts-company" name="_honey" tabindex="-1" autocomplete="off">
-            </div>
-            <div class="field">
-              <label class="field-label" for="alerts-name">Name</label>
-              <input id="alerts-name" name="name" type="text" placeholder="Name" autocomplete="name" required>
-            </div>
-            <div class="field">
-              <label class="field-label" for="alerts-email">Email</label>
-              <input id="alerts-email" name="email" type="email" placeholder="Email" autocomplete="email" required>
-            </div>
-            <button class="button button-navy" type="submit">Subscribe</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
+  {% set signupSubject = "Blog index" %}
+  {% include "partials/signup-band.njk" %}
 
 {% endblock %}

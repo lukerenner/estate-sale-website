@@ -27,7 +27,7 @@
 
 # Estate sale + shop listings (dedicated pages not rebuilt in this phase)
 /estatesales                    /#upcoming-sales           301
-/online-stores                  /#garys-vault              301
+/online-stores                  /#shop                     301
 
 # Legacy estate sale slugs that were renamed for SEO during the bulk 1.0
 # archive import (2026-08-07) — 1.0 slug -> final neighborhood URL, skipping
@@ -114,6 +114,47 @@
 /media/blog/estate-sales/ancient-aliens-at-our-next-estate-sale                                /blog/ancient-aliens-at-our-next-estate-sale/                                      301
 /media/blog/show-and-tell/rare-and-stunning-tiffany-co-184-piece-sterling-silver-flatware       /blog/rare-and-stunning-tiffany-and-co-184-piece-sterling-silver-flatware/         301
 /media/blog/show-and-tell/makonde-tree-of-life-sculptures                                      /blog/makonde-tree-of-life-sculptures/                                             301
+
+# Blog — estate-sale stub posts retired 2026-08-09 (each was a duplicate
+# landing page whose only content was a link back to its estate-sale page —
+# see tools/lib/sync-estate-sales.mjs history). The blog index card now
+# links straight to the estate-sale page instead, so these 301 to it.
+/blog/birkendene/                                                                               /west-hills-estate-sales/birkendene/                                               301
+/blog/asian-art/                                                                                /northeast-portland-estate-sales/asian-art/                                       301
+/blog/bertha-heights/                                                                           /west-hills-estate-sales/bertha-heights/                                          301
+/blog/arthur-hill/                                                                              /west-hills-estate-sales/arthur-hill/                                             301
+/blog/bishopcroft-house-estate-sale/                                                            /west-hills-estate-sales/bishopcroft-house/                                       301
+/blog/bixwood-manor/                                                                            /northwest-portland-estate-sales/bixwood-manor/                                   301
+/blog/bridlemile-midcentury/                                                                    /southwest-portland-estate-sales/bridlemile-midcentury/                           301
+/blog/broadway-woods/                                                                           /northeast-portland-estate-sales/broadway-woods/                                  301
+/blog/corinne-gentner/                                                                          /southwest-portland-estate-sales/corinne-gentner/                                 301
+/blog/easter-weekend-pop-up/                                                                    /southeast-portland-estate-sales/easter-weekend-pop-up/                           301
+/blog/council-crest-downsizing-sale/                                                            /west-hills-estate-sales/council-crest/                                           301
+/blog/grant-park/                                                                               /northeast-portland-estate-sales/grant-park/                                      301
+/blog/gwyneth-gamble-booth-downsizing-sale-2019/                                                /west-hills-estate-sales/gwyneth-gamble-booth-2019/                               301
+/blog/historic-military-weapons-estate-sale/                                                    /northeast-portland-estate-sales/historic-military-weapons/                       301
+/blog/kings-cumberland/                                                                         /west-hills-estate-sales/kings-cumberland/                                        301
+/blog/lacamas-lake/                                                                             /camas-estate-sales/lacamas-lake/                                                 301
+/blog/lake-oswego-estate-sale/                                                                  /lake-oswego-dunthorpe-estate-sales/lake-oswego/                                  301
+/blog/langworthy-estate-sale/                                                                   /northwest-portland-estate-sales/langworthy/                                      301
+/blog/margie-boule-gwyneth-gamble-booth-sale/                                                   /west-hills-estate-sales/margie-boule-moving-sale/                                301
+/blog/mary-mize/                                                                                /southwest-portland-estate-sales/mary-mize/                                       301
+/blog/midmod-moapa/                                                                             /lake-oswego-dunthorpe-estate-sales/midmod-moapa/                                 301
+/blog/military-collectibles-showroom-sale/                                                      /northeast-portland-estate-sales/military-collectibles-showroom/                  301
+/blog/oakwood-gardens/                                                                          /southwest-portland-estate-sales/oakwood-gardens/                                 301
+/blog/nancy-fisher/                                                                             /west-hills-estate-sales/nancy-fisher/                                            301
+/blog/peter-abrahams/                                                                           /northeast-portland-estate-sales/peter-abrahams/                                  301
+/blog/nw-skyline-antiques-estate-sale/                                                          /west-hills-estate-sales/nw-skyline-antiques/                                     301
+/blog/pop-up-shop-estate-sale-2020/                                                             /northeast-portland-estate-sales/pop-up-shop-2020/                                301
+/blog/parrot-collector-estate-sale/                                                             /northeast-portland-estate-sales/parrot-collector/                                301
+/blog/riverwood/                                                                                /lake-oswego-dunthorpe-estate-sales/riverwood/                                    301
+/blog/portland-nob-hill-estate-sale/                                                            /northwest-portland-estate-sales/nob-hill/                                        301
+/blog/stafford-trail/                                                                           /lake-oswego-dunthorpe-estate-sales/stafford-trail/                               301
+/blog/the-holiday-sale-of-ms-gwyneth-gamble-booth/                                              /west-hills-estate-sales/gwyneth-gamble-booth-holiday/                            301
+/blog/westridge/                                                                                /camas-estate-sales/westridge/                                                    301
+/blog/west-hills-estate-sale-fall-of-2020/                                                      /west-hills-estate-sales/west-hills-fall-2020/                                    301
+/blog/westmorland-manner-in-sellwood-portland-sale/                                             /southeast-portland-estate-sales/westmoreland-manor/                              301
+/blog/wilcox-manor/                                                                             /west-hills-estate-sales/wilcox-manor/                                            301
 
 # Blog / press catch-alls
 /blog                            /blog/                     301

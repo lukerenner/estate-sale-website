@@ -22,6 +22,16 @@ heroImage:
   alt: "An Interesting Cane Collection!"
 ---
 
-Did you know canes used to be a fashion accessory and status symbol? Antique appraiser Gary Germer joined us to share an interesting collection: In the 18th and 19th centuries they were a gentleman’s fashion accessory and status symbol. Some had secrets. Some hid swords, flasks and cork screws! They can be an affordable thing to collect and they don’t take up your whole house. Different materials actually told a story about the owner -- Gold, lapis, ebony =. Wealth Shark vertebrae = exotic traveler Elk horn = hunter or outdoorsman Carved wood =. Tradesman or wood worker Spyglass handle = ship captan or engineer For more information about Gary visit www.garygermer.com .
+Did you know canes used to be a fashion accessory and status symbol? Antique appraiser Gary Germer joined us to share an interesting collection. In the 18th and 19th centuries, they were a gentleman's fashion accessory and status symbol — and some had secrets, hiding swords, flasks, and corkscrews! They can be an affordable thing to collect, and they don't take up your whole house.
+
+Different materials actually told a story about the owner:
+
+- **Gold, lapis, ebony** — wealth
+- **Shark vertebrae** — exotic traveler
+- **Elk horn** — hunter or outdoorsman
+- **Carved wood** — tradesman or woodworker
+- **Spyglass handle** — ship captain or engineer
+
+For more information about Gary, visit www.garygermer.com.
 
 Originally aired on [AM Northwest](https://katu.com/amnw/am-northwest-lifestyle-health/an-interesting-cane-collection), KATU.

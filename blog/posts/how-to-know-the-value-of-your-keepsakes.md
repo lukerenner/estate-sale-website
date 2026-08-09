@@ -22,6 +22,15 @@ heroImage:
   alt: "How to Know the Value of Your Keepsakes"
 ---
 
-If your family heirlooms are starting to accumulate, how do you know which ones are worth keeping? Antique appraiser Gary Germer joined us to share his always interesting information. For more information about Gary, visit his website www.garygermer.com. To research the value of most antiques --especially holiday décor -- visit worthpoint.com and ebay.com . To research the value of vintage books, visit abebooks.com and biblio.com . To research the value of vintage records and CDs, visit discogs.com . To research the value of vintage electronics visit audiogon.com and audiokarma.org . To research the value of old video games and video game equipment, visit dkoldies.com and lukiegames.com. To research the value of vintage clothing and jewelry, visit etsy.com and depop.com .
+If your family heirlooms are starting to accumulate, how do you know which ones are worth keeping? Antique appraiser Gary Germer joined us to share his always interesting information. For more information about Gary, visit his website, www.garygermer.com.
+
+Where to research the value of your keepsakes, by category:
+
+- **Most antiques, especially holiday décor:** worthpoint.com and ebay.com
+- **Vintage books:** abebooks.com and biblio.com
+- **Vintage records and CDs:** discogs.com
+- **Vintage electronics:** audiogon.com and audiokarma.org
+- **Old video games and video game equipment:** dkoldies.com and lukiegames.com
+- **Vintage clothing and jewelry:** etsy.com and depop.com
 
 Originally aired on [AM Northwest](https://katu.com/amnw/am-northwest-lifestyle-health/how-to-know-the-value-of-your-keepsakes), KATU.
