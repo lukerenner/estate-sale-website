@@ -1,48 +1,12 @@
 {
-  "ranAt": "2026-08-08T19:52:23.570Z",
-  "estateSales": {
-    "created": [],
-    "skippedExisting": [
-      "arthur-hill",
-      "asian-art",
-      "bertha-heights",
-      "birkendene",
-      "bishopcroft-house-estate-sale",
-      "bixwood-manor",
-      "bridlemile-midcentury",
-      "broadway-woods",
-      "corinne-gentner",
-      "council-crest-downsizing-sale",
-      "easter-weekend-pop-up",
-      "grant-park",
-      "gwyneth-gamble-booth-downsizing-sale-2019",
-      "historic-military-weapons-estate-sale",
-      "kings-cumberland",
-      "lacamas-lake",
-      "lake-oswego-estate-sale",
-      "langworthy-estate-sale",
-      "margie-boule-gwyneth-gamble-booth-sale",
-      "mary-mize",
-      "midmod-moapa",
-      "military-collectibles-showroom-sale",
-      "nancy-fisher",
-      "nw-skyline-antiques-estate-sale",
-      "oakwood-gardens",
-      "parrot-collector-estate-sale",
-      "peter-abrahams",
-      "pop-up-shop-estate-sale-2020",
-      "portland-nob-hill-estate-sale",
-      "riverwood",
-      "stafford-trail",
-      "the-holiday-sale-of-ms-gwyneth-gamble-booth",
-      "west-hills-estate-sale-fall-of-2020",
-      "westmorland-manner-in-sellwood-portland-sale",
-      "westridge",
-      "wilcox-manor"
-    ]
-  },
+  "ranAt": "2026-08-11T16:07:59.837Z",
   "shop": {
-    "created": [],
+    "created": [
+      "carved-deer-stag-antler-snuff-box-walking-stick-cane-with-hidden-corkscrew",
+      "eagle-head-finely-carved-deer-antler-antique-walking-stick-cane",
+      "antique-indian-hardwood-damchiya-storage-chest-or-cabinet",
+      "alligator-carved-wood-gold-leaf-amber-inlaid-black-lacquer-walking-stick-cane"
+    ],
     "updatedSold": [],
     "skippedExisting": [
       "antique-sandstone-bodhisattva-statue",
@@ -56,7 +20,6 @@
       "monumental-hand-carved-indian-polychrome-jhula-swing",
       "antique-folk-art-carved-animal-bearded-man-walking-stick",
       "japanese-woodblock-print-with-puppet-tissue-drawings",
-      "bearded-man-demon-grapevine-carved-folk-art-walking-stick-cane-w-cork-screw",
       "victorian-floral-embossed-brass-walking-tippling-stick-cane-w-hidden-cork-screw",
       "german-antler-handle-wood-walking-tippling-stick-cane-with-hidden-cork-screw",
       "antique-india-silver-incense-burner",
@@ -71,7 +34,6 @@
       "carved-wood-dog-walking-stick-cane",
       "wood-walking-stick-cane-hidden-cork-screw-copy",
       "deer-walking-stick-cane",
-      "french-bulldog-walking-stick-cane",
       "native-american-carved-wood-painted-walking-stick-cane",
       "victorian-wood-brass-floral-chased-knob-walking-stick-cane",
       "victorian-ornate-repousse-brass-mother-of-pearl-walking-stick-cane",
@@ -91,7 +53,6 @@
       "japanese-blue-white-sansu-sometsuke-mountain-landscape-village-plate-set-of-3",
       "deruta-orvieto-italian-blue-white-maiolica-pottery-small-lidded-trinket-dish",
       "moroccan-thuya-burl-wood-marquetry-mother-of-pearl-inlaid-jewelry-lock-box",
-      "chinese-red-shoushan-double-dragon-sculpture-carving",
       "hand-painted-mackenzie-childs-rock-collection-courtly-check-accent-table",
       "chinese-dream-stone",
       "japanese-sometsuke-blue-porcelain-soup-or-rice-bowl-with-lid",
@@ -117,5 +78,9 @@
   },
   "video": {
     "created": []
+  },
+  "amnw": {
+    "created": [],
+    "checked": 25
   }
 }
