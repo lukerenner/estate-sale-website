@@ -12,18 +12,19 @@
 // per-sale option.
 
 import { execFileSync } from "node:child_process";
-import { existsSync, mkdirSync } from "node:fs";
+import { existsSync, mkdirSync, statSync } from "node:fs";
 import path from "node:path";
 
 export const TIERS = [480, 900, 1400];
 export const QUALITY = 72;
 
+// Uses imagemagick's `identify` (not macOS-only `sips`) so this works on
+// both the local Mac and the Linux CI runner, which installs imagemagick.
 export function getImageDims(filePath) {
-  const out = execFileSync("sips", ["-g", "pixelWidth", "-g", "pixelHeight", filePath], {
+  const out = execFileSync("identify", ["-format", "%w %h", filePath], {
     encoding: "utf8",
   });
-  const width = Number(/pixelWidth:\s*(\d+)/.exec(out)?.[1]);
-  const height = Number(/pixelHeight:\s*(\d+)/.exec(out)?.[1]);
+  const [width, height] = out.trim().split(/\s+/).map(Number);
   if (!width || !height) throw new Error(`Could not read dimensions for ${filePath}`);
   return { width, height };
 }
@@ -35,7 +36,7 @@ export function dedupeBySize(filePaths) {
   const seen = new Set();
   const kept = [];
   for (const p of filePaths) {
-    const key = execFileSync("stat", ["-f", "%z", p], { encoding: "utf8" }).trim();
+    const key = statSync(p).size;
     if (seen.has(key)) continue;
     seen.add(key);
     kept.push(p);
