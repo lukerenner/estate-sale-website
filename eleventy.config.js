@@ -196,7 +196,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("robots.txt");
   eleventyConfig.addPassthroughCopy("_redirects");
   eleventyConfig.addPassthroughCopy("_headers");
-  eleventyConfig.addPassthroughCopy("thanks.html");
 
   eleventyConfig.addCollection("estateSales", (api) =>
     api.getFilteredByGlob("estate-sales/*.njk").sort((a, b) => {

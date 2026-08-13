@@ -1,0 +1,37 @@
+---
+permalink: /thanks.html
+title: Thank You | Gary Germer & Associates
+description: "We've received your message. A member of our team will be in touch shortly."
+ogTitle: Thank You | Gary Germer & Associates
+ogDescription: "We've received your message. A member of our team will be in touch shortly."
+ogImage: /assets/images/art/contact-hero-mantel.jpg
+---
+{% extends "layouts/base.njk" %}
+
+{% block head %}
+<meta name="robots" content="noindex">
+{% endblock %}
+
+{% block content %}
+
+  <!-- ============================== THANKS ==============================
+       Same full-bleed-photo-plus-frosted-card treatment as the "Our Fee
+       Schedule" band on estate-sales.njk (.fee-structure/.fee-card). -->
+  <section class="fee-structure" id="thanks">
+    <div class="fee-structure-media">
+      {% art "contact-hero-mantel", "100vw" %}
+    </div>
+    <div class="fee-structure-scrim" aria-hidden="true"></div>
+    <div class="container">
+      <div class="fee-card">
+        <p class="eyebrow">Thank you</p>
+        <h1 class="fee-card-heading">We&rsquo;ve received your message.</h1>
+        <p class="fee-card-body">A member of our team will be in touch shortly. If your request is time-sensitive, call us at <a href="tel:+15032350946" style="font-weight:700;">(503) 235-0946</a>.</p>
+        <div class="about-cta mx-auto">
+          <a class="button button-primary" href="/">Return Home</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
