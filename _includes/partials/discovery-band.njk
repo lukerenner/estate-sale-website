@@ -1,0 +1,58 @@
+{# The "Looking for Treasures?" band — two discovery cards plus the estate
+   alert signup. Previously pasted verbatim into every long page; identical
+   but for the notification subject line. Set `signupSubject` before
+   including to label where the submission came from.
+
+   Related: partials/signup-band.njk is the signup half on its own, for the
+   blog and legal pages which have no discovery cards. #}
+<section class="section discovery-band">
+  <div class="container">
+    <div class="discovery-frame">
+      <h2 class="section-heading discovery-heading-divided"><span>Looking for Treasures?</span></h2>
+
+      <div class="discovery-cards">
+        <article class="discovery-card reveal" id="upcoming-sales">
+          {% art "discovery-upcoming-sales", "(max-width: 760px) 100vw, 540px" %}
+          <svg class="discovery-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 11.5 12 4l8 7.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9.5h12V10" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 19.5V14h4v5.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <a class="discovery-card-link" href="/estate-sales/" aria-label="View Current Sales — Upcoming Estate Sales">
+            <div class="discovery-card-body">
+              <h3 class="discovery-card-title">Upcoming Estate Sales</h3>
+              <span class="button button-on-dark" aria-hidden="true">View Current Sales</span>
+            </div>
+          </a>
+        </article>
+        <article class="discovery-card reveal" id="shop">
+          {% art "discovery-vault-necklace", "(max-width: 760px) 100vw, 540px" %}
+          <svg class="discovery-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M10.2 4.7h7.6v3.4l-7.6 7.6-3.8-3.8Z" stroke-linejoin="round"/><path d="m11.8 8.6-5.6 5.6" stroke-linecap="round"/><path d="M4 17.5h7.5" stroke-linecap="round"/><circle cx="14.7" cy="7.7" r="0.9" fill="currentColor" stroke="none"/></svg>
+          <a class="discovery-card-link" href="https://shop.garygermer.com/collections/newly-listed" aria-label="Shop the Collection — Gary's Vault">
+            <div class="discovery-card-body">
+              <h3 class="discovery-card-title">Gary's Vault</h3>
+              <span class="button button-on-dark" aria-hidden="true">Shop the Collection</span>
+            </div>
+          </a>
+        </article>
+      </div>
+
+      <div class="discovery-signup" id="estate-alerts">
+        <p class="section-body">Be the first to know about new sales and extraordinary finds.</p>
+        <form class="discovery-signup-row" action="/api/submit-inquiry" method="POST">
+          <input type="hidden" name="form" value="newsletter">
+          <div class="form-honey" aria-hidden="true">
+            <label for="alerts-company">Leave this field empty</label>
+            <input type="text" id="alerts-company" name="_honey" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="field">
+            <label class="field-label" for="alerts-name">Name</label>
+            <input id="alerts-name" name="name" type="text" placeholder="Name" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="alerts-email">Email</label>
+            <input id="alerts-email" name="email" type="email" placeholder="Email" autocomplete="email" required>
+          </div>
+          <p class="form-submit-error" role="alert" hidden></p>
+          <button class="button button-navy" type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

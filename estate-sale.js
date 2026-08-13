@@ -111,10 +111,8 @@
     var idBase = "sale-alerts-" + (SALE.slug || "sale");
     return (
       '<p class="sale-info-subscribe-lead">Get notified when we have another one.</p>' +
-      '<form class="sale-info-subscribe-form" action="https://formsubmit.co/info@garygermer.com" method="POST">' +
-        '<input type="hidden" name="_subject" value="New estate sale alert subscriber — ' + htmlEscape(SALE.name) + ' page (post-sale)">' +
-        '<input type="hidden" name="_captcha" value="false">' +
-        '<input type="hidden" name="_next" value="https://www.garygermer.com/thanks.html">' +
+      '<form class="sale-info-subscribe-form" action="/api/submit-inquiry" method="POST">' +
+        '<input type="hidden" name="form" value="newsletter">' +
         '<div class="form-honey" aria-hidden="true">' +
           '<label for="' + idBase + '-company">Leave this field empty</label>' +
           '<input type="text" id="' + idBase + '-company" name="_honey" tabindex="-1" autocomplete="off">' +
@@ -129,6 +127,7 @@
             '<input id="' + idBase + '-email" name="email" type="email" placeholder="Email" autocomplete="email" required>' +
           '</div>' +
         '</div>' +
+        '<p class="form-submit-error" role="alert" hidden></p>' +
         '<button class="button button-primary" type="submit">Subscribe</button>' +
       '</form>'
     );

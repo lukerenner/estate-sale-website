@@ -4,7 +4,7 @@ title: Estate Sale Services — Portland, OR | Gary Germer & Associates
 description: "Gary Germer & Associates manages estate sales from start to finish — cataloguing, marketing, staging, and closing — so families and fiduciaries can maximize value with care and discretion."
 ogTitle: Estate Sale Services — Gary Germer & Associates
 ogDescription: "A managed estate sale process, start to finish. See how Gary Germer & Associates maximizes value with care, strategy, and discretion."
-ogImage: /assets/images/parlor-placeholder.jpg
+ogImage: /assets/images/art/estate-sales-hero-parlor.jpg
 ---
 {% extends "layouts/base.njk" %}
 
@@ -13,13 +13,7 @@ ogImage: /assets/images/parlor-placeholder.jpg
   <!-- ============================== HERO ============================== -->
   <section class="hero sale-hero">
     <div class="hero-media">
-      <img
-        src="/assets/images/parlor-placeholder.jpg"
-        srcset="/assets/images/parlor-placeholder-900.webp 900w, /assets/images/parlor-placeholder.webp 1613w"
-        sizes="100vw"
-        width="1613" height="1131"
-        alt="An ornate, antique-filled Portland parlor staged for a Gary Germer & Associates estate sale"
-        fetchpriority="high">
+      {% art "estate-sales-hero-parlor", "100vw", "", "eager" %}
     </div>
     <div class="hero-scrim" aria-hidden="true"></div>
 
@@ -33,11 +27,8 @@ ogImage: /assets/images/parlor-placeholder.jpg
 
       <div class="hero-form-card sale-info-bar" id="schedule-consultation">
         <h2>Schedule a Consultation</h2>
-        <form class="form-grid" action="https://formsubmit.co/info@garygermer.com" method="POST" novalidate>
-          <input type="hidden" name="_subject" value="New consultation request — Estate Sales page">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_next" value="https://www.garygermer.com/thanks.html">
+        <form class="form-grid" action="/api/submit-inquiry" method="POST" novalidate>
+          <input type="hidden" name="form" value="estate-sale">
           <div class="form-honey" aria-hidden="true">
             <label for="estate-sales-company">Leave this field empty</label>
             <input type="text" id="estate-sales-company" name="_honey" tabindex="-1" autocomplete="off">
@@ -67,6 +58,7 @@ ogImage: /assets/images/parlor-placeholder.jpg
               <option>Just exploring</option>
             </select>
           </div>
+          <p class="form-submit-error" role="alert" hidden></p>
           <button class="button button-navy" type="submit">Schedule a Consultation</button>
         </form>
       </div>
@@ -105,18 +97,12 @@ ogImage: /assets/images/parlor-placeholder.jpg
         <p class="section-body section-body-on-dark">The process begins with a free consultation at your home. Gary will meet with you to understand the needs and the timelines of your family, after which he&rsquo;ll personally tour the space to get a sense of the items on property. From there, we build a plan customized to your individual needs that thoughtfully addresses each stage of the estate sale process.</p>
         <p class="section-body section-body-on-dark">After we build a plan for your sale, we go to work. Over the next ten days or so, we work to implement the marketing plan and prepare your home for sale day. The process is managed from start to finish &mdash; all the way to the final cleanup and clean-out of your home.</p>
         <div class="about-cta split-cta-row">
-          <a class="button button-on-dark" href="#main">Schedule a Consultation</a>
+          <a class="button button-on-dark" href="#schedule-consultation">Schedule a Consultation</a>
         </div>
       </div>
     </div>
     <div class="split-media reveal">
-      <img
-        src="/assets/images/parlor-placeholder.jpg"
-        srcset="/assets/images/parlor-placeholder-900.webp 900w, /assets/images/parlor-placeholder.webp 1613w"
-        sizes="(max-width: 900px) 100vw, 50vw"
-        width="1613" height="1131"
-        loading="lazy"
-        alt="A Portland dining room catalogued and staged for an estate sale">
+      {% art "estate-process-dining", "(max-width: 900px) 100vw, 512px" %}
     </div>
     </div>
   </section>
@@ -137,13 +123,7 @@ ogImage: /assets/images/parlor-placeholder.jpg
       </div>
     </div>
     <div class="split-media reveal">
-      <img
-        src="/assets/images/parlor-placeholder.jpg"
-        srcset="/assets/images/parlor-placeholder-900.webp 900w, /assets/images/parlor-placeholder.webp 1613w"
-        sizes="(max-width: 900px) 100vw, 50vw"
-        width="1613" height="1131"
-        loading="lazy"
-        alt="A gilt-framed painting and table settings prepared for an estate sale">
+      {% art "estate-value-limestone-mantel", "(max-width: 900px) 100vw, 512px" %}
     </div>
     </div>
   </section>
@@ -160,13 +140,7 @@ ogImage: /assets/images/parlor-placeholder.jpg
       </div>
     </div>
     <div class="split-media reveal">
-      <img
-        src="/assets/images/parlor-placeholder.jpg"
-        srcset="/assets/images/parlor-placeholder-900.webp 900w, /assets/images/parlor-placeholder.webp 1613w"
-        sizes="(max-width: 900px) 100vw, 50vw"
-        width="1613" height="1131"
-        loading="lazy"
-        alt="A Portland parlor staged with fine art and silver ahead of an estate sale">
+      {% art "estate-donation-curiosities", "(max-width: 900px) 100vw, 512px" %}
     </div>
     </div>
   </section>
@@ -207,13 +181,7 @@ ogImage: /assets/images/parlor-placeholder.jpg
   <!-- =========================== FEE STRUCTURE =========================== -->
   <section class="fee-structure" id="fee-structure">
     <div class="fee-structure-media">
-      <img
-        src="/assets/images/parlor-placeholder.jpg"
-        srcset="/assets/images/parlor-placeholder-900.webp 900w, /assets/images/parlor-placeholder.webp 1613w"
-        sizes="100vw"
-        width="1613" height="1131"
-        loading="lazy"
-        alt="A Portland parlor staged for an estate sale">
+      {% art "estate-fee-schedule-palace", "100vw" %}
     </div>
     <div class="fee-structure-scrim" aria-hidden="true"></div>
     <div class="container">
@@ -223,7 +191,7 @@ ogImage: /assets/images/parlor-placeholder.jpg
         <p class="fee-card-body">Beyond that, we charge nominal fees for removing all remaining items and garbage from your home after the sale. Our goal is to get you the highest return for your property and completely empty your house so that you may move ahead with the estate liquidation process.</p>
         <p class="fee-card-body">Each estate and each home is different. Each family has different needs. Let&rsquo;s discuss yours.</p>
         <div class="about-cta mx-auto">
-          <a class="button button-primary" href="#main">Get Started</a>
+          <a class="button button-primary" href="#schedule-consultation">Get Started</a>
         </div>
       </div>
     </div>
@@ -299,7 +267,7 @@ ogImage: /assets/images/parlor-placeholder.jpg
 
         <div class="discovery-cards">
           <article class="discovery-card reveal" id="upcoming-sales">
-            <img src="/assets/images/parlor-placeholder.jpg" srcset="/assets/images/parlor-placeholder-900.webp 900w" sizes="(max-width: 760px) 100vw, 50vw" width="1613" height="1131" loading="lazy" alt="A pine hutch with leaded-glass doors from a recent Gary Germer & Associates estate sale">
+            {% art "discovery-upcoming-sales", "(max-width: 760px) 100vw, 540px" %}
             <svg class="discovery-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 11.5 12 4l8 7.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9.5h12V10" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 19.5V14h4v5.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <a class="discovery-card-link" href="/upcoming-sales" aria-label="View Current Sales — Upcoming Estate Sales">
               <div class="discovery-card-body">
@@ -309,11 +277,11 @@ ogImage: /assets/images/parlor-placeholder.jpg
             </a>
           </article>
           <article class="discovery-card reveal" id="shop">
-            <img src="/assets/images/parlor-placeholder.jpg" srcset="/assets/images/parlor-placeholder-900.webp 900w" sizes="(max-width: 760px) 100vw, 50vw" width="1613" height="1131" loading="lazy" alt="A gilt-framed landscape painting and floral arrangement from our online shop">
+            {% art "discovery-vault-necklace", "(max-width: 760px) 100vw, 540px" %}
             <svg class="discovery-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M10.2 4.7h7.6v3.4l-7.6 7.6-3.8-3.8Z" stroke-linejoin="round"/><path d="m11.8 8.6-5.6 5.6" stroke-linecap="round"/><path d="M4 17.5h7.5" stroke-linecap="round"/><circle cx="14.7" cy="7.7" r="0.9" fill="currentColor" stroke="none"/></svg>
-            <a class="discovery-card-link" href="https://shop.garygermer.com/collections/newly-listed" aria-label="Shop the Collection — Online Shop">
+            <a class="discovery-card-link" href="https://shop.garygermer.com/collections/newly-listed" aria-label="Shop the Collection — Gary's Vault">
               <div class="discovery-card-body">
-                <h3 class="discovery-card-title">Online Shop</h3>
+                <h3 class="discovery-card-title">Gary's Vault</h3>
                 <span class="button button-on-dark" aria-hidden="true">Shop the Collection</span>
               </div>
             </a>
@@ -322,10 +290,8 @@ ogImage: /assets/images/parlor-placeholder.jpg
 
         <div class="discovery-signup" id="estate-alerts">
           <p class="section-body">Be the first to know about new sales and extraordinary finds.</p>
-          <form class="discovery-signup-row" action="https://formsubmit.co/info@garygermer.com" method="POST">
-            <input type="hidden" name="_subject" value="New estate sale alert subscriber">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_next" value="https://www.garygermer.com/thanks.html">
+          <form class="discovery-signup-row" action="/api/submit-inquiry" method="POST">
+            <input type="hidden" name="form" value="newsletter">
             <div class="form-honey" aria-hidden="true">
               <label for="alerts-company">Leave this field empty</label>
               <input type="text" id="alerts-company" name="_honey" tabindex="-1" autocomplete="off">
@@ -338,6 +304,7 @@ ogImage: /assets/images/parlor-placeholder.jpg
               <label class="field-label" for="alerts-email">Email</label>
               <input id="alerts-email" name="email" type="email" placeholder="Email" autocomplete="email" required>
             </div>
+            <p class="form-submit-error" role="alert" hidden></p>
             <button class="button button-navy" type="submit">Subscribe</button>
           </form>
         </div>

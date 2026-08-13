@@ -61,6 +61,14 @@
               width="{{ heroImage.width }}" height="{{ heroImage.height }}"
               alt="{{ heroImage.alt }}"
               fetchpriority="high">
+            {% if galleryCount and galleryCount > 1 %}
+            <button type="button" class="shop-gallery-btn shop-gallery-prev" data-shop-gallery-prev aria-label="Previous photo">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button type="button" class="shop-gallery-btn shop-gallery-next" data-shop-gallery-next aria-label="Next photo">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            {% endif %}
           </div>
           {% if galleryCount and galleryCount > 1 %}
           <div class="shop-gallery-thumbs">
@@ -93,7 +101,7 @@
             {% else %}
             <a class="button button-primary" href="{{ shopUrl }}">Shop This Item</a>
             {% endif %}
-            <a class="button button-secondary" href="https://shop.garygermer.com/collections/newly-listed">Visit Our Online Shop</a>
+            <a class="button button-secondary" href="https://shop.garygermer.com/collections/newly-listed">Visit Our Online Store</a>
           </div>
           {% include "partials/blog-share.njk" %}
         </div>
@@ -108,25 +116,24 @@
       <div class="post-media">
         {% if isVideo %}
         {#
-          Asks for unmuted autoplay and degrades to one click when the browser
-          refuses. Chrome/Safari only allow autoplay *with sound* once a domain
+          No autoplay: Chrome/Safari only allow unmuted autoplay once a domain
           has built up enough media-engagement history (which is why
-          youtube.com can do it and a small site cannot); a click that
-          navigates here does not carry a gesture across the page load. So:
-          request it, and if the play() promise is rejected, script.js reveals
-          the play button. Clicking that is a real gesture, so sound is
-          guaranteed. The YouTube embed can't report a blocked autoplay back to
-          us, but it raises its own centred play button in exactly that case,
-          so it needs no fallback of ours.
+          youtube.com can do it and a small site never will), and a click on
+          the blog card that navigated here doesn't carry a "user gesture"
+          across the page load, so an unmuted autoplay would just get
+          silently blocked anyway. Instead, a big, hard-to-miss play button
+          sits over the poster; clicking it *is* the gesture, so sound is
+          guaranteed once the visitor presses it. The YouTube embed needs no
+          button of ours — it shows its own centered play button.
         #}
-        <div class="blog-video-embed"{% if sourceType != "youtube" %} data-video-autoplay{% endif %}>
+        <div class="blog-video-embed">
           {% if sourceType == "youtube" %}
-          <iframe src="https://www.youtube-nocookie.com/embed/{{ source.id }}?autoplay=1&amp;playsinline=1" title="{{ title }}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe src="https://www.youtube-nocookie.com/embed/{{ source.id }}?playsinline=1" title="{{ title }}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           {% else %}
-          <video controls autoplay playsinline preload="auto" poster="{{ heroImage.src }}">
+          <video controls playsinline preload="metadata" poster="{{ heroImage.src }}">
             <source src="{{ source.video }}" type="video/mp4">
           </video>
-          <button type="button" class="video-play-fallback" data-video-play hidden aria-label="Play video">
+          <button type="button" class="video-play-fallback" data-video-play aria-label="Play video">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
           </button>
           {% endif %}

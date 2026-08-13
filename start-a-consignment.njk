@@ -1,0 +1,87 @@
+---
+permalink: /start-a-consignment/
+title: Start a Consignment | Gary Germer & Associates
+description: "Tell us about your item and Gary Germer & Associates will put it in front of the highest paying collectors — through our Portland gallery, our online marketplaces, and our network of designers and collectors."
+ogTitle: Start a Consignment | Gary Germer & Associates
+ogDescription: "Tell us about your item and Gary Germer & Associates will help you get it in front of the right buyers."
+ogImage: /assets/images/art/start-consignment-hero-silver.jpg
+---
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+
+  <!-- ============================== HERO ==============================
+       Modeled directly on start-an-appraisal.njk's hero — same
+       .sale-hero--tall two-column shell, same form-card treatment — since
+       this is the dedicated consignment intake page in the same relationship
+       to /our-services/consignment/ that /start-an-appraisal/ has to
+       /our-services/appraisals/. -->
+  <section class="hero sale-hero sale-hero--tall" id="consignment-hero">
+    <div class="hero-media">
+      {% art "start-consignment-hero-silver", "100vw", "", "eager" %}
+    </div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+
+    <div class="hero-shell sale-hero-shell">
+      <div class="hero-copy">
+        <p class="eyebrow eyebrow-on-dark">Start a Consignment</p>
+        <h1 class="hero-heading">Let&rsquo;s Find Your Item the Right Buyer</h1>
+        <span class="hero-rule" aria-hidden="true"></span>
+        <p class="hero-lead hero-lead-compact">Gary Germer &amp; Associates is the region&rsquo;s leading purveyor of fine items. Tell us about what you&rsquo;d like to sell, and our mission is to go out into the world and put it in front of the highest paying collectors &mdash; wherever they may be.</p>
+      </div>
+
+      <div class="hero-form-card sale-info-bar" id="consignment-form">
+        <h2>Start a Consignment</h2>
+        <form class="form-grid" action="/api/submit-inquiry" method="POST" enctype="multipart/form-data" novalidate>
+          <input type="hidden" name="form" value="consignment">
+          <div class="form-honey" aria-hidden="true">
+            <label for="consignment-intake-company">Leave this field empty</label>
+            <input type="text" id="consignment-intake-company" name="_honey" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label class="field-label" for="consignment-intake-first-name">First Name</label>
+              <input id="consignment-intake-first-name" name="first_name" type="text" autocomplete="given-name" required>
+              <p class="field-error" role="alert">Please enter your first name.</p>
+            </div>
+            <div class="field">
+              <label class="field-label" for="consignment-intake-last-name">Last Name</label>
+              <input id="consignment-intake-last-name" name="last_name" type="text" autocomplete="family-name" required>
+              <p class="field-error" role="alert">Please enter your last name.</p>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label class="field-label" for="consignment-intake-email">Email</label>
+              <input id="consignment-intake-email" name="email" type="email" autocomplete="email" required>
+              <p class="field-error" role="alert">Please enter a valid email.</p>
+            </div>
+            <div class="field">
+              <label class="field-label" for="consignment-intake-phone">Phone</label>
+              <input id="consignment-intake-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel">
+            </div>
+          </div>
+          <div class="field">
+            <label class="field-label" for="consignment-intake-message">Tell us about the item(s) you&rsquo;d like to consign</label>
+            <textarea id="consignment-intake-message" name="message" rows="3" required></textarea>
+          </div>
+          <div class="field">
+            <label class="field-label" for="consignment-intake-photos">Photos (optional)</label>
+            <div class="field-file">
+              <input id="consignment-intake-photos" name="attachment" type="file" accept="image/jpeg,image/png,image/webp" multiple>
+              <p class="form-note">JPG, PNG, or WEBP. Up to 4MB total (large photos are shrunk automatically).</p>
+            </div>
+          </div>
+          <p class="form-submit-error" role="alert" hidden></p>
+          <button class="button button-navy" type="submit">Submit Your Request</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ DISCOVERY ============================ -->
+  {% set signupSubject = "Start a Consignment page" %}
+  {% include "partials/discovery-band.njk" %}
+
+{% endblock %}

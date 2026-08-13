@@ -4,7 +4,7 @@ title: "Page Not Found | Gary Germer & Associates"
 description: "The page you're looking for couldn't be found. Return to the Gary Germer & Associates homepage."
 ogTitle: "Page Not Found | Gary Germer & Associates"
 ogDescription: "The page you're looking for couldn't be found. Return to the Gary Germer & Associates homepage."
-ogImage: /assets/images/parlor-placeholder.jpg
+ogImage: /assets/images/art/home-hero-gilded-salon.jpg
 ---
 {% extends "layouts/base.njk" %}
 
@@ -13,13 +13,7 @@ ogImage: /assets/images/parlor-placeholder.jpg
   <!-- ============================== 404 ============================== -->
   <section class="hero notfound-hero">
     <div class="hero-media">
-      <img
-        src="/assets/images/parlor-placeholder.jpg"
-        srcset="/assets/images/parlor-placeholder-900.webp 900w, /assets/images/parlor-placeholder.webp 1613w"
-        sizes="100vw"
-        width="1613" height="1131"
-        alt="An ornate, antique-filled Portland parlor with a crystal chandelier and period furnishings"
-        fetchpriority="high">
+      {% art "home-hero-gilded-salon", "100vw" %}
     </div>
     <div class="hero-scrim" aria-hidden="true"></div>
 

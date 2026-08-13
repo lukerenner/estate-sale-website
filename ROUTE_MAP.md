@@ -82,6 +82,33 @@ the real one the future page should use:
 | Watch the Videos (About Gary CTA) | Actual YouTube channel/video (external, already live) | Preserves the current live destination rather than inventing a future in-site video library page |
 | View Current Sales (Discovery card) | `/upcoming-sales` | Dedicated sale-listing page not part of this phase |
 
+## Second batch of standalone pages (2026-08-10)
+
+Per direction from Luke: of the routes below "Future-route placeholders" and
+the legal pages, these four now ship as real pages (same `sale-hero` /
+`split` / `faq-section` template pieces as the existing service pages — no
+new markup patterns introduced). Explicitly deferred for a later phase:
+Press, Video, Online Stores, and Give Us a Review.
+
+| Route | What it is | Notes |
+| --- | --- | --- |
+| `/start-a-consignment/` | Full consignment intake form | Modeled directly on `/start-an-appraisal/` — first/last name, email, phone, item description, optional photos. `/our-services/consignment/`'s own hero form is untouched (still a working direct-submit quick form); this is an additional, more thorough intake, same relationship appraisals has between its service page and its dedicated intake page. |
+| `/join-our-mailing-list/` | Standalone signup page | Deliberately lean — a single hero with the two-field signup form (name + email) plus the two discovery cards, no second copy of the signup form further down the page. |
+| `/contact/` | Merged contact + consultation page | 1.0 had `/contact` and `/consultation` as two separate pages; this build already treats them as one "It Starts with a Conversation" concept on the homepage, so they merge into one page here too. `/consultation` now 301s here instead of to the homepage anchor. |
+| `/our-services/speaking-engagements-and-clinics/` | Speaking Engagements & Clinics service page | Real copy pulled from the 1.0 page (appraisal-clinic pricing, FAQ, workshop topics) — not rewritten. Resolves a pre-existing dangling in-text mention on `/our-services/appraisals/`'s FAQ ("please visit our Speaking Engagements page"), now a real link. |
+
+Header nav gained "Speaking Engagements" and "Contact" entries for these.
+The homepage's own CTA buttons/nav-cta still point at `/#consultation` (an
+in-page anchor) rather than `/contact/` — changing that would break the
+homepage's own smooth-scroll behavior for a link that already works there.
+
+Also fixed in passing: the "Gary&rsquo;s Vault" shop-card label was renamed
+to "Online Shop" everywhere on 2026-08-09 (see the in-page anchors table
+above) but the rename had only been applied to some pages. `index.njk`,
+`our-services/estate-sales.njk`, and the shared
+`partials/discovery-band.njk` all still said "Gary's Vault" — now consistent
+sitewide.
+
 ## Retired current-site routes
 
 Everything the outgoing site (`1.0/sitemap.xml`) had indexed — blog, press,

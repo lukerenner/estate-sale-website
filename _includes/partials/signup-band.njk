@@ -8,10 +8,8 @@
 
       <div class="discovery-signup" id="estate-alerts">
         <p class="section-body">Get early access to upcoming sales, new photos, and extraordinary finds.</p>
-        <form class="discovery-signup-row" action="https://formsubmit.co/info@garygermer.com" method="POST">
-          <input type="hidden" name="_subject" value="New estate sale alert subscriber — {{ signupSubject | default('Blog') }}">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_next" value="https://www.garygermer.com/thanks.html">
+        <form class="discovery-signup-row" action="/api/submit-inquiry" method="POST">
+          <input type="hidden" name="form" value="newsletter">
           <div class="form-honey" aria-hidden="true">
             <label for="alerts-company">Leave this field empty</label>
             <input type="text" id="alerts-company" name="_honey" tabindex="-1" autocomplete="off">
@@ -24,6 +22,7 @@
             <label class="field-label" for="alerts-email">Email</label>
             <input id="alerts-email" name="email" type="email" placeholder="Email" autocomplete="email" required>
           </div>
+          <p class="form-submit-error" role="alert" hidden></p>
           <button class="button button-navy" type="submit">Subscribe</button>
         </form>
       </div>

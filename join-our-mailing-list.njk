@@ -1,0 +1,96 @@
+---
+permalink: /join-our-mailing-list/
+title: Join Our Mailing List | Gary Germer & Associates
+description: "Get notified of local Portland estate sales, consignment opportunities, and other treasures."
+ogTitle: Join Our Mailing List | Gary Germer & Associates
+ogDescription: "Join our newsletter and we'll keep you up-to-date on all of our upcoming events, with an insider's look at our recent consignment items."
+ogImage: /assets/images/art/mailing-list-hero-chandelier.jpg
+---
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+
+  <!-- ============================== HERO ==============================
+       Same sale-hero shell as the other intake pages, but the form itself
+       is just the two-field discovery-signup form (see
+       partials/discovery-band.njk) — no reason to duplicate a longer form
+       here when the whole point of this page is a one-step signup. -->
+  <section class="hero sale-hero" id="mailing-list-hero">
+    <div class="hero-media">
+      {% art "mailing-list-hero-chandelier", "100vw", "", "eager" %}
+    </div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+
+    <div class="hero-shell sale-hero-shell">
+      <div class="hero-copy">
+        <p class="eyebrow eyebrow-on-dark">Mailing List</p>
+        <h1 class="hero-heading">Our Mailing List Is Not to Be Missed</h1>
+        <span class="hero-rule" aria-hidden="true"></span>
+        <p class="hero-lead hero-lead-compact">Join our newsletter and we&rsquo;ll keep you up-to-date on all of our upcoming events. You&rsquo;ll even get an insider&rsquo;s look at our recent consignment items.</p>
+
+        <div class="hero-trust">
+          <p class="hero-trust-stat"><strong>8,600+ treasure hunters</strong> can&rsquo;t be wrong.</p>
+        </div>
+      </div>
+
+      <div class="hero-form-card sale-info-bar" id="signup">
+        <h2>Get Estate Sale Alerts</h2>
+        <form class="form-grid" action="/api/submit-inquiry" method="POST" novalidate>
+          <input type="hidden" name="form" value="newsletter">
+          <div class="form-honey" aria-hidden="true">
+            <label for="mailing-list-company">Leave this field empty</label>
+            <input type="text" id="mailing-list-company" name="_honey" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="field">
+            <label class="field-label" for="mailing-list-name">Name</label>
+            <input id="mailing-list-name" name="name" type="text" autocomplete="name" required>
+            <p class="field-error" role="alert">Please enter your name.</p>
+          </div>
+          <div class="field">
+            <label class="field-label" for="mailing-list-email">Email</label>
+            <input id="mailing-list-email" name="email" type="email" autocomplete="email" required>
+            <p class="field-error" role="alert">Please enter a valid email.</p>
+          </div>
+          <p class="form-submit-error" role="alert" hidden></p>
+          <button class="button button-navy" type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ DISCOVERY ============================
+       Just the two discovery cards, lifted from discovery-band.njk without
+       its signup half — the hero above already is the signup, so a second
+       one right underneath would be redundant. -->
+  <section class="section discovery-band">
+    <div class="container">
+      <div class="discovery-frame">
+        <h2 class="section-heading discovery-heading-divided"><span>While You&rsquo;re Here</span></h2>
+
+        <div class="discovery-cards">
+          <article class="discovery-card reveal" id="upcoming-sales">
+            {% art "discovery-upcoming-sales", "(max-width: 760px) 100vw, 540px" %}
+            <svg class="discovery-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 11.5 12 4l8 7.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9.5h12V10" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 19.5V14h4v5.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <a class="discovery-card-link" href="/estate-sales/" aria-label="View Current Sales — Upcoming Estate Sales">
+              <div class="discovery-card-body">
+                <h3 class="discovery-card-title">Upcoming Estate Sales</h3>
+                <span class="button button-on-dark" aria-hidden="true">View Current Sales</span>
+              </div>
+            </a>
+          </article>
+          <article class="discovery-card reveal" id="shop">
+            {% art "discovery-vault-necklace", "(max-width: 760px) 100vw, 540px" %}
+            <svg class="discovery-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M10.2 4.7h7.6v3.4l-7.6 7.6-3.8-3.8Z" stroke-linejoin="round"/><path d="m11.8 8.6-5.6 5.6" stroke-linecap="round"/><path d="M4 17.5h7.5" stroke-linecap="round"/><circle cx="14.7" cy="7.7" r="0.9" fill="currentColor" stroke="none"/></svg>
+            <a class="discovery-card-link" href="https://shop.garygermer.com/collections/newly-listed" aria-label="Shop the Collection — Gary's Vault">
+              <div class="discovery-card-body">
+                <h3 class="discovery-card-title">Gary's Vault</h3>
+                <span class="button button-on-dark" aria-hidden="true">Shop the Collection</span>
+              </div>
+            </a>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

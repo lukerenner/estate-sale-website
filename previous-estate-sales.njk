@@ -4,7 +4,7 @@ title: Previous Estate Sales — Portland, OR | Gary Germer & Associates
 description: "Browse past estate sales from Gary Germer & Associates across Portland, Lake Oswego, Camas, and the surrounding area. See the neighborhoods, homes, and collections we've handled over more than 30 years."
 ogTitle: Previous Estate Sales — Gary Germer & Associates
 ogDescription: "Browse past estate sales from Gary Germer & Associates across Portland and the surrounding area — a look at the neighborhoods, homes, and collections we've handled."
-ogImage: /assets/images/parlor-placeholder.jpg
+ogImage: /assets/images/art/previous-sales-hero-staircase.jpg
 ---
 {% extends "layouts/base.njk" %}
 
@@ -13,15 +13,9 @@ ogImage: /assets/images/parlor-placeholder.jpg
   {% set nextSale = collections.upcomingEstateSales[0] %}
 
   <!-- ======================== UPCOMING SALES & EVENTS ======================== -->
-  <section class="hero sale-hero">
+  <section class="hero sale-hero" id="get-notified">
     <div class="hero-media">
-      <img
-        src="/assets/images/parlor-placeholder.jpg"
-        srcset="/assets/images/parlor-placeholder-900.webp 900w, /assets/images/parlor-placeholder.webp 1613w"
-        sizes="100vw"
-        width="1613" height="1131"
-        alt="An ornate, antique-filled Portland parlor staged for a Gary Germer & Associates estate sale"
-        fetchpriority="high">
+      {% art "previous-sales-hero-staircase", "100vw", "", "eager" %}
     </div>
     <div class="hero-scrim" aria-hidden="true"></div>
 
@@ -32,12 +26,10 @@ ogImage: /assets/images/parlor-placeholder.jpg
         <span class="hero-rule" aria-hidden="true"></span>
         <p class="hero-lead">Gary Germer &amp; Associates regularly hosts a variety of events, including estate sales, auctions, and appraisal roundtables. Some are local to the Portland area. Others are held at our online storefront.</p>
 
-        <div class="hero-subscribe" id="get-notified">
+        <div class="hero-subscribe">
           <h2 class="hero-subscribe-heading">Get Notified of Future Sales</h2>
-          <form class="discovery-signup-row hero-subscribe-row" action="https://formsubmit.co/info@garygermer.com" method="POST">
-            <input type="hidden" name="_subject" value="New estate sale alert subscriber — Estate Sales hero">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_next" value="https://www.garygermer.com/thanks.html">
+          <form class="discovery-signup-row hero-subscribe-row" action="/api/submit-inquiry" method="POST">
+            <input type="hidden" name="form" value="newsletter">
             <div class="form-honey" aria-hidden="true">
               <label for="hero-alerts-company">Leave this field empty</label>
               <input type="text" id="hero-alerts-company" name="_honey" tabindex="-1" autocomplete="off">
@@ -50,6 +42,7 @@ ogImage: /assets/images/parlor-placeholder.jpg
               <label class="field-label" for="hero-alerts-email">Email</label>
               <input id="hero-alerts-email" name="email" type="email" placeholder="Email" autocomplete="email" required>
             </div>
+            <p class="form-submit-error" role="alert" hidden></p>
             <button class="button button-primary" type="submit">Subscribe</button>
           </form>
         </div>
@@ -112,13 +105,7 @@ ogImage: /assets/images/parlor-placeholder.jpg
       </div>
     </div>
     <div class="split-media reveal">
-      <img
-        src="/assets/images/parlor-placeholder.jpg"
-        srcset="/assets/images/parlor-placeholder-900.webp 900w, /assets/images/parlor-placeholder.webp 1613w"
-        sizes="(max-width: 900px) 100vw, 50vw"
-        width="1613" height="1131"
-        loading="lazy"
-        alt="A Portland parlor staged for an estate sale">
+      {% art "previous-shopping-gilt-figure", "(max-width: 900px) 100vw, 512px" %}
     </div>
     </div>
   </section>
@@ -140,13 +127,7 @@ ogImage: /assets/images/parlor-placeholder.jpg
       </div>
     </div>
     <div class="split-media reveal">
-      <img
-        src="/assets/images/parlor-placeholder.jpg"
-        srcset="/assets/images/parlor-placeholder-900.webp 900w, /assets/images/parlor-placeholder.webp 1613w"
-        sizes="(max-width: 900px) 100vw, 50vw"
-        width="1613" height="1131"
-        loading="lazy"
-        alt="Guests browsing a Gary Germer & Associates estate sale in a Portland home">
+      {% art "previous-attending-salon", "(max-width: 900px) 100vw, 512px" %}
     </div>
     </div>
   </section>
@@ -209,10 +190,8 @@ ogImage: /assets/images/parlor-placeholder.jpg
 
         <div class="discovery-signup" id="estate-alerts">
           <p class="section-body">Get early access to upcoming sales, new photos, and extraordinary finds.</p>
-          <form class="discovery-signup-row" action="https://formsubmit.co/info@garygermer.com" method="POST">
-            <input type="hidden" name="_subject" value="New estate sale alert subscriber — Previous Sales page">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_next" value="https://www.garygermer.com/thanks.html">
+          <form class="discovery-signup-row" action="/api/submit-inquiry" method="POST">
+            <input type="hidden" name="form" value="newsletter">
             <div class="form-honey" aria-hidden="true">
               <label for="alerts-company">Leave this field empty</label>
               <input type="text" id="alerts-company" name="_honey" tabindex="-1" autocomplete="off">
@@ -225,6 +204,7 @@ ogImage: /assets/images/parlor-placeholder.jpg
               <label class="field-label" for="alerts-email">Email</label>
               <input id="alerts-email" name="email" type="email" placeholder="Email" autocomplete="email" required>
             </div>
+            <p class="form-submit-error" role="alert" hidden></p>
             <button class="button button-navy" type="submit">Subscribe</button>
           </form>
         </div>

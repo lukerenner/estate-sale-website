@@ -1,0 +1,554 @@
+{
+  "$comment": [
+    "Central art-direction manifest. This is the ONLY place image selections live.",
+    "`node tools/build-art-images.mjs` reads this, normalizes tone/colour, generates",
+    "responsive WebP tiers into assets/images/art/, and writes _data/art.json with the",
+    "real pixel dimensions templates need. Templates never name a source file — they",
+    "call {% art 'slug' %}. To swap a photo, change `src` here and re-run the build.",
+    "",
+    "roots:  reference = art-direction/sources/, the licensed stock pool. Prefer",
+    "        these: they are the only photos shot by someone who levelled the",
+    "        camera and nailed focus. Kept OUTSIDE assets/ deliberately — assets/",
+    "        is passthrough-copied wholesale into _site, so a pool stored there",
+    "        would deploy to production for no reason.",
+    "        legacy = the 1.0 site's own image library. Its CORE pages only; the",
+    "        per-sale galleries there are the bad phone photography. Caps out",
+    "        around 2000px, so legacy sources suit cards, not full-bleed heroes.",
+    "        sales  = 2.0/assets/images/estate-sales/<sale>/ gallery tiers. Same",
+    "        bad photography — do not add new entries on this root.",
+    "",
+    "fields:",
+    "  slug      output basename + the id templates reference",
+    "  root/src  where the source pixels come from",
+    "  category  architecture | interior | object | detail | texture | people",
+    "  rank      1 = hero-grade, 2 = large editorial, 3 = supporting/card",
+    "  focal     object-position for crops ('50% 40%' etc)",
+    "  ratio     art-directed output aspect ratio (w/h); omit to keep native",
+    "  crop      optional pre-crop as ImageMagick geometry, applied before everything",
+    "  tone      per-image overrides for the normalizer (see build-art-images.mjs)",
+    "  alt       descriptive alt text",
+    "  use       where it is placed (documentation only; templates are authoritative)"
+  ],
+  "targets": {
+    "$comment": "Global tone targets. Every image is pulled toward these so the site reads as one body of work.",
+    "meanLuma": 0.44,
+    "wbStrength": 0.55,
+    "warmBias": {
+      "r": 1.012,
+      "g": 1,
+      "b": 0.984
+    },
+    "targetSaturation": 0.3,
+    "satStrength": 0.6,
+    "satFloor": 84,
+    "exposureStrength": 0.55,
+    "gammaClamp": [
+      0.82,
+      1.22
+    ],
+    "channelGainClamp": [
+      0.93,
+      1.09
+    ],
+    "tiers": [
+      640,
+      1024,
+      1280,
+      1600,
+      2000
+    ],
+    "quality": 74,
+    "fallbackWidth": 1200
+  },
+  "images": [
+    {
+      "slug": "home-hero-gilded-salon",
+      "root": "reference",
+      "src": "palace-of-queluz.jpg",
+      "category": "architecture",
+      "rank": 1,
+      "focal": "50% 45%",
+      "ratio": 1.7778,
+      "tone": {
+        "meanLuma": 0.36,
+        "exposureStrength": 0.5
+      },
+      "alt": "A palace salon hung with a crystal chandelier, an Empire pier mirror and gilt-framed paintings above mahogany furniture",
+      "use": "index.njk hero + 404.njk"
+    },
+    {
+      "slug": "estate-sales-hero-parlor",
+      "root": "legacy",
+      "src": "r86-photo-1507452786732-f2dc0a2e7b7f_0a55983e.webp",
+      "category": "architecture",
+      "rank": 1,
+      "focal": "50% 42%",
+      "ratio": 1.7778,
+      "alt": "A bay-windowed parlor with silk swag valances, a gilt chandelier and Victorian parlor seating",
+      "use": "our-services/estate-sales.njk hero"
+    },
+    {
+      "slug": "appraisals-hero-hands",
+      "root": "legacy",
+      "src": "a-60-rawimage_af5c29a8.webp",
+      "category": "people",
+      "rank": 1,
+      "focal": "50% 52%",
+      "ratio": 1.7778,
+      "crop": "1888x1333+0+0",
+      "$comment": "The egg sat at 47.2% of the frame while focal X was 55%, so CSS cover-cropping pushed it left of centre at every width. Measured in the 1440 render: the egg spanned x 590-745 of a 1600px-wide painted image with 88px clipped from the left, i.e. centre at 944/2000. Trimming the source to 1888 wide puts that centre at exactly 50%, so a symmetric focal keeps it centred at any viewport instead of only one.",
+      "alt": "Hands in a suit steadying a cobalt and gilt enamelled Faberge-style egg beside a painted porcelain ewer",
+      "use": "our-services/appraisals.njk hero"
+    },
+    {
+      "slug": "consignment-hero-library",
+      "root": "reference",
+      "src": "ornate-chair-books-library.jpg",
+      "category": "interior",
+      "rank": 1,
+      "focal": "45% 50%",
+      "ratio": 1.7778,
+      "tone": {
+        "meanLuma": 0.34
+      },
+      "$comment": "Was a macro of a single ring, which the intake form covered almost entirely — nothing of the subject survived. A full interior reads even with its middle obscured: shelved books fill the left, the gilt fauteuil is the accent, panelling and a candelabrum hold the right.",
+      "alt": "A giltwood armchair upholstered in red silk damask standing before the shelved books of a panelled library",
+      "use": "our-services/consignment.njk hero"
+    },
+    {
+      "slug": "speaking-hero-gallery",
+      "root": "legacy",
+      "src": "1142-gary-germer-estate-sale-portland-1jpg.webp",
+      "category": "interior",
+      "rank": 1,
+      "focal": "68% 45%",
+      "ratio": 1.7778,
+      "alt": "The Gary Germer gallery during a sale, with silver hollowware laid out beneath a chandelier",
+      "use": "our-services/speaking-engagements-and-clinics.njk hero"
+    },
+    {
+      "slug": "previous-sales-hero-staircase",
+      "root": "reference",
+      "src": "elegant-foyer-iron-railing.jpg",
+      "category": "architecture",
+      "rank": 1,
+      "focal": "50% 70%",
+      "ratio": 1.7778,
+      "alt": "A grand two-storey foyer with a curving wrought-iron staircase, gilt side chairs and a round centre table beneath an ornamented ceiling",
+      "use": "previous-estate-sales.njk hero",
+      "tone": {
+        "meanLuma": 0.4,
+        "gammaClamp": [
+          0.62,
+          1.22
+        ]
+      }
+    },
+    {
+      "slug": "contact-hero-mantel",
+      "root": "reference",
+      "src": "ornate-salon-chandelier.jpg",
+      "category": "interior",
+      "rank": 1,
+      "focal": "50% 50%",
+      "ratio": 1.7778,
+      "alt": "A formal salon with a crystal chandelier, panelled walls, silk-upholstered seating and a patterned marble floor",
+      "use": "contact.njk hero",
+      "tone": {
+        "meanLuma": 0.4,
+        "gammaClamp": [
+          0.62,
+          1.22
+        ]
+      }
+    },
+    {
+      "slug": "mailing-list-hero-chandelier",
+      "root": "legacy",
+      "src": "r98-chandelier_52267c08.webp",
+      "category": "detail",
+      "rank": 1,
+      "focal": "50% 45%",
+      "ratio": 1.7778,
+      "tone": {
+        "meanLuma": 0.17,
+        "exposureStrength": 0.3
+      },
+      "alt": "A crystal chandelier lit against a dark panelled ceiling",
+      "use": "join-our-mailing-list.njk hero"
+    },
+    {
+      "slug": "start-appraisal-hero-leather",
+      "root": "legacy",
+      "src": "r785-P6LeokV6u_8_e6229a69.webp",
+      "category": "texture",
+      "rank": 1,
+      "focal": "50% 50%",
+      "ratio": 1.7778,
+      "tone": {
+        "meanLuma": 0.26
+      },
+      "alt": "The deep-buttoned oxblood leather of an antique chesterfield",
+      "use": "start-an-appraisal.njk hero"
+    },
+    {
+      "slug": "start-consignment-hero-silver",
+      "root": "reference",
+      "src": "archduke-salon-gilt.jpg",
+      "category": "interior",
+      "rank": 1,
+      "focal": "50% 50%",
+      "ratio": 1.7778,
+      "alt": "A red-walled period drawing room hung with gilt-framed mirrors and a chandelier above carved and gilded furniture",
+      "use": "start-a-consignment.njk hero"
+    },
+    {
+      "slug": "index-estates-dining",
+      "root": "reference",
+      "src": "beautifully-set-dining-table.jpg",
+      "category": "interior",
+      "rank": 2,
+      "focal": "42% 50%",
+      "ratio": 0.7131,
+      "alt": "A dining table laid with cut crystal and painted porcelain around a crystal candelabrum, before tall windows hung with yellow silk",
+      "use": "index.njk — Estate Liquidation Services",
+      "maxTier": 1600
+    },
+    {
+      "slug": "index-appraisals-silver",
+      "root": "reference",
+      "src": "traditional-silver-teapot-set.jpg",
+      "category": "detail",
+      "rank": 2,
+      "focal": "50% 50%",
+      "ratio": 0.7131,
+      "tone": {
+        "meanLuma": 0.42,
+        "wbStrength": 0.35
+      },
+      "alt": "A set of chased silver coffee cups with domed lids and filigree saucers, closely grouped on a silver tray",
+      "use": "index.njk — Appraisal Services",
+      "maxTier": 1600
+    },
+    {
+      "slug": "index-consignment-mirrors",
+      "root": "reference",
+      "src": "ornate-gold-mirrors-babys-breath.jpg",
+      "category": "object",
+      "rank": 2,
+      "focal": "46% 50%",
+      "tone": {
+        "wbStrength": 0.35
+      },
+      "alt": "A carved giltwood rococo mirror hung beside a smaller shell-crested one, framed by trailing sprays of dried baby's breath",
+      "use": "index.njk — Consignment Services",
+      "ratio": 0.7131,
+      "maxTier": 1600
+    },
+    {
+      "slug": "index-consult-clock",
+      "root": "reference",
+      "src": "ormolu-mantel-clock.jpg",
+      "category": "object",
+      "rank": 2,
+      "focal": "50% 45%",
+      "ratio": 0.7131,
+      "alt": "A gilt-bronze figural mantel clock, a seated woman resting against the enamel dial above a scrolled and foliate base",
+      "use": "index.njk — consultation card",
+      "maxTier": 1600
+    },
+    {
+      "slug": "discovery-upcoming-sales",
+      "root": "reference",
+      "src": "rioja-palace-exterior.jpg",
+      "category": "architecture",
+      "rank": 3,
+      "focal": "50% 55%",
+      "ratio": 2,
+      "tone": {
+        "meanLuma": 0.58
+      },
+      "$comment": "Discovery cards stack heavy darkening on the photo — filter: brightness(0.94) plus a 0.50-to-0.72 black gradient (styles.css:783-789) — and then set a large serif title across the middle of it. That is a silhouette test, not an exposure one: an atmospheric interior tried here first read as mush even after being lifted to 0.47 mean luma, because it has no strong simple shape to survive the scrim. A white facade against sky does. Left brighter than the house target on purpose, so the card's own darkening lands it in the right place rather than below it.",
+      "alt": "The columned portico and twin curving staircases of a white neoclassical mansion, seen from the garden path",
+      "use": "discovery-band.njk — Upcoming Estate Sales card",
+      "maxTier": 1600
+    },
+    {
+      "slug": "discovery-vault-necklace",
+      "root": "reference",
+      "src": "luxury-necklace-green-gemstones.jpg",
+      "category": "object",
+      "rank": 3,
+      "focal": "50% 50%",
+      "ratio": 2,
+      "tone": {
+        "meanLuma": 0.36
+      },
+      "alt": "A gold necklace and matching drop earrings set with green gemstones, laid out on brown velvet",
+      "use": "Gary's Vault card in every discovery band — discovery-band.njk plus the inlined copies in index.njk, estate-sales.njk and join-our-mailing-list.njk",
+      "maxTier": 1600
+    },
+    {
+      "slug": "consignment-process-silver-service",
+      "root": "sales",
+      "src": "riverwood/riverwood-18-1400.webp",
+      "category": "object",
+      "rank": 2,
+      "focal": "50% 50%",
+      "ratio": 0.7131,
+      "$comment": "Shot against a cold grey seamless. Stronger white balance than the global default is what carries it into the warm-neutral house look rather than leaving one conspicuously blue card in the set.",
+      "alt": "A silver tea and coffee service on a salver, set on a carved sideboard beneath a gilt-framed impressionist garden painting",
+      "use": "consignment.njk — Our Process",
+      "maxTier": 1600,
+      "rotate": 0.7
+    },
+    {
+      "slug": "consignment-timeline-cabinet",
+      "root": "reference",
+      "src": "unused-gilt-figurines-display.jpg",
+      "category": "object",
+      "rank": 2,
+      "focal": "50% 55%",
+      "ratio": 0.7131,
+      "alt": "A row of gilt monkey figurines displayed on stacked lacquer boxes and books, staged on a console table",
+      "use": "consignment.njk — Your Timeline",
+      "maxTier": 1600
+    },
+    {
+      "slug": "consignment-letting-go-ring",
+      "root": "reference",
+      "src": "engagement-ring-bokeh.jpg",
+      "category": "object",
+      "rank": 2,
+      "focal": "33% 55%",
+      "ratio": 0.7131,
+      "tone": {
+        "meanLuma": 0.4
+      },
+      "alt": "A diamond solitaire ring with a pave-set band, resting on cut glass against warm scattered highlights",
+      "use": "consignment.njk — Letting Go (\"Consignment That Sparks Joy\")",
+      "maxTier": 1600
+    },
+    {
+      "slug": "consignment-quote-vanity-tray",
+      "root": "reference",
+      "src": "vanity-silver-tray.jpg",
+      "category": "object",
+      "rank": 3,
+      "focal": "50% 50%",
+      "ratio": 1.7778,
+      "$comment": "Ratio was 0.7131 — same full-bleed band defect as the other two .fee-structure-media entries. Darkened well below the global target because the band carries white quote text over it.",
+      "alt": "A silver dressing-table tray holding a repousse hand mirror, cut-glass scent bottles and a scatter of jewellery",
+      "use": "consignment.njk — full-bleed background of the pull-quote band"
+    },
+    {
+      "slug": "estate-process-dining",
+      "root": "reference",
+      "src": "perthshire-dining-table.jpg",
+      "category": "interior",
+      "rank": 2,
+      "focal": "50% 50%",
+      "ratio": 0.7131,
+      "alt": "A long mahogany dining table laid with silver, crystal and candelabra in a green panelled room hung with oil paintings",
+      "use": "estate-sales.njk — A Managed Process",
+      "maxTier": 1600,
+      "tone": {
+        "gammaClamp": [
+          0.82,
+          1.45
+        ]
+      }
+    },
+    {
+      "slug": "estate-value-limestone-mantel",
+      "root": "reference",
+      "src": "lyme-park-drawing-room.jpg",
+      "category": "interior",
+      "rank": 2,
+      "focal": "50% 50%",
+      "ratio": 0.7131,
+      "alt": "A Victorian drawing room with a carved overmantel, stained-glass window and cut-glass decanters set out on a polished table",
+      "use": "estate-sales.njk — Maximizing Value",
+      "maxTier": 1600,
+      "tone": {
+        "gammaClamp": [
+          0.82,
+          1.45
+        ]
+      }
+    },
+    {
+      "slug": "estate-donation-curiosities",
+      "root": "reference",
+      "src": "globes-and-curiosities.jpg",
+      "category": "object",
+      "rank": 2,
+      "focal": "50% 50%",
+      "ratio": 0.7131,
+      "alt": "A table of collected objects — terrestrial globes, silver boxes, brass candlesticks and a Staffordshire spaniel set out together",
+      "use": "estate-sales.njk — Our Commitment (\"We Consider Every Avenue\")",
+      "maxTier": 1600
+    },
+    {
+      "slug": "appraisals-process-piano",
+      "root": "reference",
+      "src": "golden-antique-piano-cherub.jpg",
+      "category": "detail",
+      "rank": 2,
+      "focal": "50% 55%",
+      "ratio": 0.7131,
+      "tone": {
+        "meanLuma": 0.38,
+        "wbStrength": 0.3
+      },
+      "$comment": "wbStrength held well below the global 0.55: the subject is water-gilt bronze against satinwood, so a full white-balance correction reads the gold as a cast and drains it to grey.",
+      "alt": "A gilt-bronze winged figure mounted at the corner of a marquetry cabinet, below a band of cast foliage",
+      "use": "appraisals.njk — Our Process",
+      "maxTier": 1600
+    },
+    {
+      "slug": "appraisals-deliverables-still-life",
+      "root": "reference",
+      "src": "blue-velvet-still-life.jpg",
+      "category": "detail",
+      "rank": 2,
+      "focal": "52% 55%",
+      "ratio": 0.7131,
+      "tone": {
+        "meanLuma": 0.3,
+        "exposureStrength": 0.35
+      },
+      "$comment": "Deliberately left dark. The photograph is a low-key still life and lifting it to the global 0.44 target turns the blue velvet to grey flannel.",
+      "alt": "A brass peacock figure and a glazed box beside a matte vase of dried grasses, on a hammered brass table against blue velvet",
+      "use": "appraisals.njk — Customized Deliverables",
+      "maxTier": 1600
+    },
+    {
+      "slug": "appraisals-expert-staircase",
+      "root": "reference",
+      "src": "queen-victoria-staircase.jpg",
+      "category": "architecture",
+      "rank": 3,
+      "focal": "40% 50%",
+      "ratio": 0.7131,
+      "tone": {
+        "meanLuma": 0.32,
+        "targetSaturation": 0.24,
+        "satStrength": 0.8,
+        "satFloor": 80
+      },
+      "$comment": "Held down with saturation, not white balance. Raising wbStrength does nothing here: white balance anchors on the white patch (the brightest ~8% of the frame) and this frame's highlights are already neutral, so its gains came out 0.96/0.99/1.05 — well inside the clamp, nothing to unclamp. The cool cast lives in the midtones, out of that step's reach. Note the blue is mostly the building's own painted ironwork rather than a grade, so this is a restrained trim: pulled to 80% it sits closer to the warm house look, while a harder pull only turned real paint to mud.",
+      "alt": "A cast-iron and mahogany staircase spiralling down past tessellated tiled landings, seen from above",
+      "use": "appraisals.njk — Expert Witness Services",
+      "maxTier": 1600
+    },
+    {
+      "slug": "speaking-clinic-appraising",
+      "root": "legacy",
+      "src": "1395-amnw-perfume-bottles-17280839432701.webp",
+      "category": "people",
+      "rank": 3,
+      "focal": "39% 45%",
+      "ratio": 0.7131,
+      "tone": {
+        "meanLuma": 0.46,
+        "wbStrength": 0.7
+      },
+      "$comment": "AM Northwest studio still, the best-resolution on-air frames available (~2000px). A 0.7131 crop of a 1.6:1 frame spans only 45% of its width, so it cannot hold both Gary and the host — framed on Gary, which is what the slot is for. wbStrength above global to pull the studio's magenta key light back to neutral.",
+      "alt": "Gary Germer on the AM Northwest set, laughing as he hands an antique perfume bottle to the host across a table of cut-glass scent bottles",
+      "use": "speaking.njk — Live Entertainment",
+      "maxTier": 1600
+    },
+    {
+      "slug": "speaking-stories-map",
+      "root": "reference",
+      "src": "map-quill-and-compasses.jpg",
+      "category": "object",
+      "rank": 2,
+      "focal": "50% 50%",
+      "ratio": 0.7131,
+      "$comment": "Focal deliberately off-centre: the source is a wide-angle frame whose barrel distortion is worst at the left and right extremes, and a 62% crop window lands on the carved newel and balusters while excluding both.",
+      "alt": "An antique map spread out with a quill pen, brass compasses and pocket instruments resting on top of it",
+      "use": "speaking.njk — For All Ages",
+      "maxTier": 1600
+    },
+    {
+      "slug": "speaking-workshop-silver",
+      "root": "legacy",
+      "src": "00247216271374-amnw-pop-memorabilia-17280812198028.webp",
+      "category": "people",
+      "rank": 3,
+      "focal": "36% 45%",
+      "ratio": 0.7131,
+      "tone": {
+        "meanLuma": 0.46,
+        "wbStrength": 0.7
+      },
+      "$comment": "Replaces a 1280x720 video frame in which Gary's hands were motion-blurred. Same AM Northwest set and same framing logic as speaking-clinic-appraising.",
+      "alt": "Gary Germer on the AM Northwest set, smiling beside a gold foil-wrapped pop-art piece and a framed certificate",
+      "use": "speaking.njk — Clinics & Workshops",
+      "maxTier": 1600
+    },
+    {
+      "slug": "appraisals-faq-chandelier",
+      "root": "reference",
+      "src": "antique-crystal-chandelier-palace.jpg",
+      "category": "architecture",
+      "rank": 3,
+      "focal": "50% 50%",
+      "ratio": 1.7778,
+      "tone": {
+        "meanLuma": 0.38
+      },
+      "$comment": "Ratio was 0.7131 — same defect as estate-fee-schedule-palace. This backs the Managing Director pull-quote band, not the FAQ, and that band is full-bleed.",
+      "alt": "A gilt-bronze chandelier hung from a palace ceiling of pale green plasterwork moulded with figures and scrolling foliage",
+      "use": "appraisals.njk — full-bleed background of the pull-quote band"
+    },
+    {
+      "slug": "estate-fee-schedule-palace",
+      "root": "reference",
+      "src": "grand-palace-tsaritsyno.jpg",
+      "category": "architecture",
+      "rank": 2,
+      "focal": "50% 45%",
+      "ratio": 1.7778,
+      "tone": {
+        "meanLuma": 0.4
+      },
+      "$comment": "Ratio was 0.7131. This does not render as a portrait card — it is the full-bleed background of the fee band (.fee-structure-media is position:absolute inset:0), so a portrait crop was being stretched across a wide box and re-cropped hard by CSS. The `use` field said \"testimonials section\", which it never was.",
+      "alt": "A palace ballroom with gilded Corinthian columns, a marble balustrade and a crystal chandelier beneath a coffered ceiling",
+      "use": "estate-sales.njk — full-bleed background of the \"Our Fee Schedule\" band"
+    },
+    {
+      "slug": "previous-shopping-gilt-figure",
+      "root": "reference",
+      "src": "hall-of-mirrors-gilt-figure.jpg",
+      "category": "object",
+      "rank": 2,
+      "focal": "50% 45%",
+      "ratio": 0.7131,
+      "alt": "A gilded figural candelabrum standing against a marble pier beside a tall window in a palace gallery",
+      "use": "previous-estate-sales.njk — Shopping Our Sales",
+      "maxTier": 1600,
+      "tone": {
+        "gammaClamp": [
+          0.82,
+          1.45
+        ]
+      }
+    },
+    {
+      "slug": "previous-attending-salon",
+      "root": "sales",
+      "src": "westridge/westridge-01-1400.webp",
+      "category": "interior",
+      "rank": 2,
+      "focal": "50% 50%",
+      "ratio": 0.7131,
+      "$comment": "Focal pinned well left so the portrait crop lands on the open door and the writing desk beyond it, rather than the out-of-focus picture wall that fills the right half of the frame. Suits \"Attending a Sale\" better than the facade that was here — attending one means walking through the rooms.",
+      "alt": "A burl-front chest and a pair of tufted salon chairs arranged on a Persian carpet, with a bracket clock and framed paintings above",
+      "use": "previous-estate-sales.njk — Attending a Sale",
+      "maxTier": 1600
+    }
+  ]
+}

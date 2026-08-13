@@ -1,5 +1,6 @@
 var { execFileSync } = require("node:child_process");
 var path = require("node:path");
+var fs = require("node:fs");
 
 function slugify(str) {
   return (str || "")
@@ -194,6 +195,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("favicon.ico");
   eleventyConfig.addPassthroughCopy("robots.txt");
   eleventyConfig.addPassthroughCopy("_redirects");
+  eleventyConfig.addPassthroughCopy("_headers");
   eleventyConfig.addPassthroughCopy("thanks.html");
 
   eleventyConfig.addCollection("estateSales", (api) =>
@@ -265,6 +267,35 @@ module.exports = function (eleventyConfig) {
       .getFilteredByGlob("estate-sales/*.njk")
       .filter((item) => item.data.dates && item.data.dates.length && firstDate(item) > todayKey)
       .sort((a, b) => firstDate(a).localeCompare(firstDate(b)));
+  });
+
+  // The single soonest not-yet-concluded sale (today <= its last day), for
+  // the site-wide "hello bar" announcement — script.js decides at runtime
+  // whether today actually falls in the eligible window (the Monday before
+  // the sale through the sale's last closing time) and shows/hides it.
+  eleventyConfig.addCollection("heroBarSale", (api) => {
+    var todayKey = new Date().toISOString().slice(0, 10);
+    function sortedDates(item) {
+      return item.data.dates.slice().sort((a, b) => a.date.localeCompare(b.date));
+    }
+    var candidates = api
+      .getFilteredByGlob("estate-sales/*.njk")
+      .filter((item) => {
+        if (!item.data.dates || !item.data.dates.length) return false;
+        var dates = sortedDates(item);
+        return dates[dates.length - 1].date >= todayKey;
+      })
+      .map((item) => {
+        var dates = sortedDates(item);
+        return {
+          url: item.url,
+          firstDate: dates[0].date,
+          lastDate: dates[dates.length - 1].date,
+          lastCloses24: dates[dates.length - 1].closes24,
+        };
+      })
+      .sort((a, b) => a.firstDate.localeCompare(b.firstDate));
+    return candidates.length ? [candidates[0]] : [];
   });
 
   // Grouped neighborhood label ("Forest Heights, Portland, Oregon" -> "Forest
@@ -403,6 +434,71 @@ module.exports = function (eleventyConfig) {
     if (days < 7) return "Our Next Sale is in " + days + (days === 1 ? " Day." : " Days.");
     var weeks = Math.max(1, Math.round(days / 7));
     return "Our Next Sale is in " + weeks + (weeks === 1 ? " Week." : " Weeks.");
+  });
+
+  // ---- Art-directed photography ------------------------------------------
+  // {% art "slug", "sizes", "class", "eager" %}
+  //
+  // Emits the responsive <img> for one entry in art-direction/manifest.json.
+  // Templates reference a SLUG, never a file path, so re-art-directing a page
+  // is a manifest edit plus `node tools/build-art-images.mjs` — no template
+  // churn. Width/height always come from the real graded pixels so nothing
+  // shifts while the page loads, and the manifest's focal point is emitted as
+  // object-position so CSS `object-fit: cover` crops around the subject
+  // instead of the geometric centre.
+  //
+  // Pass eager="eager" for above-the-fold heroes; everything else lazy-loads.
+  //
+  // The cache is keyed on _data/art.json's mtime, not just "have we read it
+  // yet". `--serve` holds this module for hours, so a plain read-once cache
+  // meant that re-running the image build mid-session left the dev server
+  // emitting the PREVIOUS build's tier list and dimensions — srcset candidates
+  // that 404 and width/height that no longer match the file, i.e. layout shift.
+  // Re-reading only when the file actually changes keeps that honest for the
+  // price of one stat() per lookup.
+  var artData = null;
+  var artStamp = 0;
+  function art(slug) {
+    var p = path.join(process.cwd(), "_data/art.json");
+    var mtime = 0;
+    try { mtime = fs.statSync(p).mtimeMs; } catch (e) { /* no data file yet */ }
+    if (!artData || mtime !== artStamp) {
+      artData = mtime ? JSON.parse(fs.readFileSync(p, "utf8")) : {};
+      artStamp = mtime;
+    }
+    return artData[slug];
+  }
+
+  eleventyConfig.addShortcode("art", function (slug, sizes, className, eager) {
+    var img = art(slug);
+    if (!img) {
+      // Loud in the build log, invisible on the page — a missing photo should
+      // never ship as a broken image icon.
+      console.warn("[art] unknown slug: " + slug);
+      return "";
+    }
+    var dir = "/assets/images/art/";
+    var srcset = img.tiers
+      .map(function (w) { return dir + slug + "-" + w + ".webp " + w + "w"; })
+      .join(", ");
+    var safeAlt = String(img.alt || "").replace(/"/g, "&quot;");
+    return (
+      "<img" + (className ? ' class="' + className + '"' : "") +
+      ' src="' + dir + slug + '.jpg"' +
+      ' srcset="' + srcset + '"' +
+      ' sizes="' + (sizes || "100vw") + '"' +
+      ' width="' + img.width + '" height="' + img.height + '"' +
+      ' style="object-position:' + img.focal + '"' +
+      (eager === "eager"
+        ? ' fetchpriority="high" decoding="async"'
+        : ' loading="lazy" decoding="async"') +
+      ' alt="' + safeAlt + '">'
+    );
+  });
+
+  // {% artUrl "slug" %} — absolute-path JPEG, for og:image and JSON-LD.
+  eleventyConfig.addShortcode("artUrl", function (slug) {
+    return art(slug) ? "/assets/images/art/" + slug + ".jpg" : "";
   });
 
   // ---- Blog body shortcodes (see PLAN "Content model") --------------------

@@ -1,0 +1,166 @@
+---
+permalink: /our-services/speaking-engagements-and-clinics/
+title: Speaking Engagements & Appraisal Clinics | Gary Germer & Associates
+description: "Gary Germer produces live \"Antiques Roadshow\"-style appraisal clinics for entertainment or promotional purposes, plus keynotes and workshops for civic groups, retirement communities, and businesses across the Portland area."
+ogTitle: Speaking Engagements & Appraisal Clinics | Gary Germer & Associates
+ogDescription: "Book Gary Germer for a live appraisal gala, keynote, or clinic — a fun, informative event for your organization or community."
+ogImage: /assets/images/art/speaking-hero-gallery.jpg
+---
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+
+  <!-- ============================== HERO ============================== -->
+  <section class="hero sale-hero" id="schedule-consultation">
+    <div class="hero-media">
+      {% art "speaking-hero-gallery", "100vw", "", "eager" %}
+    </div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+
+    <div class="hero-shell sale-hero-shell">
+      <div class="hero-copy">
+        <p class="eyebrow eyebrow-on-dark">Speaking Engagements &amp; Clinics</p>
+        <h1 class="hero-heading">Super Fun Antiques Roadshow-Style Events, Right Here in Portland</h1>
+        <span class="hero-rule" aria-hidden="true"></span>
+        <p class="hero-lead hero-lead-compact">Gary Germer is now available to produce live &ldquo;Antiques Roadshow&rdquo;-style appraisal clinics for entertainment or promotional purposes. For years, Mr. Germer has been a regular contributor to local TV shows such as KATU TV&rsquo;s AM Northwest and KPTV&rsquo;s Good Day Oregon. Over the years, he has hosted thousands of &ldquo;Antiques Roadshow&rdquo;-style appraisal clinics with humor, insight, and in a very accessible style. He has also been a keynote speaker at several civic gatherings.</p>
+      </div>
+
+      <div class="hero-form-card sale-info-bar">
+        <h2>Book an Event</h2>
+        <form class="form-grid" action="/api/submit-inquiry" method="POST" novalidate>
+          <input type="hidden" name="form" value="contact">
+          <div class="form-honey" aria-hidden="true">
+            <label for="speaking-company">Leave this field empty</label>
+            <input type="text" id="speaking-company" name="_honey" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="speaking-name">Name</label>
+            <input id="speaking-name" name="name" type="text" autocomplete="name" required>
+            <p class="field-error" role="alert">Please enter your name.</p>
+          </div>
+          <div class="field">
+            <label class="field-label" for="speaking-email">Email</label>
+            <input id="speaking-email" name="email" type="email" autocomplete="email" required>
+            <p class="field-error" role="alert">Please enter a valid email.</p>
+          </div>
+          <div class="field">
+            <label class="field-label" for="speaking-phone">Phone</label>
+            <input id="speaking-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel">
+          </div>
+          <div class="field">
+            <label class="field-label" for="speaking-message">Tell us about your event</label>
+            <textarea id="speaking-message" name="message" rows="3"></textarea>
+          </div>
+          <p class="form-submit-error" role="alert" hidden></p>
+          <button class="button button-navy" type="submit">Book an Event</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== EXCITING & ENLIGHTENING ENTERTAINMENT ==================== -->
+  <section class="split on-dark" id="entertainment">
+    <div class="split-inner">
+    <div class="split-copy">
+      <div class="split-copy-inner">
+        <p class="eyebrow eyebrow-on-dark">Live Entertainment</p>
+        <h2 class="section-heading">Exciting &amp; Enlightening Entertainment.</h2>
+        <p class="section-body section-body-on-dark">Gary Germer is fun, funny, and very knowledgeable. Whether hosting a marketing/promotional clinic for a retirement community, a client appreciation party for a financial services company, or a fundraiser for the Humane Society, his appraisal gala events are always popular and well-attended.</p>
+        <p class="section-body section-body-on-dark">Everyone hopes for that magic moment where their item is revealed to be worth a lot of money, but sometimes the best moments come from things of high sentimental value even if it has low intrinsic value. No matter what they bring, everyone leaves after having a great time!</p>
+        <div class="about-cta split-cta-row">
+          <a class="button button-on-dark" href="#schedule-consultation">Book an Event</a>
+        </div>
+      </div>
+    </div>
+    <div class="split-media reveal">
+      {% art "speaking-clinic-appraising", "(max-width: 900px) 100vw, 512px" %}
+    </div>
+    </div>
+  </section>
+
+  <!-- =============== AN UNFORGETTABLE CHANCE TO SHARE STORIES =============== -->
+  <section class="split split-reverse" id="all-ages">
+    <div class="split-inner">
+    <div class="split-copy">
+      <div class="split-copy-inner">
+        <p class="eyebrow">For All Ages</p>
+        <h2 class="section-heading">An Unforgettable Chance to Share Stories From the Past.</h2>
+        <p class="section-body">The Antique Appraisal clinics are of interest to people of all ages. Either way, our antique appraisal clinics are a hit every time &mdash; just look at the continued success of the Antiques Roadshow on PBS!</p>
+        <p class="section-body">Too often family lore and bad recall has people wondering if they might have something of significant value laying around the house. Others have been holding onto things with the story they are valuable but don&rsquo;t know for sure. Still others love having a platform for &ldquo;show and tell&rdquo; with their most sentimental heirlooms.</p>
+        <p class="section-body">Whether an item is worth a lot of money or is just a sentimental reproduction, our events are fun and everyone leaves with a laugh and a bit more useful knowledge.</p>
+        <div class="about-cta split-cta-row">
+          <a class="button button-primary" href="#schedule-consultation">Let&rsquo;s Do It</a>
+        </div>
+      </div>
+    </div>
+    <div class="split-media reveal">
+      {% art "speaking-stories-map", "(max-width: 900px) 100vw, 512px" %}
+    </div>
+    </div>
+  </section>
+
+  <!-- ======================= CLINICS & WORKSHOPS ======================= -->
+  <section class="split" id="clinics">
+    <div class="split-inner">
+    <div class="split-copy">
+      <div class="split-copy-inner">
+        <p class="eyebrow">Beyond the Gala</p>
+        <h2 class="section-heading">We Also Do Clinics &amp; Workshops.</h2>
+        <p class="section-body">In addition to running Antiques Roadshow-type galas, Gary is very skilled at crafting informative speaking events and clinics that expertly reach your target demographic and give your audience the information they need. Regardless of your audience or the needs of your organization, Gary is there to help you establish your subject matter expertise with your existing or future clients.</p>
+        <p class="section-body">For example, a talk he has frequently given at retirement communities is positioned toward families who are downsizing. His &ldquo;10 Tips for an Easy Transition&rdquo; gives elderly parents and their adult children actionable insights into liquidating their estate and moving into a smaller home. Other topics he has spoken on include &ldquo;How to Gift Things for the Best Return&rdquo; and &ldquo;5 Things You Should Never Throw Out.&rdquo;</p>
+        <p class="section-body">Gary is not only available to speak at events, but on television and radio. Mr. Germer always has something good to say!</p>
+        <div class="about-cta split-cta-row">
+          <a class="button button-primary" href="#schedule-consultation">Discuss Your Event</a>
+        </div>
+      </div>
+    </div>
+    <div class="split-media reveal">
+      {% art "speaking-workshop-silver", "(max-width: 900px) 100vw, 512px" %}
+    </div>
+    </div>
+  </section>
+
+  <!-- ================================ FAQ ================================ -->
+  <section class="section faq-section" id="faq">
+    <div class="container">
+      <div class="faq-grid">
+        <div class="faq-heading-col">
+          <h2 class="section-heading">Frequently Asked<br>Questions</h2>
+        </div>
+
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary class="faq-question">What do you charge?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>Mr. Germer charges $125 per event hour with a 3 hour minimum. Events that are outside the greater Portland area may incur an additional travel charge.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">Do you provide written appraisals at these events?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>No. This is an informative and informal event for gathering information and advice, based on Gary&rsquo;s experience and knowledge. A written appraisal is a legal document which takes deeper research &mdash; see our <a href="/start-an-appraisal/">appraisals page</a> for that.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">Do you promote your business at these events?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>Only indirectly. Mr. Germer&rsquo;s purpose at these events is to make your event successful for you &mdash; it is not an infomercial about us. However, with your permission, he will have business cards discreetly available for those who request them.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">Do you host events in the evenings or on weekends?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>Absolutely. Organizations frequently retain Mr. Germer to MC black tie appraisal galas. These high-ticket events can only happen outside of regular business hours. Let the champagne flow!</p></div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">Do you host events outside of the greater Portland area?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>Yes, he does! Mr. Germer has produced events all over Oregon, Washington, and California. If you&rsquo;re out of the area, just call and we&rsquo;ll discuss the most cost-effective way of making an event happen for you.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">Do you buy items of value at these events?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>No. It is a conflict of interest to be both appraiser and buyer. If a client asks, Gary will mention our <a href="/our-services/consignment/">consignment services</a> and suggest we talk later.</p></div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ DISCOVERY ============================ -->
+  {% set signupSubject = "Speaking Engagements page" %}
+  {% include "partials/discovery-band.njk" %}
+
+{% endblock %}

@@ -1,6 +1,38 @@
 <!doctype html>
 <html lang="en">
 <head>
+<!-- Analytics — only fires on the live production hostnames, so
+     localhost/dev-server/Netlify-deploy-preview traffic never pollutes real
+     data. Ported from the live garygermer.com site: GTM (GTM-T6KGFN5) is the
+     container for whatever's managed in the GTM admin UI, and GA4
+     (G-DSW0DFDTQN) is loaded directly via gtag.js so pageview tracking works
+     out of the box without depending on a tag being configured inside GTM
+     (this code has no visibility into that container's contents). If a GA4
+     tag is ever added inside GTM itself, remove the direct gtag.js block
+     below first — otherwise pageviews double-count. -->
+<script>
+(function (w, d, s, l, i) {
+  if (["garygermer.com", "www.garygermer.com"].indexOf(w.location.hostname) === -1) return;
+  w[l] = w[l] || [];
+  w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l !== "dataLayer" ? "&l=" + l : "";
+  j.async = true;
+  j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, "script", "dataLayer", "GTM-T6KGFN5");
+</script>
+<script>
+if (["garygermer.com", "www.garygermer.com"].indexOf(window.location.hostname) !== -1) {
+  var gaScript = document.createElement("script");
+  gaScript.async = true;
+  gaScript.src = "https://www.googletagmanager.com/gtag/js?id=G-DSW0DFDTQN";
+  document.head.appendChild(gaScript);
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag("js", new Date());
+  gtag("config", "G-DSW0DFDTQN");
+}
+</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ title }}</title>
@@ -28,10 +60,12 @@
 {% block head %}{% endblock %}
 </head>
 <body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T6KGFN5" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>
 <a class="skip-link" href="#main">Skip to content</a>
 
 {% block prebody %}{% endblock %}
 
+{% include "partials/hello-bar.njk" %}
 {% include "partials/header.njk" %}
 
 <main id="main">

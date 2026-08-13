@@ -1,0 +1,106 @@
+---
+permalink: /start-an-appraisal/
+title: Start an Appraisal | Gary Germer & Associates
+description: "Tell us about your item and Gary Germer & Associates will help you determine whether a free spot check, verbal evaluation, or full written appraisal is right for you."
+ogTitle: Start an Appraisal | Gary Germer & Associates
+ogDescription: "Please fill out our form so Gary and his team can determine whether or not you should invest in a full appraisal."
+ogImage: /assets/images/art/start-appraisal-hero-leather.jpg
+---
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+
+  <!-- ============================== HERO ==============================
+       Two-column, like the estate-sales/appraisals/consignment heroes —
+       but the real intake form runs 7 fields (incl. a required message +
+       required photo upload), too tall for the fixed 100svh .sale-hero,
+       so this uses the .sale-hero--tall modifier to let the section grow
+       to fit instead of clipping into the header. -->
+  <section class="hero sale-hero sale-hero--tall" id="appraisal-hero">
+    <div class="hero-media">
+      {% art "start-appraisal-hero-leather", "100vw", "", "eager" %}
+    </div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+
+    <div class="hero-shell sale-hero-shell">
+      <div class="hero-copy">
+        <p class="eyebrow eyebrow-on-dark" data-tier-eyebrow>Start an Appraisal</p>
+        <h1 class="hero-heading" data-tier-heading>Let&rsquo;s See If You Need an Appraisal</h1>
+        <span class="hero-rule" aria-hidden="true"></span>
+        <p class="hero-lead hero-lead-compact" data-tier-lead>Tell us about your item and we&rsquo;ll help you determine which level of appraisal you actually need. Every appraisal is handled by licensed, bonded, and insured experts, and our written reports are prepared to USPAP standards &mdash; the benchmark relied on by the IRS and accepted in federal and state courts.</p>
+
+        <div class="hero-trust">
+          <div class="hero-trust-badges">
+            <img class="hero-trust-seal" src="/assets/images/logos/badge-licensed-bonded-insured-white.png" width="162" height="161" loading="lazy" alt="Licensed, Bonded, Insured">
+            <img src="/assets/images/logos/badge-uspap-white.png" width="299" height="105" loading="lazy" alt="USPAP — Uniform Standards of Professional Appraisal Practice">
+            <img src="/assets/images/logos/badge-irs-compliant-white.png" width="423" height="77" loading="lazy" alt="IRS Compliant">
+          </div>
+          <p class="hero-trust-stat"><strong>More than 10,000 families</strong> have trusted Gary Germer &amp; Associates &mdash; including trusts, attorneys, and fiduciaries across the Pacific Northwest.</p>
+        </div>
+      </div>
+
+      <div class="hero-form-card sale-info-bar" id="appraisal-form">
+        <h2 data-tier-form-heading>Start an Appraisal</h2>
+        <form class="form-grid" action="/api/submit-inquiry" method="POST" enctype="multipart/form-data" novalidate>
+          <input type="hidden" name="form" value="appraisal">
+          <div class="form-honey" aria-hidden="true">
+            <label for="appraisal-company">Leave this field empty</label>
+            <input type="text" id="appraisal-company" name="_honey" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label class="field-label" for="appraisal-first-name">First Name</label>
+              <input id="appraisal-first-name" name="first_name" type="text" autocomplete="given-name" required>
+              <p class="field-error" role="alert">Please enter your first name.</p>
+            </div>
+            <div class="field">
+              <label class="field-label" for="appraisal-last-name">Last Name</label>
+              <input id="appraisal-last-name" name="last_name" type="text" autocomplete="family-name" required>
+              <p class="field-error" role="alert">Please enter your last name.</p>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label class="field-label" for="appraisal-email">Email</label>
+              <input id="appraisal-email" name="email" type="email" autocomplete="email" required>
+              <p class="field-error" role="alert">Please enter a valid email.</p>
+            </div>
+            <div class="field">
+              <label class="field-label" for="appraisal-phone">Phone</label>
+              <input id="appraisal-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel">
+            </div>
+          </div>
+          <div class="field">
+            <label class="field-label" for="appraisal-tier">Which appraisal service are you interested in?</label>
+            <select id="appraisal-tier" name="Appraisal Tier" required>
+              <option value="" selected disabled>Select One&hellip;</option>
+              <option>Not sure &mdash; help me decide</option>
+              <option>Free Spot Check</option>
+              <option>Verbal Evaluation</option>
+              <option>Full Written Appraisal</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="field-label" for="appraisal-message">Provide a complete description (dimensions, inscriptions, etc.)</label>
+            <textarea id="appraisal-message" name="message" rows="3" required></textarea>
+          </div>
+          <div class="field">
+            <label class="field-label" for="appraisal-photos">Photos / Attachments</label>
+            <div class="field-file">
+              <input id="appraisal-photos" name="attachment" type="file" accept="image/jpeg,image/png,image/webp" multiple required>
+            </div>
+            <p class="field-error" role="alert">Please attach at least one photo.</p>
+          </div>
+          <p class="form-submit-error" role="alert" hidden></p>
+          <button class="button button-navy" type="submit" data-tier-button>Submit Your Request</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ DISCOVERY ============================ -->
+  {% set signupSubject = "Start an Appraisal page" %}
+  {% include "partials/discovery-band.njk" %}
+
+{% endblock %}

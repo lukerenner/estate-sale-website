@@ -1,0 +1,208 @@
+---
+permalink: /our-services/consignment/
+title: Portland Consignment Services | Jewelry, Fine Art, Finery | Gary Germer & Associates
+description: "Gary Germer & Associates is the region's leading purveyor of fine items. When it comes to consignment, our mission is to put your objects in front of the highest paying collectors — wherever they may be."
+ogTitle: Portland Consignment Services | Gary Germer & Associates
+ogDescription: "Our vast network of collectors wants your treasures. See how Gary Germer & Associates manages consignment for fine art, antiques, jewelry, and collections of value."
+ogImage: /assets/images/art/consignment-hero-library.jpg
+---
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+
+  <!-- ============================== HERO ============================== -->
+  <section class="hero sale-hero" id="schedule-consultation">
+    <div class="hero-media">
+      {% art "consignment-hero-library", "100vw", "", "eager" %}
+    </div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+
+    <div class="hero-shell sale-hero-shell">
+      <div class="hero-copy">
+        <p class="eyebrow eyebrow-on-dark">Let Gary Sell Your Item</p>
+        <h1 class="hero-heading">Our Vast Network of Collectors Want Your Treasures</h1>
+        <span class="hero-rule" aria-hidden="true"></span>
+        <p class="hero-lead hero-lead-compact">Gary Germer &amp; Associates is the region&rsquo;s leading purveyors of fine items. When it comes to consignment, our mission is to go out into the world and put your objects in front of the highest paying collectors &mdash; wherever they may be. We use a variety of methods to bring your valuables to market. Your items may find a buyer at our brick-and-mortar Portland shop, Ebay, or across any number of the other specialized marketplaces. We also have a mailing list of thousands excited to hear about our latest consignment offerings.</p>
+      </div>
+
+      <div class="hero-form-card sale-info-bar">
+        <h2>Start a Consignment</h2>
+        <form class="form-grid" action="/api/submit-inquiry" method="POST" novalidate>
+          <input type="hidden" name="form" value="consignment">
+          <div class="form-honey" aria-hidden="true">
+            <label for="consignment-company">Leave this field empty</label>
+            <input type="text" id="consignment-company" name="_honey" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="consignment-name">Name</label>
+            <input id="consignment-name" name="name" type="text" autocomplete="name" required>
+            <p class="field-error" role="alert">Please enter your name.</p>
+          </div>
+          <div class="field">
+            <label class="field-label" for="consignment-email">Email</label>
+            <input id="consignment-email" name="email" type="email" autocomplete="email" required>
+            <p class="field-error" role="alert">Please enter a valid email.</p>
+          </div>
+          <div class="field">
+            <label class="field-label" for="consignment-phone">Phone</label>
+            <input id="consignment-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel">
+          </div>
+          <p class="form-submit-error" role="alert" hidden></p>
+          <button class="button button-navy" type="submit">Start a Consignment</button>
+          <p class="form-note">Have more to say about the item? <a href="/start-a-consignment/">Use our full intake form</a> instead.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= CONSIGNMENT MADE EASY ========================= -->
+  <section class="split on-dark" id="made-easy">
+    <div class="split-inner">
+    <div class="split-copy">
+      <div class="split-copy-inner">
+        <p class="eyebrow eyebrow-on-dark">Our Process</p>
+        <h2 class="section-heading">Consignment Made Easy.</h2>
+        <p class="section-body section-body-on-dark">Once you consign your collection or item with us, we professionally photograph it, identify its current value, and choose the appropriate markets in which to sell it.</p>
+        <p class="section-body section-body-on-dark">From there, the item is cross-posted to several international websites and publicized across our social media channels, email marketing lists, and direct mail campaigns.</p>
+        <p class="section-body section-body-on-dark">Perhaps most importantly, the item is shared with our exclusive network of collectors and designers. Upon sale, we handle the shipping of the item to the buyer and mail you a check. It&rsquo;s that simple.</p>
+        <div class="about-cta split-cta-row">
+          <a class="button button-on-dark" href="#schedule-consultation">See How It Works</a>
+        </div>
+      </div>
+    </div>
+    <div class="split-media reveal">
+      {% art "consignment-process-silver-service", "(max-width: 900px) 100vw, 512px" %}
+    </div>
+    </div>
+  </section>
+
+  <!-- ====================== TAILORED TO YOUR TIMELINE ====================== -->
+  <section class="split split-reverse" id="timeline">
+    <div class="split-inner">
+    <div class="split-copy">
+      <div class="split-copy-inner">
+        <p class="eyebrow">Your Timeline</p>
+        <h2 class="section-heading">Consignment Tailored to Your Timeline.</h2>
+        <p class="section-body">Everyone&rsquo;s situation is different. Sometimes a seller or an estate needs to liquidate quickly. In other cases, the seller can patiently wait to get the very best price. Regardless of your strategy, we can work with you to calibrate the marketing and promotion of your item to your timeline. Regardless of the urgency, the transaction will be handled with the utmost discretion and professionalism.</p>
+        <div class="about-cta split-cta-row">
+          <a class="button button-primary" href="#schedule-consultation">Discuss Your Timeline</a>
+        </div>
+      </div>
+    </div>
+    <div class="split-media reveal">
+      {% art "consignment-timeline-cabinet", "(max-width: 900px) 100vw, 512px" %}
+    </div>
+    </div>
+  </section>
+
+  <!-- ========================= SPARKS JOY ========================= -->
+  <section class="split" id="sparks-joy">
+    <div class="split-inner">
+    <div class="split-copy">
+      <div class="split-copy-inner">
+        <p class="eyebrow">Letting Go</p>
+        <h2 class="section-heading">Consignment That Sparks Joy.</h2>
+        <p class="section-body">People sell things for many reasons, but often they are dealing with family heirlooms which were meaningful to a parent but, sadly, no longer fit in your home. The impetus to let go of these items can bring a twinge of guilt, making it hard to say goodbye.</p>
+        <p class="section-body">When you think about it, our business is built on the objects of others, which is how we&rsquo;ve seen wonderful it is to own objects that spark joy. When it comes to letting go of something of beauty and value, many of our clients take heart knowing that the treasure will bring immense happiness to another.</p>
+        <p class="section-body">Who knows, maybe you have exactly what someone&rsquo;s been looking for!</p>
+        <div class="about-cta split-cta-row">
+          <a class="button button-primary" href="#schedule-consultation">Find It a New Home</a>
+        </div>
+      </div>
+    </div>
+    <div class="split-media reveal">
+      {% art "consignment-letting-go-ring", "(max-width: 900px) 100vw, 512px" %}
+    </div>
+    </div>
+  </section>
+
+  <!-- ========================== QUOTE ==========================
+       Uses the .fee-structure band from the estate sales page — full-bleed
+       photograph, scrim, single centred card — with the quote in place of
+       the fee copy. -->
+  <section class="fee-structure" id="quote">
+    <div class="fee-structure-media">
+      {% art "consignment-quote-vanity-tray", "100vw" %}
+    </div>
+    <div class="fee-structure-scrim" aria-hidden="true"></div>
+    <div class="container">
+      <div class="fee-card">
+        <span class="fee-card-mark" aria-hidden="true">&ldquo;</span>
+        <p class="fee-card-body fee-card-quote">When searching for items of high value, elite collectors tend to limit their search to established dealers with good reputations. This helps them reduce their risk, ensuring that the item is not only authentic, but also handled and shipped with care. By consigning your items with us, you get to capitalize on our good name, making it much easier for you to access these discerning, risk-adverse buyers.</p>
+        <p class="fee-card-body fee-card-attribution">&mdash; Gary Germer | Managing Director</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================ FAQ ================================ -->
+  <section class="section faq-section" id="faq">
+    <div class="container">
+      <div class="faq-grid">
+        <div class="faq-heading-col">
+          <h2 class="section-heading">Frequently Asked<br>Questions</h2>
+        </div>
+
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary class="faq-question">Is what I have even worth selling?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>We offer free &ldquo;spot check&rdquo; evaluations to quickly give a thumbs up or thumbs down if the object is worth anything. To learn more about that, please visit our <a href="/our-services/appraisals/">appraisals page</a>.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">Who sets the price?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>We will estimate a sales price range between a low and a high value. The high value is what we will set the price at, giving us a bit of wiggle room to negotiate. The low value is the minimum amount that we will sell the item for. Between these two values, we will negotiate a sale at our discretion; however, if we receive an offer that is lower than our &ldquo;low value&rdquo; estimate, we will consult with you before going forward with the sale.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">What are your fees?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>We charge a 35% commission on the first $5,000 and 20% of everything thereafter.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">Are there upfront costs? Or costs if things don&rsquo;t sell?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>Ordinarily, there are no upfront costs for the consignment but there may be exceptional costs such as hiring a mover, paying for extra storage, or for restoration. Nonetheless, all these costs are discussed and agreed upon before proceeding. Often they can be deferred until sale and costs taken out of proceeds. If somethings does not sell, you are only required to pay out of pocket expenses agreed upon but not for the consignment itself.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">Are you insured?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>Your property is fully insured while in our care. You are insured for the pre-sale estimate of value, less expected commissions, just as if it were to sell for the full amount.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">How long are your consignment terms?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>We ask that we have a minimum of 90 days to sell your item before you can take it back. Normally, if something has not sold, we will talk about lowering the price or trying a different market for an additional 90 days.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">What items do or don&rsquo;t you accept?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>We handle single items and entire estates and are especially known for fine art, antiques, jewelry, silver and collections of value. We have limited storage space, so will consider larger items like furniture on a case-by-case basis. Finally, we only accept items valued above $100 unless they are part of a broader collection of things.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">Do you consign guns?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>Yes. We have a federal firearms license and are legally able to sell and transfer ownership of firearms through our gallery.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">Do you clean and repair things before selling?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>It is much easier to sell and get a better price if the item is in top condition and ready to be enjoyed. So things like glass, porcelain, silver might be cleaned and polished in house, before photographing. For things like paintings, we are not restoration experts, but work with a network of conservators and restorers as needed. Before anything is sent out for professional restoration, we will consult with you first. And we will not recommend any service if you will not see a good return on the investment.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">Besides selling online, where else do you sell?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>Our inventories are online, but we have a gallery/store on Broadway St., in Portland near the Moda center. We also create events for estates and collections we cannot sell onsite (pop up stores, auctions, and vintage/estate shows). We also work as a personal representative between our clients and major auction houses in the US and Europe.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">Will my jewelry, sterling silver, or other valuable item remain safe?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>Yes! Gary Germer &amp; Associates HQ has an actual walk-in bank vault where we keep and display all gold, sterling, diamonds and valuable objects of virtue. Beyond the vault, all of our displays remain locked at all times, guarded by a very expensive (and loud!) alarm system. Additionally, we are completely insured for loss by Jewelers Mutual.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">What happens if something doesn&rsquo;t sell?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>We have a high success rate in getting things sold, but for some reason, there are things which just are not selling. If we have something which is not selling and we want to close the account out, we have 3 options, first you can take the item back; second we can send to an appropriate auction house to liquidate quickly, and third we can facilitate a donation. Depending upon your tax rate and if you itemize, you can sometimes do well by donation.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">When will I get paid?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>After your item sells, we remit payment the following month, on the 15th. If, for example, your item sold on Jan. 8th, we would remit payment on Feb. 15.</p></div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ DISCOVERY ============================ -->
+  {% set signupSubject = "Consignment page" %}
+  {% include "partials/discovery-band.njk" %}
+
+{% endblock %}

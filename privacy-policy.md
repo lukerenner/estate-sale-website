@@ -2,11 +2,11 @@
 layout: layouts/legal-page.njk
 permalink: /privacy-policy/
 title: "Privacy Policy"
-updated: "2026-08-09"
+updated: "2026-08-12"
 description: "How Gary Germer & Associates collects, uses, and protects the personal information you share with us through our website and consultation forms."
 ogTitle: "Privacy Policy | Gary Germer & Associates"
 ogDescription: "How Gary Germer & Associates collects, uses, and protects the personal information you share with us through our website and consultation forms."
-ogImage: /assets/images/parlor-placeholder.jpg
+ogImage: /assets/images/art/home-hero-gilded-salon.jpg
 ---
 
 This Privacy Policy describes how Gary Germer & Associates ("we," "us," or "our") collects, uses, and protects information you share with us through garygermer.com (the "Site"). By using the Site, you agree to the practices described here.
@@ -15,7 +15,7 @@ This Privacy Policy describes how Gary Germer & Associates ("we," "us," or "our"
 
 **Information you give us.** When you submit a consultation request, mailing-list signup, or contact form on the Site, we collect the information you provide — typically your name, email address, phone number, and any details you share about an appraisal, estate, or consignment need.
 
-**Information collected automatically.** Like most websites, our hosting and form providers may log standard technical data such as IP address, browser type, and pages visited, for security and operational purposes. We do not currently run advertising or analytics tracking cookies on the Site.
+**Information collected automatically.** Like most websites, our hosting and form providers may log standard technical data such as IP address, browser type, and pages visited, for security and operational purposes. We also use Google Analytics to understand how visitors use the Site, via Google Tag Manager. Google may set cookies as part of this and may use the data collected consistent with its own privacy policy.
 
 ## How We Use Your Information
 
@@ -30,7 +30,7 @@ We do not sell, rent, or trade your personal information to third parties for th
 
 ## Third-Party Services
 
-Our contact and consultation forms are processed by [FormSubmit](https://formsubmit.co), which delivers submissions to our inbox. Video content is embedded from YouTube in privacy-enhanced mode, which limits cookie use unless you press play. Our online shop is hosted separately on Shopify at shop.garygermer.com and is governed by Shopify's own privacy practices. Please review those providers' own privacy policies for details on how they handle data.
+Our contact, consultation, and estate sale alert forms are processed by our website's own server-side function and stored in Airtable, the customer relationship database we use to manage inquiries. We use Google Analytics and Google Tag Manager to understand Site traffic and usage. Video content is embedded from YouTube in privacy-enhanced mode, which limits cookie use unless you press play. Our online shop is hosted separately on Shopify at shop.garygermer.com and is governed by Shopify's own privacy practices. Please review those providers' own privacy policies for details on how they handle data.
 
 ## Data Retention
 

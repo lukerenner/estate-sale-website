@@ -1,0 +1,392 @@
+---
+permalink: /our-services/appraisals/
+title: Appraisals in Portland, Oregon | Gary Germer & Associates
+description: "For the last 20 years, Gary Germer & Associates has provided tens of thousands of appraisals for folks in the Portland area. Written, USPAP-compliant appraisals for insurance, probate, and taxation purposes."
+ogTitle: Appraisals in Portland, Oregon | Gary Germer & Associates
+ogDescription: "We can help you discover the value of anything. Accredited, USPAP-compliant appraisals from Gary Germer & Associates."
+ogImage: /assets/images/art/appraisals-hero-hands.jpg
+---
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+
+  <!-- ============================== HERO ============================== -->
+  <section class="hero sale-hero sale-hero--tall" id="schedule-consultation">
+    <div class="hero-media">
+      {% art "appraisals-hero-hands", "100vw", "", "eager" %}
+    </div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+
+    <div class="hero-shell sale-hero-shell">
+      <div class="hero-copy">
+        <h1 class="hero-heading">What Is Your Item Worth?</h1>
+        <span class="hero-rule" aria-hidden="true"></span>
+        <p class="hero-lead hero-lead-compact"><strong>Curious what you&rsquo;ve got? We&rsquo;d love to find out.</strong></p>
+        <p class="hero-lead hero-lead-compact">For more than 20 years, Gary Germer &amp; Associates has helped Portlanders uncover the stories&mdash;and value&mdash;hiding in paintings, jewelry, furniture, family heirlooms, and wonderfully mysterious objects of all kinds.</p>
+        <p class="hero-lead hero-lead-compact"><strong>Whatever you&rsquo;re wondering about, bring it to us.</strong></p>
+
+        {# Badges only — the "10,000 families" stat moved down to head the
+           client-logo trust bar, where it actually frames those logos
+           instead of being a third trust signal inside one viewport. #}
+        <div class="hero-trust">
+          <div class="hero-trust-badges">
+            <img class="hero-trust-seal" src="/assets/images/logos/badge-licensed-bonded-insured-white.png" width="162" height="161" loading="lazy" alt="Licensed, Bonded, Insured">
+            <img src="/assets/images/logos/badge-uspap-white.png" width="299" height="105" loading="lazy" alt="USPAP — Uniform Standards of Professional Appraisal Practice">
+            <img src="/assets/images/logos/badge-irs-compliant-white.png" width="423" height="77" loading="lazy" alt="IRS Compliant">
+          </div>
+        </div>
+      </div>
+
+      {# Lightweight opener, NOT the full intake. The tier <select> and the
+         required photo upload live on /start-an-appraisal/ (where the tier
+         cards below link, and where the tier= query param preselects). This
+         form doesn't submit anywhere itself — it's a GET to that same page,
+         which turns every field into a query param (name="first_name" etc.
+         match the ids start-an-appraisal.njk's prefill script reads via
+         script.js) so the visitor's answers carry straight into the full
+         form instead of the hero silently emailing a duplicate, disconnected
+         lead. No formsubmit hidden fields or honeypot needed — nothing is
+         POSTed from here. #}
+      <div class="hero-form-card sale-info-bar">
+        <h2>Tell us About Your Item</h2>
+        <form class="form-grid" action="/start-an-appraisal/" method="GET" novalidate>
+          <input type="hidden" name="tier" value="free-spot-check">
+
+          <div class="form-row">
+            <div class="field">
+              <label class="field-label" for="appraisals-first-name">First Name</label>
+              <input id="appraisals-first-name" name="first_name" type="text" autocomplete="given-name" required>
+              <p class="field-error" role="alert">Please enter your first name.</p>
+            </div>
+            <div class="field">
+              <label class="field-label" for="appraisals-last-name">Last Name</label>
+              <input id="appraisals-last-name" name="last_name" type="text" autocomplete="family-name" required>
+              <p class="field-error" role="alert">Please enter your last name.</p>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label class="field-label" for="appraisals-email">Email</label>
+              <input id="appraisals-email" name="email" type="email" autocomplete="email" required>
+              <p class="field-error" role="alert">Please enter a valid email.</p>
+            </div>
+            <div class="field">
+              <label class="field-label" for="appraisals-phone">Phone</label>
+              <input id="appraisals-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel">
+            </div>
+          </div>
+          <div class="field">
+            <label class="field-label" for="appraisals-message">Provide a complete description (dimensions, inscriptions, etc.)</label>
+            <textarea id="appraisals-message" name="message" rows="3" required></textarea>
+          </div>
+          <button class="button button-navy" type="submit">Start a Free Spot Check</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ TRUST BAR ============================
+       Goal of this band: convert the hero's claim ("bring it to us") into
+       believable proof, fast, for a visitor who is deciding whether these
+       people are serious. It previously did that with two centred paragraphs
+       — eight lines of ragged-centre prose — stacked above the logos, which
+       buries the three facts that actually carry the argument (volume,
+       tenure, courtroom standing) inside sentences nobody reads standing up.
+       Restructured so the proof is scannable in one pass: a short lead, a
+       three-up figure row for the hard numbers, a one-line press/network
+       footnote, and the logo grid demoted under a caption (the old
+       "Some of Our Valued Clients" heading, now doing its real job as a
+       label for the thing directly beneath it). -->
+  <section class="section trust-bar trust-bar-proof" id="trust">
+    <div class="container">
+      <div class="stack-header text-center mx-auto">
+        <p class="eyebrow eyebrow-navy eyebrow-caps mx-auto">Who We Work With</p>
+        <h2 class="section-heading trust-headline mx-auto">The objects<br><em>they can&rsquo;t afford to guess about.</em></h2>
+        <p class="section-body mx-auto">Families, trusts, attorneys, fiduciaries, and institutions across the Pacific Northwest turn to us for clarity and confidence when it matters most.</p>
+      </div>
+
+      {# The hard numbers, pulled out of the old paragraphs so they read as
+         evidence rather than as prose. Third figure is a phrase, not a
+         number, on purpose — courtroom standing is the strongest single
+         credential here and belongs at the same weight as the counts. #}
+      <ul class="proof-stats">
+        <li class="proof-stat">
+          <span class="proof-stat-figure">10,000+</span>
+          <span class="proof-stat-label">Families, trusts, and estates served</span>
+        </li>
+        <li class="proof-stat">
+          <span class="proof-stat-figure">20+ Years</span>
+          <span class="proof-stat-label">Appraising across Oregon &amp; SW Washington</span>
+        </li>
+        <li class="proof-stat">
+          <span class="proof-stat-figure">Expert Witness</span>
+          <span class="proof-stat-label">In state &amp; federal courts for more than 20 years</span>
+        </li>
+      </ul>
+
+      {# Press row: an inline "as featured in" label, the three publication
+         marks divided by hairlines, and the bench-depth line that used to
+         share a paragraph with them — now sitting alongside the marks rather
+         than trailing off the end of a sentence.
+
+         The three PNGs are the publications' own marks, trimmed to the
+         artwork and flattened onto a white plate so the shared
+         mix-blend-mode: multiply treatment drops the plate to the page
+         colour (same mechanic as the client logos below). AM Northwest's
+         current mark is a set of colour plates with knockout letterforms,
+         which greys out to mush under the client grid's grayscale filter —
+         it's therefore served as a *-mono redraw in the same near-black as
+         the other two wordmarks, matching the existing convention for the
+         reversed-out client marks. #}
+      {# Label, marks and note are flat siblings, not nested groups, so the
+         hairline divider rule (`> * + *`) spaces all five evenly across the
+         band the way the spec draws it. #}
+      <div class="featured-in">
+        <p class="featured-in-label">As featured in</p>
+        <span class="featured-in-cell featured-in-cell-amnw"><img src="/assets/images/logos/press-am-northwest-mono.png" width="600" height="305" loading="lazy" alt="AM Northwest"></span>
+        <span class="featured-in-cell featured-in-cell-bhg"><img src="/assets/images/logos/press-better-homes-gardens.png" width="600" height="154" loading="lazy" alt="Better Homes and Gardens"></span>
+        <span class="featured-in-cell"><img src="/assets/images/logos/press-readers-digest.png" width="600" height="84" loading="lazy" alt="Reader&rsquo;s Digest"></span>
+        <p class="featured-in-note">Backed by a standing network of art historians, professors, and category specialists.</p>
+      </div>
+
+      <p class="logo-grid-label">Some of our valued clients</p>
+      <div class="logo-grid logo-grid-clients logo-grid-divided">
+        <div class="logo-grid-cell"><img src="/assets/images/logos/client-willamette-view.png" width="282" height="124" loading="lazy" alt="Willamette View"></div>
+        <div class="logo-grid-cell"><img src="/assets/images/logos/client-community-warehouse.png" width="264" height="124" loading="lazy" alt="Community Warehouse"></div>
+        <div class="logo-grid-cell"><img src="/assets/images/logos/client-oregon-humane-society.png" width="243" height="124" loading="lazy" alt="Oregon Humane Society"></div>
+        <div class="logo-grid-cell"><img src="/assets/images/logos/client-miller-nash.png" width="243" height="124" loading="lazy" alt="Miller Nash Graham & Dunn LLP"></div>
+        {# Wells Fargo and Wyse Kadish ship as reversed-out marks — white type
+           knocked out of a solid plate — which under the grid's shared
+           grayscale+multiply treatment rendered as two flat grey slabs beside
+           eight light line-art wordmarks. The *-mono.png files are positive
+           redraws of the same art (plate dropped to transparent, type in
+           neutral ink, trimmed to the artwork) so they size and weigh like
+           the rest of the strip. Originals are still in assets/images/logos/
+           if the plate versions are ever wanted back. #}
+        <div class="logo-grid-cell"><img src="/assets/images/logos/client-wells-fargo-mono.png" width="147" height="106" loading="lazy" alt="Wells Fargo"></div>
+        <div class="logo-grid-cell"><img src="/assets/images/logos/client-us-bank.png" width="264" height="164" loading="lazy" alt="US Bank"></div>
+        <div class="logo-grid-cell"><img src="/assets/images/logos/client-harsch-investment-properties.png" width="259" height="164" loading="lazy" alt="Harsch Investment Properties"></div>
+        <div class="logo-grid-cell"><img src="/assets/images/logos/client-ameriprise-financial.png" width="262" height="164" loading="lazy" alt="Ameriprise Financial"></div>
+        <div class="logo-grid-cell"><img src="/assets/images/logos/client-wyse-kadish-mono.png" width="150" height="82" loading="lazy" alt="Wyse Kadish LLP"></div>
+      </div>
+
+      <div class="trust-cta-bar">
+        <p class="trust-cta-copy">Curious about an object, a collection, or an estate?</p>
+        <a class="button button-navy button-arrow" href="#appraisal-tiers">Discuss Your Appraisal</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================== HOW IT WORKS =========================== -->
+  <section class="split on-dark" id="how-it-works">
+    <div class="split-inner">
+    <div class="split-copy">
+      <div class="split-copy-inner">
+        <p class="eyebrow eyebrow-on-dark">Our Process</p>
+        <h2 class="section-heading">Here&rsquo;s How It Works.</h2>
+        <p class="section-body section-body-on-dark">Each appraisal begins with a phone or skype consultation to determine whether you&rsquo;ll need a basic, verbal evaluation or a comprehensive, legally-binding written appraisal.</p>
+        <p class="section-body section-body-on-dark">Following our discussion, we&rsquo;ll schedule a time for Mr. Germer or one of our experts to come and personally inspect the item.</p>
+        <p class="section-body section-body-on-dark">From there, the research begins. With Gary at the helm, our team will consult a variety of information sources and conduct a market analysis of your items. Finally, we&rsquo;ll deliver a written USPAP-compliant appraisal estimate within a few weeks.</p>
+        <div class="about-cta split-cta-row">
+          <a class="button button-on-dark" href="#appraisal-tiers">Begin an Appraisal</a>
+        </div>
+      </div>
+    </div>
+    <div class="split-media reveal">
+      {% art "appraisals-process-piano", "(max-width: 900px) 100vw, 512px" %}
+    </div>
+    </div>
+  </section>
+
+  <!-- ======================= CUSTOMIZED DELIVERABLES ======================= -->
+  <section class="split split-reverse" id="customized-deliverables">
+    <div class="split-inner">
+    <div class="split-copy">
+      <div class="split-copy-inner">
+        <p class="eyebrow">Tailored to Your Purpose</p>
+        <h2 class="section-heading">Customized Deliverables.</h2>
+        <p class="section-body">Did you know an item may have different values depending on the purpose of the appraisal? For example, when making a donation, the IRS is looking for a &ldquo;fair market value&rdquo;, which it considers the price between a willing seller and willing buyer.</p>
+        <p class="section-body">By contrast, insurance companies are under compulsion to replace the item, regardless of whether there was a &ldquo;willing buyer&rdquo;. This might potentially eliminate the bartering in the previous scenario and yield a higher valuation.</p>
+        <p class="section-body">Gary Germer &amp; Associates can help you determine which type of appraisal you need so we can orient our final report toward that goal.</p>
+        <div class="about-cta split-cta-row">
+          <a class="button button-primary" href="#appraisal-tiers">Let&rsquo;s Go</a>
+        </div>
+      </div>
+    </div>
+    <div class="split-media reveal">
+      {% art "appraisals-deliverables-still-life", "(max-width: 900px) 100vw, 512px" %}
+    </div>
+    </div>
+  </section>
+
+  <!-- ========================= EXPERT WITNESS ========================= -->
+  <section class="split" id="expert-witness">
+    <div class="split-inner">
+    <div class="split-copy">
+      <div class="split-copy-inner">
+        <p class="eyebrow">Expert Witness Services</p>
+        <h2 class="section-heading">When the Stakes Are High.</h2>
+        <p class="section-body">When the value of an object becomes a matter of dispute, experience matters. Gary Germer serves as an expert witness in cases involving insurance claims, litigation, estate disputes, damage and loss, and other matters where an independent, defensible opinion of value is essential.</p>
+        <p class="section-body">Drawing on decades of appraisal experience, extensive market research, and a network of specialized experts, Gary can help attorneys, insurers, and their clients understand not only what an item is worth, but why. His findings are carefully researched, clearly documented, and prepared to withstand scrutiny in negotiations, depositions, and the courtroom.</p>
+        <div class="about-cta split-cta-row">
+          <a class="button button-primary" href="#appraisal-tiers">Discuss a Case</a>
+        </div>
+      </div>
+    </div>
+    <div class="split-media reveal">
+      {% art "appraisals-expert-staircase", "(max-width: 900px) 100vw, 512px" %}
+    </div>
+    </div>
+  </section>
+
+  <!-- ========================= APPRAISAL TIERS ========================= -->
+  <section class="section tier-band" id="appraisal-tiers">
+    <div class="container">
+      <div class="stack-header text-center mx-auto">
+        <p class="eyebrow eyebrow-navy mx-auto">Appraisal Services</p>
+        <h2 class="section-heading mx-auto">Choose the Right Level of Appraisal</h2>
+        <p class="section-body mx-auto">Start with a quick expert opinion, move to a value estimate, or request a formal written report.</p>
+      </div>
+
+      <div class="tier-cards">
+        <div class="tier-card">
+          <div class="tier-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10.3" cy="10.3" r="6.3"/><path d="m19.5 19.5-4.7-4.7" stroke-linecap="round"/></svg></div>
+          <h3 class="tier-title">Free Spot Check</h3>
+          <span class="tier-rule" aria-hidden="true"></span>
+          <p class="tier-tagline">Best when you&rsquo;re not sure an item is worth appraising.</p>
+          <p class="tier-body">A quick expert look to help you decide whether further investigation makes sense. This tier does not include a dollar valuation.</p>
+          <ul class="tier-list">
+            <li>Quick expert opinion</li>
+            <li>Helps you decide whether to investigate further</li>
+            <li>No dollar valuation</li>
+          </ul>
+          <a class="button button-navy tier-cta" href="/start-an-appraisal/?tier=free-spot-check">Start a Free Spot Check</a>
+        </div>
+
+        <div class="tier-card tier-card-popular">
+          <span class="tier-badge">Most Popular</span>
+          <div class="tier-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3.5v16" stroke-linecap="round"/><path d="M5 6.5h14" stroke-linecap="round"/><path d="M8.5 21h7" stroke-linecap="round"/><path d="M5 6.5 2.3 12a2.7 2.7 0 0 0 5.4 0L5 6.5Z" stroke-linejoin="round"/><path d="M19 6.5 16.3 12a2.7 2.7 0 0 0 5.4 0L19 6.5Z" stroke-linejoin="round"/></svg></div>
+          <h3 class="tier-title">Verbal Evaluation</h3>
+          <span class="tier-rule" aria-hidden="true"></span>
+          <p class="tier-tagline">Best when you want to know what an item may be worth.</p>
+          <p class="tier-body">A deeper examination using experience and research to determine an estimated value range.</p>
+          <ul class="tier-list">
+            <li>Estimated value range</li>
+            <li>Research-backed expert review</li>
+            <li>Ideal for curiosity and planning</li>
+          </ul>
+          <a class="button button-navy tier-cta" href="/start-an-appraisal/?tier=verbal-evaluation">Start a Verbal Evaluation</a>
+        </div>
+
+        <div class="tier-card">
+          <div class="tier-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="3.5" width="14" height="17" rx="1.3"/><path d="M8 8h8M8 11.5h8M8 15h5" stroke-linecap="round"/></svg></div>
+          <h3 class="tier-title">Full Written Appraisal</h3>
+          <span class="tier-rule" aria-hidden="true"></span>
+          <p class="tier-tagline">Best when you need formal documentation.</p>
+          <p class="tier-body">A detailed written report designed for estates, trusts, charitable contributions, insurance claims, and other legal or tax purposes.</p>
+          <ul class="tier-list">
+            <li>Detailed written report</li>
+            <li>USPAP &amp; IRS-compliant</li>
+            <li>Can be used for court or legal documentation</li>
+          </ul>
+          <a class="button button-navy tier-cta" href="/start-an-appraisal/?tier=written-appraisal">Start a Written Appraisal</a>
+        </div>
+      </div>
+
+      <div class="tier-footer-bar">
+        <div class="tier-footer-item tier-footer-item-lead">
+          <span class="tier-footer-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3 21 8H3Z" stroke-linejoin="round"/><path d="M5 8v10M9.3 8v10M14.7 8v10M19 8v10" stroke-linecap="round"/><path d="M3 21h18" stroke-linecap="round"/></svg></span>
+          <span class="tier-footer-copy">Not sure where to begin?<br><a href="/start-an-appraisal/?tier=free-spot-check">Start with a Free Spot Check.</a></span>
+        </div>
+        <div class="tier-footer-item">
+          <span class="tier-footer-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8.2" r="3.4"/><path d="M5.5 20c0-3.6 2.9-6.2 6.5-6.2s6.5 2.6 6.5 6.2" stroke-linecap="round"/></svg></span>
+          <span class="tier-footer-copy">Experienced specialists</span>
+        </div>
+        <div class="tier-footer-item">
+          <span class="tier-footer-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3.5 19 6.3v5.4c0 4.3-2.9 7.9-7 8.8-4.1-.9-7-4.5-7-8.8V6.3L12 3.5Z" stroke-linejoin="round"/><path d="m9.2 12.2 1.9 1.9 3.7-3.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="tier-footer-copy">USPAP-compliant reports</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================ FAQ ================================ -->
+  <section class="section faq-section" id="faq">
+    <div class="container">
+      <div class="faq-grid">
+        <div class="faq-heading-col">
+          <h2 class="section-heading">Frequently Asked<br>Questions</h2>
+        </div>
+
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary class="faq-question">Can you appraise this super obscure thing I own?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>Probably, yes! We can appraise almost anything. Collectively, our network of experts and historians has thousands of hours of expertise in very specific areas, which means we are able to provide accurate appraisals for millions of items across hundreds of eras. We haven&rsquo;t been stumped yet.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">Do you do house calls?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>Yes. We primarily serve customers in the state of Oregon and Southwest Washington. Additionally, we have traveled to a number of other states to assist with larger appraisal projects.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">Do you offer appraisals by phone or Skype?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>Although the majority of our appraisals are done in person, we have, on occasion, delivered USPAP-compliant written appraisals based off of photographs, video, or Skype consultations. Let&rsquo;s discuss your needs in more detail to see if this might be a possibility.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">If my item turns out to be valuable, will you buy it from me?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>We do not purchase items we have appraised as that would be a conflict of interest. However, we do offer consignment services, which means we can help you sell your items though our online and Portland stores.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">My valuable item is damaged. Should I repair it to restore its value?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>It depends. In some cases, restoration will increase the value of the item. In other cases, restoration decreases the value. We are happy to give you insight if you&rsquo;re trying to decide whether you should go forward with a repair.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">Do you offer services to repair or restore valuable items?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>While we do not personally restore items, we have a long roster of very talented craftsmen who can help you get the job done.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">Do you appraise controversial items such as those that are made of ivory?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>Yes, we do. The laws are constantly changing and very complex so please contact us to determine how we might be able to legally assist you.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">Can I read an example of an appraisal?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>Yes, you may click here to download a sample. It will reflect the form and style of the report we deliver for you.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">Do you host appraisal events?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>Yes! We absolutely love running appraisal clinics. Gary has put on a variety of &ldquo;Antique Road Shows&rdquo; for multiple businesses and charities. If you&rsquo;re considering running a fundraising auction or hiring a magician, you might consider working with us instead. For more information, please visit our <a href="/our-services/speaking-engagements-and-clinics/">Speaking Engagements page</a>.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">Do you offer basic on site evaluation?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>On occasion you may need more than a verbal walk through but not a full USPAP compliant report. This is sometimes the case during probate for estate tax evaluation on small estates that do not have many items of significant value. This is a physical walk through by the appraiser, an inventory list is created, generally group photos of inventory are created for the workfile but not included in the report, onsite research is conducted by minimal additional research is included. This is a flat fee of $350 and generally can be completed in 2 hours for most properties in the Portland area. If additional time is needed fees will be discussed prior to the commencement of the project. The final report is an inventory list of items or groups of items with values but it is not USPAP compliant. Please choose our written appraisal service is you need USPAP compliance.</p></div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================== QUOTE ==========================
+       Uses the .fee-structure band from the estate sales page — full-bleed
+       photograph, scrim, single centred card — with the quote in place of
+       the fee copy. -->
+  <section class="fee-structure" id="quote">
+    <div class="fee-structure-media">
+      {% art "appraisals-faq-chandelier", "100vw" %}
+    </div>
+    <div class="fee-structure-scrim" aria-hidden="true"></div>
+    <div class="container">
+      <div class="fee-card">
+        <span class="fee-card-mark" aria-hidden="true">&ldquo;</span>
+        <p class="fee-card-body fee-card-quote">Inaccurate appraisals can create a variety of legal and taxation challenges. When dealing with items of high value, it&rsquo;s very important that you choose to work with highly experienced and accredited professionals &mdash; like us.</p>
+        <p class="fee-card-body fee-card-attribution">&mdash; Gary Germer | Managing Director</p>
+        <div class="about-cta mx-auto">
+          <a class="button button-primary" href="#appraisal-tiers">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ DISCOVERY ============================ -->
+  {% set signupSubject = "Appraisals page" %}
+  {% include "partials/discovery-band.njk" %}
+
+{% endblock %}

@@ -1,0 +1,229 @@
+---
+permalink: /contact/
+title: Contact Us | Gary Germer & Associates
+description: "We are here to answer any questions you may have about our store and our services. Visit our Portland gallery, call, email, or request a consultation below."
+ogTitle: Contact Us | Gary Germer & Associates
+ogDescription: "Drop us a line or visit our Portland gallery. See our hours, address, and how to reach us — or request a consultation."
+ogImage: /assets/images/art/contact-hero-mantel.jpg
+---
+{% extends "layouts/base.njk" %}
+
+{% block head %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Gary Germer & Associates",
+  "url": "https://www.garygermer.com/contact/",
+  "image": "https://www.garygermer.com/assets/images/art/contact-hero-mantel.jpg",
+  "telephone": "+1-503-235-0946",
+  "email": "info@garygermer.com",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "407 N. Broadway St.",
+    "addressLocality": "Portland",
+    "addressRegion": "OR",
+    "postalCode": "97227",
+    "addressCountry": "US"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      "opens": "10:00",
+      "closes": "17:00"
+    }
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.7",
+    "reviewCount": "100"
+  }
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+  <!-- ============================== HERO ==============================
+       The hero carries the headline and the consultation form, nothing
+       else. The address, hours, phone and email used to be stacked here as
+       white italic text over the busiest photograph on the site, competing
+       with the form beside them; they now live in the legible Visit band
+       below, which leaves the copy column at four short elements. -->
+  <section class="hero sale-hero sale-hero--tall" id="contact-hero">
+    <div class="hero-media">
+      {% art "contact-hero-mantel", "100vw", "", "eager" %}
+    </div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+
+    <div class="hero-shell sale-hero-shell">
+      <div class="hero-copy">
+        <p class="eyebrow eyebrow-on-dark">At Your Service</p>
+        <h1 class="hero-heading">Drop a Line or Visit Us</h1>
+        <span class="hero-rule" aria-hidden="true"></span>
+        <p class="hero-lead hero-lead-compact">We are here to answer any questions you may have about our store and our services. Feel free to contact us by any method below. If you&rsquo;re looking for information about a specific object, please use this contact form and provide as much detail as possible.</p>
+        <p class="hero-proof"><strong>4.7 Stars on Google Reviews.</strong> Serving Portland and the Pacific Northwest.</p>
+      </div>
+
+      <!-- Anchor kept at #consultation so existing links to
+           /contact/#consultation still land on the form. -->
+      <div class="hero-form-card sale-info-bar" id="consultation">
+        <h2>Request a Consultation</h2>
+        <form class="form-grid" action="/api/submit-inquiry" method="POST" enctype="multipart/form-data" novalidate>
+          <input type="hidden" name="form" value="contact">
+          <div class="form-honey" aria-hidden="true">
+            <label for="contact-page-company">Leave this field empty</label>
+            <input type="text" id="contact-page-company" name="_honey" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label class="field-label" for="contact-page-name">Name</label>
+              <input id="contact-page-name" name="name" type="text" autocomplete="name" required>
+              <p class="field-error" role="alert">Please enter your name.</p>
+            </div>
+            <div class="field">
+              <label class="field-label" for="contact-page-email">Email</label>
+              <input id="contact-page-email" name="email" type="email" autocomplete="email" required>
+              <p class="field-error" role="alert">Please enter a valid email.</p>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label class="field-label" for="contact-page-phone">Phone</label>
+              <input id="contact-page-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel">
+            </div>
+            <div class="field">
+              <label class="field-label" for="contact-page-need">I need help with&hellip;</label>
+              <select id="contact-page-need" name="I need help with" required>
+                <option value="" selected disabled>Select One&hellip;</option>
+                <option>An appraisal</option>
+                <option>An estate</option>
+                <option>Consignment</option>
+                <option>Something else</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label class="field-label" for="contact-page-message">Tell us a little about the estate, object, or collection (optional)</label>
+            <textarea id="contact-page-message" name="message" rows="3"></textarea>
+          </div>
+          <div class="field">
+            <label class="field-label" for="contact-page-photos">Add photos (optional)</label>
+            <div class="field-file">
+              <input id="contact-page-photos" name="attachment" type="file" accept="image/jpeg,image/png,image/webp" multiple>
+              <p class="form-note">JPG, PNG, or WEBP. Up to 4MB total (large photos are shrunk automatically).</p>
+            </div>
+          </div>
+          <p class="form-submit-error" role="alert" hidden></p>
+          <button class="button button-navy" type="submit">Request a Consultation</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== VISIT ==============================
+       Map beside the hours block. The map is a keyless Google Maps embed
+       (output=embed), lazy-loaded so it costs nothing above the fold. -->
+  <section class="section visit-band" id="visit" aria-labelledby="visit-heading">
+    <div class="container">
+      <div class="visit-grid">
+        <div class="visit-map">
+          <iframe
+            src="https://www.google.com/maps?q=407+N.+Broadway+St.,+Portland,+OR+97227&output=embed"
+            title="Map showing Gary Germer &amp; Associates at 407 N. Broadway St., Portland, OR 97227"
+            width="600" height="450"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <div class="visit-copy">
+          <p class="eyebrow eyebrow-navy">Our Gallery</p>
+          <h2 class="section-heading" id="visit-heading">Visit Us in Portland</h2>
+
+          <dl class="visit-details">
+            <div class="visit-detail">
+              <dt>Address</dt>
+              <dd>
+                Gary Germer &amp; Associates<br>
+                407 N. Broadway St.<br>
+                Portland, OR 97227
+              </dd>
+            </div>
+            <div class="visit-detail">
+              <dt>Hours</dt>
+              <dd>
+                10:00am&ndash;5:00pm<br>
+                Tuesday through Saturday,<br>
+                or by appointment.
+              </dd>
+            </div>
+            <div class="visit-detail">
+              <dt>Phone</dt>
+              <dd><a class="visit-link" href="tel:+15032350946">(503) 235-0946</a></dd>
+            </div>
+            <div class="visit-detail">
+              <dt>Email</dt>
+              <dd><a class="visit-link" href="mailto:info@garygermer.com">info@garygermer.com</a></dd>
+            </div>
+          </dl>
+
+          <p class="visit-note">As we occasionally close our storefront for off-site events and sales, please call ahead to confirm we&rsquo;re open before your visit.</p>
+
+          <div class="visit-ctas">
+            <a class="button button-navy" href="https://maps.google.com/?q=407+N.+Broadway+St.+Portland+OR+97227" target="_blank" rel="noopener">Get Directions</a>
+            <a class="button button-secondary" href="tel:+15032350946">Call Before You Go</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== PROOF ==============================
+       Short-form social proof between the contact details and the ask.
+       Quotes are the same verified reviews carried on the homepage. -->
+  <section class="section on-dark contact-proof" aria-labelledby="contact-proof-heading">
+    <div class="container">
+      <div class="stack-header text-center mx-auto">
+        <h2 class="section-heading mx-auto" id="contact-proof-heading">More Than 10,000 Families Have Trusted Us</h2>
+      </div>
+
+      <div class="contact-proof-grid">
+        <div class="testimonial">
+          <span class="testimonial-mark" aria-hidden="true">&ldquo;</span>
+          <p class="testimonial-quote">I had the pleasure of working with Gary Germer &amp; Associates for an appraisal and was thoroughly impressed with the level of professionalism and expertise. Not only was the appraisal evaluation quick and accurate, but it was presented in a clear and comprehensive manner, making it easy for me to understand the value.</p>
+          <p class="testimonial-attribution">&mdash; Austin H., Appraisal Client</p>
+        </div>
+        <div class="testimonial">
+          <span class="testimonial-mark" aria-hidden="true">&ldquo;</span>
+          <p class="testimonial-quote">We go to lots of estate sales and Gary Germer&rsquo;s sales are always heads above the rest. Gary has a real respect and almost reverence for people&rsquo;s belongings. Everything is so beautifully displayed. We always leave his sales laughing and with something unique for our home.</p>
+          <p class="testimonial-attribution">&mdash; Brad Thomas, Estate Sale Client</p>
+        </div>
+        <div class="testimonial">
+          <span class="testimonial-mark" aria-hidden="true">&ldquo;</span>
+          <p class="testimonial-quote">Gary and his team were professional, highly responsive, and navigated a complex situation with care and expertise. The estate sale itself was well-organized, well-staffed, and ran smoothly. I would not hesitate to recommend Gary Germer &amp; Associates to anyone navigating an estate sale.</p>
+          <p class="testimonial-attribution">&mdash; M.R. | Estate Sale Client</p>
+        </div>
+      </div>
+
+      <div class="contact-proof-badges">
+        <div class="google-badge">
+          <span class="google-badge-label">Google Reviews</span>
+          <img class="testimonial-proof-badge" src="/assets/images/google-reviews-badge.png" width="556" height="118" loading="lazy" alt="Rating: 4.7 stars from 123 reviews">
+        </div>
+        <div class="contact-proof-seals">
+          <img class="hero-trust-seal" src="/assets/images/logos/badge-licensed-bonded-insured-white.png" width="162" height="161" loading="lazy" alt="Licensed, Bonded, Insured">
+          <img src="/assets/images/logos/badge-uspap-white.png" width="299" height="105" loading="lazy" alt="USPAP — Uniform Standards of Professional Appraisal Practice">
+          <img src="/assets/images/logos/badge-irs-compliant-white.png" width="423" height="77" loading="lazy" alt="IRS Compliant">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ DISCOVERY ============================ -->
+  {% set signupSubject = "Contact page" %}
+  {% include "partials/discovery-band.njk" %}
+
+{% endblock %}

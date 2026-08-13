@@ -5,3 +5,7 @@ Thumbs.db
 node_modules/
 _site/
 .tmp-*-images/
+.env
+# Retired photography, kept on Drive for reference only. Lives outside assets/
+# so it is never passthrough-copied into the deploy.
+art-direction/_superseded/

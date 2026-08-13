@@ -3,18 +3,20 @@
 # homepage. Real 301s, no stub HTML pages. See README.md for why Netlify
 # (not GitHub Pages, which can't do this without extra pages) is assumed.
 
-# Core service + intake routes -> the matching homepage section
-/our-services/appraisals        /#appraisals              301
-/our-services/consignment       /#consignment              301
-/start-an-appraisal             /#appraisals               301
-/start-a-consignment            /#consignment              301
-/our-services/speaking-engagements-and-clinics  /          301
+# Core service + intake routes -> the matching homepage section.
+# NOTE: /our-services/appraisals, /our-services/consignment,
+# /our-services/estate-sales, /start-an-appraisal, /start-a-consignment,
+# and /our-services/speaking-engagements-and-clinics are now real pages and
+# must NOT be redirected.
 
-# Contact / consultation
-/consultation                   /#consultation             301
-/contact                        /#consultation             301
-/contact/mailing-list           /#estate-alerts            301
-/join-our-mailing-list          /#estate-alerts            301
+# Contact / consultation — /contact and /consultation (two separate 1.0
+# pages) are now merged into one standalone page at /contact/, matching how
+# the homepage already treats them as a single "It Starts with a
+# Conversation" section rather than two destinations. /join-our-mailing-list
+# is likewise now a real page, so /contact/mailing-list (the other 1.0 URL
+# for the same signup) points at it instead of the footer anchor.
+/consultation                   /contact/                  301
+/contact/mailing-list           /join-our-mailing-list/    301
 /give-us-a-review               /                          301
 /give-us-a-review/feedback      /                          301
 

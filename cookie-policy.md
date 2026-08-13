@@ -2,22 +2,22 @@
 layout: layouts/legal-page.njk
 permalink: /cookie-policy/
 title: "Cookie Policy"
-updated: "2026-08-09"
+updated: "2026-08-12"
 description: "How Gary Germer & Associates uses cookies and similar technologies on garygermer.com."
 ogTitle: "Cookie Policy | Gary Germer & Associates"
 ogDescription: "How Gary Germer & Associates uses cookies and similar technologies on garygermer.com."
-ogImage: /assets/images/parlor-placeholder.jpg
+ogImage: /assets/images/art/home-hero-gilded-salon.jpg
 ---
 
 Cookies are small text files stored on your device that help websites remember information about your visit. This page explains how garygermer.com (the "Site") uses them.
 
 ## Cookies We Use
 
-The Site itself does not currently set advertising or analytics tracking cookies. Any cookies present during your visit come from the third-party services embedded on the page:
-
+- **Google Analytics & Google Tag Manager.** We use these to understand how visitors use the Site — pages viewed, time on page, and general traffic patterns. Google Tag Manager may set cookies as part of loading Google Analytics.
 - **YouTube.** Video content is embedded using YouTube's privacy-enhanced mode (youtube-nocookie.com), which limits cookie use unless you choose to press play on a video.
 - **Our online shop.** Purchases and browsing on shop.garygermer.com are hosted on Shopify, a separate site with its own cookies and privacy practices.
-- **FormSubmit.** Our consultation and contact forms are processed by FormSubmit, which may use cookies as part of handling your submission.
+
+Our consultation, contact, and estate sale alert forms submit directly to our own website and are stored in Airtable, our customer relationship database — no third-party cookies are set as part of submitting a form.
 
 ## Managing Cookies
 

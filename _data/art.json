@@ -1,0 +1,503 @@
+{
+  "home-hero-gilded-salon": {
+    "width": 2020,
+    "height": 1136,
+    "tiers": [
+      640,
+      1024,
+      1280,
+      1600,
+      2000
+    ],
+    "jpgWidth": 1200,
+    "focal": "50% 45%",
+    "alt": "A palace salon hung with a crystal chandelier, an Empire pier mirror and gilt-framed paintings above mahogany furniture",
+    "category": "architecture",
+    "rank": 1
+  },
+  "estate-sales-hero-parlor": {
+    "width": 1613,
+    "height": 907,
+    "tiers": [
+      640,
+      1024,
+      1280,
+      1600,
+      1613
+    ],
+    "jpgWidth": 1200,
+    "focal": "50% 42%",
+    "alt": "A bay-windowed parlor with silk swag valances, a gilt chandelier and Victorian parlor seating",
+    "category": "architecture",
+    "rank": 1
+  },
+  "appraisals-hero-hands": {
+    "width": 1888,
+    "height": 1062,
+    "tiers": [
+      640,
+      1024,
+      1280,
+      1600,
+      1888
+    ],
+    "jpgWidth": 1200,
+    "focal": "50% 52%",
+    "alt": "Hands in a suit steadying a cobalt and gilt enamelled Faberge-style egg beside a painted porcelain ewer",
+    "category": "people",
+    "rank": 1
+  },
+  "consignment-hero-library": {
+    "width": 2020,
+    "height": 1136,
+    "tiers": [
+      640,
+      1024,
+      1280,
+      1600,
+      2000
+    ],
+    "jpgWidth": 1200,
+    "focal": "45% 50%",
+    "alt": "A giltwood armchair upholstered in red silk damask standing before the shelved books of a panelled library",
+    "category": "interior",
+    "rank": 1
+  },
+  "speaking-hero-gallery": {
+    "width": 1500,
+    "height": 844,
+    "tiers": [
+      640,
+      1024,
+      1280,
+      1500
+    ],
+    "jpgWidth": 1200,
+    "focal": "68% 45%",
+    "alt": "The Gary Germer gallery during a sale, with silver hollowware laid out beneath a chandelier",
+    "category": "interior",
+    "rank": 1
+  },
+  "previous-sales-hero-staircase": {
+    "width": 2020,
+    "height": 1136,
+    "tiers": [
+      640,
+      1024,
+      1280,
+      1600,
+      2000
+    ],
+    "jpgWidth": 1200,
+    "focal": "50% 70%",
+    "alt": "A grand two-storey foyer with a curving wrought-iron staircase, gilt side chairs and a round centre table beneath an ornamented ceiling",
+    "category": "architecture",
+    "rank": 1
+  },
+  "contact-hero-mantel": {
+    "width": 2020,
+    "height": 1136,
+    "tiers": [
+      640,
+      1024,
+      1280,
+      1600,
+      2000
+    ],
+    "jpgWidth": 1200,
+    "focal": "50% 50%",
+    "alt": "A formal salon with a crystal chandelier, panelled walls, silk-upholstered seating and a patterned marble floor",
+    "category": "interior",
+    "rank": 1
+  },
+  "mailing-list-hero-chandelier": {
+    "width": 1600,
+    "height": 900,
+    "tiers": [
+      640,
+      1024,
+      1280,
+      1600
+    ],
+    "jpgWidth": 1200,
+    "focal": "50% 45%",
+    "alt": "A crystal chandelier lit against a dark panelled ceiling",
+    "category": "detail",
+    "rank": 1
+  },
+  "start-appraisal-hero-leather": {
+    "width": 1920,
+    "height": 1080,
+    "tiers": [
+      640,
+      1024,
+      1280,
+      1600,
+      1920
+    ],
+    "jpgWidth": 1200,
+    "focal": "50% 50%",
+    "alt": "The deep-buttoned oxblood leather of an antique chesterfield",
+    "category": "texture",
+    "rank": 1
+  },
+  "start-consignment-hero-silver": {
+    "width": 2020,
+    "height": 1136,
+    "tiers": [
+      640,
+      1024,
+      1280,
+      1600,
+      2000
+    ],
+    "jpgWidth": 1200,
+    "focal": "50% 50%",
+    "alt": "A red-walled period drawing room hung with gilt-framed mirrors and a chandelier above carved and gilded furniture",
+    "category": "interior",
+    "rank": 1
+  },
+  "index-estates-dining": {
+    "width": 1616,
+    "height": 2266,
+    "tiers": [
+      640,
+      1024,
+      1280,
+      1600
+    ],
+    "jpgWidth": 1200,
+    "focal": "42% 50%",
+    "alt": "A dining table laid with cut crystal and painted porcelain around a crystal candelabrum, before tall windows hung with yellow silk",
+    "category": "interior",
+    "rank": 2
+  },
+  "index-appraisals-silver": {
+    "width": 1616,
+    "height": 2266,
+    "tiers": [
+      640,
+      1024,
+      1280,
+      1600
+    ],
+    "jpgWidth": 1200,
+    "focal": "50% 50%",
+    "alt": "A set of chased silver coffee cups with domed lids and filigree saucers, closely grouped on a silver tray",
+    "category": "detail",
+    "rank": 2
+  },
+  "index-consignment-mirrors": {
+    "width": 1616,
+    "height": 2266,
+    "tiers": [
+      640,
+      1024,
+      1280,
+      1600
+    ],
+    "jpgWidth": 1200,
+    "focal": "46% 50%",
+    "alt": "A carved giltwood rococo mirror hung beside a smaller shell-crested one, framed by trailing sprays of dried baby's breath",
+    "category": "object",
+    "rank": 2
+  },
+  "index-consult-clock": {
+    "width": 1616,
+    "height": 2266,
+    "tiers": [
+      640,
+      1024,
+      1280,
+      1600
+    ],
+    "jpgWidth": 1200,
+    "focal": "50% 45%",
+    "alt": "A gilt-bronze figural mantel clock, a seated woman resting against the enamel dial above a scrolled and foliate base",
+    "category": "object",
+    "rank": 2
+  },
+  "discovery-upcoming-sales": {
+    "width": 1616,
+    "height": 808,
+    "tiers": [
+      640,
+      1024,
+      1280,
+      1600
+    ],
+    "jpgWidth": 1200,
+    "focal": "50% 55%",
+    "alt": "The columned portico and twin curving staircases of a white neoclassical mansion, seen from the garden path",
+    "category": "architecture",
+    "rank": 3
+  },
+  "discovery-vault-necklace": {
+    "width": 1616,
+    "height": 808,
+    "tiers": [
+      640,
+      1024,
+      1280,
+      1600
+    ],
+    "jpgWidth": 1200,
+    "focal": "50% 50%",
+    "alt": "A gold necklace and matching drop earrings set with green gemstones, laid out on brown velvet",
+    "category": "object",
+    "rank": 3
+  },
+  "consignment-process-silver-service": {
+    "width": 1279,
+    "height": 1793,
+    "tiers": [
+      640,
+      1024,
+      1279
+    ],
+    "jpgWidth": 1200,
+    "focal": "50% 50%",
+    "alt": "A silver tea and coffee service on a salver, set on a carved sideboard beneath a gilt-framed impressionist garden painting",
+    "category": "object",
+    "rank": 2
+  },
+  "consignment-timeline-cabinet": {
+    "width": 1617,
+    "height": 2267,
+    "tiers": [
+      640,
+      1024,
+      1280,
+      1600
+    ],
+    "jpgWidth": 1200,
+    "focal": "50% 55%",
+    "alt": "A row of gilt monkey figurines displayed on stacked lacquer boxes and books, staged on a console table",
+    "category": "object",
+    "rank": 2
+  },
+  "consignment-letting-go-ring": {
+    "width": 1616,
+    "height": 2266,
+    "tiers": [
+      640,
+      1024,
+      1280,
+      1600
+    ],
+    "jpgWidth": 1200,
+    "focal": "33% 55%",
+    "alt": "A diamond solitaire ring with a pave-set band, resting on cut glass against warm scattered highlights",
+    "category": "object",
+    "rank": 2
+  },
+  "consignment-quote-vanity-tray": {
+    "width": 2020,
+    "height": 1136,
+    "tiers": [
+      640,
+      1024,
+      1280,
+      1600,
+      2000
+    ],
+    "jpgWidth": 1200,
+    "focal": "50% 50%",
+    "alt": "A silver dressing-table tray holding a repousse hand mirror, cut-glass scent bottles and a scatter of jewellery",
+    "category": "object",
+    "rank": 3
+  },
+  "estate-process-dining": {
+    "width": 1616,
+    "height": 2266,
+    "tiers": [
+      640,
+      1024,
+      1280,
+      1600
+    ],
+    "jpgWidth": 1200,
+    "focal": "50% 50%",
+    "alt": "A long mahogany dining table laid with silver, crystal and candelabra in a green panelled room hung with oil paintings",
+    "category": "interior",
+    "rank": 2
+  },
+  "estate-value-limestone-mantel": {
+    "width": 1616,
+    "height": 2266,
+    "tiers": [
+      640,
+      1024,
+      1280,
+      1600
+    ],
+    "jpgWidth": 1200,
+    "focal": "50% 50%",
+    "alt": "A Victorian drawing room with a carved overmantel, stained-glass window and cut-glass decanters set out on a polished table",
+    "category": "interior",
+    "rank": 2
+  },
+  "estate-donation-curiosities": {
+    "width": 1616,
+    "height": 2266,
+    "tiers": [
+      640,
+      1024,
+      1280,
+      1600
+    ],
+    "jpgWidth": 1200,
+    "focal": "50% 50%",
+    "alt": "A table of collected objects — terrestrial globes, silver boxes, brass candlesticks and a Staffordshire spaniel set out together",
+    "category": "object",
+    "rank": 2
+  },
+  "appraisals-process-piano": {
+    "width": 1616,
+    "height": 2266,
+    "tiers": [
+      640,
+      1024,
+      1280,
+      1600
+    ],
+    "jpgWidth": 1200,
+    "focal": "50% 55%",
+    "alt": "A gilt-bronze winged figure mounted at the corner of a marquetry cabinet, below a band of cast foliage",
+    "category": "detail",
+    "rank": 2
+  },
+  "appraisals-deliverables-still-life": {
+    "width": 1616,
+    "height": 2266,
+    "tiers": [
+      640,
+      1024,
+      1280,
+      1600
+    ],
+    "jpgWidth": 1200,
+    "focal": "52% 55%",
+    "alt": "A brass peacock figure and a glazed box beside a matte vase of dried grasses, on a hammered brass table against blue velvet",
+    "category": "detail",
+    "rank": 2
+  },
+  "appraisals-expert-staircase": {
+    "width": 1616,
+    "height": 2266,
+    "tiers": [
+      640,
+      1024,
+      1280,
+      1600
+    ],
+    "jpgWidth": 1200,
+    "focal": "40% 50%",
+    "alt": "A cast-iron and mahogany staircase spiralling down past tessellated tiled landings, seen from above",
+    "category": "architecture",
+    "rank": 3
+  },
+  "speaking-clinic-appraising": {
+    "width": 895,
+    "height": 1255,
+    "tiers": [
+      640,
+      895
+    ],
+    "jpgWidth": 895,
+    "focal": "39% 45%",
+    "alt": "Gary Germer on the AM Northwest set, laughing as he hands an antique perfume bottle to the host across a table of cut-glass scent bottles",
+    "category": "people",
+    "rank": 3
+  },
+  "speaking-stories-map": {
+    "width": 1540,
+    "height": 2160,
+    "tiers": [
+      640,
+      1024,
+      1280,
+      1540
+    ],
+    "jpgWidth": 1200,
+    "focal": "50% 50%",
+    "alt": "An antique map spread out with a quill pen, brass compasses and pocket instruments resting on top of it",
+    "category": "object",
+    "rank": 2
+  },
+  "speaking-workshop-silver": {
+    "width": 938,
+    "height": 1316,
+    "tiers": [
+      640,
+      938
+    ],
+    "jpgWidth": 938,
+    "focal": "36% 45%",
+    "alt": "Gary Germer on the AM Northwest set, smiling beside a gold foil-wrapped pop-art piece and a framed certificate",
+    "category": "people",
+    "rank": 3
+  },
+  "appraisals-faq-chandelier": {
+    "width": 2020,
+    "height": 1136,
+    "tiers": [
+      640,
+      1024,
+      1280,
+      1600,
+      2000
+    ],
+    "jpgWidth": 1200,
+    "focal": "50% 50%",
+    "alt": "A gilt-bronze chandelier hung from a palace ceiling of pale green plasterwork moulded with figures and scrolling foliage",
+    "category": "architecture",
+    "rank": 3
+  },
+  "estate-fee-schedule-palace": {
+    "width": 2020,
+    "height": 1136,
+    "tiers": [
+      640,
+      1024,
+      1280,
+      1600,
+      2000
+    ],
+    "jpgWidth": 1200,
+    "focal": "50% 45%",
+    "alt": "A palace ballroom with gilded Corinthian columns, a marble balustrade and a crystal chandelier beneath a coffered ceiling",
+    "category": "architecture",
+    "rank": 2
+  },
+  "previous-shopping-gilt-figure": {
+    "width": 1616,
+    "height": 2266,
+    "tiers": [
+      640,
+      1024,
+      1280,
+      1600
+    ],
+    "jpgWidth": 1200,
+    "focal": "50% 45%",
+    "alt": "A gilded figural candelabrum standing against a marble pier beside a tall window in a palace gallery",
+    "category": "object",
+    "rank": 2
+  },
+  "previous-attending-salon": {
+    "width": 1331,
+    "height": 1867,
+    "tiers": [
+      640,
+      1024,
+      1280,
+      1331
+    ],
+    "jpgWidth": 1200,
+    "focal": "50% 50%",
+    "alt": "A burl-front chest and a pair of tufted salon chairs arranged on a Persian carpet, with a bracket clock and framed paintings above",
+    "category": "interior",
+    "rank": 2
+  }
+}

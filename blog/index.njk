@@ -5,7 +5,7 @@ title: Blog — Estate Sale Finds, Appraisal Tips & Show & Tell | Gary Germer & 
 description: "Stories from Gary Germer & Associates' estate sales, appraisal insights, notable finds, and shop highlights from over 30 years in the Portland estate sale and appraisal business."
 ogTitle: The Gary Germer & Associates Blog
 ogDescription: "Estate sale stories, appraisal tips, and notable finds from Gary Germer & Associates."
-ogImage: /assets/images/parlor-placeholder.jpg
+ogImage: /assets/images/art/estate-sales-hero-parlor.jpg
 ---
 {% extends "layouts/base.njk" %}
 {% import "partials/blog-card.njk" as cards %}
@@ -22,10 +22,8 @@ ogImage: /assets/images/parlor-placeholder.jpg
         <h1 class="section-heading mx-auto">Articles, Videos, and New Discoveries to Explore</h1>
         <p class="section-body mx-auto">Estate sale highlights, appraisal how-tos, shop finds, and video walkthroughs — all in one place. Subscribe to our newsletter to stay informed.</p>
 
-        <form class="discovery-signup-row" id="get-notified" action="https://formsubmit.co/info@garygermer.com" method="POST">
-          <input type="hidden" name="_subject" value="New estate sale alert subscriber — Blog hero">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_next" value="https://www.garygermer.com/thanks.html">
+        <form class="discovery-signup-row" id="get-notified" action="/api/submit-inquiry" method="POST">
+          <input type="hidden" name="form" value="newsletter">
           <div class="form-honey" aria-hidden="true">
             <label for="blog-hero-alerts-company">Leave this field empty</label>
             <input type="text" id="blog-hero-alerts-company" name="_honey" tabindex="-1" autocomplete="off">
@@ -38,6 +36,7 @@ ogImage: /assets/images/parlor-placeholder.jpg
             <label class="field-label" for="blog-hero-alerts-email">Email</label>
             <input id="blog-hero-alerts-email" name="email" type="email" placeholder="Email" autocomplete="email" required>
           </div>
+          <p class="form-submit-error" role="alert" hidden></p>
           <button class="button button-navy" type="submit">Subscribe</button>
         </form>
       </div>

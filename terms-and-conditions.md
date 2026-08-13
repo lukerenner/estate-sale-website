@@ -6,7 +6,7 @@ updated: "2026-08-09"
 description: "The rules and terms that govern your use of the Gary Germer & Associates website, garygermer.com."
 ogTitle: "Terms and Conditions | Gary Germer & Associates"
 ogDescription: "The rules and terms that govern your use of the Gary Germer & Associates website, garygermer.com."
-ogImage: /assets/images/parlor-placeholder.jpg
+ogImage: /assets/images/art/home-hero-gilded-salon.jpg
 ---
 
 These Terms and Conditions ("Terms") govern your use of garygermer.com (the "Site"), operated by Gary Germer & Associates. By using the Site, you agree to these Terms. If you do not agree, please do not use the Site.

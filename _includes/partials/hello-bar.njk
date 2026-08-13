@@ -1,0 +1,20 @@
+{# Site-wide "hello bar" announcing the soonest not-yet-concluded estate
+   sale. Always rendered (hidden by default) when collections.heroBarSale
+   has a candidate; script.js decides at runtime whether today is actually
+   in the eligible window and reveals it — see "hello bar" in script.js.
+   `?showHelloBar=1` forces it visible for design QA. #}
+{% if collections.heroBarSale.length %}
+{% set sale = collections.heroBarSale[0] %}
+<div class="hello-bar" id="hello-bar"
+     data-first-date="{{ sale.firstDate }}"
+     data-last-date="{{ sale.lastDate }}"
+     data-last-close24="{{ sale.lastCloses24 }}">
+  {# The bar carries one message with one destination, so the whole row is
+     the link — the "Learn More" ghost arrow is its visible affordance, not
+     a second target competing with the hero's CTAs below it. #}
+  <a class="container hello-bar-inner" href="{{ sale.url }}">
+    <span class="hello-bar-text" data-hello-bar-text></span>
+    <span class="hello-bar-cta">Learn More</span>
+  </a>
+</div>
+{% endif %}
