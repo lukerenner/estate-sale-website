@@ -1,12 +1,11 @@
 {
-  "ranAt": "2026-08-14T02:35:20.702Z",
+  "ranAt": "2026-08-14T07:45:51.760Z",
   "shop": {
-    "created": [
-      "black-lacquer-chinese-corner-cabinet-with-inlaid-stone",
-      "kaidan-tansu-step-chest-with-brass-hardware"
-    ],
+    "created": [],
     "updatedSold": [],
     "skippedExisting": [
+      "black-lacquer-chinese-corner-cabinet-with-inlaid-stone",
+      "tansu-step-chest",
       "hand-carved-and-painted-burmese-court-actor-statue",
       "terracotta-warrior-replica-common-solider-statue",
       "indian-gold-lacquer-ceremonial-shield",
