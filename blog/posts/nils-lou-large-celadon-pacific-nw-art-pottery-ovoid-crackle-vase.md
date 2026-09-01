@@ -16,7 +16,7 @@ source:
 publishDate: "2026-08-20"
 shopUrl: https://shop.garygermer.com/products/large-celadon-pottery-vase
 price: "$195.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/nils-lou-large-celadon-pacific-nw-art-pottery-ovoid-crackle-vase/nils-lou-large-celadon-pacific-nw-art-pottery-ovoid-crackle-vase-01-900.webp
   srcset900: /assets/images/blog/nils-lou-large-celadon-pacific-nw-art-pottery-ovoid-crackle-vase/nils-lou-large-celadon-pacific-nw-art-pottery-ovoid-crackle-vase-01-900.webp
