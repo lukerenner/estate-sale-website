@@ -16,7 +16,7 @@ source:
 publishDate: "2026-09-02"
 shopUrl: https://shop.garygermer.com/products/large-american-gilt-copper-galloping-horse-weathervane
 price: "$12500.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/antique-american-large-gilt-copper-horse-weathervane/antique-american-large-gilt-copper-horse-weathervane-01-900.webp
   srcset900: /assets/images/blog/antique-american-large-gilt-copper-horse-weathervane/antique-american-large-gilt-copper-horse-weathervane-01-900.webp
