@@ -1,7 +1,13 @@
 {
-  "ranAt": "2026-09-05T15:01:42.761Z",
+  "ranAt": "2026-09-05T20:15:17.139Z",
   "shop": {
-    "created": [],
+    "created": [
+      "royal-copenhagen-180-denmark-plain-blue-fluted-6-3-4-dessert-plate-dish-pair",
+      "meissen-cross-swords-blue-onion-porcelain-scallop-rim-coffee-cup-and-saucer",
+      "waterford-cut-diamond-crystal-alana-claret-5-3-4-wine-glass",
+      "waterford-cut-diamond-crystal-alana-water-goblet-6-7-8-glass-pair",
+      "waterford-crystal-alana-claret-5-7-8-wine-glass-set-of-3"
+    ],
     "updatedSold": [],
     "skippedExisting": [
       "waterford-crystal-pair",
@@ -44,38 +50,8 @@
       "royal-doulton-ito-smooth-e2929-exotic-bird-10-1-8-dinner-plate-set-of-4",
       "royal-doulton-ito-soup-cream-cup-saucer-pair",
       "walt-disney-maleficent-you-want-what-size-framed-display-print",
-      "nice-bob-dylan-best-of-bobs-bootlegs-collectors-bootleg-vinyl-record-copy",
       "traditional-four-poster-wooden-pediment-rice-bedframe",
-      "nice-bob-dylan-double-picture-disc-set-all-hallows-eve-and-more-bootleg-2lp-vinyl-record-copy",
-      "ornate-hand-carved-chinese-canopy-wedding-bed-with-mirrored-sideboard",
-      "rare-the-beach-boys-unsurpassed-masters-vol-9-13-14-cd-box-sets-copy",
-      "rare-the-beatles-mythology-vol-1-2-3-and-the-twickenham-sessions-19cd-box-sets",
-      "mexico-sterling-silver-miniature-basket",
-      "mexico-sterling-silver-treasure-chest-trinket-box",
-      "hand-turned-wood-geometric-box-with-dome-lid",
-      "fumio-tomita-signed-artist-proof-accordance-13-framed-vintage-print",
-      "cherub-putto-with-dolphin-amr-replica-composite-statue",
-      "taxco-alicia-mexico-sterling-silver-fringe-dangle-clip-on-earrings",
-      "art-deco-sterling-silver-cleopatra-brooch-pin",
-      "carved-deer-antler-grim-reaper-hidden-blade-folk-art-walking-stick-cane",
-      "horn-handle-cane",
-      "nude-male-torso-clear-cocktail-party-shot-glass-set-of-8",
-      "hindu-hand-carved-marble-nandi-brahman-bull-statue",
-      "hand-carved-stone-head-of-indian-deity-sculpture-on-stand",
-      "indian-female-goddess-apsara-or-devata-statue-on-stand",
-      "black-lacquer-chinese-corner-cabinet-with-inlaid-stone",
-      "tansu-step-chest",
-      "hand-carved-and-painted-burmese-court-actor-statue",
-      "terracotta-warrior-replica-common-solider-statue",
-      "mexican-folk-art-hand-carved-milagros-gold-charms-cross",
-      "chinese-green-glazed-dog-han-style-pottery-tomb-guardian-sculpture",
-      "maori-new-zealand-carved-wood-treasure-box-with-abalone-shell",
-      "dog-head-with-inset-eyes-carved-wood-cane",
-      "emilia-castillo-mexico-sterling-silver-overlay-pottery-fish-ramen-bowl",
-      "oval-bloodstone-14k-yellow-gold-signet-marcus-co-designer-ring",
-      "arthur-lismer-signed-framed-river-landscape-surreal-oil-painting-on-board",
-      "vintage-johnny-friedlander-framed-signed-modern-art-engraving",
-      "copy-of-native-north-coast-hand-woven-shallow-woven-basket-bowl"
+      "ornate-hand-carved-chinese-canopy-wedding-bed-with-mirrored-sideboard"
     ]
   },
   "video": {
