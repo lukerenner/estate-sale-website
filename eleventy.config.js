@@ -380,6 +380,12 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter("slugify", slugify);
 
+  // "/assets/captions/x.vtt" -> true if that file is in the project, so a
+  // template can add a <track> only when captions actually exist.
+  eleventyConfig.addFilter("fileExists", function (sitePath) {
+    return fs.existsSync(path.join(process.cwd(), String(sitePath || "").replace(/^\//, "")));
+  });
+
   eleventyConfig.addFilter("blogFilterLabel", blogFilterLabel);
 
   eleventyConfig.addFilter("relatedPosts", relatedPosts);

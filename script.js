@@ -461,6 +461,14 @@
       video.controls = true;
       video.autoplay = true;
       video.playsInline = true;
+      if (thumb.dataset.captions) {
+        var track = document.createElement("track");
+        track.kind = "captions";
+        track.src = thumb.dataset.captions;
+        track.srclang = "en";
+        track.label = "English";
+        video.appendChild(track);
+      }
       thumb.replaceWith(video);
     });
   });

@@ -56,6 +56,12 @@ project `gary-germer-2-0`). Production today is still the Ucraft site.
   Run workflow* to do it immediately rather than waiting up to 6 hours). Sold
   items are hidden from the blog's default view and listed after the
   available ones under the For Sale filter.
+- **Video captions (ADA).** 21 of the 36 self-hosted AM Northwest segments
+  plus the 3 homepage clips now have captions, from YouTube's auto-captions
+  (KATU Lifestyle's uploads) time-aligned to our own files — see
+  `assets/captions/README.md`. 15 segments have no YouTube upload and still
+  need captions; the AMNW videos themselves are already self-hosted, so
+  nothing depends on KATU keeping them online.
 - **Spam**: forms rely on a honeypot plus server-side validation. If spam
   gets through after launch, add Cloudflare Turnstile (free, needs an account
   — not created here).

@@ -134,8 +134,13 @@
           {% if sourceType == "youtube" %}
           <iframe src="https://www.youtube-nocookie.com/embed/{{ source.id }}?playsinline=1" title="{{ title }}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           {% else %}
+          {# Captions: assets/captions/<slug>.vtt, where one exists (AM Northwest
+             segments that KATU also posted to YouTube — auto-captions aligned
+             to our copy of the file; see assets/captions/README.md). #}
+          {% set captionFile = "/assets/captions/" + page.fileSlug + ".vtt" %}
           <video controls playsinline preload="metadata" poster="{{ heroImage.src }}">
             <source src="{{ source.video }}" type="video/mp4">
+            {% if captionFile | fileExists %}<track kind="captions" src="{{ captionFile }}" srclang="en" label="English">{% endif %}
           </video>
           <button type="button" class="video-play-fallback" data-video-play aria-label="Play video">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
