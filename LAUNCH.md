@@ -66,7 +66,7 @@ project `gary-germer-2-0`). Production today is still the Ucraft site.
   gets through after launch, add Cloudflare Turnstile (free, needs an account
   — not created here).
 - **Delete the two audit test rows** in Airtable → Website Inquiries
-  (`recNkuTxeewMXeeZ1`, `recbBHqMqMQHHeaAU`, both "LAUNCH AUDIT TEST") and the
+  (`recNkuTxeewMXeeZ1`, `recbBHqMqMQHHeaAU`, `rec9e9ciMrIODtRWs`, all "LAUNCH AUDIT TEST") and the
   Contact `launch-audit-test@example.com`.
 
 ## Legacy URL → new URL map
