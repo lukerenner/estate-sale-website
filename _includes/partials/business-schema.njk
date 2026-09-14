@@ -1,0 +1,57 @@
+{#- The one LocalBusiness JSON-LD block, from _data/business.json. Included on
+    the homepage and /contact/; service pages reference it by @id through
+    partials/service-schema.njk rather than repeating it.
+
+    Deliberately absent: aggregateRating (Google ignores self-served ratings
+    on a business's own site, and the old hard-coded 4.7/100 had no source),
+    priceRange and geo (nothing on file to verify them against). -#}
+{%- set b = business -%}
+<script type="application/ld+json">
+{{ {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["ProfessionalService", "AntiqueStore"],
+      "@id": "https://www.garygermer.com/#business",
+      "name": b.name,
+      "url": b.url,
+      "logo": "https://www.garygermer.com/assets/icons/Gary%20Germer%20Icon.png",
+      "image": "https://www.garygermer.com/assets/images/art/home-hero-gilded-salon.jpg",
+      "telephone": b.telephone,
+      "email": b.email,
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": b.streetAddress,
+        "addressLocality": b.addressLocality,
+        "addressRegion": b.addressRegion,
+        "postalCode": b.postalCode,
+        "addressCountry": b.addressCountry
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Portland", "containedInPlace": { "@type": "State", "name": "Oregon" } },
+        { "@type": "State", "name": "Oregon" }
+      ],
+      "openingHoursSpecification": [{
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": b.openDays,
+        "opens": b.opens,
+        "closes": b.closes
+      }],
+      "founder": { "@type": "Person", "name": b.founder },
+      "sameAs": b.sameAs,
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Services",
+        "itemListElement": b.services | serviceOffers
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.garygermer.com/#website",
+      "name": b.name,
+      "url": b.url,
+      "publisher": { "@id": "https://www.garygermer.com/#business" }
+    }
+  ]
+} | json | safe }}
+</script>

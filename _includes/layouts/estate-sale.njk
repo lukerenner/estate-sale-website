@@ -5,27 +5,28 @@
 {
   "@context": "https://schema.org",
   "@type": "Event",
-  "name": "{{ saleName }}",
+  "name": {{ saleName | dump | safe }},
   "startDate": "{{ dates[0].date | isoDateTime(dates[0].opens24) }}",
   "endDate": "{{ dates[dates.length - 1].date | isoDateTime(dates[dates.length - 1].closes24) }}",
   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
   "eventStatus": "https://schema.org/EventScheduled",
   "location": {
     "@type": "Place",
-    "name": "{{ saleName }}",
+    "name": {{ saleName | dump | safe }},
     "address": {
       "@type": "PostalAddress",
-      {% if address.line1 %}"streetAddress": "{{ address.line1 }}",{% endif %}
-      "addressLocality": "{{ addressLocality }}",
-      "addressRegion": "{{ addressRegion }}",
-      {% if addressPostalCode %}"postalCode": "{{ addressPostalCode }}",{% endif %}
+      {% if address.line1 %}"streetAddress": {{ address.line1 | dump | safe }},{% endif %}
+      "addressLocality": {{ (addressLocality or (neighborhood | cityLabel)) | dump | safe }},
+      "addressRegion": {{ (addressRegion or (neighborhood | stateCode)) | dump | safe }},
+      {% if addressPostalCode %}"postalCode": {{ addressPostalCode | dump | safe }},{% endif %}
       "addressCountry": "US"
     }
   },
   "image": ["https://www.garygermer.com{{ ogImage }}"],
-  "description": "{{ description }}",
+  "description": {{ description | dump | safe }},
   "organizer": {
     "@type": "Organization",
+    "@id": "https://www.garygermer.com/#business",
     "name": "Gary Germer & Associates",
     "url": "https://www.garygermer.com/"
   },

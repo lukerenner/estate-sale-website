@@ -1,0 +1,28 @@
+{
+  "_source": "Canonical NAP for structured data. Verified 2026-09-14 against the outgoing garygermer.com contact page (1.0/contact/index.html) — name, address, phone, email and hours (Tue–Sat 10–5, 'or by appointment'). Social profiles are the ones the site footer links to, each confirmed live. Keep in sync with partials/footer.njk and contact.njk if any of this changes.",
+  "name": "Gary Germer & Associates",
+  "url": "https://www.garygermer.com/",
+  "telephone": "+1-503-235-0946",
+  "email": "info@garygermer.com",
+  "streetAddress": "407 N. Broadway St.",
+  "addressLocality": "Portland",
+  "addressRegion": "OR",
+  "postalCode": "97227",
+  "addressCountry": "US",
+  "openDays": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+  "opens": "10:00",
+  "closes": "17:00",
+  "founder": "Gary Germer",
+  "sameAs": [
+    "https://www.facebook.com/garygermer",
+    "https://www.instagram.com/garygermer/",
+    "https://www.youtube.com/user/garygermer",
+    "https://www.pinterest.com/garygermer/"
+  ],
+  "services": [
+    { "name": "Estate Sales", "url": "/our-services/estate-sales/", "description": "Full-service estate sales and estate liquidation in the Portland, Oregon area." },
+    { "name": "Personal Property Appraisals", "url": "/our-services/appraisals/", "description": "Free spot checks, verbal evaluations, and written USPAP-compliant appraisals for insurance, probate, and taxation." },
+    { "name": "Consignment", "url": "/our-services/consignment/", "description": "Consignment of jewelry, fine art, antiques, and collections through our Portland gallery and online marketplaces." },
+    { "name": "Speaking Engagements & Appraisal Clinics", "url": "/our-services/speaking-engagements-and-clinics/", "description": "Antiques Roadshow-style appraisal clinics, keynotes, and workshops." }
+  ]
+}

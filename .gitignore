@@ -9,3 +9,6 @@ _site/
 # Retired photography, kept on Drive for reference only. Lives outside assets/
 # so it is never passthrough-copied into the deploy.
 art-direction/_superseded/
+
+# Local Netlify folder
+.netlify

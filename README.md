@@ -41,47 +41,31 @@ python3 -m http.server 8000
 
 ## Contact forms
 
-Both the hero form and the final "Begin with a conversation" form POST to
-[FormSubmit](https://formsubmit.co/) at `info@garygermer.com` — same pattern
-used by the `lukerenner.co` sibling repo (honeypot field, `_captcha` disabled,
-redirect to `thanks.html`). The consultation form also accepts an optional
-photo upload (`enctype="multipart/form-data"`), which FormSubmit supports
-directly. The "Get Estate Sale Alerts" signup uses the same FormSubmit address
-with its own `_subject`, since no separate mailing-list service was specified.
-
-**One-time activation required:** the first submission after deployment
-triggers a confirmation email from FormSubmit to `info@garygermer.com` —
-someone at Gary Germer & Associates needs to click the confirmation link in
-that email once. Every submission before that click is silently dropped, so
-send a test submission and confirm the email arrives before pointing any real
-traffic at this site.
+Every form posts to `/api/submit-inquiry`
+(`netlify/functions/submit-inquiry.mjs`), which writes to the Airtable base
+in `.env` (`AIRTABLE_TOKEN`, `AIRTABLE_BASE_ID`, `AIRTABLE_TABLE_NAME` — set
+the same three in Netlify's environment variables). Inquiries create a
+Website Inquiries row linked to a de-duplicated Contacts row; newsletter
+signups only flag the Contact. Photos are compressed in the browser to fit
+Netlify's ~4.5MB request limit and uploaded to the same record; if any photo
+fails, the visitor is told and the record is flagged — never a silent
+success. Spam protection is a honeypot plus server-side validation.
 
 ## Deployment
 
-This repo assumes **Netlify** as the host, specifically so the `_redirects`
-file can do real host-level 301s without generating a stub HTML page per old
-URL (the brief explicitly rules out stub pages). Point a new Netlify site at
-this folder with no build command and a publish directory of `.`.
-
-If this ever needs to move to **GitHub Pages** instead (matching how the
-outgoing `1.0` site and `ElevatorBeat`/`lukerenner.co`'s public targets are
-hosted): GitHub Pages has no server-side redirect mechanism, so the
-`_redirects` file won't do anything there. The only GitHub-Pages-compatible
-way to preserve the old URLs is a small stub HTML page per old path (canonical
-tag + instant client-side redirect) — which the brief explicitly says not to
-build. In that scenario, the honest fallback is a single catch-all `404.html`
-that sends visitors to `/`, accepting that individual old URLs won't get a
-true 301. That tradeoff should be a deliberate call by whoever deploys this,
-not something decided silently in code — flagged here and in
-`CONTENT_REVIEW.md`.
+Netlify, building from `main` (`npm run build`, publish `_site`, functions in
+`netlify/functions`, edge functions in `netlify/edge-functions`). `_redirects`
+does the 1.0 → 2.0 301s. Non-production hostnames (staging, deploy previews)
+are sent `X-Robots-Tag: noindex` at runtime by an edge function, so
+production is indexable as soon as the domain points at Netlify. See
+`LAUNCH.md` for the cutover runbook and the full legacy redirect map.
 
 ## SEO
 
-- `<title>` and meta description carried over the intent of the current
-  site's indexed homepage title/description, tightened to the new
-  positioning.
-- Open Graph + Twitter Card metadata point at the hero image.
-- `ProfessionalService` JSON-LD includes name, phone, address, hours, and
-  service area — hours are flagged as needing final confirmation, see
-  `CONTENT_REVIEW.md`.
-- `sitemap.xml` lists only this homepage; expand it as future routes ship.
+- Every page sets its own `title`/`description`; canonicals and Open Graph
+  URLs are always `https://www.garygermer.com` + the page's trailing-slash URL.
+- LocalBusiness JSON-LD comes from `_data/business.json` via
+  `partials/business-schema.njk` (homepage, /contact/); the four service pages
+  add a `Service` block via `partials/service-schema.njk`.
+- `sitemap.xml` is generated from every built page; set `noindex: true` in a
+  page's front matter to leave it out.

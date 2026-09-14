@@ -2,25 +2,22 @@
 permalink: /sitemap.xml
 eleventyExcludeFromCollections: true
 ---
+{#- Every indexable page Eleventy builds — driven by collections.all so a new
+    page can never be left out by forgetting to list it here (the previous
+    hand-listed version omitted every service page, /contact/, /blog/ and
+    /estate-sales/). Skipped: non-directory URLs (/404.html, /thanks.html)
+    and anything that sets `noindex: true` in its front matter. -#}
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- for item in collections.all | sort(false, false, "url") %}
+{%- if item.url and item.url.endsWith("/") and not item.data.noindex %}
+{%- set lastmod = item.data.publishDate or (item.data.dates and item.data.dates[item.data.dates.length - 1].date) or item.data.updated %}
   <url>
-    <loc>https://www.garygermer.com/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <loc>https://www.garygermer.com{{ item.url }}</loc>
+    {%- if lastmod %}
+    <lastmod>{{ lastmod }}</lastmod>
+    {%- endif %}
   </url>
-{%- for sale in collections.estateSales %}
-  <url>
-    <loc>https://www.garygermer.com{{ sale.url }}</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-{%- endfor %}
-{%- for post in collections.blogPosts %}
-  <url>
-    <loc>https://www.garygermer.com{{ post.url }}</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
+{%- endif %}
 {%- endfor %}
 </urlset>

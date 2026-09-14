@@ -8,6 +8,11 @@ ogImage: /assets/images/art/speaking-hero-gallery.jpg
 ---
 {% extends "layouts/base.njk" %}
 
+{% block head %}
+{% set serviceName = "Speaking Engagements & Appraisal Clinics" %}
+{% include "partials/service-schema.njk" %}
+{% endblock %}
+
 {% block content %}
 
   <!-- ============================== HERO ============================== -->

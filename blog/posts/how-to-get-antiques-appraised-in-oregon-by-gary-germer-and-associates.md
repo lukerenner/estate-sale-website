@@ -31,13 +31,13 @@ Keep reading for some tips and advice on how to get antiques appraised. And if 
 
 There are many ways to go about getting a valuation of your furniture and antiques. You could visit an appraisal fair or get an appraisal done online, but there's always the risk of encountering frauds or phony experts.
 
-Hiring a [professional appraisal service](https://www.garygermer.com/our-services/appraisals) often includes an official, highly detailed report put together by an experienced appraiser who not only assesses the inherent value of a piece but also assesses it against its current market value.
+Hiring a [professional appraisal service](/our-services/appraisals/) often includes an official, highly detailed report put together by an experienced appraiser who not only assesses the inherent value of a piece but also assesses it against its current market value.
 
 The report will contain a detailed account of how the appraiser arrived at the figure, so you can rest assured knowing all measures were taken and that they didn't just pluck a number out of thin air.
 
 ## Why Should I Bother with an Appraisal?
 
-The obvious reason to get furniture and antiques appraised is to assess their resale value. You don't want to be one of those garage sale stories. For instance, [things like flatware](https://www.garygermer.com/media/blog/show-and-tell/we-found-a-pony-in-the-manure) that might seem like junk could be valuable collector's items.
+The obvious reason to get furniture and antiques appraised is to assess their resale value. You don't want to be one of those garage sale stories. For instance, [things like flatware](/blog/we-found-a-pony-in-the-manure/) that might seem like junk could be valuable collector's items.
 
 You also don't want to conjure up a sale price out of nowhere. A serious buyer will want to know how you arrived at the price and will want to be sure it's fair.
 
@@ -93,4 +93,4 @@ At the end of the day, no one wants to get ripped off. To some, antiques, furnit
 
 Regardless, using a reputable, professional appraisal service not only keeps you above board with the IRS, but it can also give you invaluable knowledge and can potentially put you in a powerful selling position.
 
-We hope this information has helped you understand how to get antiques appraised so that you don't end up selling a card table worth half a million for 25 bucks. [Contact us](https://www.garygermer.com/contact) for more information on professional appraisal services in Oregon.
+We hope this information has helped you understand how to get antiques appraised so that you don't end up selling a card table worth half a million for 25 bucks. [Contact us](/contact/) for more information on professional appraisal services in Oregon.

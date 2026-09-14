@@ -150,7 +150,10 @@ body {
 }
 
 img, svg { display: block; max-width: 100%; }
-img { height: auto; }
+/* Warm neutral instead of the browser's default grey box while a lazy image
+   is still decoding — the reserved aspect-ratio/width-height area paints
+   this background until the photo itself replaces it. */
+img { height: auto; background-color: var(--ivory-deep); }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
 ul { list-style: none; margin: 0; padding: 0; }
@@ -531,6 +534,7 @@ label { font-family: var(--font-sans); }
   display: block;
   width: auto;
   height: clamp(34px, 3.4vw, 46px);
+  background-color: transparent;
 }
 /* Circular seal reads visually smaller at an identical height. */
 .testimonial-proof-seals img.hero-trust-seal { height: clamp(46px, 4.4vw, 60px); }
@@ -776,6 +780,7 @@ label { font-family: var(--font-sans); }
   width: 100%;
   height: 100%;
   object-fit: cover;
+  background-color: var(--navy-deep);
   transition: transform 0.6s cubic-bezier(0.2, 0.6, 0.2, 1);
 }
 /* The comp knocks these photographs well back — desaturated and roughly
@@ -881,10 +886,13 @@ label { font-family: var(--font-sans); }
    includes it via _includes/layouts/base.njk. Styling changes here in
    styles.css apply everywhere since all pages share this stylesheet.
 
-   Below 1500px the header shows only the hamburger, which opens a full-screen
-   nav overlay; at 1500px and up the nav links show inline and the hamburger
-   is hidden (1500px is the narrowest width the full link set fits without
-   crowding or overflowing the header). The header auto-hides on scroll-down, reappearing on
+   Below 1280px the header shows only the hamburger, which opens a full-screen
+   nav overlay; at 1280px and up the nav links show inline and the hamburger
+   is hidden, so 1280/1366/1440px laptops get the real menu bar. The bar's
+   sizing (tighter gaps, 17–19px type, slimmer pills) is set in the "menu bar
+   sizing" block below: at the old 20px/35px-gap size the current link set
+   needs ~1310px, which overflowed the header at every width — the container
+   caps out below that even on a 1920px screen. The header auto-hides on scroll-down, reappearing on
    scroll-up — see the "header" and "mobile nav" sections of script.js.
 
    It's also transparent over the hero at the top of the page (every page
@@ -945,7 +953,7 @@ body:not(:has(.hero)) .site-header .brand-mark-solid { display: block; }
   white-space: nowrap;
   flex: none;
 }
-.brand-mark { height: 42px; width: auto; flex: none; }
+.brand-mark { height: 42px; width: auto; flex: none; background-color: transparent; }
 .brand-mark-solid { display: none; }
 .site-header.is-scrolled .brand-mark-transparent { display: none; }
 .site-header.is-scrolled .brand-mark-solid { display: block; }
@@ -962,22 +970,27 @@ body:not(:has(.hero)) .site-header .brand-mark-solid { display: block; }
   transform: translateX(100%);
   transition: transform var(--transition);
   padding: var(--page-x);
+  overflow-y: auto;
 }
 .nav-open .site-nav { transform: translateX(0); }
-.site-nav a { white-space: nowrap; font-size: 1.25rem; }
-.site-nav a {
-  font-weight: 600;
+.site-nav a,
+.nav-dropdown summary { white-space: nowrap; font-size: 1.6rem; }
+.site-nav a,
+.nav-dropdown summary {
+  font-weight: 700;
   letter-spacing: 0.01em;
   transition: color var(--transition-fast);
 }
-@media (max-width: 1499px) {
-  .site-nav a { color: var(--ink-soft); }
-  .site-nav a:hover { color: var(--blue); }
+@media (max-width: 1279px) {
+  .site-nav a,
+  .nav-dropdown summary { color: var(--ink-soft); }
+  .site-nav a:hover,
+  .nav-dropdown summary:hover { color: var(--blue); }
 }
 .nav-cta {
   margin-top: 8px;
   padding: 0.6em 1.1em;
-  font-size: clamp(0.875rem, 0.83rem + 0.22vw, 1rem);
+  font-size: clamp(1rem, 0.94rem + 0.28vw, 1.1875rem);
   white-space: nowrap;
   flex: none;
 }
@@ -992,6 +1005,39 @@ body:not(:has(.hero)) .site-header .brand-mark-solid { display: block; }
 body:not(:has(.hero)) .site-header:not(.is-scrolled) .site-nav a.button-on-dark {
   border-color: var(--blue);
 }
+
+/* Dropdown submenus ("Estate Sales", "More") — native <details>/<summary>
+   gives click-to-toggle and keyboard support for free on both the mobile
+   overlay and the desktop bar, so no extra JS is needed to open/close one. */
+.nav-dropdown { text-align: center; }
+.nav-dropdown summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+  cursor: pointer;
+  list-style: none;
+}
+.nav-dropdown summary::-webkit-details-marker { display: none; }
+.nav-dropdown summary::after {
+  content: "";
+  width: 0.5em;
+  height: 0.5em;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform var(--transition-fast);
+  flex: none;
+}
+.nav-dropdown[open] summary::after { transform: rotate(-135deg) translateY(2px); }
+.nav-dropdown-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding-top: 20px;
+}
+.nav-dropdown-menu a { font-size: 1.25rem; font-weight: 500; }
 
 .nav-toggle {
   position: relative;
@@ -1010,19 +1056,55 @@ body:not(:has(.hero)) .site-header:not(.is-scrolled) .site-nav a.button-on-dark 
 
 body.nav-lock { overflow: hidden; }
 
-@media (min-width: 1500px) {
+@media (min-width: 1280px) {
   .site-nav {
     position: static;
     flex-direction: row;
+    align-items: center;
     inset: auto;
     background: none;
     transform: none;
     padding: 0;
-    gap: clamp(14px, 1.6vw, 26px);
+    gap: clamp(24px, 2.4vw, 42px);
+    overflow: visible;
   }
-  .site-nav a { font-size: 0.9375rem; color: inherit; }
-  .site-nav a:hover { color: var(--blue); }
+  .site-nav a,
+  .nav-dropdown summary { font-size: clamp(1.0625rem, 0.96rem + 0.42vw, 1.25rem); color: inherit; }
+  .site-nav a:hover,
+  .nav-dropdown summary:hover { color: var(--blue); }
   .nav-toggle { display: none; }
+
+  /* On desktop the submenu drops from the trigger instead of expanding the
+     bar's height, so it needs to be its own positioning context and the
+     panel needs an opaque surface to sit on top of page content. */
+  .nav-dropdown { position: relative; }
+  .nav-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 18px);
+    left: 0;
+    align-items: flex-start;
+    transform: none;
+    background: var(--ivory);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    padding: 16px 24px;
+    gap: 16px;
+    z-index: 120;
+  }
+  .nav-dropdown-menu a { color: var(--ink-soft); font-size: 1.125rem; white-space: nowrap; }
+  .nav-dropdown-menu a:hover { color: var(--blue); }
+}
+
+/* Menu bar sizing (see the header notes above): 17px type at laptop widths,
+   growing to 19px on wide screens, with gaps and pill padding scaled to match. */
+@media (min-width: 1280px) {
+  .site-nav { gap: clamp(14px, 1.4vw, 26px); }
+  .site-nav a,
+  .nav-dropdown summary,
+  .site-nav a.nav-cta { font-size: clamp(1.0625rem, 0.6rem + 0.5vw, 1.1875rem); }
+  .site-nav a.button { padding-inline: 1.3em; }
+  .site-nav a.nav-cta { padding-inline: 1.1em; }
 }
 
 /* ==========================================================================
@@ -1110,6 +1192,7 @@ body.nav-lock { overflow: hidden; }
   height: 100%;
   object-fit: cover;
   object-position: 50% 38%;
+  background-color: var(--navy-deep);
   animation: heroZoom 20s ease-out forwards;
 }
 @keyframes heroZoom {
@@ -1190,6 +1273,9 @@ body.nav-lock { overflow: hidden; }
   height: clamp(34px, 3.4vw, 46px);
   opacity: 0.93;
   filter: drop-shadow(0 1px 6px rgba(0, 0, 0, 0.45));
+  /* These marks are transparent PNGs on the dark hero photo — override the
+     shared img loading-placeholder background so it doesn't show as a box. */
+  background-color: transparent;
 }
 /* The seal is circular, so it reads visually smaller than the wordmarks
    at an identical height — give it a little more room. */
@@ -1286,6 +1372,15 @@ body.nav-lock { overflow: hidden; }
 }
 .notfound-card p { margin-bottom: 1.4rem; }
 .notfound-card .button { width: 100%; justify-content: center; }
+.notfound-card .notfound-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.35rem 1.1rem;
+  margin: 1.2rem 0 0;
+  font-size: var(--fs-small);
+}
+.notfound-card .notfound-links a { color: var(--navy); text-underline-offset: 3px; }
 
 @media (max-width: 480px) {
   .hero-ctas { flex-wrap: nowrap; gap: 0.6rem; }
@@ -1798,10 +1893,13 @@ body.nav-lock { overflow: hidden; }
    independently uses an `is-open` class to mean "sale is open today" (see
    STATUS_CLASS in estate-sale.js). Unscoped, these rules hid the card
    outright on mobile for every status except Open Today, and overrode the
-   card's own mobile padding/margin in that one state. */
+   card's own mobile padding/margin in that one state.
+
+   Also scoped away from .notfound-card: the 404 borrows the same surface,
+   has no CTA to unfold it, and was rendering as an empty photo on phones. */
 @media (max-width: 980px) {
   .consultation-aside { display: none; }
-  .hero-form-card:not(.sale-info-bar) {
+  .hero-form-card:not(.sale-info-bar):not(.notfound-card) {
     max-height: 0;
     opacity: 0;
     padding-block: 0;
@@ -1810,7 +1908,7 @@ body.nav-lock { overflow: hidden; }
     pointer-events: none;
     transition: max-height 0.45s ease, opacity 0.3s ease, padding-block 0.45s ease, margin-top 0.45s ease;
   }
-  .hero-form-card:not(.sale-info-bar).is-open {
+  .hero-form-card:not(.sale-info-bar):not(.notfound-card).is-open {
     max-height: 900px;
     opacity: 1;
     padding-block: clamp(22px, 2vw, 30px);
@@ -2909,6 +3007,9 @@ body.nav-lock { overflow: hidden; }
   object-fit: contain;
   opacity: 0.9;
   mix-blend-mode: multiply;
+  /* These marks are transparent PNGs — override the shared img
+     loading-placeholder background so it doesn't show as a box. */
+  background-color: transparent;
 }
 /* Height caps are per-mark because these three lockups stack differently:
    Reader's Digest is one line of type (the base cap above), AM Northwest is
@@ -2982,7 +3083,7 @@ body.nav-lock { overflow: hidden; }
 }
 .trust-cta-copy {
   margin: 0;
-  font-family: var(--font-display);
+  font-family: var(--font-sans);
   font-size: var(--fs-lead);
   color: var(--ink);
 }
@@ -3050,6 +3151,9 @@ body.nav-lock { overflow: hidden; }
   height: auto;
   object-fit: contain;
   opacity: 0.78;
+  /* These marks are transparent PNGs — override the shared img
+     loading-placeholder background so it doesn't show as a box. */
+  background-color: transparent;
   /* Several of these PNGs are artwork on an opaque white plate, which shows
      as a visible white rectangle on the ivory ground. multiply drops the
      white to the page colour; grayscale keeps the strip from turning into a
@@ -3320,7 +3424,7 @@ body.nav-lock { overflow: hidden; }
   object-fit: cover;
   transition: transform 0.5s cubic-bezier(0.2, 0.6, 0.2, 1);
 }
-.blog-card-media--shop img { object-fit: contain; }
+.blog-card-media--shop img { object-fit: contain; background-color: transparent; }
 .blog-card-media--shop .edge-extend { position: absolute; inset: 0; }
 .blog-card-media--shop .edge-extend-left { clip-path: inset(0 50% 0 0); }
 .blog-card-media--shop .edge-extend-right { clip-path: inset(0 0 0 50%); }
@@ -3332,6 +3436,7 @@ body.nav-lock { overflow: hidden; }
   width: 100%;
   height: 100%;
   object-fit: contain;
+  background-color: transparent;
 }
 .blog-card-media--shop .edge-extend-left .edge-extend-img {
   object-position: 0% center;
@@ -3825,6 +3930,7 @@ body.nav-lock { overflow: hidden; }
   width: auto;
   height: clamp(34px, 3.4vw, 46px);
   opacity: 0.93;
+  background-color: transparent;
 }
 .contact-proof-seals img.hero-trust-seal { height: clamp(46px, 4.4vw, 60px); }
 @media (max-width: 900px) {

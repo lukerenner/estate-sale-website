@@ -1,9 +1,13 @@
-import { createRecord, uploadAttachment, findContactByEmail, createContact, updateContact } from "./lib/airtable.mjs";
+import { createRecord, updateRecord, uploadAttachment, findContactByEmail, createContact, updateContact } from "./lib/airtable.mjs";
 
 const PHOTOS_FIELD = "Photos";
 // Netlify Functions cap request bodies at 6MB; base64-encoding a file adds
 // ~33% overhead, so a single attachment must stay well under that raw.
 const MAX_ATTACHMENT_BYTES = 4.3 * 1024 * 1024;
+// script.js caps uploads at the same count client-side.
+const MAX_ATTACHMENTS = 10;
+const MAX_FIELD_LENGTH = 10000;
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 const CONTACT_NEED_TO_INQUIRY_TYPE = {
   "An appraisal": "Appraisal",
@@ -119,6 +123,63 @@ const FIELD_BUILDERS = {
   review: fieldsForReview,
 };
 
+// Server-side twin of the browser's `required`/`type="email"` checks — the
+// endpoint is public, so a bot (or a no-JS browser on a `novalidate` form)
+// can POST anything. Returns an error string, or null when the submission is
+// complete enough to be worth a row in Airtable.
+function validate(fd, formType) {
+  const email = String(fd.get("email") || "").trim();
+  if (!EMAIL_PATTERN.test(email)) return "A valid email address is required.";
+  for (const [key, value] of fd.entries()) {
+    if (typeof value === "string" && value.length > MAX_FIELD_LENGTH) return `The ${key} field is too long.`;
+  }
+  if (formType === "newsletter") return null;
+  const name = nameFieldsFrom(fd);
+  if (!String(name.first || "").trim()) return "Your name is required.";
+  if ((formType === "appraisal" || formType === "consignment") && !String(fd.get("message") || "").trim()) {
+    return "Please tell us a little about your item.";
+  }
+  if (fd.getAll("attachment").filter((f) => f && typeof f === "object" && f.size > 0).length > MAX_ATTACHMENTS) {
+    return `Please attach no more than ${MAX_ATTACHMENTS} photos.`;
+  }
+  return null;
+}
+
+// Several forms share one form type (the speaking-engagements page posts as a
+// plain "contact"), so the page it came from is the only way the team can
+// tell those apart in Airtable. Same-site Referer only.
+function sourcePageNote(req) {
+  try {
+    const referer = new URL(req.headers.get("referer") || "");
+    const host = new URL(req.url).host;
+    if (referer.host !== host) return "";
+    return `\n\n— Sent from ${referer.pathname}`;
+  } catch {
+    return "";
+  }
+}
+
+// A browser that submits the form natively (JS failed to load, or a
+// `novalidate` form posted without script.js) navigates to this endpoint, so
+// answer it with a page rather than raw JSON. fetch() from script.js sends
+// Accept: */*, which never matches.
+function wantsHtml(req) {
+  return (req.headers.get("accept") || "").includes("text/html");
+}
+
+function respond(req, status, body) {
+  if (wantsHtml(req)) {
+    if (status === 200) return new Response(null, { status: 303, headers: { Location: "/thanks.html" } });
+    // Escaped: a "field is too long" error echoes a client-supplied field name.
+    const message = String(body.error || "Something went wrong.").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+    return new Response(
+      `<!doctype html><meta charset="utf-8"><title>Submission problem | Gary Germer &amp; Associates</title><meta name="robots" content="noindex"><p>${message} Please go back and try again, or email <a href="mailto:info@garygermer.com">info@garygermer.com</a> or call <a href="tel:+15032350946">(503) 235-0946</a>.</p>`,
+      { status, headers: { "Content-Type": "text/html; charset=utf-8" } }
+    );
+  }
+  return new Response(JSON.stringify(body), { status, headers: { "Content-Type": "application/json" } });
+}
+
 // One Contacts row per email: match first, and only ever fill in blank
 // fields on an existing contact — never overwrite what's already on file
 // with whatever a repeat submitter happened to type this time. `extra` is
@@ -156,16 +217,23 @@ export default async (req) => {
   try {
     formData = await req.formData();
   } catch {
-    return new Response(JSON.stringify({ error: "Invalid form submission" }), { status: 400 });
+    return respond(req, 400, { error: "Invalid form submission." });
   }
 
   // Honeypot: report success without writing anything, so bots don't learn
   // their submission was rejected.
   if (formData.get("_honey")) {
-    return new Response(JSON.stringify({ ok: true }), { headers: { "Content-Type": "application/json" } });
+    return respond(req, 200, { ok: true });
   }
 
   const formType = formData.get("form");
+  if (formType !== "newsletter" && !FIELD_BUILDERS[formType]) {
+    return respond(req, 400, { error: "Unknown form type." });
+  }
+  const invalid = validate(formData, formType);
+  if (invalid) {
+    return respond(req, 400, { error: invalid });
+  }
 
   // Newsletter signup: just match-or-create the Contact and flip the
   // opt-in checkbox. No Website Inquiries row — a signup isn't an inquiry
@@ -175,33 +243,31 @@ export default async (req) => {
       await resolveContact(contactInputFor(formData), { Requested2BAdded2EmailList: true });
     } catch (err) {
       console.error(err);
-      return new Response(JSON.stringify({ error: "Could not save your submission" }), { status: 502 });
+      return respond(req, 502, { error: "Could not save your submission." });
     }
-    return new Response(JSON.stringify({ ok: true }), { headers: { "Content-Type": "application/json" } });
+    return respond(req, 200, { ok: true });
   }
 
   const buildFields = FIELD_BUILDERS[formType];
-  if (!buildFields) {
-    return new Response(JSON.stringify({ error: "Unknown form type" }), { status: 400 });
-  }
 
   let contactId;
   try {
     contactId = await resolveContact(contactInputFor(formData));
   } catch (err) {
     console.error(err);
-    return new Response(JSON.stringify({ error: "Could not save your submission" }), { status: 502 });
+    return respond(req, 502, { error: "Could not save your submission." });
   }
 
   const fields = buildFields(formData);
   fields.Contacts = [contactId];
+  fields["Inquiry Message"] = (fields["Inquiry Message"] || "") + sourcePageNote(req);
 
   let record;
   try {
     record = await createRecord(fields);
   } catch (err) {
     console.error(err);
-    return new Response(JSON.stringify({ error: "Could not save your submission" }), { status: 502 });
+    return respond(req, 502, { error: "Could not save your submission." });
   }
 
   const files = formData.getAll("attachment").filter((f) => f && typeof f === "object" && "arrayBuffer" in f && f.size > 0);
@@ -223,11 +289,28 @@ export default async (req) => {
     })
   );
   const uploaded = results.filter(Boolean).length;
+  const failed = files.length - uploaded;
 
-  return new Response(
-    JSON.stringify({ ok: true, recordId: record.id, photosUploaded: uploaded, photosAttempted: files.length }),
-    { headers: { "Content-Type": "application/json" } }
-  );
+  // The inquiry itself is saved, so this is still a 200 — but a dropped photo
+  // must never look like a clean success. Flag it on the record so whoever
+  // reads it knows to ask for the missing photos, and report the shortfall
+  // so script.js can tell the visitor (see "photosFailed" there).
+  if (failed > 0) {
+    try {
+      await updateRecord(record.id, {
+        "Inquiry Message":
+          fields["Inquiry Message"] +
+          `\n\n⚠ ${failed} of ${files.length} attached photo${files.length === 1 ? "" : "s"} failed to upload — please ask the sender to email ${failed === 1 ? "it" : "them"}.`,
+      });
+    } catch (err) {
+      console.error("Could not flag failed uploads on the record:", err);
+    }
+  }
+
+  if (failed > 0 && wantsHtml(req)) {
+    return respond(req, 502, { error: `Your message was received, but ${failed} of ${files.length} photos did not upload.` });
+  }
+  return respond(req, 200, { ok: true, recordId: record.id, photosUploaded: uploaded, photosAttempted: files.length, photosFailed: failed });
 };
 
 export const config = { path: "/api/submit-inquiry" };

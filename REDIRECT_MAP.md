@@ -137,3 +137,22 @@ in its own right). `westmorland-manner-in-sellwood-portland-sale` was also
 corrected to the properly spelled `westmoreland-manor` (the old slug had two
 misspellings — "westmorland" and "manner" for "manor" — that its own
 `saleName`/`neighborhood` fields never had).
+
+## Pre-launch audit (2026-09-14)
+
+Re-inventoried the live site (sitemap + full link crawl + path probes) and
+re-pointed every rule that still landed on a homepage anchor left over from
+the one-page phase. Full old → new table: `LAUNCH.md`.
+
+| Old URL | Was | Now | Why |
+| --- | --- | --- | --- |
+| `/estatesales`, `/portland-estate-sales/janet-edwards`, `/portland-estate-sales/july-11th-13th-2019` | `/#upcoming-sales` (two hops for the last two) | `/estate-sales/` | The real sales hub exists now. |
+| `/portland-estate-sales/event-room`, `…/event-room/william-reynolds-art`, `/portland-estate-sales` and `/*` catch-all | `/#upcoming-sales` | `/estate-sales/` | Showroom events belonged to the sales hub. |
+| `/online-stores`, `/shop` (Ucraft alias, was 404) | `/#shop` | `https://shop.garygermer.com/` | The Vault *is* the online store. |
+| `/media/video`, `/media/video/amnw` | `/#about-gary` | `/blog/?filter=video`, `/blog/?filter=am-northwest` | Those videos are blog posts; the filter chip preselects from `?filter=`. |
+| `/media/blog/appraisals`, `/estate-sales`, `/show-and-tell` (category archives, not in the sitemap) | `/blog/` | `/blog/?filter=…` | Same category, same chip. |
+| `/media/press`, `/media` (Ucraft alias, was 404) | `/` | `/our-services/speaking-engagements-and-clinics/` | Closest content (Roadshow/TV appearances). Flagged: no true equivalent. |
+| `/give-us-a-review` | `/` | Google write-a-review URL | The old page's stars sent people to leave a review. |
+| `/give-us-a-review/feedback` | `/` | `/contact/` | Private feedback → contact form. |
+| `/about` (Ucraft alias, was 404) | — | `/#about-gary` | Same as `/team`. Flagged: no team page. |
+| `https://garygermer.com/*`, `http://garygermer.com/*` | — | `https://www.garygermer.com/:splat` | Canonical host. |

@@ -7,7 +7,7 @@
 {% set pd = post.data %}
 {% set label = pd.category | blogFilterLabel(pd.sourceType, pd.title) %}
 {% set isVideo = pd.sourceType == "youtube" or pd.sourceType == "amnw" %}
-<a class="blog-card reveal" href="{{ post.url }}"{% if filterable %} data-category="{{ label | slugify }}{% if pd.sourceType == 'amnw' %} video{% endif %}"{% endif %}>
+<a class="blog-card reveal" href="{{ post.url }}"{% if filterable %} data-category="{{ label | slugify }}{% if pd.sourceType == 'amnw' %} video{% endif %}"{% if pd.sourceType == "shop" and pd.sold %} data-sold{% endif %}{% endif %}>
   <div class="blog-card-media{% if pd.sourceType == 'shop' %} blog-card-media--shop{% endif %}">
     {% if pd.sourceType == "shop" %}
     <span class="edge-extend edge-extend-left"><img class="edge-extend-img" src="{{ pd.heroImage.src }}" alt="" aria-hidden="true" loading="lazy"></span>

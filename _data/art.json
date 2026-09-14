@@ -233,17 +233,17 @@
     "rank": 3
   },
   "discovery-vault-necklace": {
-    "width": 1616,
-    "height": 808,
+    "width": 1400,
+    "height": 700,
     "tiers": [
       640,
       1024,
       1280,
-      1600
+      1400
     ],
     "jpgWidth": 1200,
-    "focal": "50% 50%",
-    "alt": "A gold necklace and matching drop earrings set with green gemstones, laid out on brown velvet",
+    "focal": "70% 55%",
+    "alt": "A pair of antique brass and leather binoculars resting beside their fitted leather case",
     "category": "object",
     "rank": 3
   },

@@ -3,9 +3,20 @@
 // product's id", scanned fresh every run, never a state file.
 //
 // New product (no matching post) -> download + optimize images, write a
-// sourceType: shop post. Existing shop post whose product now shows
-// variants[].available: false, and whose post isn't already sold: true ->
-// flip sold: true in place only; nothing else about the file changes.
+// sourceType: shop post.
+//
+// Sold status is re-checked for EVERY existing shop post on every run, and
+// flipped in place (the `sold:` line only; nothing else about the file
+// changes). The newly-listed feed can't answer this on its own: Shopify drops
+// a product from the collection the moment it sells, so a sold item simply
+// stops appearing rather than showing up as unavailable. Posts whose product
+// is missing from the feed are therefore looked up one by one on the
+// storefront (/products/<handle>.js):
+//   - 404 (sold and archived/deleted/unpublished)   -> sold: true
+//   - 200 with available: false (sold out)           -> sold: true
+//   - 200 with available: true (relisted, returned)  -> sold: false
+//   - anything else (429, 5xx, network)              -> leave as-is, retry next run
+// so a transient error can never mark something sold by mistake.
 
 import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync } from "node:fs";
 import { execFileSync } from "node:child_process";
@@ -34,12 +45,86 @@ function yamlString(str) {
   return '"' + String(str).replace(/\\/g, "\\\\").replace(/"/g, '\\"') + '"';
 }
 
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+// true = can be bought, false = sold/gone, null = couldn't tell this run.
+// Paced and retried because the storefront rate-limits bursts with 429s.
+async function productAvailable(handle) {
+  for (let attempt = 0; attempt < 4; attempt++) {
+    let res;
+    try {
+      res = await fetch(`https://shop.garygermer.com/products/${encodeURIComponent(handle)}.js`, {
+        headers: { "User-Agent": "gg-blog-sync", Accept: "application/json" },
+      });
+    } catch {
+      await sleep(2000 * (attempt + 1));
+      continue;
+    }
+    if (res.status === 404) return false;
+    if (res.ok) {
+      try {
+        const product = await res.json();
+        return Boolean(product.available);
+      } catch {
+        return null;
+      }
+    }
+    if (res.status === 429 || res.status >= 500) {
+      const retryAfter = Number(res.headers.get("retry-after")) || 2 * (attempt + 1);
+      await sleep(retryAfter * 1000);
+      continue;
+    }
+    return null;
+  }
+  return null;
+}
+
+// Rewrites only the front-matter `sold:` line (adding one after
+// `sourceType: shop` for any post that predates the field).
+function setSold(filePath, sold) {
+  const text = readFileSync(filePath, "utf8");
+  const updated = /^sold:\s*(true|false)\s*$/m.test(text)
+    ? text.replace(/^sold:\s*(true|false)\s*$/m, `sold: ${sold}`)
+    : text.replace(/^(sourceType: shop)$/m, `$1\nsold: ${sold}`);
+  if (updated !== text) writeFileSync(filePath, updated);
+}
+
+// Brings every existing shop post's `sold:` flag in line with the store.
+// `feedById` is the newly-listed feed keyed by product id; anything not in
+// it is looked up individually. `dryRun` reports without writing.
+export async function refreshSoldStatus(postsById, feedById, { postsDir = "blog/posts", dryRun = false, delayMs = 600 } = {}) {
+  const result = { markedSold: [], markedAvailable: [], unknown: [] };
+  for (const [id, post] of postsById) {
+    let available;
+    const inFeed = feedById.get(id);
+    if (inFeed) {
+      available = (inFeed.variants || []).some((v) => v.available);
+    } else {
+      available = await productAvailable(post.fm.source.handle);
+      await sleep(delayMs);
+    }
+    if (available === null) {
+      result.unknown.push(post.file);
+      continue;
+    }
+    const isSold = Boolean(post.fm.sold);
+    if (!available && !isSold) {
+      if (!dryRun) setSold(path.join(postsDir, post.file), true);
+      result.markedSold.push(post.file);
+    } else if (available && isSold) {
+      if (!dryRun) setSold(path.join(postsDir, post.file), false);
+      result.markedAvailable.push(post.file);
+    }
+  }
+  return result;
+}
+
 function downloadTmp(url, destPath) {
   execFileSync("curl", ["-sL", "-A", "Mozilla/5.0", url, "-o", destPath]);
 }
 
 export async function syncShop({ postsDir = "blog/posts", imagesRoot = "assets/images/blog", tmpDir = ".tmp-shop-sync-images" } = {}) {
-  const report = { created: [], updatedSold: [], skippedExisting: [] };
+  const report = { created: [], updatedSold: [], updatedAvailable: [], soldUnknown: [], skippedExisting: [] };
   if (!existsSync(postsDir)) mkdirSync(postsDir, { recursive: true });
   if (!existsSync(tmpDir)) mkdirSync(tmpDir, { recursive: true });
 
@@ -56,20 +141,15 @@ export async function syncShop({ postsDir = "blog/posts", imagesRoot = "assets/i
   const products = await fetchAllProducts();
   const existingSlugs = postFiles.map((f) => f.replace(/\.md$/, ""));
 
-  for (const product of products) {
-    const existing = postsById.get(String(product.id));
-    const anyAvailable = (product.variants || []).some((v) => v.available);
+  const feedById = new Map(products.map((p) => [String(p.id), p]));
+  const sold = await refreshSoldStatus(postsById, feedById, { postsDir });
+  report.updatedSold = sold.markedSold;
+  report.updatedAvailable = sold.markedAvailable;
+  report.soldUnknown = sold.unknown;
 
-    if (existing) {
-      if (!anyAvailable && !existing.fm.sold) {
-        const filePath = path.join(postsDir, existing.file);
-        const updated = readFileSync(filePath, "utf8").replace(/^sold:\s*false\s*$/m, "sold: true");
-        const finalContent = /^sold:\s*true\s*$/m.test(updated) ? updated : updated.replace(/^(sourceType: shop)$/m, "$1\nsold: true");
-        writeFileSync(filePath, finalContent);
-        report.updatedSold.push(existing.file);
-      } else {
-        report.skippedExisting.push(product.handle);
-      }
+  for (const product of products) {
+    if (postsById.has(String(product.id))) {
+      report.skippedExisting.push(product.handle);
       continue;
     }
 

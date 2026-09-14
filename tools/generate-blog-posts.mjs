@@ -20,7 +20,7 @@ async function run() {
   const summary = { ranAt: new Date().toISOString(), shop, video, amnw };
   writeFileSync("tools/blog-sync-checkpoint.json", JSON.stringify(summary, null, 2));
 
-  console.log(`Shop: ${shop.created.length} created, ${shop.updatedSold.length} marked sold, ${shop.skippedExisting.length} unchanged.`);
+  console.log(`Shop: ${shop.created.length} created, ${shop.updatedSold.length} marked sold, ${shop.updatedAvailable.length} back for sale, ${shop.soldUnknown.length} status unknown (retried next run), ${shop.skippedExisting.length} in feed.`);
   console.log(`Video: ${video.created.length} created.`);
   console.log(`AM Northwest: ${amnw.created.length} created (${amnw.checked} new listing-page segments checked).`);
 }

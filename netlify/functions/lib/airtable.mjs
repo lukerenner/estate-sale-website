@@ -64,6 +64,18 @@ export async function createRecord(fields) {
   return res.json();
 }
 
+export async function updateRecord(recordId, fields) {
+  const res = await fetch(`https://api.airtable.com/v0/${BASE_ID}/${encodeURIComponent(TABLE)}/${recordId}`, {
+    method: "PATCH",
+    headers: authHeaders({ "Content-Type": "application/json" }),
+    body: JSON.stringify({ fields }),
+  });
+  if (!res.ok) {
+    throw new Error(`Airtable update failed (${res.status}): ${await res.text()}`);
+  }
+  return res.json();
+}
+
 // Airtable's content API appends a single attachment to the given field on
 // each call — confirmed empirically, not a documented guarantee — so callers
 // upload files one at a time against an already-created record.

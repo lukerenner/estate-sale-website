@@ -104,7 +104,9 @@ function relatedPosts(post, allPosts, limit) {
   var thisWords = relatedKeywords(post.data.title);
   var thisLabel = blogFilterLabel(post.data.category, post.data.sourceType, post.data.title);
   return allPosts
-    .filter((p) => p.url !== post.url)
+    // Sold shop items are hidden from the blog index's default view (see
+    // blog/index.njk), so don't resurface them as suggestions either.
+    .filter((p) => p.url !== post.url && !(p.data.sourceType === "shop" && p.data.sold))
     .map((p) => {
       var words = relatedKeywords(p.data.title);
       var overlap = 0;
@@ -321,6 +323,22 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter("json", (obj) => JSON.stringify(obj));
 
+  // _data/business.json services -> schema.org Offer list for the
+  // LocalBusiness block's hasOfferCatalog (partials/business-schema.njk).
+  eleventyConfig.addFilter("serviceOffers", function (services) {
+    return (services || []).map(function (s) {
+      return {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: s.name,
+          description: s.description,
+          url: "https://www.garygermer.com" + s.url,
+        },
+      };
+    });
+  });
+
   // Address/neighborhood strings are hand-written per sale; normalize the
   // state name to its postal abbreviation regardless of how the sale's
   // front matter spells it out.
@@ -343,6 +361,15 @@ module.exports = function (eleventyConfig) {
     var parts = (str || "").split(",").map(function (p) { return p.trim(); });
     if (parts.length >= 3) return parts[1];
     return parts[0].replace(/^(Northeast|Northwest|Southeast|Southwest)\s+/i, "");
+  });
+
+  // "Lacamas Lake, Camas, WA" -> "WA", "Forest Heights, Portland, Oregon" ->
+  // "OR" — the region for a sale's Event JSON-LD when its front matter has no
+  // explicit addressRegion (true of every imported historical sale).
+  eleventyConfig.addFilter("stateCode", function (str) {
+    var parts = (str || "").split(",").map(function (p) { return p.trim(); });
+    var last = parts[parts.length - 1] || "";
+    return { Oregon: "OR", Washington: "WA" }[last] || last;
   });
 
   // Same short label, mapped to its broader filter-bar group.
@@ -525,16 +552,20 @@ module.exports = function (eleventyConfig) {
 
   // {% blogGallery "slug", count %} — numbered <slug>-01..NN images, for
   // shop-item posts with multiple product photos (see sync-shop.mjs).
+  // Alt text is the post's own (title-cased) item name plus the photo number
+  // — "Product photo 3" told a screen reader or image search nothing.
   eleventyConfig.addShortcode("blogGallery", function (slug, count) {
     var dir = "/assets/images/blog/" + slug + "/";
     var n = Number(count) || 0;
+    var itemName = titleCase((this.ctx && this.ctx.title) || "").replace(/&/g, "&amp;").replace(/"/g, "&quot;");
     var tiles = "";
     for (var i = 1; i <= n; i++) {
       var base = slug + "-" + String(i).padStart(2, "0");
+      var alt = itemName ? itemName + ", photo " + i + " of " + n : "Product photo " + i;
       tiles +=
         '<img src="' + dir + base + '-480.webp"' +
         ' srcset="' + dir + base + '-480.webp 480w, ' + dir + base + '-900.webp 900w"' +
-        ' sizes="(max-width: 700px) 45vw, 220px" loading="lazy" alt="Product photo ' + i + '">';
+        ' sizes="(max-width: 700px) 45vw, 220px" loading="lazy" alt="' + alt + '">';
     }
     return '<div class="blog-gallery">' + tiles + "</div>";
   });

@@ -1,6 +1,59 @@
 (function () {
   "use strict";
 
+  /* ------------------------------------------------------------ analytics
+     GA4 events via the gtag() stub base.njk always defines. Off the
+     production hostnames that stub only queues into window.dataLayer (no
+     Google script loads), so staging clicks never reach real reports — but
+     the queued events are still inspectable there for QA. Event names follow
+     GA4's recommended set where one exists (generate_lead, sign_up); mark
+     generate_lead as a key event in the GA4 admin to count it as a
+     conversion. */
+  //
+  // `callback` (optional) runs once GA confirms the hit went out, or after a
+  // short timeout if GA never loads (blocked, staging) — so a redirect right
+  // after a conversion never swallows the event that preceded it.
+  function track(name, params, callback) {
+    var done = false;
+    function go() { if (!done) { done = true; callback(); } }
+    var clean = {};
+    Object.keys(params || {}).forEach(function (k) {
+      if (params[k] !== undefined && params[k] !== "") clean[k] = params[k];
+    });
+    var live = window.ggAnalyticsLive && typeof window.gtag === "function";
+    if (callback && live) {
+      clean.event_callback = go;
+      clean.event_timeout = 800;
+    }
+    if (typeof window.gtag === "function") window.gtag("event", name, clean);
+    if (callback) window.setTimeout(go, live ? 1000 : 0);
+  }
+
+  // One delegated listener for every trackable click: phone, email, the
+  // Vault/shop, other outbound links, and the site's CTA buttons.
+  document.addEventListener("click", function (e) {
+    var link = e.target.closest && e.target.closest("a[href]");
+    if (!link) return;
+    var href = link.getAttribute("href") || "";
+    var label = (link.getAttribute("aria-label") || link.textContent || "").replace(/\s+/g, " ").trim().slice(0, 100);
+    var location = link.closest("header") ? "header" : link.closest("footer") ? "footer" : "body";
+
+    if (href.indexOf("tel:") === 0) {
+      track("phone_click", { link_text: label, link_location: location });
+    } else if (href.indexOf("mailto:") === 0) {
+      track("email_click", { link_text: label, link_location: location });
+    } else if (link.hostname && link.hostname !== window.location.hostname && /^https?:$/.test(link.protocol)) {
+      if (/(^|\.)shop\.garygermer\.com$/.test(link.hostname)) {
+        track("vault_click", { link_url: link.href, link_text: label, link_location: location });
+      } else {
+        track("outbound_click", { link_url: link.href, link_domain: link.hostname, link_location: location });
+      }
+    }
+    if (link.classList.contains("button")) {
+      track("cta_click", { link_text: label, link_url: link.href, link_location: location });
+    }
+  });
+
   /* -------------------------------------------------------- hash realign ---
      The browser's native anchor-scroll (e.g. the header's "About Gary"
      link, id="about-gary") fires once, early — before the hero photo, the
@@ -212,6 +265,24 @@
     });
   });
 
+  /* Nav dropdowns ("Estate Sales", "More") — keep at most one open, and
+     close whichever is open on an outside click since native <details>
+     doesn't do either of those on its own. */
+  var navDropdowns = Array.prototype.slice.call(nav.querySelectorAll(".nav-dropdown"));
+  navDropdowns.forEach(function (dropdown) {
+    dropdown.addEventListener("toggle", function () {
+      if (!dropdown.open) return;
+      navDropdowns.forEach(function (other) {
+        if (other !== dropdown) other.open = false;
+      });
+    });
+  });
+  document.addEventListener("click", function (e) {
+    navDropdowns.forEach(function (dropdown) {
+      if (dropdown.open && !dropdown.contains(e.target)) dropdown.open = false;
+    });
+  });
+
   /* -------------------------------------------------------- form checks
      Delegated on document, not a querySelectorAll snapshot, so forms
      injected after this script runs (e.g. estate-sale.js's post-sale
@@ -328,21 +399,22 @@
 
   /* --------------------------------------------- appraisal photo upload
      The real intake requires at least one photo and caps the upload at
-     10MB total — both problems surface inline via the shared field-error
-     paragraph instead of a static caption, and only once they're true. */
+     MAX_PHOTOS files — both problems surface inline via the shared
+     field-error paragraph instead of a static caption, and only once they're
+     true. There's deliberately no raw-size cap here: the submit handler below
+     shrinks every photo to fit the 4MB request budget, so three 5MB iPhone
+     photos are fine and shouldn't be rejected before they get the chance. */
+  var MAX_PHOTOS = 10;
   document.querySelectorAll('input[type="file"][name="attachment"]').forEach(function (photosInput) {
     var field = photosInput.closest(".field");
     var errorEl = field ? field.querySelector(".field-error") : null;
-    var MAX_BYTES = 10 * 1024 * 1024;
     var DEFAULT_MESSAGE = errorEl ? errorEl.textContent : "";
-    var TOO_BIG_MESSAGE = "Those photos are too big — please keep the total under 10MB.";
+    var TOO_MANY_MESSAGE = "Please attach no more than " + MAX_PHOTOS + " photos.";
     photosInput.addEventListener("change", function () {
-      var total = 0;
-      for (var i = 0; i < photosInput.files.length; i++) total += photosInput.files[i].size;
-      var tooBig = total > MAX_BYTES;
-      photosInput.setCustomValidity(tooBig ? TOO_BIG_MESSAGE : "");
-      if (errorEl) errorEl.textContent = tooBig ? TOO_BIG_MESSAGE : DEFAULT_MESSAGE;
-      if (field) field.classList.toggle("has-error", tooBig);
+      var tooMany = photosInput.files.length > MAX_PHOTOS;
+      photosInput.setCustomValidity(tooMany ? TOO_MANY_MESSAGE : "");
+      if (errorEl) errorEl.textContent = tooMany ? TOO_MANY_MESSAGE : DEFAULT_MESSAGE;
+      if (field) field.classList.toggle("has-error", tooMany);
     });
   });
 
@@ -413,7 +485,7 @@
      independent attribute pairs so neither page's markup fakes the other's. */
   [
     { filterAttr: "data-sale-filter", gridAttr: "data-sale-grid", cardSelector: ".sale-card", cardKey: "neighborhood" },
-    { filterAttr: "data-blog-filter", gridAttr: "data-blog-grid", cardSelector: ".blog-card", cardKey: "category", limit: 10, showMoreSelector: "[data-blog-show-more]", urlParam: "filter" },
+    { filterAttr: "data-blog-filter", gridAttr: "data-blog-grid", cardSelector: ".blog-card", cardKey: "category", limit: 10, showMoreSelector: "[data-blog-show-more]", urlParam: "filter", soldOnlyUnder: "for-sale" },
   ].forEach(function (cfg) {
     var filterBar = document.querySelector("[" + cfg.filterAttr + "]");
     var grid = document.querySelector("[" + cfg.gridAttr + "]");
@@ -426,6 +498,9 @@
       grid.querySelectorAll(cfg.cardSelector).forEach(function (card) {
         var cardValues = (card.dataset[cfg.cardKey] || "").split(/\s+/);
         var matches = filter === "all" || cardValues.indexOf(filter) !== -1;
+        // Sold shop items (data-sold) only appear under the For Sale chip,
+        // after the available ones (blog/index.njk renders them last).
+        if (cfg.soldOnlyUnder && card.hasAttribute("data-sold") && filter !== cfg.soldOnlyUnder) matches = false;
         var overLimit = cfg.limit && filter === "all" && !expanded && matches && ++shown > cfg.limit;
         card.hidden = !matches || overLimit;
       });
@@ -575,6 +650,7 @@
       star.addEventListener("click", function () {
         selected = rating;
         paint(rating);
+        track("review_click", { rating: rating });
         if (rating >= 4) {
           if (googleReviewUrl) window.open(googleReviewUrl, "_blank", "noopener");
           return;
@@ -613,46 +689,57 @@
   /* ------------------------------------------------- airtable inquiry forms
      contact.njk, start-an-appraisal.njk, and start-a-consignment.njk all
      post to /api/submit-inquiry (a Netlify Function that writes to
-     Airtable). Netlify Functions cap request bodies at 6MB, so any large
-     photo is shrunk client-side before it's sent — the alternative is a
-     confusing failure partway through submit with no useful message. */
+     Airtable). Netlify rejects request bodies over ~4.5MB with a bare 413
+     (measured on the deployed function), so every photo is shrunk
+     client-side to a per-photo share of a 4MB budget before it's sent — the
+     alternative is a confusing failure partway through submit. */
   (function () {
-    var MAX_ATTACHMENT_BYTES = 1.5 * 1024 * 1024;
     var MAX_TOTAL_BYTES = 4 * 1024 * 1024;
+    var MAX_ATTACHMENT_BYTES = 1.5 * 1024 * 1024;
     var MAX_DIMENSION = 2000;
 
-    function compressImage(file) {
-      if (!file.type || file.type.indexOf("image/") !== 0 || file.size <= MAX_ATTACHMENT_BYTES) {
-        return Promise.resolve(file);
-      }
-      return new Promise(function (resolve) {
+    function loadImage(file) {
+      return new Promise(function (resolve, reject) {
         var url = URL.createObjectURL(file);
         var img = new Image();
-        img.onload = function () {
-          URL.revokeObjectURL(url);
-          var scale = Math.min(1, MAX_DIMENSION / Math.max(img.width, img.height));
-          var canvas = document.createElement("canvas");
-          canvas.width = Math.round(img.width * scale);
-          canvas.height = Math.round(img.height * scale);
-          var ctx = canvas.getContext("2d");
-          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        img.onload = function () { URL.revokeObjectURL(url); resolve(img); };
+        img.onerror = function () { URL.revokeObjectURL(url); reject(); };
+        img.src = url;
+      });
+    }
 
+    // Re-encodes as JPEG until it fits `budget`, first by lowering quality,
+    // then by shrinking the dimensions. A file the browser can't decode is
+    // passed through untouched — the total-size check catches it if it's big.
+    function compressImage(file, budget) {
+      if (!file.type || file.type.indexOf("image/") !== 0 || file.size <= budget) {
+        return Promise.resolve(file);
+      }
+      return loadImage(file).then(function (img) {
+        var maxDim = MAX_DIMENSION;
+        return new Promise(function (resolve) {
           function attempt(quality) {
+            var scale = Math.min(1, maxDim / Math.max(img.width, img.height));
+            var canvas = document.createElement("canvas");
+            canvas.width = Math.round(img.width * scale);
+            canvas.height = Math.round(img.height * scale);
+            canvas.getContext("2d").drawImage(img, 0, 0, canvas.width, canvas.height);
             canvas.toBlob(function (blob) {
               if (!blob) { resolve(file); return; }
-              if (blob.size <= MAX_ATTACHMENT_BYTES || quality <= 0.4) {
+              if (blob.size <= budget || (quality <= 0.45 && maxDim <= 800)) {
                 var name = file.name.replace(/\.\w+$/, "") + ".jpg";
                 resolve(new File([blob], name, { type: "image/jpeg" }));
+              } else if (quality > 0.45) {
+                attempt(quality - 0.2);
               } else {
-                attempt(quality - 0.15);
+                maxDim = Math.round(maxDim * 0.75);
+                attempt(0.8);
               }
             }, "image/jpeg", quality);
           }
           attempt(0.85);
-        };
-        img.onerror = function () { URL.revokeObjectURL(url); resolve(file); };
-        img.src = url;
-      });
+        });
+      }, function () { return file; });
     }
 
     // Delegated on document (not a querySelectorAll snapshot) because
@@ -665,25 +752,38 @@
       if (!form.matches || !form.matches('form[action="/api/submit-inquiry"]')) return;
       if (!form.checkValidity()) return; // existing handler above shakes + highlights invalid fields
       e.preventDefault();
+      // One submission per click: compression can take a few seconds on a
+      // phone, and a second tap in that window used to create a duplicate
+      // Airtable record.
+      if (form.dataset.submitting === "1" || form.dataset.submitted === "1") return;
+      form.dataset.submitting = "1";
 
       var fileInput = form.querySelector('input[type="file"]');
       var errorEl = form.querySelector(".form-submit-error");
       var submitBtn = form.querySelector('button[type="submit"]');
       var originalBtnText = submitBtn ? submitBtn.textContent : "";
+      var formType = (form.querySelector('input[name="form"]') || {}).value || "unknown";
 
       function showError(message) {
         if (!errorEl) return;
         errorEl.textContent = message;
         errorEl.hidden = false;
       }
+      function reset() {
+        form.dataset.submitting = "";
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = originalBtnText; }
+      }
       if (errorEl) errorEl.hidden = true;
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = "Submitting…"; }
 
       var files = fileInput ? Array.prototype.slice.call(fileInput.files) : [];
+      var budget = files.length ? Math.min(MAX_ATTACHMENT_BYTES, Math.floor((MAX_TOTAL_BYTES * 0.95) / files.length)) : 0;
 
-      Promise.all(files.map(compressImage)).then(function (compressed) {
+      Promise.all(files.map(function (f) { return compressImage(f, budget); })).then(function (compressed) {
         var total = compressed.reduce(function (sum, f) { return sum + f.size; }, 0);
         if (total > MAX_TOTAL_BYTES) {
           showError("Those photos are too large altogether — please attach fewer, or smaller ones.");
+          reset();
           return;
         }
 
@@ -693,20 +793,60 @@
           compressed.forEach(function (f) { fd.append(fileInput.name, f); });
         }
 
-        if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = "Submitting…"; }
-
-        fetch(form.getAttribute("action"), { method: "POST", body: fd })
+        return fetch(form.getAttribute("action"), { method: "POST", body: fd, headers: { Accept: "application/json" } })
           .then(function (res) {
-            if (!res.ok) throw new Error("submit failed");
-            return res.json();
+            return res.json().catch(function () { return {}; }).then(function (data) {
+              if (!res.ok) {
+                var err = new Error("submit failed");
+                err.status = res.status;
+                err.serverMessage = data && data.error;
+                throw err;
+              }
+              return data;
+            });
           })
-          .then(function () {
-            window.location.href = "/thanks.html";
+          .then(function (data) {
+            // The footer's private-feedback form isn't a lead; everything else
+            // posting here is an inquiry.
+            var conversion = formType === "newsletter" ? "sign_up" : formType === "review" ? "review_feedback" : "generate_lead";
+            var conversionParams = {
+              form_type: formType,
+              method: formType === "newsletter" ? "newsletter" : undefined,
+              photos: files.length || undefined
+            };
+            // The inquiry was saved but not every photo made it — say so
+            // plainly and don't show the generic thank-you page, which would
+            // imply everything arrived. The form stays locked: resubmitting
+            // would create a duplicate inquiry.
+            if (data && data.photosFailed > 0) {
+              form.dataset.submitted = "1";
+              form.dataset.submitting = "";
+              if (submitBtn) submitBtn.textContent = "Message Sent";
+              showError(
+                "We received your message, but " + data.photosFailed + " of " + data.photosAttempted +
+                " photos didn’t upload. Please email " + (data.photosFailed === 1 ? "it" : "them") +
+                " to info@garygermer.com — there’s no need to send the form again."
+              );
+              track(conversion, conversionParams);
+              track("photo_upload_failed", { form_type: formType, failed: data.photosFailed });
+              return;
+            }
+            track(conversion, conversionParams, function () { window.location.href = "/thanks.html"; });
           })
-          .catch(function () {
-            showError("Something went wrong submitting this — please try again, or email us at info@garygermer.com.");
-            if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = originalBtnText; }
+          .catch(function (err) {
+            track("form_submit_error", { form_type: formType, status: err && err.status });
+            if (err && err.status === 413) {
+              showError("Those photos are too large altogether — please attach fewer, or smaller ones.");
+            } else if (err && err.status === 400 && err.serverMessage) {
+              showError(err.serverMessage);
+            } else {
+              showError("Something went wrong submitting this — please try again, or email us at info@garygermer.com.");
+            }
+            reset();
           });
+      }).catch(function () {
+        showError("Something went wrong preparing your photos — please try again, or email them to info@garygermer.com.");
+        reset();
       });
     });
   })();

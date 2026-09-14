@@ -1,35 +1,54 @@
-# Netlify host-level redirects — maps every URL indexed on the outgoing
-# garygermer.com (Ucraft, "1.0") to the closest live destination on this
-# homepage. Real 301s, no stub HTML pages. See README.md for why Netlify
-# (not GitHub Pages, which can't do this without extra pages) is assumed.
+# Netlify host-level redirects — maps every URL the outgoing garygermer.com
+# (Ucraft, "1.0") had indexed to its closest live equivalent. Real 301s, no
+# stub HTML pages. Netlify matches top-to-bottom, first match wins, carries
+# query strings through automatically, and treats "/x" and "/x/" as the same
+# path. Rules without "!" only fire when no built page exists at that path.
+#
+# Legacy URL inventory (audited 2026-09-14): the live site's sitemap.xml (78
+# URLs) + /blog (in the 1.0 mirror's sitemap) + a link crawl of every page
+# (no further URLs) + probes of common paths, which found the three live blog
+# category pages and Ucraft's own /about, /shop and /media aliases. Every one
+# of those resolves below in a single hop to a real 200 page — none land on
+# the homepage except /team and /about (see below).
 
-# Core service + intake routes -> the matching homepage section.
-# NOTE: /our-services/appraisals, /our-services/consignment,
-# /our-services/estate-sales, /start-an-appraisal, /start-a-consignment,
-# and /our-services/speaking-engagements-and-clinics are now real pages and
-# must NOT be redirected.
+# ---- Canonical host: apex -> www (HTTPS is enforced by Netlify itself) ----
+https://garygermer.com/*        https://www.garygermer.com/:splat    301!
+http://garygermer.com/*         https://www.garygermer.com/:splat    301!
 
-# Contact / consultation — /contact and /consultation (two separate 1.0
-# pages) are now merged into one standalone page at /contact/, matching how
-# the homepage already treats them as a single "It Starts with a
-# Conversation" section rather than two destinations. /join-our-mailing-list
-# is likewise now a real page, so /contact/mailing-list (the other 1.0 URL
-# for the same signup) points at it instead of the footer anchor.
-/consultation                   /contact/                  301
-/contact/mailing-list           /join-our-mailing-list/    301
-/give-us-a-review               /                          301
-/give-us-a-review/feedback      /                          301
+# ---- Core pages -----------------------------------------------------------
+# /our-services/*, /start-an-appraisal, /start-a-consignment,
+# /join-our-mailing-list and the three legal pages keep their exact 1.0
+# paths as real pages, so they need no rule (Netlify adds the trailing slash).
 
-# Team / people
-/team                           /#about-gary               301
+# /contact and /consultation were two 1.0 pages; both are now /contact/,
+# which carries the consultation form. /contact is a real page (no rule).
+/consultation                   /contact/                             301
+/contact/mailing-list           /join-our-mailing-list/               301
 
-# Media / video
-/media/video                    /#about-gary               301
-/media/video/amnw               /#about-gary                301
+# The old review page's stars sent visitors to leave a review, so its
+# closest equivalent is the same Google review form the new footer uses;
+# the private-feedback subpage maps to the contact form.
+/give-us-a-review/feedback      /contact/                             301
+/give-us-a-review               https://search.google.com/local/writereview?placeid=ChIJVdCyyFOnlVQRjzPTKo2igI0    301
 
-# Estate sale + shop listings (dedicated pages not rebuilt in this phase)
-/estatesales                    /#upcoming-sales           301
-/online-stores                  /#shop                     301
+# No team page was rebuilt — the About Gary section is the only people
+# content on the new site. FLAGGED in the launch audit: no true equivalent.
+/team                           /#about-gary                          301
+/about                          /#about-gary                          301
+
+# Estate sale listings hub and the online shop.
+/estatesales                    /estate-sales/                        301
+/online-stores                  https://shop.garygermer.com/          301
+/shop                           https://shop.garygermer.com/          301
+
+# Media: video + AM Northwest segments are posts on the blog, which reads
+# ?filter= on load to preselect the matching category chip. The press page
+# (Gary's TV/Roadshow/clinic history) has no direct equivalent; the Speaking
+# Engagements page covers the same Roadshow-style appearances. FLAGGED.
+/media/video/amnw               /blog/?filter=am-northwest            301
+/media/video                    /blog/?filter=video                   301
+/media/press                    /our-services/speaking-engagements-and-clinics/    301
+/media                          /our-services/speaking-engagements-and-clinics/    301
 
 # Legacy estate sale slugs that were renamed for SEO during the bulk 1.0
 # archive import (2026-08-07) — 1.0 slug -> final neighborhood URL, skipping
@@ -48,8 +67,10 @@
 
 # Non-sale / junk slugs from the 1.0 archive — no page was built for these.
 /portland-estate-sales/new-sale                                         /west-hills-estate-sales/birkendene/                                        301
-/portland-estate-sales/janet-edwards                                    /estatesales                                                                301
-/portland-estate-sales/july-11th-13th-2019                              /estatesales                                                                301
+/portland-estate-sales/janet-edwards                                    /estate-sales/                                                              301
+/portland-estate-sales/july-11th-13th-2019                              /estate-sales/                                                              301
+/portland-estate-sales/event-room/william-reynolds-art                  /estate-sales/                                                              301
+/portland-estate-sales/event-room                                       /estate-sales/                                                              301
 
 # Neighborhood URL restructure (2026-08-07) — every estate-sale page moved
 # from the flat /portland-estate-sales/<slug>/ path to a neighborhood-scoped
@@ -93,12 +114,6 @@
 /portland-estate-sales/midmod-moapa                                     /lake-oswego-dunthorpe-estate-sales/midmod-moapa/                           301
 /portland-estate-sales/riverwood                                        /lake-oswego-dunthorpe-estate-sales/riverwood/                              301
 /portland-estate-sales/stafford-trail                                   /lake-oswego-dunthorpe-estate-sales/stafford-trail/                         301
-
-# Catch-all for anything still hitting /portland-estate-sales/* that isn't
-# one of the explicit slugs above (old query strings, guessed URLs, etc.) —
-# nothing is served from disk under this prefix anymore, so this only
-# matters as a last-resort fallback, not the primary routing mechanism.
-/portland-estate-sales/*        /#upcoming-sales           301
 
 # Blog — legacy post-by-post 301s (see REDIRECT_MAP.md "Blog import"), must
 # stay above the /media/blog/* catch-all so these explicit rules match first.
@@ -158,8 +173,16 @@
 /blog/westmorland-manner-in-sellwood-portland-sale/                                             /southeast-portland-estate-sales/westmoreland-manor/                              301
 /blog/wilcox-manor/                                                                             /west-hills-estate-sales/wilcox-manor/                                            301
 
-# Blog / press catch-alls
-/blog                            /blog/                     301
-/media/blog                      /blog/                     301
-/media/blog/*                    /blog/                     301
-/media/press                     /                          301
+# ---- Blog catch-alls ------------------------------------------------------
+# The three live 1.0 category archives map to the matching filter chip.
+/media/blog/appraisals          /blog/?filter=appraisals              301
+/media/blog/estate-sales        /blog/?filter=estate-sales            301
+/media/blog/show-and-tell       /blog/?filter=show-tell               301
+/media/blog                     /blog/                                301
+/media/blog/*                   /blog/                                301
+
+# ---- Estate sale catch-alls ----------------------------------------------
+# Anything else under the retired /portland-estate-sales/ prefix (guessed
+# URLs, old links with typos) lands on the sales hub, not the homepage.
+/portland-estate-sales          /estate-sales/                        301
+/portland-estate-sales/*        /estate-sales/                        301

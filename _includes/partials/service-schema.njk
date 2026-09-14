@@ -1,0 +1,31 @@
+{#- Service JSON-LD for one of the four /our-services/ pages. Set
+    `serviceName` (matching a name in _data/business.json's services) before
+    including; the provider is the LocalBusiness block by @id. -#}
+{%- for s in business.services -%}{%- if s.name == serviceName -%}
+<script type="application/ld+json">
+{{ {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": s.name,
+  "serviceType": s.name,
+  "description": s.description,
+  "url": "https://www.garygermer.com" + s.url,
+  "areaServed": { "@type": "City", "name": "Portland", "containedInPlace": { "@type": "State", "name": "Oregon" } },
+  "provider": {
+    "@type": ["ProfessionalService", "AntiqueStore"],
+    "@id": "https://www.garygermer.com/#business",
+    "name": business.name,
+    "url": business.url,
+    "telephone": business.telephone,
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": business.streetAddress,
+      "addressLocality": business.addressLocality,
+      "addressRegion": business.addressRegion,
+      "postalCode": business.postalCode,
+      "addressCountry": business.addressCountry
+    }
+  }
+} | json | safe }}
+</script>
+{%- endif -%}{%- endfor -%}

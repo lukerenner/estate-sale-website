@@ -275,16 +275,16 @@
     },
     {
       "slug": "discovery-vault-necklace",
-      "root": "reference",
-      "src": "luxury-necklace-green-gemstones.jpg",
+      "root": "sales",
+      "src": "peter-abrahams/peter-abrahams-04-1400.webp",
       "category": "object",
       "rank": 3,
-      "focal": "50% 50%",
+      "focal": "70% 55%",
       "ratio": 2,
       "tone": {
         "meanLuma": 0.36
       },
-      "alt": "A gold necklace and matching drop earrings set with green gemstones, laid out on brown velvet",
+      "alt": "A pair of antique brass and leather binoculars resting beside their fitted leather case",
       "use": "Gary's Vault card in every discovery band — discovery-band.njk plus the inlined copies in index.njk, estate-sales.njk and join-our-mailing-list.njk",
       "maxTier": 1600
     },

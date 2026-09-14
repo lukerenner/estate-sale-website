@@ -8,6 +8,11 @@ ogImage: /assets/images/art/appraisals-hero-hands.jpg
 ---
 {% extends "layouts/base.njk" %}
 
+{% block head %}
+{% set serviceName = "Personal Property Appraisals" %}
+{% include "partials/service-schema.njk" %}
+{% endblock %}
+
 {% block content %}
 
   <!-- ============================== HERO ============================== -->

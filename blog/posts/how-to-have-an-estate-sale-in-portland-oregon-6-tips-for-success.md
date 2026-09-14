@@ -33,7 +33,7 @@ Once this is complete, we'll identify a step-by-step strategy addressing every 
 
 ## Work with an Appraiser
 
-Next, it's time to collaborate with [an appraiser](https://www.garygermer.com/our-services/appraisals). It's important to comprehend the value of the items you have, and unless you're a professional, it's really difficult to know the exact value of your relative's possessions. If you do this yourself, you'll overvalue some items and undervalue others.
+Next, it's time to collaborate with [an appraiser](/our-services/appraisals/). It's important to comprehend the value of the items you have, and unless you're a professional, it's really difficult to know the exact value of your relative's possessions. If you do this yourself, you'll overvalue some items and undervalue others.
 
 That's why it's best to work with a seasoned appraiser like our team at Gary Germer & Associates.
 
@@ -67,7 +67,7 @@ When you work with us, there's no need to worry about marketing your event. We h
 
 ## What about the Leftover Items?
 
-Here’s another tip about how to have an [estate sale](https://www.garygermer.com/our-services/estate-sales). Think about what you'll do with things that don't end up selling. In many cases, a donation is a great idea.
+Here’s another tip about how to have an [estate sale](/our-services/estate-sales/). Think about what you'll do with things that don't end up selling. In many cases, a donation is a great idea.
 
 At a certain price point, a donation is often more lucrative than selling at a discount because of the tax benefits associated with donations. If you itemize your deductions, this can be the perfect route to take.
 
@@ -87,4 +87,4 @@ At the end of the day, teaming up with a professional team like Gary Germer & As
 
 There you have it: 6 tips on how to have an estate sale. Now that you've read through them, it's time to get started.
 
-[Contact our team](https://www.garygermer.com/contact) of professionals today. We're here to help you have a wonderful experience from start to finish.
+[Contact our team](/contact/) of professionals today. We're here to help you have a wonderful experience from start to finish.

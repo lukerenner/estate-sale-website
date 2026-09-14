@@ -48,9 +48,20 @@ ogImage: /assets/images/art/estate-sales-hero-parlor.jpg
         {% endfor %}
       </div>
 
+      {# Sold shop items render after everything else, so under the For Sale
+         chip they fall below the items still available. script.js hides
+         them (data-sold) under every other filter, "All Posts" included —
+         they're only ever shown as the tail of For Sale. #}
       <div class="blog-grid blog-grid-2up" data-blog-grid>
         {% for post in collections.blogPosts %}
+        {% if not (post.data.sourceType == "shop" and post.data.sold) %}
         {{ cards.blogCard(post, "(max-width: 560px) 92vw, 46vw", true, true) }}
+        {% endif %}
+        {% endfor %}
+        {% for post in collections.blogPosts %}
+        {% if post.data.sourceType == "shop" and post.data.sold %}
+        {{ cards.blogCard(post, "(max-width: 560px) 92vw, 46vw", true, true) }}
+        {% endif %}
         {% endfor %}
       </div>
 

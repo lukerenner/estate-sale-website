@@ -9,48 +9,7 @@ ogImage: /assets/images/art/home-hero-gilded-salon.jpg
 {% extends "layouts/base.njk" %}
 
 {% block head %}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Gary Germer & Associates",
-  "url": "https://www.garygermer.com/",
-  "image": "https://www.garygermer.com/assets/images/art/home-hero-gilded-salon.jpg",
-  "telephone": "+1-503-235-0946",
-  "email": "info@garygermer.com",
-  "priceRange": "$$",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "407 N. Broadway St.",
-    "addressLocality": "Portland",
-    "addressRegion": "OR",
-    "postalCode": "97227",
-    "addressCountry": "US"
-  },
-  "areaServed": {
-    "@type": "State",
-    "name": "Oregon"
-  },
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      "opens": "10:00",
-      "closes": "17:00"
-    }
-  ],
-  "sameAs": [
-    "https://www.instagram.com/garysvault/",
-    "https://www.facebook.com/garygermer",
-    "https://www.youtube.com/user/garygermer"
-  ],
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.7",
-    "reviewCount": "100"
-  }
-}
-</script>
+{% include "partials/business-schema.njk" %}
 {% endblock %}
 
 {% block content %}
@@ -107,6 +66,10 @@ ogImage: /assets/images/art/home-hero-gilded-salon.jpg
               <option>Consignment</option>
               <option>Something else</option>
             </select>
+          </div>
+          <div class="field">
+            <label class="field-label" for="hero-message">How can we help you? (optional)</label>
+            <textarea id="hero-message" name="message" rows="3"></textarea>
           </div>
           <p class="form-submit-error" role="alert" hidden></p>
           <button class="button button-navy" type="submit">Request a Consultation</button>
@@ -283,7 +246,7 @@ ogImage: /assets/images/art/home-hero-gilded-salon.jpg
           <article class="discovery-card reveal" id="upcoming-sales">
             {% art "discovery-upcoming-sales", "(max-width: 760px) 100vw, 540px" %}
             <svg class="discovery-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 11.5 12 4l8 7.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9.5h12V10" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 19.5V14h4v5.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <a class="discovery-card-link" href="/upcoming-sales" aria-label="View Current Sales — Upcoming Estate Sales">
+            <a class="discovery-card-link" href="/estate-sales/" aria-label="View Current Sales — Upcoming Estate Sales">
               <div class="discovery-card-body">
                 <h3 class="discovery-card-title">Upcoming Estate Sales</h3>
                 <span class="button button-on-dark" aria-hidden="true">View Current Sales</span>
@@ -292,7 +255,7 @@ ogImage: /assets/images/art/home-hero-gilded-salon.jpg
           </article>
           <article class="discovery-card reveal" id="shop">
             {% art "discovery-vault-necklace", "(max-width: 760px) 100vw, 540px" %}
-            <svg class="discovery-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M10.2 4.7h7.6v3.4l-7.6 7.6-3.8-3.8Z" stroke-linejoin="round"/><path d="m11.8 8.6-5.6 5.6" stroke-linecap="round"/><path d="M4 17.5h7.5" stroke-linecap="round"/><circle cx="14.7" cy="7.7" r="0.9" fill="currentColor" stroke="none"/></svg>
+            <svg class="discovery-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12.6 3.6a1.4 1.4 0 0 0-1-.4H5a1.4 1.4 0 0 0-1.4 1.4v6.6a1.4 1.4 0 0 0 .4 1l8.7 8.7a1.7 1.7 0 0 0 2.4 0l6.6-6.6a1.7 1.7 0 0 0 0-2.4Z" stroke-linejoin="round"/><circle cx="7.7" cy="7.7" r="0.9" fill="currentColor" stroke="none"/></svg>
             <a class="discovery-card-link" href="https://shop.garygermer.com/collections/newly-listed" aria-label="Shop the Collection — Gary's Vault">
               <div class="discovery-card-body">
                 <h3 class="discovery-card-title">Gary's Vault</h3>

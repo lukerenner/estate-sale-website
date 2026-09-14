@@ -1,15 +1,19 @@
 {% extends "layouts/base.njk" %}
 {% import "partials/blog-card.njk" as cards %}
+{# <title> only: synced Shopify/YouTube titles arrive SHOUTED and unbranded,
+   so give search results the same title-cased form the h1 shows, plus the
+   brand every other page's title carries. #}
+{% set metaTitle = (title | titleCase) + ("" if ("Gary Germer" in title) else " | Gary Germer & Associates") %}
 
 {% block head %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "{{ title }}",
-  "description": "{{ description }}",
+  "headline": {{ title | dump | safe }},
+  "description": {{ description | dump | safe }},
   "image": ["https://www.garygermer.com{{ ogImage }}"],
-  "datePublished": "{{ publishDate }}",
+  "datePublished": {{ publishDate | dump | safe }},
   "author": { "@type": "Organization", "name": "Gary Germer & Associates" },
   "publisher": { "@type": "Organization", "name": "Gary Germer & Associates" },
   "mainEntityOfPage": "https://www.garygermer.com{{ page.url }}"

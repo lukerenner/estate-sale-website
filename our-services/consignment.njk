@@ -8,6 +8,11 @@ ogImage: /assets/images/art/consignment-hero-library.jpg
 ---
 {% extends "layouts/base.njk" %}
 
+{% block head %}
+{% set serviceName = "Consignment" %}
+{% include "partials/service-schema.njk" %}
+{% endblock %}
+
 {% block content %}
 
   <!-- ============================== HERO ============================== -->
