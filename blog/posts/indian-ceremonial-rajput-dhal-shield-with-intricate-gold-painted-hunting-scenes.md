@@ -16,7 +16,7 @@ source:
 publishDate: "2026-08-13"
 shopUrl: https://shop.garygermer.com/products/indian-gold-lacquer-ceremonial-shield
 price: "$950.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/indian-ceremonial-rajput-dhal-shield-with-intricate-gold-painted-hunting-scenes/indian-ceremonial-rajput-dhal-shield-with-intricate-gold-painted-hunting-scenes-01-900.webp
   srcset900: /assets/images/blog/indian-ceremonial-rajput-dhal-shield-with-intricate-gold-painted-hunting-scenes/indian-ceremonial-rajput-dhal-shield-with-intricate-gold-painted-hunting-scenes-01-900.webp

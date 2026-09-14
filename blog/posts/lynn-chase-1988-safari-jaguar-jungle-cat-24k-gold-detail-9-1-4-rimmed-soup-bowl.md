@@ -16,7 +16,7 @@ source:
 publishDate: "2026-08-29"
 shopUrl: https://shop.garygermer.com/products/lynn-chase-1988-safari-jaguar-jungle-cat-24k-gold-detail-9-25-soup-bowl
 price: "$275.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/lynn-chase-1988-safari-jaguar-jungle-cat-24k-gold-detail-9-1-4-rimmed-soup-bowl/lynn-chase-1988-safari-jaguar-jungle-cat-24k-gold-detail-9-1-4-rimmed-soup-bowl-01-900.webp
   srcset900: /assets/images/blog/lynn-chase-1988-safari-jaguar-jungle-cat-24k-gold-detail-9-1-4-rimmed-soup-bowl/lynn-chase-1988-safari-jaguar-jungle-cat-24k-gold-detail-9-1-4-rimmed-soup-bowl-01-900.webp

@@ -16,7 +16,7 @@ source:
 publishDate: "2026-07-24"
 shopUrl: https://shop.garygermer.com/products/susi-singer-terracotta-madonna-with-blue-flower-child-1951-statue
 price: "$3500.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/susi-singer-terracotta-madonna-with-blue-flower-and-child-1951-statue/susi-singer-terracotta-madonna-with-blue-flower-and-child-1951-statue-01-900.webp
   srcset900: /assets/images/blog/susi-singer-terracotta-madonna-with-blue-flower-and-child-1951-statue/susi-singer-terracotta-madonna-with-blue-flower-and-child-1951-statue-01-900.webp

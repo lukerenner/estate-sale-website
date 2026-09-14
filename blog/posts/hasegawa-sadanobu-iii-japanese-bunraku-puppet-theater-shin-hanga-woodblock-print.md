@@ -16,7 +16,7 @@ source:
 publishDate: "2026-08-15"
 shopUrl: https://shop.garygermer.com/products/hasegawa-sadanobu-iii-japanese-bunraku-puppet-theater-shin-hanga-woodblock-print-copy
 price: "$100.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/hasegawa-sadanobu-iii-japanese-bunraku-puppet-theater-shin-hanga-woodblock-print/hasegawa-sadanobu-iii-japanese-bunraku-puppet-theater-shin-hanga-woodblock-print-01-900.webp
   srcset900: /assets/images/blog/hasegawa-sadanobu-iii-japanese-bunraku-puppet-theater-shin-hanga-woodblock-print/hasegawa-sadanobu-iii-japanese-bunraku-puppet-theater-shin-hanga-woodblock-print-01-900.webp

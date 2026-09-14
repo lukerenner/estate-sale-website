@@ -16,7 +16,7 @@ source:
 publishDate: "2026-08-12"
 shopUrl: https://shop.garygermer.com/products/natural-horn-handle-antique-cane
 price: "$350.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/natural-horn-and-snakeskin-antique-walking-stick-gadget-cane-with-hidden-corkscrew/natural-horn-and-snakeskin-antique-walking-stick-gadget-cane-with-hidden-corkscrew-01-900.webp
   srcset900: /assets/images/blog/natural-horn-and-snakeskin-antique-walking-stick-gadget-cane-with-hidden-corkscrew/natural-horn-and-snakeskin-antique-walking-stick-gadget-cane-with-hidden-corkscrew-01-900.webp

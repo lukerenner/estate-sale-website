@@ -1,10 +1,32 @@
 {
-  "ranAt": "2026-09-14T21:45:13.063Z",
+  "ranAt": "2026-09-14T22:56:54.663Z",
   "shop": {
-    "created": [
-      "chinese-export-porcelain-armorial-british-east-india-reproduction-oval-platter"
+    "created": [],
+    "updatedSold": [
+      "carved-bearded-man-grape-vines-and-demon-folk-art-walking-stick-cane-w-cork-screw.md",
+      "carved-deer-stag-antler-snuff-box-walking-stick-cane-with-hidden-corkscrew.md",
+      "carved-wood-dog-head-smugglers-cane-walking-stick-with-hidden-flask.md",
+      "chinese-carved-cinnabar-red-lacquer-lotus-bat-fish-design-11-1-4-charger-plate.md",
+      "chinese-red-shoushan-double-dragon-sculpture-carving.md",
+      "eagle-head-finely-carved-deer-antler-antique-walking-stick-cane.md",
+      "hasegawa-sadanobu-iii-japanese-bunraku-puppet-theater-shin-hanga-woodblock-print.md",
+      "indian-ceremonial-rajput-dhal-shield-with-intricate-gold-painted-hunting-scenes.md",
+      "josef-riedel-crystal-vinum-single-malt-whiskey-glass-set-of-3.md",
+      "kamadhenu-wooden-cow-and-calf-rustic-hand-carved-india-hindu-folk-art-sculpture.md",
+      "ken-edwards-el-palomar-blue-bird-flowers-mexican-tonala-folk-art-coffee-cup-pair.md",
+      "los-castillo-taxco-mexico-silver-lapis-lazuli-parrot-shot-glass-pair.md",
+      "lynn-chase-1988-safari-jaguar-jungle-cat-24k-gold-detail-9-1-4-rimmed-soup-bowl.md",
+      "mosaic-baltic-amber-lidded-jewelry-trinket-box-casket.md",
+      "natural-horn-and-snakeskin-antique-walking-stick-gadget-cane-with-hidden-corkscrew.md",
+      "reinhold-merkelbach-german-lords-prayer-13-1-2-tall-pottery-and-pewter-beer-stein.md",
+      "susi-singer-terracotta-madonna-with-blue-flower-and-child-1951-statue.md",
+      "victorian-bone-red-stone-heraldic-silver-badge-luxury-walking-stick-cane.md",
+      "vintage-french-bulldog-dog-head-handle-walking-stick-cane.md"
     ],
-    "updatedSold": [],
+    "updatedAvailable": [
+      "antique-american-large-gilt-copper-horse-weathervane.md"
+    ],
+    "soldUnknown": [],
     "skippedExisting": [
       "japanese-imari-porcelain-butterfly-flower-gold-trim-cup-saucer-pair",
       "japanese-shunga-secret-erotica-porcelain-jar-with-lid",
@@ -82,7 +104,8 @@
       "royal-doulton-ito-soup-cream-cup-saucer-pair",
       "walt-disney-maleficent-you-want-what-size-framed-display-print",
       "traditional-four-poster-wooden-pediment-rice-bedframe",
-      "ornate-hand-carved-chinese-canopy-wedding-bed-with-mirrored-sideboard"
+      "ornate-hand-carved-chinese-canopy-wedding-bed-with-mirrored-sideboard",
+      "british-east-india-porcelain-armorial-platter-auspio-reois-et-senatus-angliae"
     ]
   },
   "video": {

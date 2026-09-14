@@ -16,7 +16,7 @@ source:
 publishDate: "2026-08-14"
 shopUrl: https://shop.garygermer.com/products/cow-baby-carved-wood
 price: "$175.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/kamadhenu-wooden-cow-and-calf-rustic-hand-carved-india-hindu-folk-art-sculpture/kamadhenu-wooden-cow-and-calf-rustic-hand-carved-india-hindu-folk-art-sculpture-01-900.webp
   srcset900: /assets/images/blog/kamadhenu-wooden-cow-and-calf-rustic-hand-carved-india-hindu-folk-art-sculpture/kamadhenu-wooden-cow-and-calf-rustic-hand-carved-india-hindu-folk-art-sculpture-01-900.webp

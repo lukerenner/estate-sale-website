@@ -16,7 +16,7 @@ source:
 publishDate: "2026-08-07"
 shopUrl: https://shop.garygermer.com/products/ken-edwards-el-palomar-blue-bird-flowers-mexican-tonala-folk-art-coffee-cup-pair
 price: "$70.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/ken-edwards-el-palomar-blue-bird-flowers-mexican-tonala-folk-art-coffee-cup-pair/ken-edwards-el-palomar-blue-bird-flowers-mexican-tonala-folk-art-coffee-cup-pair-01-900.webp
   srcset900: /assets/images/blog/ken-edwards-el-palomar-blue-bird-flowers-mexican-tonala-folk-art-coffee-cup-pair/ken-edwards-el-palomar-blue-bird-flowers-mexican-tonala-folk-art-coffee-cup-pair-01-900.webp

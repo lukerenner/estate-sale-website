@@ -16,7 +16,7 @@ source:
 publishDate: "2026-07-23"
 shopUrl: https://shop.garygermer.com/products/chinese-red-shoushan-double-dragon-sculpture-carving
 price: "$70.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/chinese-red-shoushan-double-dragon-sculpture-carving/chinese-red-shoushan-double-dragon-sculpture-carving-01-900.webp
   srcset900: /assets/images/blog/chinese-red-shoushan-double-dragon-sculpture-carving/chinese-red-shoushan-double-dragon-sculpture-carving-01-900.webp

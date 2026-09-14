@@ -16,7 +16,7 @@ source:
 publishDate: "2026-07-30"
 shopUrl: https://shop.garygermer.com/products/french-bulldog-walking-stick-cane
 price: "$65.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/vintage-french-bulldog-dog-head-handle-walking-stick-cane/vintage-french-bulldog-dog-head-handle-walking-stick-cane-01-900.webp
   srcset900: /assets/images/blog/vintage-french-bulldog-dog-head-handle-walking-stick-cane/vintage-french-bulldog-dog-head-handle-walking-stick-cane-01-900.webp

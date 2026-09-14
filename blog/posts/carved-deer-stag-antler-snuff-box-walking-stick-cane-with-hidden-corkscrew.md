@@ -16,7 +16,7 @@ source:
 publishDate: "2026-08-09"
 shopUrl: https://shop.garygermer.com/products/carved-deer-stag-antler-snuff-box-walking-stick-cane-with-corkscrew
 price: "$475.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/carved-deer-stag-antler-snuff-box-walking-stick-cane-with-hidden-corkscrew/carved-deer-stag-antler-snuff-box-walking-stick-cane-with-hidden-corkscrew-01-900.webp
   srcset900: /assets/images/blog/carved-deer-stag-antler-snuff-box-walking-stick-cane-with-hidden-corkscrew/carved-deer-stag-antler-snuff-box-walking-stick-cane-with-hidden-corkscrew-01-900.webp

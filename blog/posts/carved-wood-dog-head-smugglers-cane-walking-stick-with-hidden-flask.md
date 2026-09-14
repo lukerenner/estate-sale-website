@@ -16,7 +16,7 @@ source:
 publishDate: "2026-07-25"
 shopUrl: https://shop.garygermer.com/products/carved-wood-dog-head-smugglers-cane-walking-stick-with-hidden-flask
 price: "$275.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/carved-wood-dog-head-smugglers-cane-walking-stick-with-hidden-flask/carved-wood-dog-head-smugglers-cane-walking-stick-with-hidden-flask-01-900.webp
   srcset900: /assets/images/blog/carved-wood-dog-head-smugglers-cane-walking-stick-with-hidden-flask/carved-wood-dog-head-smugglers-cane-walking-stick-with-hidden-flask-01-900.webp

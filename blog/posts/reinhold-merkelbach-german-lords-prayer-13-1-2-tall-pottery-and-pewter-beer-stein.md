@@ -16,7 +16,7 @@ source:
 publishDate: "2026-07-16"
 shopUrl: https://shop.garygermer.com/products/reinhold-merkelbach-german-lords-prayer-13-1-2-tall-pottery-pewter-beer-stein
 price: "$60.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/reinhold-merkelbach-german-lords-prayer-13-1-2-tall-pottery-and-pewter-beer-stein/reinhold-merkelbach-german-lords-prayer-13-1-2-tall-pottery-and-pewter-beer-stein-01-900.webp
   srcset900: /assets/images/blog/reinhold-merkelbach-german-lords-prayer-13-1-2-tall-pottery-and-pewter-beer-stein/reinhold-merkelbach-german-lords-prayer-13-1-2-tall-pottery-and-pewter-beer-stein-01-900.webp

@@ -16,7 +16,7 @@ source:
 publishDate: "2026-08-06"
 shopUrl: https://shop.garygermer.com/products/bearded-man-demon-grapevine-carved-folk-art-walking-stick-cane-w-cork-screw
 price: "$375.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/carved-bearded-man-grape-vines-and-demon-folk-art-walking-stick-cane-w-cork-screw/carved-bearded-man-grape-vines-and-demon-folk-art-walking-stick-cane-w-cork-screw-01-900.webp
   srcset900: /assets/images/blog/carved-bearded-man-grape-vines-and-demon-folk-art-walking-stick-cane-w-cork-screw/carved-bearded-man-grape-vines-and-demon-folk-art-walking-stick-cane-w-cork-screw-01-900.webp

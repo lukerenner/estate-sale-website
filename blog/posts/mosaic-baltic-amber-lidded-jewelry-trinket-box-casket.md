@@ -16,7 +16,7 @@ source:
 publishDate: "2026-08-14"
 shopUrl: https://shop.garygermer.com/products/mosaic-baltic-amber-hinged-lid-jewelry-box-casket
 price: "$100.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/mosaic-baltic-amber-lidded-jewelry-trinket-box-casket/mosaic-baltic-amber-lidded-jewelry-trinket-box-casket-01-900.webp
   srcset900: /assets/images/blog/mosaic-baltic-amber-lidded-jewelry-trinket-box-casket/mosaic-baltic-amber-lidded-jewelry-trinket-box-casket-01-900.webp

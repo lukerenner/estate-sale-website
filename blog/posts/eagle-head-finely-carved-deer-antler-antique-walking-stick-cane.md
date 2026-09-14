@@ -16,7 +16,7 @@ source:
 publishDate: "2026-08-08"
 shopUrl: https://shop.garygermer.com/products/eagle-head-finely-carved-deer-antler-antique-walking-stick-cane
 price: "$250.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/eagle-head-finely-carved-deer-antler-antique-walking-stick-cane/eagle-head-finely-carved-deer-antler-antique-walking-stick-cane-01-900.webp
   srcset900: /assets/images/blog/eagle-head-finely-carved-deer-antler-antique-walking-stick-cane/eagle-head-finely-carved-deer-antler-antique-walking-stick-cane-01-900.webp

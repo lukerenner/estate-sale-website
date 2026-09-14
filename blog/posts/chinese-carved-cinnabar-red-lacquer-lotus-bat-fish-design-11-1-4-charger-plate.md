@@ -16,7 +16,7 @@ source:
 publishDate: "2026-08-01"
 shopUrl: https://shop.garygermer.com/products/chinese-lacquer-cinnabar-carved-charger-plate
 price: "$100.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/chinese-carved-cinnabar-red-lacquer-lotus-bat-fish-design-11-1-4-charger-plate/chinese-carved-cinnabar-red-lacquer-lotus-bat-fish-design-11-1-4-charger-plate-01-900.webp
   srcset900: /assets/images/blog/chinese-carved-cinnabar-red-lacquer-lotus-bat-fish-design-11-1-4-charger-plate/chinese-carved-cinnabar-red-lacquer-lotus-bat-fish-design-11-1-4-charger-plate-01-900.webp

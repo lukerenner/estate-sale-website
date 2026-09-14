@@ -16,7 +16,7 @@ source:
 publishDate: "2026-08-15"
 shopUrl: https://shop.garygermer.com/products/cane
 price: "$350.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/victorian-bone-red-stone-heraldic-silver-badge-luxury-walking-stick-cane/victorian-bone-red-stone-heraldic-silver-badge-luxury-walking-stick-cane-01-900.webp
   srcset900: /assets/images/blog/victorian-bone-red-stone-heraldic-silver-badge-luxury-walking-stick-cane/victorian-bone-red-stone-heraldic-silver-badge-luxury-walking-stick-cane-01-900.webp
