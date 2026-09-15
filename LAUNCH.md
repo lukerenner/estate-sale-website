@@ -8,10 +8,16 @@ project `gary-germer-2-0`). Production today is still the Ucraft site.
 1. **Merge & deploy** these changes to `main`; confirm the staging deploy
    succeeds. On staging, `curl -sI https://gary.lukerenner.co/ | grep -i x-robots`
    should now print `x-robots-tag: noindex, nofollow` (edge function
-   `netlify/edge-functions/noindex-non-production.js`).
-2. **Netlify → Domain management**: add `www.garygermer.com` as the *primary*
-   domain and `garygermer.com` as an alias. Wait for the Let's Encrypt
-   certificate. (`_redirects` also 301s apex → www explicitly.)
+   `netlify/edge-functions/noindex-non-production.js`). — **Done.**
+2. **Netlify → Domain management** — **Done 2026-09-15.** `www.garygermer.com`
+   is the site's primary custom domain, `garygermer.com` is an alias (so is
+   `gary.lukerenner.co` — kept alive as the staging URL, don't remove it
+   until production is verified). No TLS certificate yet: Netlify can't issue
+   one until DNS actually resolves here (confirmed via
+   `showSiteTLSCertificate`: `"renewal_error_message": "www.garygermer.com
+   doesn't appear to be served by Netlify"`) — that should self-resolve
+   automatically within a few minutes to hours of the DNS change below, no
+   further action needed unless it's still unissued a day later.
 3. **DNS, at the current registrar — do not move nameservers.** Only repoint
    the apex (Netlify load balancer A record) and `www` (CNAME to
    `gary-germer-2-0.netlify.app`). Leave every other record alone —
@@ -65,9 +71,18 @@ project `gary-germer-2-0`). Production today is still the Ucraft site.
 - **Spam**: forms rely on a honeypot plus server-side validation. If spam
   gets through after launch, add Cloudflare Turnstile (free, needs an account
   — not created here).
-- **Delete the two audit test rows** in Airtable → Website Inquiries
-  (`recNkuTxeewMXeeZ1`, `recbBHqMqMQHHeaAU`, `rec9e9ciMrIODtRWs`, all "LAUNCH AUDIT TEST") and the
-  Contact `launch-audit-test@example.com`.
+- **Delete the audit test rows — Done 2026-09-15.** All 3 Website Inquiries
+  test rows and all 4 Contacts rows matching `launch-audit-test@example.com`
+  (accumulated across audit runs) have been deleted.
+- **"4.7 Stars" review count — still needs Luke to confirm.** The homepage
+  and contact page both use a real graphic badge (not placeholder text)
+  reading "4.7 ★★★★☆ (123)" at `assets/images/google-reviews-badge.png`,
+  plus matching "4.7 Stars" copy in two places. A third-party aggregator
+  (Birdeye) showed 4.6 from 139 reviews when checked 2026-09-14 — a
+  different number, and ratings drift over time, so neither can be trusted
+  without checking the actual Google Business Profile. Confirm before launch;
+  if it's changed, both the badge image and the two copy instances need
+  updating together so they don't disagree with each other.
 
 ## Legacy URL → new URL map
 
