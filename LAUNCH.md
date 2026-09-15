@@ -74,15 +74,11 @@ project `gary-germer-2-0`). Production today is still the Ucraft site.
 - **Delete the audit test rows — Done 2026-09-15.** All 3 Website Inquiries
   test rows and all 4 Contacts rows matching `launch-audit-test@example.com`
   (accumulated across audit runs) have been deleted.
-- **"4.7 Stars" review count — still needs Luke to confirm.** The homepage
-  and contact page both use a real graphic badge (not placeholder text)
-  reading "4.7 ★★★★☆ (123)" at `assets/images/google-reviews-badge.png`,
-  plus matching "4.7 Stars" copy in two places. A third-party aggregator
-  (Birdeye) showed 4.6 from 139 reviews when checked 2026-09-14 — a
-  different number, and ratings drift over time, so neither can be trusted
-  without checking the actual Google Business Profile. Confirm before launch;
-  if it's changed, both the badge image and the two copy instances need
-  updating together so they don't disagree with each other.
+- **"4.7 Stars" review count — confirmed by Luke 2026-09-15.** Still 4.7 on
+  the actual Google Business Profile — no change needed to the copy or the
+  badge image. (The badge's review count, "123," wasn't separately
+  re-confirmed and may have climbed since the badge was made — cosmetic only,
+  refresh on request.)
 
 ## Legacy URL → new URL map
 
