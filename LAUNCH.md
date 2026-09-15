@@ -1,7 +1,9 @@
 # Launch checklist — garygermer.com 2.0
 
-Pre-launch audit, 2026-09-14. Staging: https://gary.lukerenner.co (Netlify
-project `gary-germer-2-0`). Production today is still the Ucraft site.
+Pre-launch audit, 2026-09-14. **Production cutover completed 2026-09-15.**
+www.garygermer.com is live on the new site as of ~20:33 UTC. Staging
+(https://gary.lukerenner.co, Netlify project `gary-germer-2-0`) is kept
+alive as a domain alias for ongoing preview/testing.
 
 ## Cutover runbook
 
@@ -18,25 +20,43 @@ project `gary-germer-2-0`). Production today is still the Ucraft site.
    doesn't appear to be served by Netlify"`) — that should self-resolve
    automatically within a few minutes to hours of the DNS change below, no
    further action needed unless it's still unissued a day later.
-3. **DNS, at the current registrar — do not move nameservers.** Only repoint
-   the apex (Netlify load balancer A record) and `www` (CNAME to
-   `gary-germer-2-0.netlify.app`). Leave every other record alone —
-   especially **`shop.garygermer.com` (the Vault/Shopify)** and the **MX
-   records for info@garygermer.com**. Moving nameservers to Netlify DNS would
-   silently drop both unless recreated first.
-4. **Verify production** (after DNS propagates):
-   - `https://www.garygermer.com/` has **no** `x-robots-tag` header.
-   - `http://garygermer.com/x`, `https://garygermer.com/x` → 301 to `https://www.garygermer.com/x`.
-   - Run every legacy URL in the table below; each should 301 once to a 200.
-   - Submit one real test inquiry with 2–3 photos from a phone; confirm the
-     Airtable row and the photos.
-5. **Search Console**: add/verify the `garygermer.com` Domain property, submit
+3. **DNS — Done 2026-09-15, ~19:44 UTC**, at GoDaddy (nameservers untouched).
+   Apex `@`: A record → `75.2.60.5` (GoDaddy's DNS editor offered no
+   ALIAS/ANAME type, so this uses Netlify's documented fallback rather than
+   the theoretically-preferred `apex-loadbalancer.netlify.com` alias).
+   `www`: CNAME → `gary-germer-2-0.netlify.app`. Confirmed via GoDaddy's own
+   record list (all 21 records paged through) that MX, `shop`, NS, SOA, and
+   every TXT verification record were left untouched.
+4. **TLS certificate — issued 2026-09-15, 20:33 UTC** (~49 minutes after the
+   DNS change — normal range). Netlify auto-provisioned it once DNS was
+   globally visible; no manual action was possible or needed (the
+   `provisionSiteTLSCertificate` API endpoint turned out to want an existing
+   certificate to attach, not a fresh-issue trigger — this really is
+   Netlify's own background process, not something to force).
+5. **Verify production — Done 2026-09-15, 20:33–20:40 UTC.** All confirmed
+   directly against `https://www.garygermer.com/`:
+   - No `x-robots-tag` header. ✓
+   - `http://garygermer.com/x` → 301 → `https://garygermer.com/x` → 301 →
+     `https://www.garygermer.com/x` (two hops: Netlify's automatic
+     HTTP→HTTPS upgrade, then our own apex→www rule — expected, not a bug). ✓
+   - 13 representative legacy URLs spot-checked (redirect chains, the
+     estate-sale slug rename, the blog category filter, the Google-review
+     link, `/team`/`/about`, `/shop`/`/online-stores`) — all resolve in one
+     hop to 200. ✓
+   - `shop.garygermer.com` (Shopify) still serving normally. ✓
+   - MX records unaffected — verified via `dig`. ✓
+   - One real inquiry submitted through the live production form — reached
+     Airtable successfully, then deleted as test data. ✓
+6. **Search Console**: add/verify the `garygermer.com` Domain property, submit
    `https://www.garygermer.com/sitemap.xml`, and watch Pages → "Not found (404)"
-   for two weeks for any legacy URL this map missed.
-6. **GA4 (G-DSW0DFDTQN)**: Admin → Events → mark `generate_lead` (and
+   for two weeks for any legacy URL this map missed. — **Still to do** (needs
+   Search Console access).
+7. **GA4 (G-DSW0DFDTQN)**: Admin → Events → mark `generate_lead` (and
    optionally `sign_up`, `phone_click`) as **key events**. Confirm events in
-   Realtime/DebugView after launch.
-7. **Retire Ucraft** only after the above checks pass.
+   Realtime/DebugView after launch. — **Still to do** (needs GA4 admin
+   access).
+8. **Retire Ucraft** once steps 6–7 are done and the site's had a few days to
+   settle. — **Not yet.**
 
 ## Needs a decision / client confirmation
 
