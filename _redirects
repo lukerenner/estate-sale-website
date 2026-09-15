@@ -24,6 +24,7 @@ http://garygermer.com/*         https://www.garygermer.com/:splat    301!
 # which carries the consultation form. /contact is a real page (no rule).
 /consultation                   /contact/                             301
 /contact/mailing-list           /join-our-mailing-list/               301
+/estate-sale-service            /our-services/estate-sales/           301
 
 # The old review page's stars sent visitors to leave a review, so its
 # closest equivalent is the same Google review form the new footer uses;
