@@ -128,11 +128,22 @@ window.SALE_DATA = {{ {
     </div>
   </section>
 
-  {% if video %}
-  <!-- ========================== ESTATE OVERVIEW ========================== -->
+  {% if video or about.showFull %}
+  <!-- ========================== ESTATE OVERVIEW ==========================
+       Two ways in: a video sale (unchanged, always shows this alongside
+       the poster), or a sale explicitly marked about.showFull: true --
+       set only by tools/lib/sync-estate-sales-source.mjs for sales it
+       ingests, where the hero-lead paragraph above is deliberately just a
+       short teaser and this is where the full description actually lives.
+       Deliberately NOT keyed on "does about.paragraphs exist" alone --
+       plenty of legacy hand-authored sales already carry a full about
+       block that duplicates their (un-shortened) heroLead verbatim, and
+       showing both would just repeat the same paragraph twice on the
+       page. showFull is how a sale opts in to the short-hero/full-about
+       split instead of the single-long-heroLead legacy pattern. -->
   <section class="section" id="sale-overview">
     <div class="container">
-      <div class="about-band-grid">
+      <div class="about-band-grid{% if not video %} about-band-grid--text-only{% endif %}">
         <div class="about-copy-panel">
           <p class="eyebrow">About the Sale</p>
           <h2 class="section-heading about-heading">{{ about.heading }}</h2>
@@ -143,6 +154,7 @@ window.SALE_DATA = {{ {
           </div>
         </div>
 
+        {% if video %}
         <div>
           <div class="about-portrait-wrap reveal">
             <img
@@ -156,6 +168,7 @@ window.SALE_DATA = {{ {
             </button>
           </div>
         </div>
+        {% endif %}
       </div>
     </div>
   </section>

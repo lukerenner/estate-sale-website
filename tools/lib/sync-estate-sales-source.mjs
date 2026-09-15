@@ -255,7 +255,12 @@ export async function fetchGalleryImageUrls(saleDetailUrl, { delayMs = 700, maxP
   for (let page = 1; page <= maxPages; page++) {
     const pageUrl = page === 1 ? `${saleDetailUrl}/gallery` : `${saleDetailUrl}/gallery?page=${page}`;
     const html = await fetchText(pageUrl);
-    const thumbs = [...html.matchAll(/<img[^>]+src="(https:\/\/eso-cdn\.tlcdn\.workers\.dev\/s-\d+-[a-z0-9]+)-t\.jpg"/g)].map((m) => m[1] + ".jpg");
+    // Extension varies by sale -- older sales serve .jpg thumbs, newer ones
+    // .webp (observed directly: "Adventurer's Sellwood Sale" id 2434733
+    // serves .webp and was silently getting zero gallery photos before this
+    // fix, falling back to the single JSON-LD hero image only). Capture
+    // whatever extension is actually there instead of assuming .jpg.
+    const thumbs = [...html.matchAll(/<img[^>]+src="(https:\/\/eso-cdn\.tlcdn\.workers\.dev\/s-\d+-[a-z0-9]+)-t\.(jpg|jpeg|webp|png)"/gi)].map((m) => `${m[1]}.${m[2]}`);
     if (!thumbs.length) break;
     if (prevFirst && thumbs[0] === prevFirst) break;
     prevFirst = thumbs[0];
@@ -484,7 +489,13 @@ export async function syncEstateSalesSource({
       const outDir = path.join(imagesRoot, slug);
       const tmpPaths = [];
       for (const [i, imgUrl] of imageUrls.entries()) {
-        const tmpPath = path.join(tmpDir, `${slug}-${i}.jpg`);
+        // Match the tmp file's extension to the real source extension
+        // (.jpg or .webp) rather than assuming .jpg -- identify/cwebp
+        // happen to sniff real content regardless of extension, so this
+        // wasn't silently corrupting anything, but a .jpg-named webp file
+        // is misleading to debug and worth getting right.
+        const srcExt = path.extname(new URL(imgUrl).pathname) || ".jpg";
+        const tmpPath = path.join(tmpDir, `${slug}-${i}${srcExt}`);
         try {
           downloadTmp(imgUrl, tmpPath);
           tmpPaths.push(tmpPath);
@@ -500,7 +511,13 @@ export async function syncEstateSalesSource({
 
       const description = truncate(plainText(detail.paragraphs[0]), 300);
       const ogDescription = truncate(plainText(detail.paragraphs[0]), 200);
-      const heroLead = detail.paragraphs.map(plainText).join(" ");
+      // A short teaser for the compact hero paragraph -- NOT the full ad
+      // copy. The full text still lives, verbatim and unabridged, in
+      // about.paragraphs below; the layout's "About the Sale" section
+      // renders it whenever about.paragraphs exists (see
+      // estate-sale.njk), matching the birkendene.njk pattern of a brief
+      // hero blurb + full description further down the page.
+      const heroLead = truncate(plainText(detail.paragraphs[0]), 240);
 
       const cityForTitle =
         location.neighborhood
@@ -562,6 +579,11 @@ export async function syncEstateSalesSource({
       lines.push(`  height: ${hero.height}`);
       lines.push(`  alt: ${yamlString(`Photo from ${detail.name}`)}`);
       lines.push("about:");
+      // Opts into the layout's full "About the Sale" section (estate-sale.njk)
+      // -- see that file's comment. Required because heroLead here is only a
+      // short teaser (truncate(paragraphs[0])), not the full copy like
+      // legacy hand-authored sales' heroLead is.
+      lines.push("  showFull: true");
       lines.push(`  heading: ${yamlString(detail.name)}`);
       lines.push("  paragraphs:");
       for (const p of detail.paragraphs) lines.push(`    - ${yamlString(p)}`);

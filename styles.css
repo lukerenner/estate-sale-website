@@ -1471,6 +1471,10 @@ body.nav-lock { overflow: hidden; }
 @media (max-width: 1100px) { .about-band-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr); } }
 @media (max-width: 900px) { .about-band-grid { grid-template-columns: 1fr; } }
 
+/* No video poster to pair with (most estate sales) -- a single centered
+   reading column instead of the two-up grid built for a portrait image. */
+.about-band-grid--text-only { grid-template-columns: minmax(0, 720px); justify-content: center; }
+
 .about-copy-panel {
   display: flex;
   flex-direction: column;
