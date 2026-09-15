@@ -30,7 +30,7 @@ jobs:
         run: |
           git config user.name "gg-blog-sync-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add blog/posts assets/images/blog assets/videos/blog tools/blog-sync-checkpoint.json
+          git add blog/posts assets/images/blog assets/videos/blog estate-sales assets/images/estate-sales tools/blog-sync-checkpoint.json
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
