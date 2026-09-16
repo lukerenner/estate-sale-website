@@ -198,6 +198,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("robots.txt");
   eleventyConfig.addPassthroughCopy("_redirects");
   eleventyConfig.addPassthroughCopy("_headers");
+  // Under `--serve`, serve those files straight from the source tree instead
+  // of copying them into _site — otherwise the local _site holds a second
+  // 1.5GB copy of assets/ on Google Drive. Real builds (Netlify) still copy.
+  eleventyConfig.setServerPassthroughCopyBehavior("passthrough");
 
   eleventyConfig.addCollection("estateSales", (api) =>
     api.getFilteredByGlob("estate-sales/*.njk").sort((a, b) => {
