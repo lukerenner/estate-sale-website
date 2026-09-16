@@ -7,10 +7,8 @@ interior template: the estate sale detail page. As of the Eleventy migration
 `_includes/layouts/estate-sale.njk` for the shared layout it renders through.
 To add a new sale, add a new `estate-sales/<slug>.njk` front-matter file
 (copy `birkendene.njk` as a starting point) instead of duplicating a folder.
-The old hand-authored version of the birkendene page is kept for reference at
-`_archive/birkendene-hand-authored/` (excluded from the Eleventy build via
-`.eleventyignore`) — safe to delete once you're comfortable the templated
-version fully replaces it. The header and footer nav otherwise reference the
+The old hand-authored version of the birkendene page (formerly in
+`_archive/`) was deleted 2026-09-16; it's still in git history. The header and footer nav otherwise reference the
 eventual full site's structure without those pages existing. Two link styles
 are used, deliberately:
 
