@@ -1,5 +1,5 @@
 {
-  "ranAt": "2026-09-15T16:50:27.526Z",
+  "ranAt": "2026-09-16T11:24:26.802Z",
   "shop": {
     "created": [],
     "updatedSold": [],
@@ -92,5 +92,137 @@
   "amnw": {
     "created": [],
     "checked": 25
+  },
+  "estateSales": {
+    "created": [
+      "riverwood-estate-sale",
+      "grant-park-ch-teau-estate-sale",
+      "asian-arts-estate-sale",
+      "briarwood-riverside-estate-sale",
+      "easter-weekend-pop-up-estate-sale",
+      "nancy-fischer-estate-sale",
+      "janet-edwards-designs-estate-sale",
+      "military-weapons-and-historic-armory-estate-sale",
+      "nw-skyline-estate-sale",
+      "hidden-wing-of-westmoreland-manor-estate-sale",
+      "westmoreland-manor-estate-sale"
+    ],
+    "skippedExisting": [
+      "2461374",
+      "2453896",
+      "2449969",
+      "2446549",
+      "2439977",
+      "2437358",
+      "2434733",
+      "2431178",
+      "2418955",
+      "2398845",
+      "2360290",
+      "2341084",
+      "2325255",
+      "2323302",
+      "2319191",
+      "2308891",
+      "2293897",
+      "2269293",
+      "2260455",
+      "2255729",
+      "2222137"
+    ],
+    "skippedNameMatch": [
+      {
+        "id": "2391667",
+        "url": "https://estatesales.org/estate-sales/or/portland/97229/the-birkendene-estate-sale-2391667",
+        "name": "The Birkendene Estate Sale"
+      },
+      {
+        "id": "2388830",
+        "url": "https://estatesales.org/estate-sales/or/hillsboro/97123/the-oakwood-gardens-estate-sale-2388830",
+        "name": "The Oakwood Gardens Estate Sale"
+      },
+      {
+        "id": "2386549",
+        "url": "https://estatesales.org/estate-sales/wa/camas/98607/the-westridge-estate-sale-2386549",
+        "name": "The Westridge Estate Sale"
+      },
+      {
+        "id": "2382011",
+        "url": "https://estatesales.org/estate-sales/or/portland/97239/the-bertha-heights-estate-sale-2382011",
+        "name": "The Bertha Heights Estate Sale"
+      },
+      {
+        "id": "2375141",
+        "url": "https://estatesales.org/estate-sales/or/portland/97239/the-mary-mize-estate-sale-2375141",
+        "name": "The Mary Mize Estate Sale"
+      },
+      {
+        "id": "2364468",
+        "url": "https://estatesales.org/estate-sales/or/portland/97221/arthur-hill-estate-sale-2364468",
+        "name": "Arthur Hill Estate Sale"
+      },
+      {
+        "id": "2331620",
+        "url": "https://estatesales.org/estate-sales/or/tualatin/97062/stafford-trail-estate-sale-2331620",
+        "name": "Stafford Trail Estate Sale"
+      },
+      {
+        "id": "2327823",
+        "url": "https://estatesales.org/estate-sales/or/portland/97219/midmod-moapa-estate-sale-2327823",
+        "name": "MidMod Moapa Estate Sale"
+      },
+      {
+        "id": "2210631",
+        "url": "https://estatesales.org/estate-sales/wa/camas/98607/lacamas-lake-estate-sale-2210631",
+        "name": "LaCamas Lake Estate Sale"
+      },
+      {
+        "id": "2190055",
+        "url": "https://estatesales.org/estate-sales/or/portland/97201/the-broadway-woods-estate-sale-2190055",
+        "name": "The Broadway Woods Estate Sale"
+      },
+      {
+        "id": "2169961",
+        "url": "https://estatesales.org/estate-sales/or/portland/97210/kings-cumberland-estate-sale-2169961",
+        "name": "Kings Cumberland Estate Sale"
+      },
+      {
+        "id": "2139685",
+        "url": "https://estatesales.org/estate-sales/or/portland/97221/wilcox-manor-estate-sale-2139685",
+        "name": "Wilcox Manor Estate Sale"
+      },
+      {
+        "id": "2127585",
+        "url": "https://estatesales.org/estate-sales/or/portland/97225/the-estate-of-corinne-gentner-2127585",
+        "name": "The Estate of Corinne Gentner"
+      },
+      {
+        "id": "2109539",
+        "url": "https://estatesales.org/estate-sales/or/portland/97221/bridlemile-midcentury-estate-sale-2109539",
+        "name": "Bridlemile Midcentury Estate Sale"
+      },
+      {
+        "id": "2100575",
+        "url": "https://estatesales.org/estate-sales/or/portland/97210/bixwood-manor-estate-sale-2100575",
+        "name": "Bixwood Manor Estate Sale"
+      },
+      {
+        "id": "2056385",
+        "url": "https://estatesales.org/estate-sales/or/portland/97227/the-peter-abrahams-science-astronomy-2056385",
+        "name": "The Peter Abrahams Science & Astronomy Estate"
+      },
+      {
+        "id": "2001805",
+        "url": "https://estatesales.org/estate-sales/or/portland/97201/margie-boul-friends-moving-sale-2001805",
+        "name": "Margie Boulé & Friends Moving Sale"
+      }
+    ],
+    "failed": [
+      {
+        "id": "2007993",
+        "url": "https://estatesales.org/estate-sales/or/portland/97227/military-weapons-armory-estate-sale-2007993",
+        "error": "could not parse any open dates from the Dates & Times section"
+      }
+    ]
   }
 }
