@@ -1609,7 +1609,9 @@ body.nav-lock { overflow: hidden; }
 .site-footer .container { width: min(calc(100% - 2 * clamp(24px, 4vw, 70px)), 1600px); }
 .footer-grid {
   display: grid;
-  grid-template-columns: 0.9fr 1.05fr 1fr;
+  /* minmax(0, …) so a column's min-content (nowrap heading, star row)
+     can never push the grid wider than the viewport. */
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.05fr) minmax(0, 1fr);
   gap: var(--gap-lg) var(--gap-md);
 }
 .footer-grid > div {
@@ -1620,9 +1622,28 @@ body.nav-lock { overflow: hidden; }
   padding-left: 0;
   border-left: 0;
 }
-@media (max-width: 900px) {
-  .footer-grid { grid-template-columns: 1fr; gap: var(--gap-lg); }
+/* Tablet / small laptop: brand + newsletter side by side, the message
+   form drops to a full-width row beneath them. */
+@media (max-width: 1240px) {
+  .footer-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .footer-grid > .footer-message {
+    grid-column: 1 / -1;
+    padding-left: 0;
+    border-left: 0;
+    padding-top: var(--gap-lg);
+    border-top: 1px solid var(--border-dark);
+  }
+}
+@media (max-width: 760px) {
+  .footer-grid { grid-template-columns: minmax(0, 1fr); gap: var(--gap-lg); }
   .footer-grid > div { padding-left: 0; border-left: 0; }
+  .footer-grid > .footer-newsletter,
+  .footer-grid > .footer-message {
+    padding-top: var(--gap-lg);
+    border-top: 1px solid var(--border-dark);
+  }
+  .footer-follow, .footer-review { margin-top: 2.4rem; }
+  .footer-signup-form { margin-top: 1.8rem; }
 }
 .footer-brand { grid-column: span 1; }
 .footer-brand .brand {
@@ -1661,12 +1682,9 @@ body.nav-lock { overflow: hidden; }
   max-width: 20ch;
   padding-top: 0.3em;
 }
-.footer-newsletter .footer-heading {
-  max-width: none;
-  white-space: nowrap;
-}
-@media (max-width: 560px) {
-  .footer-newsletter .footer-heading { white-space: normal; }
+.footer-newsletter .footer-heading { max-width: none; }
+@media (min-width: 1500px) {
+  .footer-newsletter .footer-heading { white-space: nowrap; }
 }
 .footer-col-body { margin-top: 0.7rem; font-size: clamp(0.9375rem, 0.87rem + 0.28vw, 1.0625rem); color: var(--text-on-dark-muted); }
 
@@ -1744,9 +1762,10 @@ body.nav-lock { overflow: hidden; }
 }
 .footer-stars { display: flex; flex-wrap: nowrap; gap: 0.6rem; margin-top: 1.2rem; }
 .footer-star {
-  flex: 0 0 auto;
+  flex: 0 1 auto;
   width: 48px;
   height: 48px;
+  min-width: 36px;
   color: var(--text-on-dark-muted);
   transition: color var(--transition-fast), transform var(--transition-fast);
 }
@@ -1785,12 +1804,12 @@ body.nav-lock { overflow: hidden; }
 .footer-message-form .footer-field-label:first-child { margin-top: 0; }
 .footer-field-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 0 0.8rem;
 }
 .footer-field-row .footer-field-label { margin-top: 0; }
 @media (max-width: 480px) {
-  .footer-field-row { grid-template-columns: 1fr; }
+  .footer-field-row { grid-template-columns: minmax(0, 1fr); }
 }
 .footer-message-form input,
 .footer-message-form textarea {
@@ -1803,6 +1822,8 @@ body.nav-lock { overflow: hidden; }
   color: var(--text-on-dark);
   resize: vertical;
   min-height: 0;
+  width: 100%;
+  min-width: 0;
 }
 .footer-message-form textarea { min-height: 38px; margin-bottom: 0.2rem; }
 .footer-message-form input:focus-visible,

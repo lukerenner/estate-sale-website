@@ -33,6 +33,14 @@ alive as a domain alias for ongoing preview/testing.
    `provisionSiteTLSCertificate` API endpoint turned out to want an existing
    certificate to attach, not a fresh-issue trigger — this really is
    Netlify's own background process, not something to force).
+   - **Follow-up, same day:** Netlify sent a renewal-failure alert
+     ("www.garygermer.com doesn't appear to be served by Netlify") after the
+     above. DNS was verified still correct (CNAME → `gary-germer-2-0.netlify.app`,
+     resolving to a live Netlify edge serving the real site) — the TLS
+     handshake was just still returning the shared `*.netlify.app` wildcard
+     cert instead of the dedicated one. Luke clicked **Renew certificate** in
+     Netlify → Domain management → HTTPS and it resolved immediately. No DNS
+     or code change was needed.
 5. **Verify production — Done 2026-09-15, 20:33–20:40 UTC.** All confirmed
    directly against `https://www.garygermer.com/`:
    - No `x-robots-tag` header. ✓
