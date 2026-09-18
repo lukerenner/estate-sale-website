@@ -30,7 +30,20 @@
     "name": "Gary Germer & Associates",
     "url": "https://www.garygermer.com/"
   },
-  "url": "https://www.garygermer.com{{ page.url }}"
+  "performer": {
+    "@type": "Organization",
+    "@id": "https://www.garygermer.com/#business",
+    "name": "Gary Germer & Associates"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.garygermer.com{{ page.url }}",
+    "validFrom": "{{ dates[0].date | isoDateTime(dates[0].opens24) }}"
+  },
+  "url":"https://www.garygermer.com{{ page.url }}"
 }
 </script>
 {% endblock %}
