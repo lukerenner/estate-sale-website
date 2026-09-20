@@ -49,7 +49,32 @@ Website Inquiries row linked to a de-duplicated Contacts row; newsletter
 signups only flag the Contact. Photos are compressed in the browser to fit
 Netlify's ~4.5MB request limit and uploaded to the same record; if any photo
 fails, the visitor is told and the record is flagged — never a silent
-success. Spam protection is a honeypot plus server-side validation.
+success.
+
+### Spam protection
+
+Four layers, all in `netlify/functions/`. Anything caught is dropped
+silently — the sender gets a normal success response and nothing is written,
+so a bot can't probe for the thresholds — and the reason is logged to the
+function log so false positives are findable.
+
+1. **Honeypot** (`_honey`) — catches bots that fill every field.
+2. **Cloudflare Turnstile** (`lib/turnstile.mjs`) — silent bot scoring;
+   `script.js` mounts an `interaction-only` widget on every inquiry form, so
+   a real visitor never sees a challenge. Needs `TURNSTILE_SITE_KEY` (build,
+   read by `_data/turnstile.js`) and `TURNSTILE_SECRET_KEY` (function). With
+   either unset, no widget is emitted and the other layers carry on alone.
+3. **Origin check** (`lib/spam.mjs`) — a POST with no same-host `Origin` or
+   `Referer` didn't come from a browser on this site. This is the one that
+   stops a script hitting `/api/submit-inquiry` directly.
+4. **Content heuristics** (`lib/spam.mjs`) — non-Latin script, non-English
+   text, link stuffing, markup in text fields, spam vocabulary, plus a
+   per-IP burst limit.
+
+A Turnstile pass skips layers 3 and 4: Cloudflare has already vouched for
+the browser, so a genuine customer writing in from abroad isn't judged on
+language. The heuristics only run when there's no token to go on (no
+Turnstile configured, JavaScript off, or Cloudflare unreachable).
 
 ## Deployment
 

@@ -30,15 +30,18 @@ ogImage: /assets/images/art/consignment-hero-library.jpg
         <p class="hero-lead hero-lead-compact">Gary Germer &amp; Associates is the region&rsquo;s leading purveyors of fine items. When it comes to consignment, our mission is to go out into the world and put your objects in front of the highest paying collectors &mdash; wherever they may be. We use a variety of methods to bring your valuables to market. Your items may find a buyer at our brick-and-mortar Portland shop, Ebay, or across any number of the other specialized marketplaces. We also have a mailing list of thousands excited to hear about our latest consignment offerings.</p>
       </div>
 
+      {# Lightweight opener, NOT the full intake — same pattern as
+         appraisals.njk's hero. A consignment can't be worked without a
+         description and photos of the item, both of which are required on
+         /start-a-consignment/, so this form GETs into that page and its
+         fields arrive as query params of the same name for script.js to
+         prefill. It deliberately doesn't POST: a three-field lead with no
+         item details was rejected by the endpoint's consignment validation
+         anyway, so every submission from here used to dead-end in an error.
+         No honeypot needed — nothing is POSTed from here. #}
       <div class="hero-form-card sale-info-bar">
         <h2>Start a Consignment</h2>
-        <form class="form-grid" action="/api/submit-inquiry" method="POST" novalidate>
-          <input type="hidden" name="form" value="consignment">
-          <div class="form-honey" aria-hidden="true">
-            <label for="consignment-company">Leave this field empty</label>
-            <input type="text" id="consignment-company" name="_honey" tabindex="-1" autocomplete="off">
-          </div>
-
+        <form class="form-grid" action="/start-a-consignment/" method="GET" novalidate>
           <div class="field">
             <label class="field-label" for="consignment-name">Name</label>
             <input id="consignment-name" name="name" type="text" autocomplete="name" required>

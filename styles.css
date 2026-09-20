@@ -691,6 +691,14 @@ label { font-family: var(--font-sans); }
 .about-cta + .form-note-on-dark { margin-top: 1.8rem; font-style: italic; font-family: var(--font-sans); font-weight: 600; font-size: var(--fs-lead); }
 .form-note-on-dark { font-size: var(--fs-small); color: var(--text-on-dark-muted); margin-top: 0.4rem; }
 .form-honey { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+/* Turnstile renders `interaction-only`, so the widget draws nothing at all
+   on virtually every visit and only takes up room on the rare challenge.
+   align-self matters: some of these forms (the footer and discovery signup
+   rows) are flex rows with align-items:stretch, which would otherwise
+   stretch an invisible widget to the full row height and open a permanent
+   gap under the field. */
+.turnstile-widget { align-self: flex-start; }
+.turnstile-widget:not(:empty) { margin-bottom: 0.25rem; }
 .form-submit-error {
   display: flex;
   align-items: flex-start;

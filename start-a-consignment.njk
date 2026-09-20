@@ -67,11 +67,12 @@ ogImage: /assets/images/art/start-consignment-hero-silver.jpg
             <textarea id="consignment-intake-message" name="message" rows="3" required></textarea>
           </div>
           <div class="field">
-            <label class="field-label" for="consignment-intake-photos">Photos (optional)</label>
+            <label class="field-label" for="consignment-intake-photos">Photos / Attachments</label>
             <div class="field-file">
-              <input id="consignment-intake-photos" name="attachment" type="file" accept="image/jpeg,image/png,image/webp" multiple>
+              <input id="consignment-intake-photos" name="attachment" type="file" accept="image/jpeg,image/png,image/webp" multiple required>
               <p class="form-note">JPG, PNG, or WEBP. Up to 4MB total (large photos are shrunk automatically).</p>
             </div>
+            <p class="field-error" role="alert">Please attach at least one photo.</p>
           </div>
           <p class="form-submit-error" role="alert" hidden></p>
           <button class="button button-navy" type="submit">Submit Your Request</button>

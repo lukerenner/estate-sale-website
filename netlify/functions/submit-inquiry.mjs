@@ -1,4 +1,6 @@
 import { createRecord, updateRecord, uploadAttachment, findContactByEmail, createContact, updateContact } from "./lib/airtable.mjs";
+import { isOffSite, looksLikeSpam, isRateLimited } from "./lib/spam.mjs";
+import { verify as verifyTurnstile, TOKEN_FIELD as TURNSTILE_FIELD } from "./lib/turnstile.mjs";
 
 const PHOTOS_FIELD = "Photos";
 // Netlify Functions cap request bodies at 6MB; base64-encoding a file adds
@@ -6,6 +8,9 @@ const PHOTOS_FIELD = "Photos";
 const MAX_ATTACHMENT_BYTES = 4.3 * 1024 * 1024;
 // script.js caps uploads at the same count client-side.
 const MAX_ATTACHMENTS = 10;
+// The two item-intake forms can't be worked without seeing the piece, so a
+// photo is mandatory there (matched by `required` on their file inputs).
+const PHOTO_REQUIRED_FORMS = new Set(["appraisal", "consignment"]);
 const MAX_FIELD_LENGTH = 10000;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -139,8 +144,12 @@ function validate(fd, formType) {
   if ((formType === "appraisal" || formType === "consignment") && !String(fd.get("message") || "").trim()) {
     return "Please tell us a little about your item.";
   }
-  if (fd.getAll("attachment").filter((f) => f && typeof f === "object" && f.size > 0).length > MAX_ATTACHMENTS) {
+  const photos = fd.getAll("attachment").filter((f) => f && typeof f === "object" && f.size > 0).length;
+  if (photos > MAX_ATTACHMENTS) {
     return `Please attach no more than ${MAX_ATTACHMENTS} photos.`;
+  }
+  if (PHOTO_REQUIRED_FORMS.has(formType) && photos === 0) {
+    return "Please attach at least one photo of the item.";
   }
   return null;
 }
@@ -223,6 +232,39 @@ export default async (req) => {
   // Honeypot: report success without writing anything, so bots don't learn
   // their submission was rejected.
   if (formData.get("_honey")) {
+    return respond(req, 200, { ok: true });
+  }
+
+  // Turnstile first: a token Cloudflare vouches for means a real browser on
+  // a real page of ours, which makes the off-site header check redundant and
+  // the content heuristics unnecessarily risky — a genuine customer writing
+  // in from abroad shouldn't be dropped for it. So a pass skips straight to
+  // validation, and only the honeypot above still applies.
+  //
+  // "skipped" (no secret configured, no token from a no-JS visitor, or
+  // Cloudflare unreachable) falls through to the heuristics in lib/spam.mjs,
+  // which is exactly how this endpoint behaved before Turnstile.
+  const ip = req.headers.get("x-nf-client-connection-ip") || "";
+  const turnstile = await verifyTurnstile(formData.get(TURNSTILE_FIELD), ip);
+
+  // Same treatment as the honeypot for everything below — a silent drop, so
+  // a bot can't tune around the thresholds. The reason is logged (Netlify
+  // function logs only, never shown to the sender) so a false positive can
+  // be spotted rather than vanishing without trace.
+  const spamReason =
+    turnstile === "fail"
+      ? "failed the Turnstile check"
+      : turnstile === "pass"
+        ? null
+        : (isOffSite(req) && "submitted from outside the site") ||
+          looksLikeSpam(formData) ||
+          (isRateLimited(req) && "too many submissions from one address");
+  if (spamReason) {
+    console.warn(`Dropped submission (${spamReason}):`, JSON.stringify({
+      form: formData.get("form"),
+      email: formData.get("email"),
+      name: formData.get("name") || `${formData.get("first_name") || ""} ${formData.get("last_name") || ""}`.trim(),
+    }));
     return respond(req, 200, { ok: true });
   }
 

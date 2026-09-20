@@ -397,6 +397,30 @@
     if (select) select.value = tier.option;
   })();
 
+  /* --------------------------------------------- consignment prefill ---
+     /our-services/consignment/'s hero form GETs into /start-a-consignment/
+     (see the comment on that form) so its answers arrive as query params.
+     Carry them into the full intake rather than making the visitor retype
+     them. That short form asks for a single "Name", while the intake splits
+     first/last, so accept either shape. */
+  (function () {
+    var form = document.getElementById("consignment-form");
+    if (!form) return;
+    var params = new URLSearchParams(window.location.search);
+    var whole = (params.get("name") || "").trim().split(/\s+/);
+    var values = {
+      "consignment-intake-first-name": params.get("first_name") || whole[0] || "",
+      "consignment-intake-last-name": params.get("last_name") || whole.slice(1).join(" "),
+      "consignment-intake-email": params.get("email") || "",
+      "consignment-intake-phone": params.get("phone") || "",
+      "consignment-intake-message": params.get("message") || ""
+    };
+    Object.keys(values).forEach(function (id) {
+      var field = document.getElementById(id);
+      if (field && values[id]) field.value = values[id];
+    });
+  })();
+
   /* --------------------------------------------- appraisal photo upload
      The real intake requires at least one photo and caps the upload at
      MAX_PHOTOS files — both problems surface inline via the shared
@@ -694,6 +718,65 @@
     revealEls.forEach(function (el) { el.classList.add("is-visible"); });
   }
 
+  /* ------------------------------------------------------ turnstile ------
+     Cloudflare Turnstile on every form that posts to /api/submit-inquiry,
+     so the function can tell a real browser from a script. Rendered here
+     rather than as markup in a dozen templates — and via the delegated
+     observer below, because estate-sale.js injects a matching form after
+     this script has already run.
+
+     `interaction-only` means the widget draws nothing at all unless it
+     actually wants an interaction, so a normal visitor never sees it.
+     Turnstile puts its token in a hidden cf-turnstile-response input inside
+     the container; since the container sits in the form, the existing
+     FormData(form) in the submit handler picks it up with no extra work.
+
+     Nothing here runs unless base.njk emitted a site key, so with
+     TURNSTILE_SITE_KEY unset the forms behave exactly as they did before. */
+  (function () {
+    var meta = document.querySelector('meta[name="turnstile-sitekey"]');
+    if (!meta || !window.ggTurnstileReady) return;
+    var siteKey = meta.content;
+
+    function mount(form) {
+      if (form.dataset.turnstile === "1") return;
+      form.dataset.turnstile = "1";
+      var holder = document.createElement("div");
+      holder.className = "turnstile-widget";
+      // Sit the widget just above the submit button — inserted relative to
+      // that button's own parent, not the form: in the newsletter and
+      // discovery-band rows the button is nested in a wrapper div, and
+      // form.insertBefore() throws outright on a node that isn't its child.
+      var submit = form.querySelector('button[type="submit"]');
+      if (submit && submit.parentNode) submit.parentNode.insertBefore(holder, submit);
+      else form.appendChild(holder);
+      // Stashed on the form so the submit handler can reset the widget after
+      // a failed attempt — a token is single-use, so without this a retry
+      // would re-send one Cloudflare has already spent.
+      form.ggTurnstileId = window.turnstile.render(holder, {
+        sitekey: siteKey,
+        appearance: "interaction-only",
+        action: (form.querySelector('input[name="form"]') || {}).value || "inquiry",
+      });
+    }
+
+    // Per-form try/catch: a page carries up to six of these forms, and one
+    // that fails to mount must not take the rest of them down with it — a
+    // form with no widget still submits, it just falls back to the server's
+    // heuristics.
+    function mountAll() {
+      document.querySelectorAll('form[action="/api/submit-inquiry"]').forEach(function (form) {
+        try { mount(form); } catch (err) { console.error("Turnstile did not mount:", err); }
+      });
+    }
+
+    window.ggTurnstileReady.then(function () {
+      mountAll();
+      // estate-sale.js's signup form arrives later; catch it when it does.
+      new MutationObserver(mountAll).observe(document.body, { childList: true, subtree: true });
+    });
+  })();
+
   /* ------------------------------------------------- airtable inquiry forms
      contact.njk, start-an-appraisal.njk, and start-a-consignment.njk all
      post to /api/submit-inquiry (a Netlify Function that writes to
@@ -780,6 +863,9 @@
       function reset() {
         form.dataset.submitting = "";
         if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = originalBtnText; }
+        // A Turnstile token is single-use and expires after a few minutes,
+        // so every path that lets the visitor try again needs a fresh one.
+        if (form.ggTurnstileId && window.turnstile) window.turnstile.reset(form.ggTurnstileId);
       }
       if (errorEl) errorEl.hidden = true;
       if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = "Submitting…"; }

@@ -53,6 +53,20 @@ if (window.ggAnalyticsLive) {
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap">
 <link rel="stylesheet" href="/styles.css">
 
+{% if turnstile.siteKey %}
+{# Cloudflare Turnstile — silent bot scoring on every inquiry form. script.js
+   renders the widgets (there are a dozen forms, one of them injected at
+   runtime by estate-sale.js), so this only has to load the API and hand it
+   the key. The promise exists because api.js is async: it can fire its
+   onload before script.js has parsed, so the callback resolves a promise
+   script.js awaits instead of calling into it directly. #}
+<meta name="turnstile-sitekey" content="{{ turnstile.siteKey }}">
+<script>
+window.ggTurnstileReady = new Promise(function (resolve) { window.ggTurnstileInit = resolve; });
+</script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=ggTurnstileInit" async defer></script>
+{% endif %}
+
 {% block head %}{% endblock %}
 </head>
 <body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
