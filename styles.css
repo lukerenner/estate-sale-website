@@ -931,11 +931,13 @@ label { font-family: var(--font-sans); }
    section) would otherwise render white-on-white nav text at scroll-top.
    Flip the transparent header's text/logo to the brand blue so it reads
    against a light background — :has() targets this structurally instead
-   of needing a bodyClass hook added to every light-top page. */
-body:not(:has(.hero)) .site-header { color: var(--blue); }
-body:not(:has(.hero)) .site-header:not(.is-scrolled) { background: transparent; border-color: transparent; }
-body:not(:has(.hero)) .site-header .brand-mark-transparent { display: none; }
-body:not(:has(.hero)) .site-header .brand-mark-solid { display: block; }
+   of needing a bodyClass hook added to every light-top page. The thanks
+   page opens on a full-bleed dark photo (#thanks) with no .hero, so it is
+   excluded and keeps the white-on-photo header. */
+body:not(:has(.hero, #thanks)) .site-header { color: var(--blue); }
+body:not(:has(.hero, #thanks)) .site-header:not(.is-scrolled) { background: transparent; border-color: transparent; }
+body:not(:has(.hero, #thanks)) .site-header .brand-mark-transparent { display: none; }
+body:not(:has(.hero, #thanks)) .site-header .brand-mark-solid { display: block; }
 .site-header .container {
   width: min(calc(100% - (2 * var(--page-x))), 1440px);
 }
@@ -1010,7 +1012,7 @@ body:not(:has(.hero)) .site-header .brand-mark-solid { display: block; }
    scrolled (or on a light-top page before scroll), leaving only floating
    blue text. A blue border keeps the pill shape visible in both cases. */
 .site-header.is-scrolled .site-nav a.button-on-dark,
-body:not(:has(.hero)) .site-header:not(.is-scrolled) .site-nav a.button-on-dark {
+body:not(:has(.hero, #thanks)) .site-header:not(.is-scrolled) .site-nav a.button-on-dark {
   border-color: var(--blue);
 }
 
