@@ -15,14 +15,21 @@ request, after Netlify's per-deploy credit cost came up):
 1. **A brand-new estate sale posts to estatesales.org -> push immediately.**
    This is the one thing worth spending a deploy on right away, since it's
    also what can trigger the site's hello-bar/upcoming-sale announcement.
-2. **Everything else batches and pushes once a day, at 9am Pacific.**
+2. **Everything else batches and pushes once a day, at 3pm Pacific.** The
+   day's work -- hand edits, new Shopify items, the content sync -- lands in
+   the morning, so an afternoon batch ships it the same day rather than
+   holding it overnight. (Was 9am; changed 2026-09-21 at the owner's
+   request.) The gate fires on the first hourly run *at or after* 3pm, not
+   only inside the 3pm hour: GitHub's scheduled runs are routinely late and
+   get dropped under load, and an exact-hour test would silently forfeit the
+   whole day when that happens. Rule 3 still holds it to one push.
 3. **Never more than one push per Pacific calendar day.** If a new-sale push
-   already went out earlier today, today's 9am batch (or a second same-day
+   already went out earlier today, today's 3pm batch (or a second same-day
    sale) waits for tomorrow -- it does not stack a second push.
 4. **Manual edits made through Claude are just regular commits.** When asked
    to "push it live," the change gets committed, not force-pushed -- it
    rides the same gate as everything else and goes out at the next allowed
-   slot (immediate, if a sale happens to trigger one first, or the next 9am
+   slot (immediate, if a sale happens to trigger one first, or the next 3pm
    batch otherwise). If the owner ever wants something out *right now*,
    that's a deliberate, explicit override of this file's default -- say so.
 5. **Hard cap: never more than 65 pushes in a calendar month.** As the
@@ -45,7 +52,7 @@ budget.
 
 ## Changing the policy
 
-All five rules and their numbers (9am, 65/month, the 36h/48h throttle
+All five rules and their numbers (3pm, 65/month, the 36h/48h throttle
 thresholds) live as named constants at the top of `tools/push-gate.mjs` --
 change them there. If the actual Netlify plan/credit cost per deploy
 changes, update the math in this file's intro paragraph too.

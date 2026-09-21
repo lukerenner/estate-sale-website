@@ -17,7 +17,11 @@ import { execFileSync } from "node:child_process";
 const LOG_PATH = "tools/push-log.json";
 const CHECKPOINT_PATH = "tools/blog-sync-checkpoint.json";
 const TIMEZONE = "America/Los_Angeles";
-const BATCH_HOUR = 9; // 9am Pacific -- rule 2
+// 3pm Pacific (changed from 9am on 2026-09-21, at the owner's request).
+// The day's work -- hand edits, new Shopify items, content sync -- lands in
+// the morning, so an afternoon batch ships it the same day instead of
+// holding it overnight. Rule 2.
+const BATCH_HOUR = 15;
 const MONTHLY_CAP = 65; // rule 5, hard ceiling
 const THROTTLE_36H_AT = 55; // rule 5, first step-down
 const THROTTLE_48H_AT = 60; // rule 5, second step-down
@@ -93,12 +97,12 @@ export function decideAndPush({ newSaleThisRun = false, now = new Date() } = {})
   const hoursSinceLastPush = lastPush ? (now - lastPush) / 3_600_000 : Infinity;
 
   // Baseline rule 2 is a pure calendar-day gate (pushedToday), NOT a
-  // rolling 24h timer -- a push at 10am Monday must be followed by the next
-  // one at 9am Tuesday (~23h later), same-day, not held over because less
+  // rolling 24h timer -- a push at 4pm Monday must be followed by the next
+  // one at 3pm Tuesday (~23h later), same-day, not held over because less
   // than 24h elapsed. The rolling-hours check only enters the picture once
   // rule 5's throttle kicks in, where the owner explicitly asked for "once
   // per 36 hours" / "once per 48 hours" rather than "once per day" -- that
-  // genuinely does need to skip some days' 9am slots.
+  // genuinely does need to skip some days' afternoon slots.
   let requiredIntervalHours = null;
   if (monthCount >= THROTTLE_48H_AT) requiredIntervalHours = 48;
   else if (monthCount >= THROTTLE_36H_AT) requiredIntervalHours = 36;
@@ -117,11 +121,13 @@ export function decideAndPush({ newSaleThisRun = false, now = new Date() } = {})
   if (newSaleThisRun && !pushedToday) {
     shouldPush = true;
     reason = "new estate sale detected -- immediate push (rule 1)";
-  } else if (hour === BATCH_HOUR && !pushedToday && intervalGateOk) {
-    // Rule 2 + rule 5's dynamic throttle. Firing only inside the 9am
-    // Pacific hour (this workflow runs hourly) keeps this from ever
-    // triggering at the wrong time of day even once the interval grows
-    // past 24h.
+  } else if (hour >= BATCH_HOUR && !pushedToday && intervalGateOk) {
+    // Rule 2 + rule 5's dynamic throttle. At-or-after, not exactly-at:
+    // GitHub's scheduled runs are routinely late and are dropped outright
+    // under load, and an `=== BATCH_HOUR` test silently forfeits the whole
+    // day when that happens -- which defeats the entire point of moving the
+    // batch to the afternoon. Any hourly run from 3pm to midnight Pacific
+    // can carry the day's batch; `pushedToday` still holds it to one.
     shouldPush = true;
     reason = requiredIntervalHours
       ? `scheduled batch push (throttled to ${requiredIntervalHours}h intervals, ${monthCount}/${MONTHLY_CAP} pushes this month)`

@@ -1,7 +1,7 @@
 name: Blog sync
 
 # Runs hourly so a new estate sale can be caught and (per PUSH_POLICY.md)
-# pushed the same hour it appears, and so the 9am-Pacific batch push lands
+# pushed the same hour it appears, and so the 3pm-Pacific batch push lands
 # within the hour regardless of DST -- but syncing/committing every hour
 # does NOT mean deploying every hour. See PUSH_POLICY.md / push-gate.mjs:
 # whether this run actually pushes (and so actually costs Netlify a
