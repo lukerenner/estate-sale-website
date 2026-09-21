@@ -698,6 +698,45 @@ label { font-family: var(--font-sans); }
    stretch an invisible widget to the full row height and open a permanent
    gap under the field. */
 .turnstile-widget { align-self: flex-start; }
+/* Submit progress. Mandatory photos mean most intake submissions now carry a
+   real upload, so the form says which stage it's in and how far along the
+   upload is, rather than leaving a "Submitting…" button looking hung. */
+.form-progress { margin-bottom: 0.75rem; }
+.form-progress[hidden] { display: none; }
+.form-progress-label {
+  margin: 0 0 0.4rem;
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.form-progress-track {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--control-border, rgba(0, 0, 0, 0.12));
+  overflow: hidden;
+}
+.form-progress-bar {
+  height: 100%;
+  width: 3%;
+  border-radius: inherit;
+  background: var(--navy, #23305a);
+  transition: width 0.25s ease;
+}
+/* Unmeasurable stages (shrinking photos, waiting on the server) sweep
+   instead of sitting at a number that isn't true. */
+.form-progress.is-working .form-progress-bar {
+  animation: form-progress-sweep 1.1s ease-in-out infinite;
+}
+@keyframes form-progress-sweep {
+  0% { opacity: 0.45; }
+  50% { opacity: 1; }
+  100% { opacity: 0.45; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .form-progress-bar { transition: none; }
+  .form-progress.is-working .form-progress-bar { animation: none; opacity: 0.8; }
+}
 .turnstile-widget:not(:empty) { margin-bottom: 0.25rem; }
 .form-submit-error {
   display: flex;

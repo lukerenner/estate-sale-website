@@ -843,6 +843,75 @@
       }, function () { return file; });
     }
 
+    /* ------------------------------------------------- submit progress ---
+       Photos are mandatory on the appraisal and consignment intakes, so every
+       one of those submissions now carries an upload — on a phone, over a
+       slow uplink, that is genuinely several seconds during which a button
+       reading "Submitting…" looks indistinguishable from a hung form. Show
+       what is actually happening instead: which stage, and how far through
+       the upload.
+
+       Built here rather than in markup because a dozen templates post to
+       this endpoint, including one injected at runtime. */
+    function progressUI(form) {
+      var el = form.querySelector(".form-progress");
+      if (!el) {
+        el = document.createElement("div");
+        el.className = "form-progress";
+        // Announced to screen readers as it changes, not just drawn.
+        el.setAttribute("role", "status");
+        el.setAttribute("aria-live", "polite");
+        el.innerHTML = '<p class="form-progress-label"></p>' +
+          '<div class="form-progress-track"><div class="form-progress-bar"></div></div>';
+        // Hidden until the first set(), so creating it never flashes an
+        // empty label and an empty bar.
+        el.hidden = true;
+        var anchor = form.querySelector(".form-submit-error");
+        if (anchor && anchor.parentNode) anchor.parentNode.insertBefore(el, anchor);
+        else form.appendChild(el);
+      }
+      return {
+        set: function (text, pct) {
+          el.hidden = false;
+          el.querySelector(".form-progress-label").textContent = text;
+          var bar = el.querySelector(".form-progress-bar");
+          // A null percentage means "working, but we can't measure it" —
+          // the bar animates instead of pretending to a number.
+          el.classList.toggle("is-working", pct == null);
+          bar.style.width = pct == null ? "100%" : Math.max(3, Math.min(100, pct)) + "%";
+        },
+        hide: function () { el.hidden = true; }
+      };
+    }
+
+    // XMLHttpRequest rather than fetch purely for xhr.upload.onprogress —
+    // fetch still cannot report how much of a request body has gone out,
+    // and that upload is the part people are waiting on.
+    function postForm(url, fd, onProgress) {
+      return new Promise(function (resolve, reject) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", url, true);
+        xhr.setRequestHeader("Accept", "application/json");
+        if (xhr.upload) {
+          xhr.upload.onprogress = function (e) {
+            if (e.lengthComputable) onProgress(e.loaded / e.total);
+          };
+          xhr.upload.onload = function () { onProgress(1); };
+        }
+        xhr.onload = function () {
+          var data = {};
+          try { data = JSON.parse(xhr.responseText); } catch (e) { /* non-JSON body */ }
+          if (xhr.status >= 200 && xhr.status < 300) { resolve(data); return; }
+          var err = new Error("submit failed");
+          err.status = xhr.status;
+          err.serverMessage = data && data.error;
+          reject(err);
+        };
+        xhr.onerror = function () { reject(new Error("network error")); };
+        xhr.send(fd);
+      });
+    }
+
     // Delegated on document (not a querySelectorAll snapshot) because
     // estate-sale.js injects a matching form into the DOM after this script
     // has already run (its own DOMContentLoaded handler fires later) — a
@@ -861,6 +930,7 @@
 
       var fileInput = form.querySelector('input[type="file"]');
       var errorEl = form.querySelector(".form-submit-error");
+      var progress = progressUI(form);
       var submitBtn = form.querySelector('button[type="submit"]');
       var originalBtnText = submitBtn ? submitBtn.textContent : "";
       var formType = (form.querySelector('input[name="form"]') || {}).value || "unknown";
@@ -871,6 +941,7 @@
         errorEl.hidden = false;
       }
       function reset() {
+        progress.hide();
         form.dataset.submitting = "";
         if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = originalBtnText; }
         // A Turnstile token is single-use and expires after a few minutes,
@@ -882,6 +953,13 @@
 
       var files = fileInput ? Array.prototype.slice.call(fileInput.files) : [];
       var budget = files.length ? Math.min(MAX_ATTACHMENT_BYTES, Math.floor((MAX_TOTAL_BYTES * 0.95) / files.length)) : 0;
+
+      // Shrinking happens on the main thread and is the first slow stretch.
+      if (files.length) {
+        progress.set("Preparing " + files.length + " photo" + (files.length === 1 ? "" : "s") + "… large photos can take a moment.", null);
+      } else {
+        progress.set("Sending…", null);
+      }
 
       Promise.all(files.map(function (f) { return compressImage(f, budget); })).then(function (compressed) {
         var total = compressed.reduce(function (sum, f) { return sum + f.size; }, 0);
@@ -897,18 +975,18 @@
           compressed.forEach(function (f) { fd.append(fileInput.name, f); });
         }
 
-        return fetch(form.getAttribute("action"), { method: "POST", body: fd, headers: { Accept: "application/json" } })
-          .then(function (res) {
-            return res.json().catch(function () { return {}; }).then(function (data) {
-              if (!res.ok) {
-                var err = new Error("submit failed");
-                err.status = res.status;
-                err.serverMessage = data && data.error;
-                throw err;
-              }
-              return data;
-            });
-          })
+        // The bar tops out at 90% on upload: the last stretch is the server
+        // writing to Airtable and pushing each photo across, which takes real
+        // time and would otherwise sit at a motionless 100%.
+        return postForm(form.getAttribute("action"), fd, function (fraction) {
+          if (fraction >= 1) {
+            progress.set("Almost done — saving your inquiry…", null);
+          } else if (files.length) {
+            progress.set("Uploading photos… " + Math.round(fraction * 100) + "%", fraction * 90);
+          } else {
+            progress.set("Sending…", fraction * 90);
+          }
+        })
           .then(function (data) {
             // The footer's private-feedback form isn't a lead; everything else
             // posting here is an inquiry.
@@ -923,6 +1001,7 @@
             // imply everything arrived. The form stays locked: resubmitting
             // would create a duplicate inquiry.
             if (data && data.photosFailed > 0) {
+              progress.hide();
               form.dataset.submitted = "1";
               form.dataset.submitting = "";
               if (submitBtn) submitBtn.textContent = "Message Sent";
