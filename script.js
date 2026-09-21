@@ -760,20 +760,30 @@
       });
     }
 
-    // Per-form try/catch: a page carries up to six of these forms, and one
-    // that fails to mount must not take the rest of them down with it — a
-    // form with no widget still submits, it just falls back to the server's
-    // heuristics.
-    function mountAll() {
-      document.querySelectorAll('form[action="/api/submit-inquiry"]').forEach(function (form) {
-        try { mount(form); } catch (err) { console.error("Turnstile did not mount:", err); }
-      });
+    // Mounted on first interaction, not at page load. The homepage carries
+    // six of these forms, and mounting every one up front spins up six
+    // bot-detection iframes for a visitor who will use at most one of them.
+    // Focus is plenty of lead time: Turnstile needs about a second, and
+    // nobody fills in a form faster than that.
+    //
+    // Delegating from document also means estate-sale.js's late-injected
+    // form is covered for free, which is what the old MutationObserver was
+    // there for — one less thing watching every DOM change on the page.
+    var ready = false;
+    var pending = [];
+    function tryMount(form) {
+      if (!ready) { if (pending.indexOf(form) === -1) pending.push(form); return; }
+      // A form with no widget still submits — it just falls back to the
+      // server's heuristics — so one bad mount must not break the page.
+      try { mount(form); } catch (err) { console.error("Turnstile did not mount:", err); }
     }
-
+    document.addEventListener("focusin", function (e) {
+      var form = e.target.closest && e.target.closest('form[action="/api/submit-inquiry"]');
+      if (form) tryMount(form);
+    });
     window.ggTurnstileReady.then(function () {
-      mountAll();
-      // estate-sale.js's signup form arrives later; catch it when it does.
-      new MutationObserver(mountAll).observe(document.body, { childList: true, subtree: true });
+      ready = true;
+      pending.splice(0).forEach(tryMount);
     });
   })();
 
