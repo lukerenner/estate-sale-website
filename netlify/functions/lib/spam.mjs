@@ -28,12 +28,15 @@ const LATIN_LETTER = /[A-Za-zÀ-ɏ]/g;
 const NON_LATIN_SHARE_LIMIT = 0.3;
 
 // The ratio test above only catches a different *alphabet*. Spanish, Turkish
-// and Polish sales pitches are Latin script and sail straight through it, so
-// messages long enough to judge also have to look like English: any real
-// English sentence of this length contains several of these. Deliberately no
-// single-letter words ("a" and "i" are articles in Romance languages too),
-// and a handful of this business's own nouns, so a terse-but-genuine note
-// about an appraisal still registers.
+// and Polish sales pitches are Latin script and sail straight through it.
+//
+// Tested against six years of this business's real inquiries: absence of
+// English markers ALONE is not enough to call a message foreign. Customers
+// write terse item lists with no function words in them at all — "Framed
+// 2005 Mona Lisa seriolithograph by Neil J. Farcas. Original owner.
+// Excellent condition." is real, English, and contains no marker below. So
+// a message is judged foreign only when it has no English marker AND
+// carries at least two distinct function words from another language.
 const ENGLISH_MARKERS = new Set([
   "the", "and", "is", "are", "was", "were", "be", "been", "am",
   "to", "of", "in", "on", "at", "for", "with", "from", "about", "into",
@@ -50,9 +53,32 @@ const ENGLISH_MARKERS = new Set([
 // dynasty, signed base" is perfectly good English with no marker in it.
 const MIN_WORDS_TO_JUDGE_LANGUAGE = 12;
 
+// Function words common in other languages and rare-to-absent in English.
+// Two DISTINCT hits is the bar: single hits are ignored precisely because
+// proper names ("La Jolla", "El Paso", "Villeroy & Boch") would trip it.
+const FOREIGN_MARKERS = new Set([
+  // Spanish / Portuguese
+  "de", "la", "el", "los", "las", "del", "para", "con", "por", "una", "uno",
+  "um", "uma", "nao", "que", "seu", "sua", "nuestra", "nuestro", "nossa",
+  "servicios", "empresa", "hoy", "somos", "ofrecemos", "gostaria", "muito",
+  // French
+  "le", "les", "des", "pour", "avec", "vous", "nous", "votre", "notre", "est",
+  // German
+  "der", "die", "das", "und", "fur", "mit", "wir", "ihre", "eine", "sehr",
+  // Italian
+  "il", "gli", "sono", "siamo", "nostra", "molto",
+  // Turkish
+  "icin", "ile", "bir", "biz", "sizin", "hizmetleri", "merhaba", "profesyonel",
+  // Indonesian / Malay
+  "dan", "yang", "untuk", "dengan", "kami", "anda", "jasa", "harga", "halo",
+  // Polish
+  "nie", "jest", "dla", "oraz", "przez", "firmy",
+]);
+
 const LINK = /https?:\/\/|www\.[a-z0-9-]|\b[a-z0-9-]{2,}\.(?:com|net|org|ru|su|cn|xyz|top|club|online|site|info|biz|shop|link|live|icu)\b/gi;
 // Markup in a plain-text field is a comment-spam signature, not a customer.
 const MARKUP = /\[\s*url|\[\s*link|<\s*a\s+href|<\s*\/\s*a\s*>|\{\s*link/i;
+const EMAIL = /[^\s<>()[\]]+@[^\s<>()[\]]+\.[a-z]{2,}/gi;
 
 // Scored, not fatal on their own — an appraisal message could conceivably
 // mention "bitcoin" or a "loan". Two hits is the bar.
@@ -80,8 +106,12 @@ function ratioNonLatin(text) {
   return nonLatin / (nonLatin + latin);
 }
 
+// Email addresses are not links. Customers paste their own address, forward
+// whole email threads, and cite an artist's gallery — the real corpus is
+// full of it, and counting "someone@yahoo.com" as a link was flagging
+// genuine consignors. Strip addresses first, then count what's left.
 function countLinks(text) {
-  return (text.match(LINK) || []).length;
+  return (text.replace(EMAIL, " ").match(LINK) || []).length;
 }
 
 // True when a message is long enough to judge and contains no English
@@ -90,7 +120,9 @@ function countLinks(text) {
 function isNotEnglish(text) {
   const words = text.toLowerCase().match(/[a-zÀ-ɏ']+/g) || [];
   if (words.length < MIN_WORDS_TO_JUDGE_LANGUAGE) return false;
-  return !words.some((w) => ENGLISH_MARKERS.has(w));
+  if (words.some((w) => ENGLISH_MARKERS.has(w))) return false;
+  const foreign = new Set(words.filter((w) => FOREIGN_MARKERS.has(w)));
+  return foreign.size >= 2;
 }
 
 // A browser posting our own form always sends Origin (and nearly always
@@ -129,14 +161,17 @@ export function looksLikeSpam(fd) {
   if (ratioNonLatin(name) > NON_LATIN_SHARE_LIMIT) return "name is not in Latin script";
   if (isNotEnglish(message)) return "message is not in English";
 
+  // Link count is deliberately NOT a rejection on its own. Measured over six
+  // years of this business's inquiries: the spam carried 0-1 links, while
+  // genuine consignors citing artist pages, gallery records and forwarded
+  // email threads ran to six and beyond. Counting links penalised exactly
+  // the most detailed, most valuable inquiries and caught no spam at all.
+  // It survives only as one point of corroboration below.
   const links = countLinks(message);
-  // One link is plausible — people paste an auction listing for the item
-  // they're asking about. A wall of them is not.
-  if (links >= 3) return "too many links";
 
   // Distinct terms, so one word repeated five times isn't five hits.
   const hits = new Set((`${name} ${message}`.match(SPAM_TERM_RE) || []).map((t) => t.toLowerCase()));
-  if (hits.size + (links >= 1 ? 1 : 0) >= 2) return "spam vocabulary";
+  if (hits.size + (links >= 2 ? 1 : 0) >= 2) return "spam vocabulary";
   return null;
 }
 
