@@ -16,7 +16,7 @@ source:
 publishDate: "2026-08-14"
 shopUrl: https://shop.garygermer.com/products/maori-new-zealand-carved-wood-treasure-box-with-abalone-shell
 price: "$325.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/maori-new-zealand-carved-wood-oval-lidded-treasure-box-with-abalone-shell/maori-new-zealand-carved-wood-oval-lidded-treasure-box-with-abalone-shell-01-900.webp
   srcset900: /assets/images/blog/maori-new-zealand-carved-wood-oval-lidded-treasure-box-with-abalone-shell/maori-new-zealand-carved-wood-oval-lidded-treasure-box-with-abalone-shell-01-900.webp

@@ -16,7 +16,7 @@ source:
 publishDate: "2026-07-25"
 shopUrl: https://shop.garygermer.com/products/carved-wood-dog-head-smugglers-cane-walking-stick-with-hidden-flask-copy
 price: "$175.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/crescent-moon-and-star-inlaid-wood-mother-of-pearl-cane-walking-stick/crescent-moon-and-star-inlaid-wood-mother-of-pearl-cane-walking-stick-01-900.webp
   srcset900: /assets/images/blog/crescent-moon-and-star-inlaid-wood-mother-of-pearl-cane-walking-stick/crescent-moon-and-star-inlaid-wood-mother-of-pearl-cane-walking-stick-01-900.webp

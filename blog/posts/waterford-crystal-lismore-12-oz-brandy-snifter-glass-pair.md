@@ -16,7 +16,7 @@ source:
 publishDate: "2026-09-04"
 shopUrl: https://shop.garygermer.com/products/waterford-crystal-pair
 price: "$65.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/waterford-crystal-lismore-12-oz-brandy-snifter-glass-pair/waterford-crystal-lismore-12-oz-brandy-snifter-glass-pair-01-900.webp
   srcset900: /assets/images/blog/waterford-crystal-lismore-12-oz-brandy-snifter-glass-pair/waterford-crystal-lismore-12-oz-brandy-snifter-glass-pair-01-900.webp

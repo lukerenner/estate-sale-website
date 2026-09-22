@@ -16,7 +16,7 @@ source:
 publishDate: "2026-09-05"
 shopUrl: https://shop.garygermer.com/products/meissen-cross-swords-blue-onion-porcelain-scallop-rim-coffee-cup-saucer
 price: "$40.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/meissen-cross-swords-blue-onion-porcelain-scallop-rim-coffee-cup-and-saucer/meissen-cross-swords-blue-onion-porcelain-scallop-rim-coffee-cup-and-saucer-01-900.webp
   srcset900: /assets/images/blog/meissen-cross-swords-blue-onion-porcelain-scallop-rim-coffee-cup-and-saucer/meissen-cross-swords-blue-onion-porcelain-scallop-rim-coffee-cup-and-saucer-01-900.webp

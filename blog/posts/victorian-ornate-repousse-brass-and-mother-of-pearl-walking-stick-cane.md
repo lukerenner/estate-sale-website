@@ -16,7 +16,7 @@ source:
 publishDate: "2026-07-30"
 shopUrl: https://shop.garygermer.com/products/victorian-ornate-repousse-brass-mother-of-pearl-walking-stick-cane
 price: "$175.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/victorian-ornate-repousse-brass-and-mother-of-pearl-walking-stick-cane/victorian-ornate-repousse-brass-and-mother-of-pearl-walking-stick-cane-01-900.webp
   srcset900: /assets/images/blog/victorian-ornate-repousse-brass-and-mother-of-pearl-walking-stick-cane/victorian-ornate-repousse-brass-and-mother-of-pearl-walking-stick-cane-01-900.webp
