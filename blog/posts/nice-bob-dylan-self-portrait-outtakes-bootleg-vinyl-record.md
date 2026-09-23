@@ -16,7 +16,7 @@ source:
 publishDate: "2026-09-16"
 shopUrl: https://shop.garygermer.com/products/nice-the-beatles-back-in-the-saddle-a-collection-eighth-amendment-bootleg-vinyl-record-copy
 price: "$65.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/nice-bob-dylan-self-portrait-outtakes-bootleg-vinyl-record/nice-bob-dylan-self-portrait-outtakes-bootleg-vinyl-record-01-900.webp
   srcset900: /assets/images/blog/nice-bob-dylan-self-portrait-outtakes-bootleg-vinyl-record/nice-bob-dylan-self-portrait-outtakes-bootleg-vinyl-record-01-900.webp
