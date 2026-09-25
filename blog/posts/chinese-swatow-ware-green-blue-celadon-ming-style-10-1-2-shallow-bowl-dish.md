@@ -16,7 +16,7 @@ source:
 publishDate: "2026-09-17"
 shopUrl: https://shop.garygermer.com/products/chinese-swatow-ware-green-celadon-ming-style-bowl
 price: "$85.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/chinese-swatow-ware-green-blue-celadon-ming-style-10-1-2-shallow-bowl-dish/chinese-swatow-ware-green-blue-celadon-ming-style-10-1-2-shallow-bowl-dish-01-900.webp
   srcset900: /assets/images/blog/chinese-swatow-ware-green-blue-celadon-ming-style-10-1-2-shallow-bowl-dish/chinese-swatow-ware-green-blue-celadon-ming-style-10-1-2-shallow-bowl-dish-01-900.webp

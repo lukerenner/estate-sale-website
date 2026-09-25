@@ -16,7 +16,7 @@ source:
 publishDate: "2026-09-23"
 shopUrl: https://shop.garygermer.com/products/eye-studio-art-glass-spooky-cute-monster-halloween-party-wine-goblet-set-copy
 price: "$150.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/spooky-cute-monster-halloween-party-eye-studio-glass-wine-goblet-set/spooky-cute-monster-halloween-party-eye-studio-glass-wine-goblet-set-01-900.webp
   srcset900: /assets/images/blog/spooky-cute-monster-halloween-party-eye-studio-glass-wine-goblet-set/spooky-cute-monster-halloween-party-eye-studio-glass-wine-goblet-set-01-900.webp
