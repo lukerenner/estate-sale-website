@@ -16,7 +16,7 @@ source:
 publishDate: "2026-07-25"
 shopUrl: https://shop.garygermer.com/products/crescent-moon-star-inlaid-wood-mother-of-pearl-cane-walking-stick
 price: "$150.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/vintage-tigers-eye-crystal-ball-knob-wood-walking-stick-cane/vintage-tigers-eye-crystal-ball-knob-wood-walking-stick-cane-01-900.webp
   srcset900: /assets/images/blog/vintage-tigers-eye-crystal-ball-knob-wood-walking-stick-cane/vintage-tigers-eye-crystal-ball-knob-wood-walking-stick-cane-01-900.webp
