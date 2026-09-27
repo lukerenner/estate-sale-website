@@ -16,7 +16,7 @@ source:
 publishDate: "2026-08-23"
 shopUrl: https://shop.garygermer.com/products/ray-bradbury-signed-1st-edition-2001-morrow-illustrated-man-book
 price: "$80.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/ray-bradbury-signed-1st-edition-2001-morrow-illustrated-man-book/ray-bradbury-signed-1st-edition-2001-morrow-illustrated-man-book-01-900.webp
   srcset900: /assets/images/blog/ray-bradbury-signed-1st-edition-2001-morrow-illustrated-man-book/ray-bradbury-signed-1st-edition-2001-morrow-illustrated-man-book-01-900.webp

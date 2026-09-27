@@ -16,7 +16,7 @@ source:
 publishDate: "2026-08-01"
 shopUrl: https://shop.garygermer.com/products/chinese-famille-rose-medallion-wall-pocket-vase-pair
 price: "$275.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/chinese-famille-rose-medallion-wall-pocket-vase-pair/chinese-famille-rose-medallion-wall-pocket-vase-pair-01-900.webp
   srcset900: /assets/images/blog/chinese-famille-rose-medallion-wall-pocket-vase-pair/chinese-famille-rose-medallion-wall-pocket-vase-pair-01-900.webp

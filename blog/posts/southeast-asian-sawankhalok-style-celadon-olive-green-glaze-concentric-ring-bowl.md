@@ -16,7 +16,7 @@ source:
 publishDate: "2026-09-17"
 shopUrl: https://shop.garygermer.com/products/southeast-asian-antique-celadon-olive-green-glaze-concentric-ring-bowl
 price: "$125.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/southeast-asian-sawankhalok-style-celadon-olive-green-glaze-concentric-ring-bowl/southeast-asian-sawankhalok-style-celadon-olive-green-glaze-concentric-ring-bowl-01-900.webp
   srcset900: /assets/images/blog/southeast-asian-sawankhalok-style-celadon-olive-green-glaze-concentric-ring-bowl/southeast-asian-sawankhalok-style-celadon-olive-green-glaze-concentric-ring-bowl-01-900.webp
