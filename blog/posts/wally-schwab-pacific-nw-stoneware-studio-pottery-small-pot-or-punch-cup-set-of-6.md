@@ -16,7 +16,7 @@ source:
 publishDate: "2026-08-29"
 shopUrl: https://shop.garygermer.com/products/wally-schwab-pacific-nw-stoneware-studio-pottery-small-pot-or-punch-cup-set-of-6
 price: "$45.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/wally-schwab-pacific-nw-stoneware-studio-pottery-small-pot-or-punch-cup-set-of-6/wally-schwab-pacific-nw-stoneware-studio-pottery-small-pot-or-punch-cup-set-of-6-01-900.webp
   srcset900: /assets/images/blog/wally-schwab-pacific-nw-stoneware-studio-pottery-small-pot-or-punch-cup-set-of-6/wally-schwab-pacific-nw-stoneware-studio-pottery-small-pot-or-punch-cup-set-of-6-01-900.webp
