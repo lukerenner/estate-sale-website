@@ -16,7 +16,7 @@ source:
 publishDate: "2026-09-06"
 shopUrl: https://shop.garygermer.com/products/waterford-cut-crystal-monaghan-brandy-glass-pair
 price: "$70.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/waterford-crystal-monaghan-4-5-8-brandy-glass-snifter-pair-unused-original-box/waterford-crystal-monaghan-4-5-8-brandy-glass-snifter-pair-unused-original-box-01-900.webp
   srcset900: /assets/images/blog/waterford-crystal-monaghan-4-5-8-brandy-glass-snifter-pair-unused-original-box/waterford-crystal-monaghan-4-5-8-brandy-glass-snifter-pair-unused-original-box-01-900.webp
