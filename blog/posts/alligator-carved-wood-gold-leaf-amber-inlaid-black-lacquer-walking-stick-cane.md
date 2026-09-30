@@ -16,7 +16,7 @@ source:
 publishDate: "2026-08-08"
 shopUrl: https://shop.garygermer.com/products/black-lacquer-gilt-gemstone-walking-stick-cane
 price: "$150.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/alligator-carved-wood-gold-leaf-amber-inlaid-black-lacquer-walking-stick-cane/alligator-carved-wood-gold-leaf-amber-inlaid-black-lacquer-walking-stick-cane-01-900.webp
   srcset900: /assets/images/blog/alligator-carved-wood-gold-leaf-amber-inlaid-black-lacquer-walking-stick-cane/alligator-carved-wood-gold-leaf-amber-inlaid-black-lacquer-walking-stick-cane-01-900.webp

@@ -16,7 +16,7 @@ source:
 publishDate: "2026-09-04"
 shopUrl: https://shop.garygermer.com/products/ray-bradbury-signed-the-martian-chronicles-40th-anniversary-hardcover-book
 price: "$60.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/ray-bradbury-hand-signed-the-martian-chronicles-1990-40th-anniversary-hc-book/ray-bradbury-hand-signed-the-martian-chronicles-1990-40th-anniversary-hc-book-01-900.webp
   srcset900: /assets/images/blog/ray-bradbury-hand-signed-the-martian-chronicles-1990-40th-anniversary-hc-book/ray-bradbury-hand-signed-the-martian-chronicles-1990-40th-anniversary-hc-book-01-900.webp
