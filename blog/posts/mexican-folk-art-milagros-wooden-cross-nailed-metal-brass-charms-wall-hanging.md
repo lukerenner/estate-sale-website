@@ -16,7 +16,7 @@ source:
 publishDate: "2026-08-30"
 shopUrl: https://shop.garygermer.com/products/milagros
 price: "$95.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/mexican-folk-art-milagros-wooden-cross-nailed-metal-brass-charms-wall-hanging/mexican-folk-art-milagros-wooden-cross-nailed-metal-brass-charms-wall-hanging-01-900.webp
   srcset900: /assets/images/blog/mexican-folk-art-milagros-wooden-cross-nailed-metal-brass-charms-wall-hanging/mexican-folk-art-milagros-wooden-cross-nailed-metal-brass-charms-wall-hanging-01-900.webp

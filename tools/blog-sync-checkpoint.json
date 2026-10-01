@@ -1,21 +1,24 @@
 {
-  "ranAt": "2026-09-30T23:43:05.887Z",
+  "ranAt": "2026-10-01T23:07:11.035Z",
   "shop": {
     "created": [
-      "carl-malmsten-gustavus-fors-m-belfabrik-dining-room-set",
-      "brown-jordan-mid-century-three-piece-pomegranate-iron-patio-set",
-      "scandinavian-mid-century-modern-double-bodied-cabinet",
-      "mid-century-brown-jordan-wrought-iron-pomegranate-patio-set"
+      "imari-butterfly-and-flower-gold-porcelain-demitasse-cup-and-saucer-set",
+      "ludwig-van-beethoven-bronze-franz-klein-life-mask-replica-cast-sculpture",
+      "large-seaform-blue-green-ruffled-pilchuck-studio-hand-blown-art-glass-bowl"
     ],
     "updatedSold": [
-      "alligator-carved-wood-gold-leaf-amber-inlaid-black-lacquer-walking-stick-cane.md",
-      "ray-bradbury-hand-signed-the-martian-chronicles-1990-40th-anniversary-hc-book.md"
+      "mexican-folk-art-milagros-wooden-cross-nailed-metal-brass-charms-wall-hanging.md"
     ],
     "updatedAvailable": [],
-    "soldUnknown": [],
+    "soldUnknown": [
+      "victorian-bone-red-stone-heraldic-silver-badge-luxury-walking-stick-cane.md"
+    ],
     "skippedExisting": [
+      "carl-malmsten-afors-mobel-fabriks-sweden-1957-dining-room-set",
       "harley-brown-framed-charcoal-showanegshig-chippewa-native-art",
       "ram-statue",
+      "brown-jordan-three-piece-pomegranate-patio-set",
+      "mcm-cabinet",
       "eye-studio-art-glass-spooky-cute-monster-halloween-party-wine-goblet-set-copy",
       "baccarat-glass-sculpture",
       "herend-hungary-porcelain-trinket-dish-tray",
@@ -44,6 +47,7 @@
       "staffordshire-hand-painted-porcelain-blue-jay-figurine-pair-with-box",
       "wedgwood-colorful-floral-st-austell-china-demitasse-coffee-cup-saucer-set-1",
       "josef-frank-svenskt-tenn-1957-serving-trolley",
+      "russell-woodard-mid-century-modern-cast-iron-pomegranate-nine-piece-patio-set",
       "dale-chihuly-2pc-aspen-green-persian-art-glass",
       "chinese-small-folk-art-celadon-green-pottery-tea-bowl",
       "antique-maranao-philippines-large-brass-betel-nut-tobacco-box",
@@ -133,7 +137,6 @@
       "betel-nut-engraved-brass-box-pair",
       "lynn-chase-jaguar-jungle-dinner-plate-set-of-4",
       "erte-scheherzade-suite-of-4-signed-limited-edition-serigraphs",
-      "milagros",
       "milagros-mexico-folk-art-nailed-charms-guardian-angel-cherub-cross",
       "royal-doulton-ito-smooth-e2929-exotic-bird-10-1-8-dinner-plate-set-of-4",
       "royal-doulton-ito-soup-cream-cup-saucer-pair",
