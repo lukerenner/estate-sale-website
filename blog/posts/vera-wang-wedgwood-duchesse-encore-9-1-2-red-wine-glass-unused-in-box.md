@@ -16,7 +16,7 @@ source:
 publishDate: "2026-09-17"
 shopUrl: https://shop.garygermer.com/products/vera-wang-wedgwood-duchesse-encore-wine-glass-unused-in-box
 price: "$46.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/vera-wang-wedgwood-duchesse-encore-9-1-2-red-wine-glass-unused-in-box/vera-wang-wedgwood-duchesse-encore-9-1-2-red-wine-glass-unused-in-box-01-900.webp
   srcset900: /assets/images/blog/vera-wang-wedgwood-duchesse-encore-9-1-2-red-wine-glass-unused-in-box/vera-wang-wedgwood-duchesse-encore-9-1-2-red-wine-glass-unused-in-box-01-900.webp
