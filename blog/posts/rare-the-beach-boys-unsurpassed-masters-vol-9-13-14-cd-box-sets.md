@@ -16,7 +16,7 @@ source:
 publishDate: "2026-08-18"
 shopUrl: https://shop.garygermer.com/products/rare-the-beatles-mythology-vol-1-2-3-and-the-twickenham-sessions-19cd-box-sets
 price: "$350.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/rare-the-beach-boys-unsurpassed-masters-vol-9-13-14-cd-box-sets/rare-the-beach-boys-unsurpassed-masters-vol-9-13-14-cd-box-sets-01-900.webp
   srcset900: /assets/images/blog/rare-the-beach-boys-unsurpassed-masters-vol-9-13-14-cd-box-sets/rare-the-beach-boys-unsurpassed-masters-vol-9-13-14-cd-box-sets-01-900.webp

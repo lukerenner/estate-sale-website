@@ -16,7 +16,7 @@ source:
 publishDate: "2026-10-02"
 shopUrl: https://shop.garygermer.com/products/native-american-basket
 price: "$400.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/antique-northern-california-hupa-yurok-karuk-ceremonial-native-basket-bowl/antique-northern-california-hupa-yurok-karuk-ceremonial-native-basket-bowl-01-900.webp
   srcset900: /assets/images/blog/antique-northern-california-hupa-yurok-karuk-ceremonial-native-basket-bowl/antique-northern-california-hupa-yurok-karuk-ceremonial-native-basket-bowl-01-900.webp
