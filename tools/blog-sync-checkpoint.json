@@ -1,16 +1,21 @@
 {
-  "ranAt": "2026-10-03T23:44:46.351Z",
+  "ranAt": "2026-10-05T00:42:51.363Z",
   "shop": {
     "created": [
-      "napoleon-miniature-gilt-framed-hand-painted-porcelain-german-painting"
+      "spode-lancaster-cobalt-blue-r8950-gold-gilt-fine-bone-china-cup-and-saucer",
+      "erzgebirge-incense-smoker",
+      "steinbach-germany-toy-soldier-drummer-boy-incense-burner-pipe-smoker",
+      "henry-alken-fores-hunting-sketches-plate-3-right-and-wrong-sort-j-harris-engraving",
+      "anri-italy-wood-madonna-with-diadem-child-angel-juan-ferrandiz-wall-plaque",
+      "waterford-crystal-12-days-of-christmas-calling-birds-champagne-flute-charm-and-box",
+      "waterford-crystal-huntley-martini-glass-smooth-stem-6-7-8-pair",
+      "henry-alken-fores-hunting-sketches-plate-2-right-and-wrong-sort-harris-engraving"
     ],
-    "updatedSold": [
-      "antique-northern-california-hupa-yurok-karuk-ceremonial-native-basket-bowl.md",
-      "rare-the-beach-boys-unsurpassed-masters-vol-9-13-14-cd-box-sets.md"
-    ],
+    "updatedSold": [],
     "updatedAvailable": [],
     "soldUnknown": [],
     "skippedExisting": [
+      "napoleon-miniature-gilt-framed-porcelain-painting",
       "ken-edwards-el-palomar-blue-bird-flowers-mexican-tonala-pottery-6-1-4-bowl-3",
       "wally-schwab-pacific-nw-stoneware-studio-pottery-small-pot-or-punch-cup-set-of-5",
       "antique-northern-california-hupa-yurok-karuk-native-chevron-basket-bowl",
