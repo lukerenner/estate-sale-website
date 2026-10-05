@@ -16,7 +16,7 @@ source:
 publishDate: "2026-08-06"
 shopUrl: https://shop.garygermer.com/products/victorian-floral-embossed-brass-walking-tippling-stick-cane-w-hidden-cork-screw
 price: "$195.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/victorian-floral-embossed-brass-walking-tippling-stick-cane-w-hidden-cork-screw/victorian-floral-embossed-brass-walking-tippling-stick-cane-w-hidden-cork-screw-01-900.webp
   srcset900: /assets/images/blog/victorian-floral-embossed-brass-walking-tippling-stick-cane-w-hidden-cork-screw/victorian-floral-embossed-brass-walking-tippling-stick-cane-w-hidden-cork-screw-01-900.webp
