@@ -8,6 +8,36 @@ ogImage: /assets/images/art/previous-sales-hero-staircase.jpg
 ---
 {% extends "layouts/base.njk" %}
 
+{% block head %}
+{#- The hub had no structured data at all. Describe it as a collection page
+    whose main entity is the list of every sale page (each of which carries
+    its own Event markup), upcoming sales first, so search engines can tie
+    the hub to the sales instead of reading it as a standalone page. -#}
+{% set listedSales = collections.estateSalesHubOrder %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Upcoming & Previous Estate Sales — Portland, OR",
+  "url": "https://www.garygermer.com{{ page.url }}",
+  "description": {{ description | dump | safe }},
+  "isPartOf": { "@type": "WebSite", "name": "Gary Germer & Associates", "url": "https://www.garygermer.com/" },
+  "about": { "@id": "https://www.garygermer.com/#business" },
+  "mainEntity": {
+    "@type": "ItemList",
+    "numberOfItems": {{ listedSales.length }},
+    "itemListElement": [
+      {%- for sale in listedSales %}
+      { "@type": "ListItem", "position": {{ loop.index }}, "url": "https://www.garygermer.com{{ sale.url }}", "name": {{ sale.data.saleName | dump | safe }} }{% if not loop.last %},{% endif %}
+      {%- endfor %}
+    ]
+  }
+}
+</script>
+{% set crumbs = [{ name: "Estate Sales", url: page.url }] %}
+{% include "partials/breadcrumb-schema.njk" %}
+{% endblock %}
+
 {% block content %}
 
   {% set nextSale = collections.upcomingEstateSales[0] %}

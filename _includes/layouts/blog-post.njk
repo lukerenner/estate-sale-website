@@ -5,6 +5,15 @@
    brand every other page's title carries. #}
 {% set metaTitle = (title | titleCase) + ("" if ("Gary Germer" in title) else " | Gary Germer & Associates") %}
 
+{# Shop posts repeat their Shopify listing's description word for word, so
+   while the item is for sale the post and shop.garygermer.com/products/...
+   compete in search as duplicates. Point the canonical at the listing (where
+   the purchase happens) until the sync flips `sold: true` — sold listings
+   404 on Shopify, which leaves this post as the only copy, so it reclaims
+   its own canonical (and its sitemap entry; see sitemap.xml.njk). #}
+{% set mirrorsLiveListing = sourceType == "shop" and shopUrl and not sold %}
+{% if mirrorsLiveListing %}{% set canonicalUrl = shopUrl %}{% endif %}
+
 {% block head %}
 <script type="application/ld+json">
 {
@@ -19,6 +28,10 @@
   "mainEntityOfPage": "https://www.garygermer.com{{ page.url }}"
 }
 </script>
+{% if not mirrorsLiveListing %}
+{% set crumbs = [{ name: "Blog", url: "/blog/" }, { name: title | titleCase, url: page.url }] %}
+{% include "partials/breadcrumb-schema.njk" %}
+{% endif %}
 {% endblock %}
 
 {% block content %}

@@ -28,4 +28,6 @@
   }
 } | json | safe }}
 </script>
+{% set crumbs = [{ name: s.name, url: s.url }] %}
+{% include "partials/breadcrumb-schema.njk" %}
 {%- endif -%}{%- endfor -%}

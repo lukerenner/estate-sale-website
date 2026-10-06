@@ -274,6 +274,23 @@ module.exports = function (eleventyConfig) {
       .sort((a, b) => firstDate(a).localeCompare(firstDate(b)));
   });
 
+  // Every sale for the /estate-sales/ hub's ItemList structured data:
+  // upcoming sales soonest-first, then the rest newest-first — the same two
+  // orders the hub's teaser card and sale grid already show.
+  eleventyConfig.addCollection("estateSalesHubOrder", (api) => {
+    var todayKey = new Date().toISOString().slice(0, 10);
+    function firstDate(item) {
+      return item.data.dates.map((d) => d.date).sort()[0];
+    }
+    function lastDate(item) {
+      return item.data.dates[item.data.dates.length - 1].date;
+    }
+    var sales = api.getFilteredByGlob("estate-sales/*.njk").filter((item) => item.data.dates && item.data.dates.length);
+    var upcoming = sales.filter((item) => firstDate(item) > todayKey).sort((a, b) => firstDate(a).localeCompare(firstDate(b)));
+    var rest = sales.filter((item) => firstDate(item) <= todayKey).sort((a, b) => lastDate(b).localeCompare(lastDate(a)));
+    return upcoming.concat(rest);
+  });
+
   // The single soonest not-yet-concluded sale (today <= its last day), for
   // the site-wide "hello bar" announcement — script.js decides at runtime
   // whether today actually falls in the eligible window (the Monday before

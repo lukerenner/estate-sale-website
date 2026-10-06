@@ -27,11 +27,17 @@ request, after Netlify's per-deploy credit cost came up):
    already went out earlier today, today's 3pm batch (or a second same-day
    sale) waits for tomorrow -- it does not stack a second push.
 4. **Manual edits made through Claude are just regular commits.** When asked
-   to "push it live," the change gets committed, not force-pushed -- it
-   rides the same gate as everything else and goes out at the next allowed
-   slot (immediate, if a sale happens to trigger one first, or the next 3pm
-   batch otherwise). If the owner ever wants something out *right now*,
-   that's a deliberate, explicit override of this file's default -- say so.
+   to "push it live," the change is committed and pushed to `main` with
+   `[skip netlify]` in the commit message -- that gets it onto GitHub
+   without a deploy (Netlify skips builds whose head commit carries the
+   tag). It then goes out with the next deploy the gate makes (immediate,
+   if a sale happens to trigger one first, or the next 3pm batch
+   otherwise). Pushing is required: the gate runs on a fresh GitHub
+   checkout, so a commit that only exists locally never reaches it. Caveat:
+   the gate only pushes when the sync produced a commit of its own, so on a
+   day with no content changes the edit waits for the next one. If the
+   owner ever wants something out *right now*, that's a deliberate,
+   explicit override of this file's default -- push without the tag.
 5. **Hard cap: never more than 65 pushes in a calendar month.** As the
    month's count climbs, rule 2's interval stretches automatically:
    - 55-59 pushes this month -> batch interval becomes 36h

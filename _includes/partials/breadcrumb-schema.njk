@@ -1,0 +1,16 @@
+{#- BreadcrumbList JSON-LD — lets Google show "Gary Germer & Associates ›
+    Estate Sales › ..." in place of a raw URL in results. Set `crumbs` before
+    including: an array of { name, url } below Home (url is site-relative),
+    ending with the current page. Home is always prepended. -#}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.garygermer.com/" }
+    {%- for crumb in crumbs %},
+    { "@type": "ListItem", "position": {{ loop.index + 1 }}, "name": {{ crumb.name | dump | safe }}, "item": "https://www.garygermer.com{{ crumb.url }}" }
+    {%- endfor %}
+  ]
+}
+</script>

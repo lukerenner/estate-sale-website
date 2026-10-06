@@ -6,11 +6,15 @@ eleventyExcludeFromCollections: true
     page can never be left out by forgetting to list it here (the previous
     hand-listed version omitted every service page, /contact/, /blog/ and
     /estate-sales/). Skipped: non-directory URLs (/404.html, /thanks.html)
-    and anything that sets `noindex: true` in its front matter. -#}
+    and anything that sets `noindex: true` in its front matter, plus shop
+    posts whose item is still for sale — their canonical is the Shopify
+    listing (see blog-post.njk), and a sitemap should list canonical URLs
+    only. They rejoin automatically once the sync marks them sold. -#}
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 {%- for item in collections.all | sort(false, false, "url") %}
-{%- if item.url and item.url.endsWith("/") and not item.data.noindex %}
+{%- set mirrorsLiveListing = item.data.sourceType == "shop" and item.data.shopUrl and not item.data.sold %}
+{%- if item.url and item.url.endsWith("/") and not item.data.noindex and not mirrorsLiveListing %}
 {%- set lastmod = item.data.publishDate or (item.data.dates and item.data.dates[item.data.dates.length - 1].date) or item.data.updated %}
   <url>
     <loc>https://www.garygermer.com{{ item.url }}</loc>

@@ -46,6 +46,8 @@
   "url":"https://www.garygermer.com{{ page.url }}"
 }
 </script>
+{% set crumbs = [{ name: "Estate Sales", url: "/estate-sales/" }, { name: saleName, url: page.url }] %}
+{% include "partials/breadcrumb-schema.njk" %}
 {% endblock %}
 
 {% block prebody %}
