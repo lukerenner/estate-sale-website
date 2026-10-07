@@ -144,7 +144,8 @@ page's HTML source (`window.SALE_DATA` and the "Get Directions" link) on
 - **Sales synced from estatesales.org** (anything with a `source:` block)
   don't need any of this by hand: the hourly sync keeps re-scraping them
   while they're upcoming/live, writes the address in as soon as the seller
-  releases it there (and deploys it immediately -- `PUSH_POLICY.md` rule 0),
+  releases it there (and deploys it immediately -- `PUSH_POLICY.md` rule 0;
+  photo/copy/date edits wait for the regular daily batch),
   and strips it again on the first run after the sale ends. It also
   overwrites hand edits to those files whenever the listing changes, so
   fix copy on estatesales.org rather than in the .njk.

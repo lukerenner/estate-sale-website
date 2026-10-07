@@ -699,7 +699,8 @@ const REFRESH_GRACE_DAYS = 3;
 // changed dates. slug + permalink never change -- the URL is already live.
 //
 // report.updated lists every rewritten sale; report.urgent lists the ones
-// whose address or dates changed while the sale is still upcoming/live --
+// whose street address was released (or corrected) while the sale is
+// still upcoming/live --
 // push-gate.mjs ships those immediately, past every throttle.
 async function refreshExistingSales({ salesDir, imagesRoot, tmpDir, imageCap, delayMs, report, now = new Date() }) {
   report.updated = [];
@@ -764,7 +765,7 @@ async function refreshExistingSales({ salesDir, imagesRoot, tmpDir, imageCap, de
       if (JSON.stringify(next.about) !== JSON.stringify(data.about) || next.saleName !== data.saleName) changes.push("copy");
       if (next.neighborhood !== data.neighborhood) changes.push("location");
       report.updated.push({ slug: data.slug, changes });
-      const urgent = isUpcomingOrLive(next.dates, now) && changes.some((c) => c === "address released" || c === "dates");
+      const urgent = isUpcomingOrLive(next.dates, now) && changes.includes("address released");
       if (urgent) report.urgent.push({ slug: data.slug, changes });
     } catch (err) {
       report.failed.push({ id: String(id), url, error: `refresh: ${err && err.message ? err.message : String(err)}` });

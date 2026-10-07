@@ -29,7 +29,7 @@ async function run() {
   console.log(`AM Northwest: ${amnw.created.length} created (${amnw.checked} new listing-page segments checked).`);
   console.log(`Estate sales: ${estateSales.created.length} created, ${estateSales.skippedExisting.length} already on file, ${estateSales.skippedNameMatch.length} skipped as likely legacy duplicates, ${estateSales.failed.length} failed.`);
   if (estateSales.updated.length) console.log("  Refreshed from estatesales.org:", JSON.stringify(estateSales.updated));
-  if (estateSales.urgent.length) console.log("  URGENT (address/dates on an upcoming sale -- push-gate ships now):", JSON.stringify(estateSales.urgent));
+  if (estateSales.urgent.length) console.log("  URGENT (address released on an upcoming sale -- push-gate ships now):", JSON.stringify(estateSales.urgent));
   if (estateSales.failed.length) console.log("  Failed:", JSON.stringify(estateSales.failed));
   if (estateSales.skippedNameMatch.length) console.log("  Name-match skips (review if unexpected):", JSON.stringify(estateSales.skippedNameMatch));
 }

@@ -78,8 +78,8 @@ function hasUnpushedCommits() {
  *   a genuinely new sale on this run? (rule 1's trigger; read from
  *   tools/blog-sync-checkpoint.json by the CLI entrypoint below when not
  *   passed explicitly)
- * @param {boolean} [opts.urgentSaleUpdate] - did this run release a street
- *   address or change the dates of a sale that is still upcoming/live?
+ * @param {boolean} [opts.urgentSaleUpdate] - did this run release (or
+ *   correct) the street address of a sale that is still upcoming/live?
  *   (rule 0's trigger; read from the checkpoint like newSaleThisRun)
  * @param {Date} [opts.now]
  * @returns {{pushed: boolean, reason: string}}
@@ -91,13 +91,13 @@ export function decideAndPush({ newSaleThisRun = false, urgentSaleUpdate = false
   const { dateKey: today, monthKey: thisMonth, hour } = pacificParts(now);
 
   const monthCount = log.filter((ts) => pacificParts(new Date(ts)).monthKey === thisMonth).length;
-  // Rule 0: a sale's address being released, or its dates changing, while
+  // Rule 0: a sale's street address being released (or corrected) while
   // the sale is still upcoming/live goes out right away -- ahead of every
   // other rule, including the one-push-per-day limit and the monthly cap.
   // Shoppers arriving the morning of a sale need the real address; a held
   // deploy there costs far more than 15 credits.
   if (urgentSaleUpdate) {
-    return pushNow(log, now, `upcoming/live sale address or dates changed -- immediate push, bypassing all throttles (rule 0, ${monthCount + 1} pushes this month)`);
+    return pushNow(log, now, `upcoming/live sale address released -- immediate push, bypassing all throttles (rule 0, ${monthCount + 1} pushes this month)`);
   }
   if (monthCount >= MONTHLY_CAP) {
     return { pushed: false, reason: `monthly cap reached (${monthCount}/${MONTHLY_CAP} pushes this month) -- holding until next month regardless of trigger` };
