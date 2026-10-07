@@ -183,6 +183,7 @@ export function parseSaleDetail(html) {
     }
   }
   if (!dates.length) throw new Error("could not parse any open dates from the Dates & Times section");
+  const openDates = fillDateGaps(dates);
 
   // Before the seller releases the street address, the JSON-LD carries no
   // address at all -- but the canonical URL still names the city and zip
@@ -205,8 +206,33 @@ export function parseSaleDetail(html) {
     addressRegion: addressRegion || fromUrl.addressRegion,
     addressPostalCode: addressPostalCode || fromUrl.addressPostalCode,
     paragraphs,
-    dates,
+    dates: openDates,
   };
+}
+
+// A sale always runs every day from its first date to its last -- it never
+// closes in the middle. estatesales.org listings sometimes skip days anyway
+// (owner's call, 2026-10-07: Gary's "Oct 15 - 18, 4 days!!" sale was
+// entered as Thu + Sun only), so fill any missing day in the range, copying
+// hours from the nearest listed day before it.
+export function fillDateGaps(dates) {
+  const byDate = new Map(dates.map((d) => [d.date, d]));
+  const keys = [...byDate.keys()].sort();
+  const out = [];
+  const last = new Date(`${keys.at(-1)}T00:00:00Z`);
+  let prev = null;
+  for (let d = new Date(`${keys[0]}T00:00:00Z`); d <= last; d.setUTCDate(d.getUTCDate() + 1)) {
+    const key = d.toISOString().slice(0, 10);
+    if (byDate.has(key)) {
+      prev = byDate.get(key);
+      out.push(prev);
+      continue;
+    }
+    const dow = Object.values(DOW_FULL)[d.getUTCDay()];
+    const month = Object.values(MONTH_ABBR)[d.getUTCMonth()];
+    out.push({ ...prev, date: key, label: `${dow}, ${month} ${d.getUTCDate()}` });
+  }
+  return out;
 }
 
 // Same rule computeStatus()/the upcomingEstateSales collection use elsewhere
