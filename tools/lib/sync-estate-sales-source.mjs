@@ -15,7 +15,8 @@
 // this never hammers estatesales.org, whether run as a one-time backfill or
 // unattended from a future CI schedule.
 
-import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync } from "node:fs";
+import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync, rmSync } from "node:fs";
+import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
 import path from "node:path";
 import matter from "gray-matter";
@@ -183,15 +184,44 @@ export function parseSaleDetail(html) {
   }
   if (!dates.length) throw new Error("could not parse any open dates from the Dates & Times section");
 
-  return { name, image, streetAddress, addressLocality, addressRegion, addressPostalCode, paragraphs, dates };
+  // Before the seller releases the street address, the JSON-LD carries no
+  // address at all -- but the canonical URL still names the city and zip
+  // (/estate-sales/or/hillsboro/97124/...), which are already public there.
+  // Fall back to those so an upcoming sale isn't mislabeled "Portland".
+  const urlLoc = (html.match(/estatesales\.org\/estate-sales\/([a-z]{2})\/([a-z0-9-]+)\/(\d{5})\//i) || []).slice(1);
+  const fromUrl = urlLoc.length
+    ? {
+        addressRegion: urlLoc[0].toUpperCase(),
+        addressLocality: urlLoc[1].split("-").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" "),
+        addressPostalCode: urlLoc[2],
+      }
+    : {};
+
+  return {
+    name,
+    image,
+    streetAddress,
+    addressLocality: addressLocality || fromUrl.addressLocality,
+    addressRegion: addressRegion || fromUrl.addressRegion,
+    addressPostalCode: addressPostalCode || fromUrl.addressPostalCode,
+    paragraphs,
+    dates,
+  };
 }
 
 // Same rule computeStatus()/the upcomingEstateSales collection use elsewhere
 // on the site: a sale is still upcoming/live if its LAST open day hasn't
 // passed yet. Anything else is concluded.
+// Keyed on the Pacific calendar day, not UTC: UTC rolls over at 4-5pm
+// Pacific, which would call a sale "concluded" (and strip its address)
+// while its final day is still open.
+export function pacificDateKey(date = new Date()) {
+  return new Intl.DateTimeFormat("en-CA", { timeZone: "America/Los_Angeles", year: "numeric", month: "2-digit", day: "2-digit" }).format(date);
+}
+
 export function isUpcomingOrLive(dates, today = new Date()) {
   if (!dates || !dates.length) return false;
-  const todayKey = today.toISOString().slice(0, 10);
+  const todayKey = pacificDateKey(today);
   const lastDate = dates.map((d) => d.date).sort().at(-1);
   return lastDate >= todayKey;
 }
@@ -397,6 +427,151 @@ function scanExistingSaleNames(salesDir) {
   return names;
 }
 
+// Fingerprints of what estatesales.org said last time this sale was synced,
+// stored in the file's `source` block. A refresh only rewrites the file when
+// one of these moves -- so a hand edit to an upcoming sale survives until
+// the listing itself changes, instead of being reverted every hour.
+// `live` is folded in so the end of a sale (address stripped, eyebrow flips
+// to "Concluded") registers as a change even if the listing didn't.
+function sha1(str) {
+  return createHash("sha1").update(str).digest("hex").slice(0, 16);
+}
+function detailHash(detail) {
+  const { name, paragraphs, dates, streetAddress, addressLocality, addressRegion, addressPostalCode } = detail;
+  return sha1(JSON.stringify({ name, paragraphs, dates, streetAddress, addressLocality, addressRegion, addressPostalCode, live: isUpcomingOrLive(dates) }));
+}
+function galleryHash(imageUrls) {
+  return sha1(imageUrls.join("\n"));
+}
+
+// Downloads a sale's source photos and writes the three WebP tiers. Clears
+// the sale's image folder first, so a refresh that drops or reorders photos
+// never leaves stale -NN- files behind.
+function downloadAndOptimize({ imageUrls, slug, imagesRoot, tmpDir, imageCap }) {
+  const outDir = path.join(imagesRoot, slug);
+  rmSync(outDir, { recursive: true, force: true });
+  const tmpPaths = [];
+  for (const [i, imgUrl] of imageUrls.entries()) {
+    // Match the tmp file's extension to the real source extension
+    // (.jpg or .webp) rather than assuming .jpg -- identify/cwebp
+    // happen to sniff real content regardless of extension, so this
+    // wasn't silently corrupting anything, but a .jpg-named webp file
+    // is misleading to debug and worth getting right.
+    const srcExt = path.extname(new URL(imgUrl).pathname) || ".jpg";
+    const tmpPath = path.join(tmpDir, `${slug}-${i}${srcExt}`);
+    try {
+      downloadTmp(imgUrl, tmpPath);
+      tmpPaths.push(tmpPath);
+    } catch {
+      // one bad photo shouldn't sink the whole sale
+    }
+  }
+  if (!tmpPaths.length) throw new Error("all gallery photo downloads failed");
+
+  const { manifest } = optimizeGallery(tmpPaths, outDir, slug, imageCap);
+  if (!manifest.length) throw new Error("image optimization produced no gallery photos");
+  return manifest;
+}
+
+// Builds a sale's full .njk front matter. Shared by create and refresh so
+// the two can never drift apart. `extra` carries any keys a human added to
+// an existing file (e.g. `video`) that this generator doesn't produce.
+function renderSaleFile({ id, url, slug, permalink, detail, location, manifest, hashes, extra = {} }) {
+  const hero = manifest[0];
+  const description = truncate(plainText(detail.paragraphs[0]), 300);
+  const ogDescription = truncate(plainText(detail.paragraphs[0]), 200);
+  // A short teaser for the compact hero paragraph -- NOT the full ad
+  // copy. The full text still lives, verbatim and unabridged, in
+  // about.paragraphs below; the layout's "About the Sale" section
+  // renders it whenever about.paragraphs exists (see
+  // estate-sale.njk), matching the birkendene.njk pattern of a brief
+  // hero blurb + full description further down the page.
+  const heroLead = truncate(plainText(detail.paragraphs[0]), 240);
+
+  const cityForTitle =
+    location.neighborhood
+      .split(",")
+      .map((s) => s.trim())
+      .slice(0, -1)
+      .join(", ") || location.neighborhood;
+  const upcomingOrLive = isUpcomingOrLive(detail.dates);
+  const addressBlock = buildAddressBlock(detail);
+
+  const lines = [
+    "layout: layouts/estate-sale.njk",
+    `permalink: ${permalink}`,
+    `slug: ${slug}`,
+    `saleName: ${yamlString(detail.name)}`,
+    `title: ${yamlString(`${detail.name} — ${cityForTitle} | Gary Germer & Associates`)}`,
+    `description: ${yamlString(description)}`,
+    `ogTitle: ${yamlString(`${detail.name} — ${cityForTitle}`)}`,
+    `ogDescription: ${yamlString(ogDescription)}`,
+    `ogImage: /assets/images/estate-sales/${slug}/${hero.base}-900.webp`,
+    // "Estate Liquidation Sale" for a still-upcoming/live sale (matches
+    // birkendene.njk, the one precedent for that state); every concluded
+    // sale on the site uses "Concluded Estate Sale".
+    `eyebrow: ${upcomingOrLive ? "Estate Liquidation Sale" : "Concluded Estate Sale"}`,
+    `heroHeadingHtml: ${yamlString(buildHeroHeading(detail.name))}`,
+    `heroLead: ${yamlString(heroLead)}`,
+    `neighborhood: ${location.neighborhood}`,
+    "status: auto",
+  ];
+  if (detail.addressPostalCode) lines.push(`addressPostalCode: ${yamlString(detail.addressPostalCode)}`);
+  if (addressBlock) {
+    // Only ever reached for a sale that is still upcoming/live at scrape
+    // time — see buildAddressBlock(). Every sale in a one-time backfill
+    // of already-concluded sales takes the other branch and gets no
+    // address key at all.
+    lines.push("address:");
+    lines.push(`  line1: ${yamlString(addressBlock.line1)}`);
+    lines.push(`  line2: ${yamlString(addressBlock.line2)}`);
+    lines.push(`  mapQuery: ${yamlString(addressBlock.mapQuery)}`);
+    lines.push(`  released: ${addressBlock.released}`);
+  }
+  lines.push("dates:");
+  for (const d of detail.dates) {
+    lines.push(`  - date: ${yamlString(d.date)}`);
+    lines.push(`    label: ${d.label}`);
+    lines.push(`    opens: ${yamlString(d.opens)}`);
+    lines.push(`    opens24: ${yamlString(d.opens24)}`);
+    lines.push(`    closes: ${yamlString(d.closes)}`);
+    lines.push(`    closes24: ${yamlString(d.closes24)}`);
+  }
+  lines.push("source:");
+  lines.push(`  id: ${id}`);
+  lines.push(`  url: ${url}`);
+  lines.push(`  detailHash: ${hashes.detail}`);
+  lines.push(`  galleryHash: ${hashes.gallery}`);
+  lines.push("heroImage:");
+  lines.push(`  src: /assets/images/estate-sales/${slug}/${hero.base}-900.webp`);
+  lines.push(`  srcset900: /assets/images/estate-sales/${slug}/${hero.base}-900.webp`);
+  lines.push(`  srcsetFull: /assets/images/estate-sales/${slug}/${hero.base}-1400.webp`);
+  lines.push(`  width: ${hero.width}`);
+  lines.push(`  height: ${hero.height}`);
+  lines.push(`  alt: ${yamlString(`Photo from ${detail.name}`)}`);
+  lines.push("about:");
+  // Opts into the layout's full "About the Sale" section (estate-sale.njk)
+  // -- see that file's comment. Required because heroLead here is only a
+  // short teaser (truncate(paragraphs[0])), not the full copy like
+  // legacy hand-authored sales' heroLead is.
+  lines.push("  showFull: true");
+  lines.push(`  heading: ${yamlString(detail.name)}`);
+  lines.push("  paragraphs:");
+  for (const p of detail.paragraphs) lines.push(`    - ${yamlString(p)}`);
+  lines.push("gallery:");
+  for (const g of manifest) {
+    lines.push(`  - base: ${g.base}`);
+    lines.push(`    alt: ${yamlString(`Photo from ${detail.name}`)}`);
+    lines.push(`    width: ${g.width}`);
+    lines.push(`    height: ${g.height}`);
+  }
+
+  if (Object.keys(extra).length) {
+    lines.push(matter.stringify("", extra).replace(/^---\n/, "").replace(/---\n[\s\S]*$/, "").trimEnd());
+  }
+  return "---\n" + lines.join("\n") + "\n---\n";
+}
+
 /**
  * @param {object} opts
  * @param {string} [opts.salesDir] - estate-sales/ directory
@@ -486,116 +661,17 @@ export async function syncEstateSalesSource({
       });
       existingSlugs.push(slug);
 
-      const outDir = path.join(imagesRoot, slug);
-      const tmpPaths = [];
-      for (const [i, imgUrl] of imageUrls.entries()) {
-        // Match the tmp file's extension to the real source extension
-        // (.jpg or .webp) rather than assuming .jpg -- identify/cwebp
-        // happen to sniff real content regardless of extension, so this
-        // wasn't silently corrupting anything, but a .jpg-named webp file
-        // is misleading to debug and worth getting right.
-        const srcExt = path.extname(new URL(imgUrl).pathname) || ".jpg";
-        const tmpPath = path.join(tmpDir, `${slug}-${i}${srcExt}`);
-        try {
-          downloadTmp(imgUrl, tmpPath);
-          tmpPaths.push(tmpPath);
-        } catch {
-          // one bad photo shouldn't sink the whole sale
-        }
-      }
-      if (!tmpPaths.length) throw new Error("all gallery photo downloads failed");
-
-      const { manifest } = optimizeGallery(tmpPaths, outDir, slug, imageCap);
-      if (!manifest.length) throw new Error("image optimization produced no gallery photos");
-      const hero = manifest[0];
-
-      const description = truncate(plainText(detail.paragraphs[0]), 300);
-      const ogDescription = truncate(plainText(detail.paragraphs[0]), 200);
-      // A short teaser for the compact hero paragraph -- NOT the full ad
-      // copy. The full text still lives, verbatim and unabridged, in
-      // about.paragraphs below; the layout's "About the Sale" section
-      // renders it whenever about.paragraphs exists (see
-      // estate-sale.njk), matching the birkendene.njk pattern of a brief
-      // hero blurb + full description further down the page.
-      const heroLead = truncate(plainText(detail.paragraphs[0]), 240);
-
-      const cityForTitle =
-        location.neighborhood
-          .split(",")
-          .map((s) => s.trim())
-          .slice(0, -1)
-          .join(", ") || location.neighborhood;
-      const upcomingOrLive = isUpcomingOrLive(detail.dates);
-      const addressBlock = buildAddressBlock(detail);
-
-      const lines = [
-        "layout: layouts/estate-sale.njk",
-        `permalink: /${location.permalinkPrefix}/${slug}/`,
-        `slug: ${slug}`,
-        `saleName: ${yamlString(detail.name)}`,
-        `title: ${yamlString(`${detail.name} — ${cityForTitle} | Gary Germer & Associates`)}`,
-        `description: ${yamlString(description)}`,
-        `ogTitle: ${yamlString(`${detail.name} — ${cityForTitle}`)}`,
-        `ogDescription: ${yamlString(ogDescription)}`,
-        `ogImage: /assets/images/estate-sales/${slug}/${hero.base}-900.webp`,
-        // "Estate Liquidation Sale" for a still-upcoming/live sale (matches
-        // birkendene.njk, the one precedent for that state); every concluded
-        // sale on the site uses "Concluded Estate Sale".
-        `eyebrow: ${upcomingOrLive ? "Estate Liquidation Sale" : "Concluded Estate Sale"}`,
-        `heroHeadingHtml: ${yamlString(buildHeroHeading(detail.name))}`,
-        `heroLead: ${yamlString(heroLead)}`,
-        `neighborhood: ${location.neighborhood}`,
-        "status: auto",
-      ];
-      if (detail.addressPostalCode) lines.push(`addressPostalCode: ${yamlString(detail.addressPostalCode)}`);
-      if (addressBlock) {
-        // Only ever reached for a sale that is still upcoming/live at scrape
-        // time — see buildAddressBlock(). Every sale in a one-time backfill
-        // of already-concluded sales takes the other branch and gets no
-        // address key at all.
-        lines.push("address:");
-        lines.push(`  line1: ${yamlString(addressBlock.line1)}`);
-        lines.push(`  line2: ${yamlString(addressBlock.line2)}`);
-        lines.push(`  mapQuery: ${yamlString(addressBlock.mapQuery)}`);
-        lines.push(`  released: ${addressBlock.released}`);
-      }
-      lines.push("dates:");
-      for (const d of detail.dates) {
-        lines.push(`  - date: ${yamlString(d.date)}`);
-        lines.push(`    label: ${d.label}`);
-        lines.push(`    opens: ${yamlString(d.opens)}`);
-        lines.push(`    opens24: ${yamlString(d.opens24)}`);
-        lines.push(`    closes: ${yamlString(d.closes)}`);
-        lines.push(`    closes24: ${yamlString(d.closes24)}`);
-      }
-      lines.push("source:");
-      lines.push(`  id: ${id}`);
-      lines.push(`  url: ${url}`);
-      lines.push("heroImage:");
-      lines.push(`  src: /assets/images/estate-sales/${slug}/${hero.base}-900.webp`);
-      lines.push(`  srcset900: /assets/images/estate-sales/${slug}/${hero.base}-900.webp`);
-      lines.push(`  srcsetFull: /assets/images/estate-sales/${slug}/${hero.base}-1400.webp`);
-      lines.push(`  width: ${hero.width}`);
-      lines.push(`  height: ${hero.height}`);
-      lines.push(`  alt: ${yamlString(`Photo from ${detail.name}`)}`);
-      lines.push("about:");
-      // Opts into the layout's full "About the Sale" section (estate-sale.njk)
-      // -- see that file's comment. Required because heroLead here is only a
-      // short teaser (truncate(paragraphs[0])), not the full copy like
-      // legacy hand-authored sales' heroLead is.
-      lines.push("  showFull: true");
-      lines.push(`  heading: ${yamlString(detail.name)}`);
-      lines.push("  paragraphs:");
-      for (const p of detail.paragraphs) lines.push(`    - ${yamlString(p)}`);
-      lines.push("gallery:");
-      for (const g of manifest) {
-        lines.push(`  - base: ${g.base}`);
-        lines.push(`    alt: ${yamlString(`Photo from ${detail.name}`)}`);
-        lines.push(`    width: ${g.width}`);
-        lines.push(`    height: ${g.height}`);
-      }
-
-      const content = "---\n" + lines.join("\n") + "\n---\n";
+      const manifest = downloadAndOptimize({ imageUrls, slug, imagesRoot, tmpDir, imageCap });
+      const content = renderSaleFile({
+        id,
+        url,
+        slug,
+        permalink: `/${location.permalinkPrefix}/${slug}/`,
+        detail,
+        location,
+        manifest,
+        hashes: { detail: detailHash(detail), gallery: galleryHash(imageUrls) },
+      });
       writeFileSync(path.join(salesDir, `${slug}.njk`), content);
       report.created.push(slug);
       existingIds.add(id);
@@ -605,5 +681,93 @@ export async function syncEstateSalesSource({
     }
   }
 
+  await refreshExistingSales({ salesDir, imagesRoot, tmpDir, imageCap, delayMs, report });
   return report;
+}
+
+// How long after a sale's last day it keeps being re-checked. The first
+// check after it ends strips the street address from the file (see
+// buildAddressBlock) -- client-side hiding alone still leaves it in the
+// page source -- and catches any last edits to the listing.
+const REFRESH_GRACE_DAYS = 3;
+
+// The create pass above skips any sale already on disk, so without this a
+// sale's page froze at whatever the listing said the first hour it was
+// seen. For every sourced sale that is upcoming, live, or just ended,
+// re-scrape the listing and rewrite the file when it changed: the street
+// address once the seller releases it, new/removed photos, edited copy,
+// changed dates. slug + permalink never change -- the URL is already live.
+//
+// report.updated lists every rewritten sale; report.urgent lists the ones
+// whose address or dates changed while the sale is still upcoming/live --
+// push-gate.mjs ships those immediately, past every throttle.
+async function refreshExistingSales({ salesDir, imagesRoot, tmpDir, imageCap, delayMs, report, now = new Date() }) {
+  report.updated = [];
+  report.urgent = [];
+  const cutoff = pacificDateKey(new Date(now.getTime() - REFRESH_GRACE_DAYS * 86_400_000));
+  const justCreated = new Set(report.created);
+
+  for (const file of readdirSync(salesDir)) {
+    if (!file.endsWith(".njk")) continue;
+    const filePath = path.join(salesDir, file);
+    const raw = readFileSync(filePath, "utf8");
+    let data;
+    try {
+      ({ data } = matter(raw));
+    } catch {
+      continue;
+    }
+    if (!data.source?.url || justCreated.has(data.slug)) continue;
+    const lastDate = (data.dates || []).map((d) => d.date).sort().at(-1);
+    if (!lastDate || lastDate < cutoff) continue;
+
+    const { id, url } = data.source;
+    try {
+      await sleep(delayMs);
+      const detail = parseSaleDetail(await fetchText(url));
+      await sleep(delayMs);
+      const imageUrls = await fetchGalleryImageUrls(url, { delayMs });
+
+      const newDetailHash = detailHash(detail);
+      // An empty gallery scrape is far more likely a markup change or a
+      // hiccup than the seller deleting every photo -- keep what's on disk.
+      const newGalleryHash = imageUrls.length ? galleryHash(imageUrls) : data.source.galleryHash;
+      const galleryChanged = Boolean(imageUrls.length) && newGalleryHash !== data.source.galleryHash;
+      if (newDetailHash === data.source.detailHash && !galleryChanged) continue;
+
+      const manifest = galleryChanged
+        ? downloadAndOptimize({ imageUrls, slug: data.slug, imagesRoot, tmpDir, imageCap })
+        : data.gallery.map(({ base, width, height }) => ({ base, width, height }));
+
+      const GENERATED_KEYS = new Set(["layout", "permalink", "slug", "saleName", "title", "description", "ogTitle", "ogDescription", "ogImage", "eyebrow", "heroHeadingHtml", "heroLead", "neighborhood", "status", "addressPostalCode", "address", "dates", "source", "heroImage", "about", "gallery"]);
+      const extra = Object.fromEntries(Object.entries(data).filter(([k]) => !GENERATED_KEYS.has(k)));
+
+      const content = renderSaleFile({
+        id,
+        url,
+        slug: data.slug,
+        permalink: data.permalink,
+        detail,
+        location: deriveLocation({ name: detail.name, paragraphs: detail.paragraphs, ...detail }),
+        manifest,
+        hashes: { detail: newDetailHash, gallery: newGalleryHash },
+        extra,
+      });
+      if (content === raw) continue;
+      writeFileSync(filePath, content);
+
+      const { data: next } = matter(content);
+      const changes = [];
+      if (next.address?.line1 !== data.address?.line1) changes.push(next.address?.line1 ? "address released" : "address removed");
+      if (JSON.stringify(next.dates) !== JSON.stringify(data.dates)) changes.push("dates");
+      if (galleryChanged) changes.push("photos");
+      if (JSON.stringify(next.about) !== JSON.stringify(data.about) || next.saleName !== data.saleName) changes.push("copy");
+      if (next.neighborhood !== data.neighborhood) changes.push("location");
+      report.updated.push({ slug: data.slug, changes });
+      const urgent = isUpcomingOrLive(next.dates, now) && changes.some((c) => c === "address released" || c === "dates");
+      if (urgent) report.urgent.push({ slug: data.slug, changes });
+    } catch (err) {
+      report.failed.push({ id: String(id), url, error: `refresh: ${err && err.message ? err.message : String(err)}` });
+    }
+  }
 }

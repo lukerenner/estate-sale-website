@@ -78,16 +78,27 @@ function hasUnpushedCommits() {
  *   a genuinely new sale on this run? (rule 1's trigger; read from
  *   tools/blog-sync-checkpoint.json by the CLI entrypoint below when not
  *   passed explicitly)
+ * @param {boolean} [opts.urgentSaleUpdate] - did this run release a street
+ *   address or change the dates of a sale that is still upcoming/live?
+ *   (rule 0's trigger; read from the checkpoint like newSaleThisRun)
  * @param {Date} [opts.now]
  * @returns {{pushed: boolean, reason: string}}
  */
-export function decideAndPush({ newSaleThisRun = false, now = new Date() } = {}) {
+export function decideAndPush({ newSaleThisRun = false, urgentSaleUpdate = false, now = new Date() } = {}) {
   if (!hasUnpushedCommits()) return { pushed: false, reason: "nothing to push" };
 
   const log = loadLog();
   const { dateKey: today, monthKey: thisMonth, hour } = pacificParts(now);
 
   const monthCount = log.filter((ts) => pacificParts(new Date(ts)).monthKey === thisMonth).length;
+  // Rule 0: a sale's address being released, or its dates changing, while
+  // the sale is still upcoming/live goes out right away -- ahead of every
+  // other rule, including the one-push-per-day limit and the monthly cap.
+  // Shoppers arriving the morning of a sale need the real address; a held
+  // deploy there costs far more than 15 credits.
+  if (urgentSaleUpdate) {
+    return pushNow(log, now, `upcoming/live sale address or dates changed -- immediate push, bypassing all throttles (rule 0, ${monthCount + 1} pushes this month)`);
+  }
   if (monthCount >= MONTHLY_CAP) {
     return { pushed: false, reason: `monthly cap reached (${monthCount}/${MONTHLY_CAP} pushes this month) -- holding until next month regardless of trigger` };
   }
@@ -141,6 +152,10 @@ export function decideAndPush({ newSaleThisRun = false, now = new Date() } = {})
     };
   }
 
+  return pushNow(log, now, reason);
+}
+
+function pushNow(log, now, reason) {
   const trimmed = [...log, now.toISOString()].slice(-400); // ~years of headroom at this cap
   writeFileSync(LOG_PATH, JSON.stringify(trimmed, null, 2) + "\n");
   run("git", ["add", LOG_PATH]);
@@ -157,15 +172,17 @@ export function decideAndPush({ newSaleThisRun = false, now = new Date() } = {})
 const isMain = process.argv[1] && import.meta.url === `file://${process.argv[1]}`;
 if (isMain) {
   let newSaleThisRun = false;
+  let urgentSaleUpdate = false;
   if (existsSync(CHECKPOINT_PATH)) {
     try {
       const checkpoint = JSON.parse(readFileSync(CHECKPOINT_PATH, "utf8"));
       newSaleThisRun = Boolean(checkpoint.estateSales?.created?.length);
+      urgentSaleUpdate = Boolean(checkpoint.estateSales?.urgent?.length);
     } catch {
       // Missing/unparsable checkpoint just means "assume no new sale this
       // run" -- never block the gate over a logging artifact.
     }
   }
-  const result = decideAndPush({ newSaleThisRun });
+  const result = decideAndPush({ newSaleThisRun, urgentSaleUpdate });
   console.log(`[push-gate] ${result.pushed ? "PUSHED" : "held"}: ${result.reason}`);
 }

@@ -12,6 +12,15 @@ than that, so pushing is deliberately decoupled from committing.
 workflow run, deciding per this policy (set 2026-09-15, at the owner's
 request, after Netlify's per-deploy credit cost came up):
 
+0. **An upcoming/live sale's street address is released, or its dates
+   change, on estatesales.org -> push immediately, bypassing every other
+   rule below** -- including the one-push-per-day limit and the monthly
+   cap. (Added 2026-10-07 at the owner's request: the site must show the
+   real address the morning of a sale no matter what the gate has already
+   spent.) The sync re-checks every sourced sale that is upcoming, live, or
+   ended in the last 3 days each hourly run (`refreshExistingSales` in
+   `tools/lib/sync-estate-sales-source.mjs`); new photos and edited copy on
+   those sales are ordinary updates and ship with the rule 2 batch.
 1. **A brand-new estate sale posts to estatesales.org -> push immediately.**
    This is the one thing worth spending a deploy on right away, since it's
    also what can trigger the site's hello-bar/upcoming-sale announcement.
