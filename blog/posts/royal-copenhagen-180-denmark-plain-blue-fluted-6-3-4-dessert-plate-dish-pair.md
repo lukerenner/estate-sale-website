@@ -16,7 +16,7 @@ source:
 publishDate: "2026-09-05"
 shopUrl: https://shop.garygermer.com/products/royal-copenhagen-180-denmark-plain-blue-fluted-6-3-4-dessert-plate-dish-pair-1
 price: "$70.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/royal-copenhagen-180-denmark-plain-blue-fluted-6-3-4-dessert-plate-dish-pair/royal-copenhagen-180-denmark-plain-blue-fluted-6-3-4-dessert-plate-dish-pair-01-900.webp
   srcset900: /assets/images/blog/royal-copenhagen-180-denmark-plain-blue-fluted-6-3-4-dessert-plate-dish-pair/royal-copenhagen-180-denmark-plain-blue-fluted-6-3-4-dessert-plate-dish-pair-01-900.webp

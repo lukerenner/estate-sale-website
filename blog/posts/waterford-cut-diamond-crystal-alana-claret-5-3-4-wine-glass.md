@@ -16,7 +16,7 @@ source:
 publishDate: "2026-09-05"
 shopUrl: https://shop.garygermer.com/products/waterford-cut-diamond-crystal-alana-claret-5-3-4-wine-glass
 price: "$20.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/waterford-cut-diamond-crystal-alana-claret-5-3-4-wine-glass/waterford-cut-diamond-crystal-alana-claret-5-3-4-wine-glass-01-900.webp
   srcset900: /assets/images/blog/waterford-cut-diamond-crystal-alana-claret-5-3-4-wine-glass/waterford-cut-diamond-crystal-alana-claret-5-3-4-wine-glass-01-900.webp
