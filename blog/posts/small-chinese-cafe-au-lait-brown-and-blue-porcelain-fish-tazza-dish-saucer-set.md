@@ -16,7 +16,7 @@ source:
 publishDate: "2026-09-05"
 shopUrl: https://shop.garygermer.com/products/small-chinese-cafe-au-lait-brown-blue-porcelain-fish-tazza-dish-saucer-set-1
 price: "$35.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/small-chinese-cafe-au-lait-brown-and-blue-porcelain-fish-tazza-dish-saucer-set/small-chinese-cafe-au-lait-brown-and-blue-porcelain-fish-tazza-dish-saucer-set-01-900.webp
   srcset900: /assets/images/blog/small-chinese-cafe-au-lait-brown-and-blue-porcelain-fish-tazza-dish-saucer-set/small-chinese-cafe-au-lait-brown-and-blue-porcelain-fish-tazza-dish-saucer-set-01-900.webp

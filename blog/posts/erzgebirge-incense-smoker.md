@@ -16,7 +16,7 @@ source:
 publishDate: "2026-10-04"
 shopUrl: https://shop.garygermer.com/products/erzgebirge-incense-smoker
 price: "$0.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/erzgebirge-incense-smoker/erzgebirge-incense-smoker-01-900.webp
   srcset900: /assets/images/blog/erzgebirge-incense-smoker/erzgebirge-incense-smoker-01-900.webp

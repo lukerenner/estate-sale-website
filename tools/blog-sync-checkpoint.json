@@ -1,24 +1,35 @@
 {
-  "ranAt": "2026-10-07T08:28:46.790Z",
+  "ranAt": "2026-10-09T01:59:02.600Z",
   "shop": {
-    "created": [],
+    "created": [
+      "waterford-cut-diamond-crystal-alana-water-goblet-6-7-8-glass",
+      "ray-bradbury-signed-1st-edition-2001-morrow-illustrated-man-book-8144821452976",
+      "loet-vanderveen-polar-bear-mother-and-baby-bronze-limited-edition-sculpture-pair",
+      "nice-buddy-holiday-what-you-been-a-missin-4-cd-book-bootleg-box-set",
+      "dan-huber-that-dirty-sob-western-bronze-sculpture",
+      "dan-huber-fort-assiniboine-trooper-western-bronze-sculpture",
+      "mary-lehman-western-big-medicine-white-bison-framed-miniature-etching",
+      "barbara-east-miniature-western-horse-and-cowboy-watercolor-painting-set",
+      "chinese-ming-hongzhi-style-dragon-and-phoenix-delicate-yellow-bowl",
+      "thai-southeast-asian-sawankhalok-sukhothai-style-celadon-crackle-pottery-bowl",
+      "mexican-hand-carved-wood-aztec-mayan-warrior-headdress-calendar-wall-mask"
+    ],
     "updatedSold": [
-      "royal-copenhagen-180-denmark-plain-blue-fluted-6-3-4-dessert-plate-dish-pair.md",
-      "waterford-cut-diamond-crystal-alana-claret-5-3-4-wine-glass.md"
+      "erzgebirge-incense-smoker.md",
+      "ken-edwards-el-palomar-blue-bird-flowers-mexican-tonala-pottery-6-1-4-bowl-8136601174192.md",
+      "small-chinese-cafe-au-lait-brown-and-blue-porcelain-fish-tazza-dish-saucer-set.md"
     ],
     "updatedAvailable": [],
     "soldUnknown": [],
     "skippedExisting": [
       "meissen-cross-swords-blue-onion-porcelain-scallop-rim-coffee-cup",
       "spode-lancaster-cobalt-blue-r8950-gold-gilt-fine-bone-china-cup-saucer",
-      "erzgebirge-incense-smoker",
       "steinbach-drummer-nutcracker",
       "henry-alken-fores-hunting-sketches-plate-3-the-right-wrong-sort",
       "anri-wood-madonna-christ-child",
       "waterford-crystal-12-days-of-christmas-calling-birds-champagne-flute",
       "waterford-crystal-martini-glass-pair",
       "napoleon-miniature-gilt-framed-porcelain-painting",
-      "ken-edwards-el-palomar-blue-bird-flowers-mexican-tonala-pottery-6-1-4-bowl-3",
       "wally-schwab-pacific-nw-stoneware-studio-pottery-small-pot-or-punch-cup-set-of-5",
       "antique-northern-california-hupa-yurok-karuk-native-chevron-basket-bowl",
       "schimmel-piano",
@@ -120,7 +131,6 @@
       "john-rocha-waterford-cut-crystal-glass-pai",
       "vintage-masons-tiffany-co-tiffany-toys-kids-bowl-set-copy",
       "tiffany-set",
-      "small-chinese-cafe-au-lait-brown-blue-porcelain-fish-tazza-dish-saucer-set-1",
       "waterford-crystal-lismore-encore-white-wine",
       "waterford-cut-diamond-crystal-alana-water-goblet-6-7-8-glass-pair",
       "waterford-crystal-alana-claret-wine-glass-set-of-3",
@@ -165,10 +175,9 @@
     "checked": 25
   },
   "estateSales": {
-    "created": [
-      "collector-and-decorator-dream-estate-sale"
-    ],
+    "created": [],
     "skippedExisting": [
+      "2466834",
       "2461374",
       "2453896",
       "2449969",
@@ -295,6 +304,17 @@
         "url": "https://estatesales.org/estate-sales/or/portland/97227/military-weapons-armory-estate-sale-2007993",
         "error": "could not parse any open dates from the Dates & Times section"
       }
-    ]
+    ],
+    "updated": [
+      {
+        "slug": "collector-and-decorator-dream-estate-sale",
+        "changes": [
+          "dates",
+          "photos",
+          "location"
+        ]
+      }
+    ],
+    "urgent": []
   }
 }
