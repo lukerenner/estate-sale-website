@@ -16,7 +16,7 @@ source:
 publishDate: "2026-09-11"
 shopUrl: https://shop.garygermer.com/products/ab-jackson-signed-conte-crayon-sketch-portrait-of-a-man
 price: "$425.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/ab-jackson-signed-conte-crayon-sketch-portrait-of-a-man/ab-jackson-signed-conte-crayon-sketch-portrait-of-a-man-01-900.webp
   srcset900: /assets/images/blog/ab-jackson-signed-conte-crayon-sketch-portrait-of-a-man/ab-jackson-signed-conte-crayon-sketch-portrait-of-a-man-01-900.webp

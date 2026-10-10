@@ -16,7 +16,7 @@ source:
 publishDate: "2026-10-08"
 shopUrl: https://shop.garygermer.com/products/barbara-east-miniature-western-watercolor-paintings
 price: "$895.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/barbara-east-miniature-western-horse-and-cowboy-watercolor-painting-set/barbara-east-miniature-western-horse-and-cowboy-watercolor-painting-set-01-900.webp
   srcset900: /assets/images/blog/barbara-east-miniature-western-horse-and-cowboy-watercolor-painting-set/barbara-east-miniature-western-horse-and-cowboy-watercolor-painting-set-01-900.webp

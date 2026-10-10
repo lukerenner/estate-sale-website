@@ -16,7 +16,7 @@ source:
 publishDate: "2026-09-20"
 shopUrl: https://shop.garygermer.com/products/waterford-crystal-lismore-double-old-fashion-glass-set-of-4-original-box
 price: "$275.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/waterford-crystal-lismore-double-old-fashioned-glass-set-of-4-original-box/waterford-crystal-lismore-double-old-fashioned-glass-set-of-4-original-box-01-900.webp
   srcset900: /assets/images/blog/waterford-crystal-lismore-double-old-fashioned-glass-set-of-4-original-box/waterford-crystal-lismore-double-old-fashioned-glass-set-of-4-original-box-01-900.webp

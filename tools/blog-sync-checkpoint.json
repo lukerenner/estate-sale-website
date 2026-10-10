@@ -1,32 +1,39 @@
 {
-  "ranAt": "2026-10-09T01:59:02.600Z",
+  "ranAt": "2026-10-10T23:26:52.357Z",
   "shop": {
     "created": [
-      "waterford-cut-diamond-crystal-alana-water-goblet-6-7-8-glass",
-      "ray-bradbury-signed-1st-edition-2001-morrow-illustrated-man-book-8144821452976",
-      "loet-vanderveen-polar-bear-mother-and-baby-bronze-limited-edition-sculpture-pair",
-      "nice-buddy-holiday-what-you-been-a-missin-4-cd-book-bootleg-box-set",
-      "dan-huber-that-dirty-sob-western-bronze-sculpture",
-      "dan-huber-fort-assiniboine-trooper-western-bronze-sculpture",
-      "mary-lehman-western-big-medicine-white-bison-framed-miniature-etching",
-      "barbara-east-miniature-western-horse-and-cowboy-watercolor-painting-set",
-      "chinese-ming-hongzhi-style-dragon-and-phoenix-delicate-yellow-bowl",
-      "thai-southeast-asian-sawankhalok-sukhothai-style-celadon-crackle-pottery-bowl",
-      "mexican-hand-carved-wood-aztec-mayan-warrior-headdress-calendar-wall-mask"
+      "royal-danube-romanian-crystal-bacchus-etched-grape-leaves-wine-glass-9-3-4",
+      "goebel-maxcraft-wooden-christmas-nativity-barn-manger-stable-20",
+      "federico-del-campo-ornate-gilt-frame-venice-canal-antique-oil-painting",
+      "kwo-erzgebirge-germany-gardener-with-rake-wooden-incense-cone-smoker-burner",
+      "victorian-micro-glass-beaded-paisley-and-flower-drawstring-pouch-purse"
     ],
     "updatedSold": [
-      "erzgebirge-incense-smoker.md",
-      "ken-edwards-el-palomar-blue-bird-flowers-mexican-tonala-pottery-6-1-4-bowl-8136601174192.md",
-      "small-chinese-cafe-au-lait-brown-and-blue-porcelain-fish-tazza-dish-saucer-set.md"
+      "ab-jackson-signed-conte-crayon-sketch-portrait-of-a-man.md",
+      "barbara-east-miniature-western-horse-and-cowboy-watercolor-painting-set.md",
+      "waterford-crystal-lismore-double-old-fashioned-glass-set-of-4-original-box.md"
     ],
-    "updatedAvailable": [],
+    "updatedAvailable": [
+      "erzgebirge-incense-smoker.md"
+    ],
     "soldUnknown": [],
     "skippedExisting": [
+      "waterford-cut-diamond-crystal-alana-water-goblet-6-7-8-glass",
+      "ray-bradbury-signed-1st-edition-2001-morrow-illustrated-man-book-1",
+      "polar-bear",
+      "nice-buddy-holiday-what-you-been-a-missin-4-cd-book-bootleg-box-set",
+      "dan-huber-that-dirty-sob-western-bronze-sculpture",
+      "huber-fort-assinboine-trooper-1973-bronze-sculpture",
       "meissen-cross-swords-blue-onion-porcelain-scallop-rim-coffee-cup",
       "spode-lancaster-cobalt-blue-r8950-gold-gilt-fine-bone-china-cup-saucer",
+      "mary-lehman-framed-miniature-western-etching",
+      "chinese-dragon-phoenix-yellow-bowl",
+      "erzgebirge-incense-smoker",
+      "chinese-celadon-bowl-1",
       "steinbach-drummer-nutcracker",
       "henry-alken-fores-hunting-sketches-plate-3-the-right-wrong-sort",
       "anri-wood-madonna-christ-child",
+      "hand-carved-wooden-mask-mexican-mayan-aztec-mask-and-calendar",
       "waterford-crystal-12-days-of-christmas-calling-birds-champagne-flute",
       "waterford-crystal-martini-glass-pair",
       "napoleon-miniature-gilt-framed-porcelain-painting",
@@ -45,7 +52,6 @@
       "kevin-peters-sea-otter-sculpture",
       "brown-jordan-three-piece-pomegranate-patio-set",
       "mcm-cabinet",
-      "eye-studio-art-glass-spooky-cute-monster-halloween-party-wine-goblet-set-copy",
       "pilchuk-art-glass-bowl",
       "baccarat-glass-sculpture",
       "herend-hungary-porcelain-trinket-dish-tray",
@@ -69,7 +75,6 @@
       "antique-folk-art-carved-wood-boy-with-hat-walking-stick-cane",
       "chinese-4",
       "linda-morgan-colorful-abstract-contemporary-watercolor-painting-masks",
-      "waterford-crystal-lismore-double-old-fashion-glass-set-of-4-original-box",
       "lalique-green-crystal-art-deco-logo-necklace-with-pin-in-original-box",
       "staffordshire-hand-painted-porcelain-blue-jay-figurine-pair-with-box",
       "wedgwood-colorful-floral-st-austell-china-demitasse-coffee-cup-saucer-set-1",
@@ -99,7 +104,6 @@
       "nice-the-beatles-back-in-the-saddle-a-collection-eighth-amendment-bootleg-vinyl-record-copy-copy-copy-copy",
       "nice-the-beatles-back-in-the-saddle-a-collection-eighth-amendment-bootleg-vinyl-record-copy-copy-copy",
       "nice-the-beatles-back-in-the-saddle-a-collection-eighth-amendment-bootleg-vinyl-record-copy-copy",
-      "nice-the-beatles-back-in-the-saddle-a-collection-eighth-amendment-bootleg-vinyl-record-copy",
       "chinese-song-style-celadon-olive-green-glaze-lotus-flower-charger-plate",
       "chinese-longquan-ming-style-celadon-charger-plate",
       "japanese-imari-porcelain-lazy-susan-serving-dish-with-rotating-wood-base",
@@ -112,7 +116,6 @@
       "antique-chinese-blue-white-swatow-porcelain-shallow-bowl-saucer-crab-bowl",
       "waterford-crystal-2-turtle-doves-12-days-of-christmas-champagne-flute",
       "japanese-imari-porcelain-butterfly-flower-gold-trim-10-1-4-dinner-plate-set",
-      "ab-jackson-signed-conte-crayon-sketch-portrait-of-a-man",
       "southwest-mountain-barn-house-signed-oil-painting-in-gilt-frame",
       "waterford-crystal-nutcracker-figurine-original-box",
       "waterford-crystal-lismore-diamond-platinum-iced-tea-glass-pair-unused-in-box",
@@ -309,9 +312,7 @@
       {
         "slug": "collector-and-decorator-dream-estate-sale",
         "changes": [
-          "dates",
-          "photos",
-          "location"
+          "photos"
         ]
       }
     ],
