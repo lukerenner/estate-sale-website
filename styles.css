@@ -875,7 +875,9 @@ label { font-family: var(--font-sans); }
    instead once wrapped titles get taller than the box has room for. */
 @media (max-width: 980px) {
   .discovery-card { aspect-ratio: auto; }
-  .discovery-card-link { position: static; padding: clamp(52px, 9vw, 68px) 0 clamp(20px, 4vw, 32px); }
+  /* Static, the link becomes a shrink-to-fit flex item hugging the card's
+     left edge — stretch it across so the title and chip centre in the card. */
+  .discovery-card-link { position: static; flex: 1 1 auto; padding: clamp(52px, 9vw, 68px) 0 clamp(20px, 4vw, 32px); }
   .discovery-card-icon { top: clamp(20px, 3.5vw, 28px); }
   .discovery-card-title { font-size: clamp(1.6rem, 1.1rem + 3.2vw, 2.35rem); }
   .discovery-card .button { margin-top: clamp(1rem, 3vw, 1.6rem); }
