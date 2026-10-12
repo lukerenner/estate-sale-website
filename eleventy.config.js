@@ -1,4 +1,4 @@
-var { execFileSync } = require("node:child_process");
+var { execFile, execFileSync } = require("node:child_process");
 var path = require("node:path");
 var fs = require("node:fs");
 
@@ -188,6 +188,37 @@ var NEIGHBORHOOD_GROUPS = {
   "Lacamas Lake": "Camas",
 };
 
+var MEDIA_TYPES = {
+  ".webp": "image/webp", ".jpg": "image/jpeg", ".jpeg": "image/jpeg",
+  ".png": "image/png", ".gif": "image/gif", ".avif": "image/avif",
+  ".mp4": "video/mp4", ".webm": "video/webm", ".mov": "video/quicktime",
+};
+
+// Dev-server middleware: serve a media file from git when the sparse Drive
+// checkout doesn't have it on disk. Honours Range so <video> can seek.
+function serveMediaFromGit(req, res, next) {
+  var rel;
+  try { rel = decodeURIComponent(new URL(req.url, "http://x").pathname).replace(/^\/+/, ""); }
+  catch (e) { return next(); }
+  var type = MEDIA_TYPES[path.extname(rel).toLowerCase()];
+  if (!type || rel.split("/").includes("..") || fs.existsSync(rel)) return next();
+  execFile("git", ["cat-file", "blob", "HEAD:" + rel], { encoding: "buffer", maxBuffer: 512 * 1024 * 1024 }, function (err, buf) {
+    if (err) return next();
+    var range = /^bytes=(\d*)-(\d*)$/.exec(req.headers.range || "");
+    var start = 0, end = buf.length - 1;
+    if (range) {
+      if (range[1]) { start = +range[1]; if (range[2]) end = Math.min(+range[2], end); }
+      else if (range[2]) start = Math.max(0, buf.length - +range[2]);
+      res.statusCode = 206;
+      res.setHeader("Content-Range", "bytes " + start + "-" + end + "/" + buf.length);
+    }
+    res.setHeader("Content-Type", type);
+    res.setHeader("Accept-Ranges", "bytes");
+    res.setHeader("Content-Length", end - start + 1);
+    res.end(buf.subarray(start, end + 1));
+  });
+}
+
 module.exports = function (eleventyConfig) {
   // Static assets — served/copied as-is, same paths as today.
   eleventyConfig.addPassthroughCopy("assets");
@@ -202,6 +233,10 @@ module.exports = function (eleventyConfig) {
   // of copying them into _site — otherwise the local _site holds a second
   // 1.5GB copy of assets/ on Google Drive. Real builds (Netlify) still copy.
   eleventyConfig.setServerPassthroughCopyBehavior("passthrough");
+  // Photos and videos live only in git: the Drive checkout leaves them out
+  // via sparse-checkout (see .git/info/sparse-checkout), so under --serve a
+  // media file missing from disk is streamed straight from HEAD instead.
+  eleventyConfig.setServerOptions({ middleware: [serveMediaFromGit] });
 
   eleventyConfig.addCollection("estateSales", (api) =>
     api.getFilteredByGlob("estate-sales/*.njk").sort((a, b) => {
