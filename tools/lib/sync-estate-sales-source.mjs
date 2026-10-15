@@ -466,8 +466,12 @@ function detailHash(detail) {
   const { name, paragraphs, dates, streetAddress, addressLocality, addressRegion, addressPostalCode } = detail;
   return sha1(JSON.stringify({ name, paragraphs, dates, streetAddress, addressLocality, addressRegion, addressPostalCode, live: isUpcomingOrLive(dates) }));
 }
+// The version prefix is part of the hash so a pipeline change can force a
+// one-time gallery re-pull: "uncapped" (2026-10-15) dropped the 30-photo cap,
+// so every sale still in the refresh window pulls its full gallery once.
+const GALLERY_HASH_VERSION = "uncapped";
 function galleryHash(imageUrls) {
-  return sha1(imageUrls.join("\n"));
+  return sha1([GALLERY_HASH_VERSION, ...imageUrls].join("\n"));
 }
 
 // Downloads a sale's source photos and writes the three WebP tiers. Clears
@@ -603,7 +607,9 @@ function renderSaleFile({ id, url, slug, permalink, detail, location, manifest, 
  * @param {string} [opts.salesDir] - estate-sales/ directory
  * @param {string} [opts.imagesRoot] - assets/images/estate-sales/ directory
  * @param {string} [opts.tmpDir] - scratch dir for downloaded source photos
- * @param {number} [opts.imageCap] - per-sale gallery photo cap (INGEST.md default: 30)
+ * @param {number} [opts.imageCap] - per-sale gallery photo cap. Default: none --
+ *   a synced sale shows its whole estatesales.org gallery (the 30-photo cap
+ *   in INGEST.md was for the legacy archive import only).
  * @param {number} [opts.delayMs] - pacing delay between sales/pages
  * @param {string} [opts.companyUrl] - override for testing
  * @param {string[]} [opts.onlyIds] - restrict processing to these sale ids
@@ -617,7 +623,7 @@ export async function syncEstateSalesSource({
   salesDir = "estate-sales",
   imagesRoot = "assets/images/estate-sales",
   tmpDir = ".tmp-estate-sales-sync",
-  imageCap = 30,
+  imageCap = Infinity,
   delayMs = 1000,
   companyUrl = COMPANY_URL,
   onlyIds = null,

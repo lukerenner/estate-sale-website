@@ -86,8 +86,8 @@ run that script — follow the manual steps below instead, which use
    ```
 
    `sourcePhotoPaths` should already be in the order you want them displayed.
-   The 30-photo cap is a page-weight decision, not a technical limit — see
-   "Image budget" below before changing it.
+   The 30-photo cap applies to the legacy archive import only. Sales synced
+   from estatesales.org carry their whole gallery (see "Image budget" below).
 
 3. **Pick a hero image** and run `optimizeNamedImage` on it with
    `{ withJpg: true }` — the JPEG copy is only for OG/social-preview
@@ -157,24 +157,27 @@ page's HTML source (`window.SALE_DATA` and the "Get Directions" link) on
 ## Image budget — why these numbers, not a bigger version
 
 "Lightning fast" is a standing requirement, not a per-sale option. The
-480w/900w/1400w WebP tiers, q72, and the 30-photo gallery cap are all
-deliberate:
+480w/900w/1400w WebP tiers and q72 are deliberate. Gallery size is not
+capped for sales synced from estatesales.org: they carry every photo the
+listing has (owner's call, 2026-10-15). The 30-photo cap was only ever for
+the legacy archive import:
 
 - The visible page load only ever fetches the hero + the first 15 gallery
   tiles at their 480w tier (`loading="lazy"` on the rest, `data-gallery-extra
   hidden` past index 15). The 900w/1400w tiers only load on hover-zoom /
   lightbox-open. **Total repo size is not a page-speed metric — initial-view
-  weight per page is.** Budget target: hero + 15×480w tiles under ~2.5MB for
-  a full 30-photo sale.
+  weight per page is.** Budget target: hero + 15×480w tiles under ~2.5MB,
+  however many photos the sale has; photos past 15 cost nothing until the
+  visitor opens them.
 - No `.jpg` gallery tier — WebP-only. A `.jpg` full-size tier was the single
   biggest weight driver in the original layout (roughly 90% of a sale's
   image footprint) and is strictly worse than the 1400w WebP tier that
   replaced it: bigger file, same or lower effective resolution.
 - Never upscale past a source photo's native pixel width — a tier request
   bigger than the source just returns the source's real size.
-- If a sale genuinely needs more than 30 photos to represent it well, raise
-  the cap for that one sale rather than globally — don't change the default
-  without a reason tied to an actual page-weight budget check.
+- Synced sales: the whole gallery, no cap (`imageCap` defaults to none in
+  `tools/lib/sync-estate-sales-source.mjs`). Bumping `GALLERY_HASH_VERSION`
+  there makes every sale still in the refresh window re-pull its gallery once.
 
 ## Slugs and redirects
 
