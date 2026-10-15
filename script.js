@@ -159,7 +159,7 @@
 
       if (visible && textEl) {
         var showToday = forced !== null ? forced === "today" : isToday;
-        textEl.textContent = "Our next estate sale is " + (showToday ? "today" : "this week") + ".";
+        textEl.textContent = "Estate sale " + (showToday ? "today" : "this week");
       }
       syncHeight();
     }

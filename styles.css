@@ -1167,13 +1167,11 @@ body.nav-lock { overflow: hidden; }
    is set by script.js to the bar's real height so the header/hero offset
    stays in sync.
 
-   A deliberately quiet ribbon: it runs on the site's one dark ground
-   (--navy + --text-on-dark, same pair as the footer and every .on-dark
-   split) at normal weight, so it announces without competing with the
-   hero headline directly beneath it. It carries no pill — a solid button
-   here would duplicate the hero's own CTA shape a few hundred pixels
-   below; the whole row is the link instead, using the site's ghost-arrow
-   idiom as its affordance.
+   Meant to be noticed (owner's call, 2026-10-15: the earlier quiet 37px
+   ribbon with a ghost "Learn More" link read as browser chrome and got
+   skipped). Twice the old height, body-size type that says when and where,
+   and a solid navy "Explore Sale" button. The whole row is still the one
+   link; the button is its affordance, not a second target.
    ========================================================================== */
 .hello-bar {
   position: fixed;
@@ -1193,37 +1191,62 @@ body.nav-lock { overflow: hidden; }
 .hello-bar.is-visible { display: block; }
 .hello-bar-inner {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 0.15em clamp(12px, 1.6vw, 20px);
-  padding: 13px var(--page-x);
+  gap: 10px clamp(16px, 2.4vw, 32px);
+  min-height: 74px;
+  padding: 12px var(--page-x);
   text-align: center;
 }
-@media (min-width: 1260px) {
-  .hello-bar-inner { padding-block: 15px; }
-}
 .hello-bar-text {
-  font-size: var(--fs-small);
-  font-weight: 700;
+  font-size: var(--fs-body);
+  line-height: 1.3;
   letter-spacing: 0.005em;
 }
-/* Ghost-arrow link, matching .button-ghost — the arrow slides on hover,
-   which is the affordance the rest of the site uses for editorial links. */
+.hello-bar-text strong { font-weight: 700; }
+/* Date range as a quiet second fact after a dot, so "today in Hillsboro"
+   leads and the dates confirm it. */
+.hello-bar-dates { white-space: nowrap; }
+.hello-bar-dates::before {
+  content: "\00b7";
+  margin: 0 0.45em;
+  font-weight: 700;
+}
+/* Solid navy chip on the cyan: white on --navy-accent is 11:1. Sized to
+   sit inside the 74px bar, smaller than the hero's 56px pills below it. */
 .hello-bar-cta {
   flex: none;
-  font-size: var(--fs-small);
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 1.4em;
+  border-radius: var(--radius-button);
+  background: var(--navy-accent);
+  color: #fff;
+  font-size: 1rem;
   font-weight: 700;
-  letter-spacing: 0.005em;
   white-space: nowrap;
+  transition: background var(--transition-fast), transform var(--transition-fast);
 }
 .hello-bar-cta::after {
   content: "\2192";
   display: inline-block;
-  margin-left: 0.45em;
+  margin-left: 0.5em;
   transition: transform var(--transition-fast);
 }
+.hello-bar-inner:hover .hello-bar-cta { background: var(--navy); transform: translateY(-1px); }
 .hello-bar-inner:hover .hello-bar-cta::after { transform: translateX(4px); }
+.hello-bar-inner:focus-visible .hello-bar-cta { outline: 2px solid var(--navy); outline-offset: 3px; }
+/* Phones: two short lines on the left ("Estate sale today" / "in
+   Hillsboro · Oct 15–18"), button on the right, so the bar keeps one row. */
+@media (max-width: 560px) {
+  .hello-bar-inner { flex-wrap: nowrap; justify-content: space-between; gap: 10px; padding: 10px 16px; text-align: left; }
+  .hello-bar-text { font-size: 0.9375rem; }
+  .hello-bar-text strong { display: block; font-size: 1.0625rem; }
+  .hello-bar-cta { min-height: 42px; padding: 0 0.95em; font-size: 0.9375rem; }
+  .hello-bar-cta::after { display: none; }
+}
 
 /* ==========================================================================
    Hero

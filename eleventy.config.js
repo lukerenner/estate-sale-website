@@ -344,8 +344,22 @@ module.exports = function (eleventyConfig) {
       })
       .map((item) => {
         var dates = sortedDates(item);
+        // "Eliot, Portland, Oregon" -> "Portland"; "Hillsboro, Oregon" ->
+        // "Hillsboro". The bar names the city, not the micro-neighborhood.
+        var parts = (item.data.neighborhood || "").split(",").map((p) => p.trim()).filter(Boolean);
+        var place = parts.length >= 3 ? parts[1] : parts[0] || "";
+        // "Oct 15–17", or "Oct 30–Nov 1" across a month, or "Oct 15".
+        var MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        var f = dates[0].date.split("-").map(Number);
+        var l = dates[dates.length - 1].date.split("-").map(Number);
+        var dateLabel = MONTHS[f[1] - 1] + " " + f[2];
+        if (dates.length > 1 && dates[0].date !== dates[dates.length - 1].date) {
+          dateLabel += "\u2013" + (l[1] === f[1] ? "" : MONTHS[l[1] - 1] + " ") + l[2];
+        }
         return {
           url: item.url,
+          place: place,
+          dateLabel: dateLabel,
           firstDate: dates[0].date,
           lastDate: dates[dates.length - 1].date,
           lastCloses24: dates[dates.length - 1].closes24,

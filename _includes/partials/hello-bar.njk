@@ -10,11 +10,13 @@
      data-last-date="{{ sale.lastDate }}"
      data-last-close24="{{ sale.lastCloses24 }}">
   {# The bar carries one message with one destination, so the whole row is
-     the link — the "Learn More" ghost arrow is its visible affordance, not
-     a second target competing with the hero's CTAs below it. #}
+     the link; the "Explore Sale" button is its visible affordance. #}
   <a class="container hello-bar-inner" href="{{ sale.url }}">
-    <span class="hello-bar-text" data-hello-bar-text></span>
-    <span class="hello-bar-cta">Learn More</span>
+    <span class="hello-bar-text">
+      <strong data-hello-bar-text>Estate sale this week</strong>{% if sale.place %} in {{ sale.place }}{% endif %}
+      <span class="hello-bar-dates">{{ sale.dateLabel }}</span>
+    </span>
+    <span class="hello-bar-cta">Explore Sale</span>
   </a>
 </div>
 {% endif %}
