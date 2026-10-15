@@ -182,6 +182,13 @@ http://garygermer.com/*         https://www.garygermer.com/:splat    301!
 /media/blog                     /blog/                                301
 /media/blog/*                   /blog/                                301
 
+# ---- Moved sale pages ------------------------------------------------------
+# Sales first published under the wrong area prefix, moved to the right one.
+# The Hillsboro sale got the Northeast Portland fallback because it was
+# created (2026-10-07) before the sync read the city from estatesales.org's
+# URL; moved 2026-10-15.
+/northeast-portland-estate-sales/collector-and-decorator-dream-estate-sale   /hillsboro-estate-sales/collector-and-decorator-dream-estate-sale/   301
+
 # ---- Estate sale catch-alls ----------------------------------------------
 # Anything else under the retired /portland-estate-sales/ prefix (guessed
 # URLs, old links with typos) lands on the sales hub, not the homepage.
