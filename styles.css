@@ -1926,6 +1926,8 @@ body.nav-lock { overflow: hidden; }
 .footer-legal-dot { color: var(--text-on-dark-muted); opacity: 0.6; }
 @media (max-width: 480px) {
   .footer-bottom-right { flex-direction: column; align-items: flex-start; gap: 0.9rem; }
+}
+@media (max-width: 640px) {
   .footer-legal { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
   .footer-legal-dot { display: none; }
 }
