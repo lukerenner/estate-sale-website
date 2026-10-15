@@ -16,7 +16,7 @@ source:
 publishDate: "2026-09-16"
 shopUrl: https://shop.garygermer.com/products/nice-harrison-dylan-starr-the-greatest-show-on-earth-msg-bootleg-vinyl-record
 price: "$45.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/nice-harrison-dylan-starr-the-greatest-show-on-earth-msg-bootleg-vinyl-record/nice-harrison-dylan-starr-the-greatest-show-on-earth-msg-bootleg-vinyl-record-01-900.webp
   srcset900: /assets/images/blog/nice-harrison-dylan-starr-the-greatest-show-on-earth-msg-bootleg-vinyl-record/nice-harrison-dylan-starr-the-greatest-show-on-earth-msg-bootleg-vinyl-record-01-900.webp

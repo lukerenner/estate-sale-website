@@ -1,23 +1,30 @@
 {
-  "ranAt": "2026-10-10T23:26:52.357Z",
+  "ranAt": "2026-10-15T13:34:54.947Z",
   "shop": {
     "created": [
-      "royal-danube-romanian-crystal-bacchus-etched-grape-leaves-wine-glass-9-3-4",
-      "goebel-maxcraft-wooden-christmas-nativity-barn-manger-stable-20",
-      "federico-del-campo-ornate-gilt-frame-venice-canal-antique-oil-painting",
-      "kwo-erzgebirge-germany-gardener-with-rake-wooden-incense-cone-smoker-burner",
-      "victorian-micro-glass-beaded-paisley-and-flower-drawstring-pouch-purse"
+      "victorian-carved-black-forest-greyhound-dog-handle-walking-stick-hook-cane",
+      "canada-goose-decoy-carved-wood-handle-walking-stick-cane",
+      "victorian-whippet-greyhound-dog-carved-handle-corkscrew-gadget-walking-stick",
+      "anri-italy-ulrich-bernardi-black-king-caspar-gilt-wood-nativity-4-figurine",
+      "anri-italy-ulrich-bernardi-wood-shepardess-with-fruit-basket-nativity-figurine",
+      "anri-italy-ulrich-bernardi-shepard-with-bagpipes-4-nativity-figurine",
+      "anri-italy-ulrich-bernardi-wiseman-king-melchior-gilt-wood-nativity-figurine",
+      "anri-italy-wisemen-king-balthazar-ulrich-bernardi-gilt-wood-nativity-4-figurine"
     ],
     "updatedSold": [
-      "ab-jackson-signed-conte-crayon-sketch-portrait-of-a-man.md",
-      "barbara-east-miniature-western-horse-and-cowboy-watercolor-painting-set.md",
-      "waterford-crystal-lismore-double-old-fashioned-glass-set-of-4-original-box.md"
+      "chinese-export-canton-blue-and-white-porcelain-5-1-2-saucer-dish.md",
+      "japanese-shunga-secret-erotica-blue-porcelain-seal-paste-or-trinket-jar-with-lid.md",
+      "nice-harrison-dylan-starr-the-greatest-show-on-earth-msg-bootleg-vinyl-record.md",
+      "nice-the-beatles-back-in-the-saddle-a-collection-eighth-amendment-bootleg-vinyl-record.md",
+      "nice-the-beatles-strawberry-fields-picture-disc-bootleg-vinyl-record.md",
+      "waterford-crystal-huntley-martini-glass-smooth-stem-6-7-8-pair.md"
     ],
-    "updatedAvailable": [
-      "erzgebirge-incense-smoker.md"
-    ],
+    "updatedAvailable": [],
     "soldUnknown": [],
     "skippedExisting": [
+      "royal-danube-romanian-crystal-bacchus-etched-grape-leaves-wine-glass",
+      "goebel-nativity-barn",
+      "federico-del-campo-ornate-gilt-frame-venice-canal-antique-oil-painting",
       "waterford-cut-diamond-crystal-alana-water-goblet-6-7-8-glass",
       "ray-bradbury-signed-1st-edition-2001-morrow-illustrated-man-book-1",
       "polar-bear",
@@ -29,13 +36,13 @@
       "mary-lehman-framed-miniature-western-etching",
       "chinese-dragon-phoenix-yellow-bowl",
       "erzgebirge-incense-smoker",
+      "steinbach-incense-smoker",
       "chinese-celadon-bowl-1",
       "steinbach-drummer-nutcracker",
       "henry-alken-fores-hunting-sketches-plate-3-the-right-wrong-sort",
       "anri-wood-madonna-christ-child",
       "hand-carved-wooden-mask-mexican-mayan-aztec-mask-and-calendar",
       "waterford-crystal-12-days-of-christmas-calling-birds-champagne-flute",
-      "waterford-crystal-martini-glass-pair",
       "napoleon-miniature-gilt-framed-porcelain-painting",
       "wally-schwab-pacific-nw-stoneware-studio-pottery-small-pot-or-punch-cup-set-of-5",
       "antique-northern-california-hupa-yurok-karuk-native-chevron-basket-bowl",
@@ -69,6 +76,7 @@
       "michael-native-american-bear-fetish",
       "polymer-clay-ram-sculpture",
       "jon-stuart-anderson-polymer-clay-mother-penguin-baby-chick-sculpture",
+      "micro-beaded-pouch-purse",
       "hoof-carved-wood-walking-stick-cane",
       "clark-lighter-gadget-cane-walking-stick",
       "carved-stag-deer-antler-antique-walking-stick-cane",
@@ -107,7 +115,6 @@
       "chinese-song-style-celadon-olive-green-glaze-lotus-flower-charger-plate",
       "chinese-longquan-ming-style-celadon-charger-plate",
       "japanese-imari-porcelain-lazy-susan-serving-dish-with-rotating-wood-base",
-      "chinese-export-canton-blue-white-porcelain-5-1-2-saucer-dish",
       "japanese-imari-porcelain-butterfly-flower-gold-trim-cup-saucer-pair",
       "japanese-shunga-secret-erotica-porcelain-jar-with-lid",
       "celadon-earthenware-bowl",
@@ -174,7 +181,9 @@
     "created": []
   },
   "amnw": {
-    "created": [],
+    "created": [
+      "antique-painted-boxes"
+    ],
     "checked": 25
   },
   "estateSales": {
@@ -312,10 +321,17 @@
       {
         "slug": "collector-and-decorator-dream-estate-sale",
         "changes": [
-          "photos"
+          "address released"
         ]
       }
     ],
-    "urgent": []
+    "urgent": [
+      {
+        "slug": "collector-and-decorator-dream-estate-sale",
+        "changes": [
+          "address released"
+        ]
+      }
+    ]
   }
 }

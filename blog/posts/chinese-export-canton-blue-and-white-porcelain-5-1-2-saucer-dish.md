@@ -16,7 +16,7 @@ source:
 publishDate: "2026-09-16"
 shopUrl: https://shop.garygermer.com/products/chinese-export-canton-blue-white-porcelain-5-1-2-saucer-dish
 price: "$26.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/chinese-export-canton-blue-and-white-porcelain-5-1-2-saucer-dish/chinese-export-canton-blue-and-white-porcelain-5-1-2-saucer-dish-01-900.webp
   srcset900: /assets/images/blog/chinese-export-canton-blue-and-white-porcelain-5-1-2-saucer-dish/chinese-export-canton-blue-and-white-porcelain-5-1-2-saucer-dish-01-900.webp

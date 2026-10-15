@@ -16,7 +16,7 @@ source:
 publishDate: "2026-08-21"
 shopUrl: https://shop.garygermer.com/products/nice-bob-dylan-best-of-bobs-bootlegs-collectors-bootleg-vinyl-record-copy
 price: "$35.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/nice-the-beatles-back-in-the-saddle-a-collection-eighth-amendment-bootleg-vinyl-record/nice-the-beatles-back-in-the-saddle-a-collection-eighth-amendment-bootleg-vinyl-record-01-900.webp
   srcset900: /assets/images/blog/nice-the-beatles-back-in-the-saddle-a-collection-eighth-amendment-bootleg-vinyl-record/nice-the-beatles-back-in-the-saddle-a-collection-eighth-amendment-bootleg-vinyl-record-01-900.webp

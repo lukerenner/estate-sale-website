@@ -16,7 +16,7 @@ source:
 publishDate: "2026-09-13"
 shopUrl: https://shop.garygermer.com/products/japanese-shunga-secret-erotica-porcelain-jar-with-lid
 price: "$125.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/japanese-shunga-secret-erotica-blue-porcelain-seal-paste-or-trinket-jar-with-lid/japanese-shunga-secret-erotica-blue-porcelain-seal-paste-or-trinket-jar-with-lid-01-900.webp
   srcset900: /assets/images/blog/japanese-shunga-secret-erotica-blue-porcelain-seal-paste-or-trinket-jar-with-lid/japanese-shunga-secret-erotica-blue-porcelain-seal-paste-or-trinket-jar-with-lid-01-900.webp

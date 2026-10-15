@@ -16,7 +16,7 @@ source:
 publishDate: "2026-09-16"
 shopUrl: https://shop.garygermer.com/products/nice-the-beatles-strawberry-fields-picture-disc-bootleg-vinyl-record
 price: "$50.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/nice-the-beatles-strawberry-fields-picture-disc-bootleg-vinyl-record/nice-the-beatles-strawberry-fields-picture-disc-bootleg-vinyl-record-01-900.webp
   srcset900: /assets/images/blog/nice-the-beatles-strawberry-fields-picture-disc-bootleg-vinyl-record/nice-the-beatles-strawberry-fields-picture-disc-bootleg-vinyl-record-01-900.webp

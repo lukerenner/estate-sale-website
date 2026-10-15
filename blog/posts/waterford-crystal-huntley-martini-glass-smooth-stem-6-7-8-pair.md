@@ -16,7 +16,7 @@ source:
 publishDate: "2026-10-04"
 shopUrl: https://shop.garygermer.com/products/waterford-crystal-martini-glass-pair
 price: "$125.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/waterford-crystal-huntley-martini-glass-smooth-stem-6-7-8-pair/waterford-crystal-huntley-martini-glass-smooth-stem-6-7-8-pair-01-900.webp
   srcset900: /assets/images/blog/waterford-crystal-huntley-martini-glass-smooth-stem-6-7-8-pair/waterford-crystal-huntley-martini-glass-smooth-stem-6-7-8-pair-01-900.webp
