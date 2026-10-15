@@ -28,6 +28,19 @@ jobs:
       - name: Install cwebp / imagemagick / ffmpeg (image + video pipeline deps)
         run: sudo apt-get update && sudo apt-get install -y webp imagemagick ffmpeg
 
+      # Ubuntu's imagemagick package is ImageMagick 6, which ships `convert`
+      # but not the ImageMagick 7 `magick` command the tools call (same
+      # syntax for everything they do). Without this every image step dies
+      # with "spawnSync magick ENOENT" -- which stopped the whole sync,
+      # estate-sale address releases included, 2026-10-12..15.
+      - name: Provide `magick` on ImageMagick 6
+        run: |
+          if ! command -v magick >/dev/null; then
+            printf '#!/bin/sh\nexec convert "$@"\n' | sudo tee /usr/local/bin/magick >/dev/null
+            sudo chmod +x /usr/local/bin/magick
+          fi
+          magick -version | head -1
+
       - name: Install dependencies
         run: npm ci
 
@@ -35,6 +48,7 @@ jobs:
         run: node tools/generate-blog-posts.mjs
 
       - name: Commit any new/changed content (does not push -- see push-gate step)
+        if: success() || failure()
         run: |
           git config user.name "gg-blog-sync-bot"
           git config user.email "actions@users.noreply.github.com"
@@ -46,4 +60,5 @@ jobs:
           fi
 
       - name: Push-gate (throttles deploys per PUSH_POLICY.md)
+        if: success() || failure()
         run: node tools/push-gate.mjs

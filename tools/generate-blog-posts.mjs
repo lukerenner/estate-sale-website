@@ -15,11 +15,28 @@ import { syncEstateSalesSource } from "./lib/sync-estate-sales-source.mjs";
 // directly, so a sale gets a blog-index card the moment its page exists —
 // no separate blog/posts/*.md stub to generate. syncEstateSalesSource below
 // is what creates that page in the first place, from estatesales.org.
+// Each module runs on its own: one source failing (a missing tool, a site
+// change) must never stop the others -- above all the estate-sale refresh,
+// which is what ships a sale's address the morning it opens. Estate sales run
+// first for the same reason. A failure still fails the run (exit 1) after
+// the checkpoint is written; the workflow commits and gates whatever the
+// other modules produced regardless.
+const failures = [];
+async function guarded(name, fn, empty) {
+  try {
+    return await fn();
+  } catch (err) {
+    console.error(`${name} sync failed:`, err);
+    failures.push(name);
+    return { failed: true, ...empty };
+  }
+}
+
 async function run() {
-  const shop = await syncShop();
-  const video = await syncVideo();
-  const amnw = await syncAmnw();
-  const estateSales = await syncEstateSalesSource();
+  const estateSales = await guarded("Estate sales", syncEstateSalesSource, { created: [], skippedExisting: [], skippedNameMatch: [], updated: [], urgent: [], failed: [] });
+  const shop = await guarded("Shop", syncShop, { created: [], updatedSold: [], updatedAvailable: [], soldUnknown: [], skippedExisting: [] });
+  const video = await guarded("Video", syncVideo, { created: [] });
+  const amnw = await guarded("AM Northwest", syncAmnw, { created: [], checked: 0 });
 
   const summary = { ranAt: new Date().toISOString(), shop, video, amnw, estateSales };
   writeFileSync("tools/blog-sync-checkpoint.json", JSON.stringify(summary, null, 2));
@@ -32,6 +49,10 @@ async function run() {
   if (estateSales.urgent.length) console.log("  URGENT (address released on an upcoming sale -- push-gate ships now):", JSON.stringify(estateSales.urgent));
   if (estateSales.failed.length) console.log("  Failed:", JSON.stringify(estateSales.failed));
   if (estateSales.skippedNameMatch.length) console.log("  Name-match skips (review if unexpected):", JSON.stringify(estateSales.skippedNameMatch));
+  if (failures.length) {
+    console.error(`FAILED modules: ${failures.join(", ")}`);
+    process.exitCode = 1;
+  }
 }
 
 run().catch((err) => {
