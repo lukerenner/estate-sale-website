@@ -16,7 +16,7 @@ source:
 publishDate: "2026-09-18"
 shopUrl: https://shop.garygermer.com/products/dale-chihuly-2pc-aspen-green-persian-art-glass
 price: "$12000.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/dale-chihuly-2pc-parrot-green-persian-series-hand-blown-art-glass-sculpture/dale-chihuly-2pc-parrot-green-persian-series-hand-blown-art-glass-sculpture-01-900.webp
   srcset900: /assets/images/blog/dale-chihuly-2pc-parrot-green-persian-series-hand-blown-art-glass-sculpture/dale-chihuly-2pc-parrot-green-persian-series-hand-blown-art-glass-sculpture-01-900.webp

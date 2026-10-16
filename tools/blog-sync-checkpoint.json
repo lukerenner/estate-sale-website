@@ -1,28 +1,30 @@
 {
-  "ranAt": "2026-10-15T13:34:54.947Z",
+  "ranAt": "2026-10-16T23:27:04.883Z",
   "shop": {
     "created": [
-      "victorian-carved-black-forest-greyhound-dog-handle-walking-stick-hook-cane",
-      "canada-goose-decoy-carved-wood-handle-walking-stick-cane",
-      "victorian-whippet-greyhound-dog-carved-handle-corkscrew-gadget-walking-stick",
-      "anri-italy-ulrich-bernardi-black-king-caspar-gilt-wood-nativity-4-figurine",
-      "anri-italy-ulrich-bernardi-wood-shepardess-with-fruit-basket-nativity-figurine",
-      "anri-italy-ulrich-bernardi-shepard-with-bagpipes-4-nativity-figurine",
-      "anri-italy-ulrich-bernardi-wiseman-king-melchior-gilt-wood-nativity-figurine",
-      "anri-italy-wisemen-king-balthazar-ulrich-bernardi-gilt-wood-nativity-4-figurine"
+      "bronze-bearded-man-figural-scholar-handle-antique-wood-walking-stick-cane",
+      "anri-italy-karl-kuolt-camel-and-guide-driver-wood-carved-nativity-figurine",
+      "anri-italy-karl-kuolt-baby-jesus-nativity-manger-christmas-figurine",
+      "anri-italy-ulrich-bernardi-saint-joseph-christmas-manger-nativity-4-figurine",
+      "anri-italy-ulrich-bernardi-donkey-christmas-nativity-animal-figurine-4-scale"
     ],
     "updatedSold": [
-      "chinese-export-canton-blue-and-white-porcelain-5-1-2-saucer-dish.md",
-      "japanese-shunga-secret-erotica-blue-porcelain-seal-paste-or-trinket-jar-with-lid.md",
-      "nice-harrison-dylan-starr-the-greatest-show-on-earth-msg-bootleg-vinyl-record.md",
-      "nice-the-beatles-back-in-the-saddle-a-collection-eighth-amendment-bootleg-vinyl-record.md",
-      "nice-the-beatles-strawberry-fields-picture-disc-bootleg-vinyl-record.md",
-      "waterford-crystal-huntley-martini-glass-smooth-stem-6-7-8-pair.md"
+      "belleek-double-dolphin-handle-luster-spill-vase-1965-1980-green-6th-mark.md",
+      "dale-chihuly-2pc-parrot-green-persian-series-hand-blown-art-glass-sculpture.md",
+      "waterford-cut-crystal-lismore-encore-white-wine-glass-unused-in-original-box.md"
     ],
     "updatedAvailable": [],
     "soldUnknown": [],
     "skippedExisting": [
+      "carved-wood-dog-or-wolf-head-walking-stick-hook-cane",
+      "canada-goose-decoy-head-walking-stick-cane",
+      "dog-head-carved-bone-corkscrew-gadget-walking-stick",
+      "anri-italy-3-wisemen-king-balthasar-ulrich-bernardi-gilt-wood-nativity-4-figurine-1",
+      "anri-italy-ulrich-bernardi-wood-shepardess-with-fruit-basket-nativity-figurine",
+      "anri-italy-ulrich-bernardi-shepard-with-bagpipes-4-nativity-figurine",
       "royal-danube-romanian-crystal-bacchus-etched-grape-leaves-wine-glass",
+      "anri-italy-ulrich-bernardi-wiseman-king-melchior-gilt-wood-nativity-figurine",
+      "anri-italy-3-wisemen-king-balthasar-ulrich-bernardi-gilt-wood-nativity-4-figurine",
       "goebel-nativity-barn",
       "federico-del-campo-ornate-gilt-frame-venice-canal-antique-oil-painting",
       "waterford-cut-diamond-crystal-alana-water-goblet-6-7-8-glass",
@@ -66,7 +68,6 @@
       "huber-bronze",
       "james-turner-cowboy-western-bronze-statue",
       "iroquois-sweetgrass-round-basket-with-lid",
-      "belleek-double-dolphin-handle-luster-spill-vase-1965-1980",
       "carved-wood-maori-new-zealand-mask",
       "ray-williams-native-american-carved-wood-totem-pole",
       "rosewood-pot",
@@ -88,7 +89,6 @@
       "wedgwood-colorful-floral-st-austell-china-demitasse-coffee-cup-saucer-set-1",
       "josef-frank-svenskt-tenn-1957-serving-trolley",
       "russell-woodard-mid-century-modern-cast-iron-pomegranate-nine-piece-patio-set",
-      "dale-chihuly-2pc-aspen-green-persian-art-glass",
       "chinese-small-folk-art-celadon-green-pottery-tea-bowl",
       "antique-maranao-philippines-large-brass-betel-nut-tobacco-box",
       "japanese-imari-porcelain-butterfly-flower-gold-trim-lidded-bowl-pair",
@@ -141,7 +141,6 @@
       "john-rocha-waterford-cut-crystal-glass-pai",
       "vintage-masons-tiffany-co-tiffany-toys-kids-bowl-set-copy",
       "tiffany-set",
-      "waterford-crystal-lismore-encore-white-wine",
       "waterford-cut-diamond-crystal-alana-water-goblet-6-7-8-glass-pair",
       "waterford-crystal-alana-claret-wine-glass-set-of-3",
       "waterford-crystal-alana-champagne-coupe-sherbet-glass-4-1-8-pair",
@@ -181,10 +180,8 @@
     "created": []
   },
   "amnw": {
-    "created": [
-      "antique-painted-boxes"
-    ],
-    "checked": 25
+    "created": [],
+    "checked": 24
   },
   "estateSales": {
     "created": [],
@@ -321,17 +318,10 @@
       {
         "slug": "collector-and-decorator-dream-estate-sale",
         "changes": [
-          "address released"
+          "photos"
         ]
       }
     ],
-    "urgent": [
-      {
-        "slug": "collector-and-decorator-dream-estate-sale",
-        "changes": [
-          "address released"
-        ]
-      }
-    ]
+    "urgent": []
   }
 }

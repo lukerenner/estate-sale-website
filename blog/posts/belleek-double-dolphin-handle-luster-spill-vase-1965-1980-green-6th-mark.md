@@ -16,7 +16,7 @@ source:
 publishDate: "2026-09-24"
 shopUrl: https://shop.garygermer.com/products/belleek-double-dolphin-handle-luster-spill-vase-1965-1980
 price: "$40.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/belleek-double-dolphin-handle-luster-spill-vase-1965-1980-green-6th-mark/belleek-double-dolphin-handle-luster-spill-vase-1965-1980-green-6th-mark-01-900.webp
   srcset900: /assets/images/blog/belleek-double-dolphin-handle-luster-spill-vase-1965-1980-green-6th-mark/belleek-double-dolphin-handle-luster-spill-vase-1965-1980-green-6th-mark-01-900.webp

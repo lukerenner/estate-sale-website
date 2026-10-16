@@ -16,7 +16,7 @@ source:
 publishDate: "2026-09-05"
 shopUrl: https://shop.garygermer.com/products/waterford-crystal-lismore-encore-white-wine
 price: "$60.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/waterford-cut-crystal-lismore-encore-white-wine-glass-unused-in-original-box/waterford-cut-crystal-lismore-encore-white-wine-glass-unused-in-original-box-01-900.webp
   srcset900: /assets/images/blog/waterford-cut-crystal-lismore-encore-white-wine-glass-unused-in-original-box/waterford-cut-crystal-lismore-encore-white-wine-glass-unused-in-original-box-01-900.webp
