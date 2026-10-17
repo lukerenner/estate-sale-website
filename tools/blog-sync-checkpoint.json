@@ -1,24 +1,19 @@
 {
-  "ranAt": "2026-10-16T23:27:04.883Z",
+  "ranAt": "2026-10-17T16:43:36.939Z",
   "shop": {
-    "created": [
-      "bronze-bearded-man-figural-scholar-handle-antique-wood-walking-stick-cane",
-      "anri-italy-karl-kuolt-camel-and-guide-driver-wood-carved-nativity-figurine",
-      "anri-italy-karl-kuolt-baby-jesus-nativity-manger-christmas-figurine",
-      "anri-italy-ulrich-bernardi-saint-joseph-christmas-manger-nativity-4-figurine",
-      "anri-italy-ulrich-bernardi-donkey-christmas-nativity-animal-figurine-4-scale"
-    ],
-    "updatedSold": [
-      "belleek-double-dolphin-handle-luster-spill-vase-1965-1980-green-6th-mark.md",
-      "dale-chihuly-2pc-parrot-green-persian-series-hand-blown-art-glass-sculpture.md",
-      "waterford-cut-crystal-lismore-encore-white-wine-glass-unused-in-original-box.md"
-    ],
+    "created": [],
+    "updatedSold": [],
     "updatedAvailable": [],
     "soldUnknown": [],
     "skippedExisting": [
+      "man-with-beard-bronze-handle-walking-stick-cane",
       "carved-wood-dog-or-wolf-head-walking-stick-hook-cane",
       "canada-goose-decoy-head-walking-stick-cane",
       "dog-head-carved-bone-corkscrew-gadget-walking-stick",
+      "anri-italy-ulrich-bernardi-camel-nativity-figurine",
+      "anri-italy-ulrich-bernardi-baby-jesus-nativity-figurine",
+      "anri-italy-ulrich-bernardi-joseph-nativity-figurine",
+      "anri-italy-ulrich-bernardi-donkey-nativity-figurine",
       "anri-italy-3-wisemen-king-balthasar-ulrich-bernardi-gilt-wood-nativity-4-figurine-1",
       "anri-italy-ulrich-bernardi-wood-shepardess-with-fruit-basket-nativity-figurine",
       "anri-italy-ulrich-bernardi-shepard-with-bagpipes-4-nativity-figurine",
@@ -318,10 +313,17 @@
       {
         "slug": "collector-and-decorator-dream-estate-sale",
         "changes": [
-          "photos"
+          "dates"
         ]
       }
     ],
-    "urgent": []
+    "urgent": [
+      {
+        "slug": "collector-and-decorator-dream-estate-sale",
+        "changes": [
+          "dates"
+        ]
+      }
+    ]
   }
 }
