@@ -6,10 +6,20 @@ name: Blog sync
 # does NOT mean deploying every hour. See PUSH_POLICY.md / push-gate.mjs:
 # whether this run actually pushes (and so actually costs Netlify a
 # production-deploy credit) is decided separately from whether it commits.
+#
+# Scheduled three times an hour, off the top of the hour: GitHub delays and
+# drops scheduled runs under load (top-of-hour worst), and with one slot an
+# hour real runs landed only every ~4h (seen 2026-10-17). Extra runs are
+# free on this public repo and never cost a deploy; push-gate.mjs still
+# decides every push. The concurrency group stops two runs overlapping.
 on:
   schedule:
-    - cron: "0 * * * *"
+    - cron: "7,27,47 * * * *"
   workflow_dispatch: {}
+
+concurrency:
+  group: blog-sync
+  cancel-in-progress: false
 
 jobs:
   sync:

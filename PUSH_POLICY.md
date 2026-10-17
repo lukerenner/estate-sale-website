@@ -3,7 +3,9 @@
 Netlify (`netlify.toml`) auto-deploys on every push to `main`, and on the
 Personal plan (effective 2026-09-15) each production deploy costs 15 credits
 against a 1,000-credit monthly allowance -- roughly 66 deploys/month before
-running into overage. `.github/workflows/blog-sync.yml` runs hourly and can
+running into overage. `.github/workflows/blog-sync.yml` runs three times an hour (at :07, :27
+and :47, since GitHub drops many scheduled runs; one slot an hour gave a
+real run only every ~4h) and can
 generate a commit worth pushing (new estate sale, new shop listing, a sold-
 status flip, a new video, a new AM Northwest segment, ...) far more often
 than that, so pushing is deliberately decoupled from committing.
@@ -12,17 +14,17 @@ than that, so pushing is deliberately decoupled from committing.
 workflow run, deciding per this policy (set 2026-09-15, at the owner's
 request, after Netlify's per-deploy credit cost came up):
 
-0. **An upcoming/live sale's street address is released (or corrected)
-   on estatesales.org -> push immediately, bypassing every other rule
-   below** -- including the one-push-per-day limit and the monthly cap.
-   (Added 2026-10-07 at the owner's request: the site must show the real
-   address the morning of a sale no matter what the gate has already
-   spent.) The address is the *only* instant trigger. The sync re-checks
-   every sourced sale that is upcoming, live, or ended in the last 3 days
-   each hourly run (`refreshExistingSales` in
-   `tools/lib/sync-estate-sales-source.mjs`); any other listing change --
-   new photos, edited description, changed dates -- is an ordinary update
-   and ships with the rule 2 batch.
+0. **An upcoming/live sale's street address is released (or corrected),
+   or its dates/hours change, on estatesales.org -> push immediately,
+   bypassing every other rule below** -- including the one-push-per-day
+   limit and the monthly cap. (Address added 2026-10-07, dates/hours added
+   2026-10-17, both at the owner's request: estatesales.org is canonical
+   and the site must match it the morning of a sale no matter what the
+   gate has already spent.) The sync re-checks every sourced sale that is
+   upcoming, live, or ended in the last 3 days on every run
+   (`refreshExistingSales` in `tools/lib/sync-estate-sales-source.mjs`);
+   any other listing change -- new photos, edited description -- is an
+   ordinary update and ships with the rule 2 batch.
 1. **A brand-new estate sale posts to estatesales.org -> push immediately.**
    This is the one thing worth spending a deploy on right away, since it's
    also what can trigger the site's hello-bar/upcoming-sale announcement.
