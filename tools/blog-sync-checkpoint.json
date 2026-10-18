@@ -1,8 +1,16 @@
 {
-  "ranAt": "2026-10-17T16:43:36.939Z",
+  "ranAt": "2026-10-18T22:43:19.955Z",
   "shop": {
-    "created": [],
-    "updatedSold": [],
+    "created": [
+      "anri-italy-ulrich-bernardi-shepherd-with-stick-nativity-figurine",
+      "anri-italy-ulrich-bernardi-shepherd-boy-with-lamb-christmas-nativity-figurine",
+      "chinese-longevity-spirit-lock-pure-silver-pendant-dangle-necklace"
+    ],
+    "updatedSold": [
+      "anri-italy-ulrich-bernardi-donkey-christmas-nativity-animal-figurine-4-scale.md",
+      "anri-italy-ulrich-bernardi-wood-shepardess-with-fruit-basket-nativity-figurine.md",
+      "jon-stuart-anderson-polymer-millefiori-clay-mother-penguin-baby-chick-sculpture.md"
+    ],
     "updatedAvailable": [],
     "soldUnknown": [],
     "skippedExisting": [
@@ -13,9 +21,7 @@
       "anri-italy-ulrich-bernardi-camel-nativity-figurine",
       "anri-italy-ulrich-bernardi-baby-jesus-nativity-figurine",
       "anri-italy-ulrich-bernardi-joseph-nativity-figurine",
-      "anri-italy-ulrich-bernardi-donkey-nativity-figurine",
       "anri-italy-3-wisemen-king-balthasar-ulrich-bernardi-gilt-wood-nativity-4-figurine-1",
-      "anri-italy-ulrich-bernardi-wood-shepardess-with-fruit-basket-nativity-figurine",
       "anri-italy-ulrich-bernardi-shepard-with-bagpipes-4-nativity-figurine",
       "royal-danube-romanian-crystal-bacchus-etched-grape-leaves-wine-glass",
       "anri-italy-ulrich-bernardi-wiseman-king-melchior-gilt-wood-nativity-figurine",
@@ -71,7 +77,6 @@
       "acoma-pot",
       "michael-native-american-bear-fetish",
       "polymer-clay-ram-sculpture",
-      "jon-stuart-anderson-polymer-clay-mother-penguin-baby-chick-sculpture",
       "micro-beaded-pouch-purse",
       "hoof-carved-wood-walking-stick-cane",
       "clark-lighter-gadget-cane-walking-stick",
@@ -117,58 +122,7 @@
       "pottery-bowl",
       "antique-chinese-blue-white-swatow-porcelain-shallow-bowl-saucer-crab-bowl",
       "waterford-crystal-2-turtle-doves-12-days-of-christmas-champagne-flute",
-      "japanese-imari-porcelain-butterfly-flower-gold-trim-10-1-4-dinner-plate-set",
-      "southwest-mountain-barn-house-signed-oil-painting-in-gilt-frame",
-      "waterford-crystal-nutcracker-figurine-original-box",
-      "waterford-crystal-lismore-diamond-platinum-iced-tea-glass-pair-unused-in-box",
-      "waterford-crystal-millennium-universal-wish-ice-bucket-unused-with-original-box",
-      "waterford-crystal-lismore-double-old-fashioned-set-of-2-new-in-box",
-      "waterford-crystal-7-lords-leaping-crimson-christmas-champagne-flute",
-      "waterford-crystal-9-ladies-dancing-crimson-christmas-champagne-flute",
-      "waterford-crystal-12-days-of-christmas-biscuit-barrel-jar",
-      "waterford-crystal-3-french-hens-crimson-christmas-champagne-flute",
-      "waterford-crystal-5-golden-rings-crimson-christmas-champagne-flute",
-      "waterford-crystal-8-maids-milking-crimson-christmas-champagne-flute",
-      "waterford-crystal-brass-menorah-holiday-candle-holder-in-original-box",
-      "disney-waterford-crystal-mickey-mouse-sorcerer-limited-to-750-in-box",
-      "waterford-crystal-12-days-of-christmas-limited-edition-photo-frame",
-      "waterford-crystal-crossroads-impression-champagne-flute",
-      "john-rocha-waterford-cut-crystal-glass-pai",
-      "vintage-masons-tiffany-co-tiffany-toys-kids-bowl-set-copy",
-      "tiffany-set",
-      "waterford-cut-diamond-crystal-alana-water-goblet-6-7-8-glass-pair",
-      "waterford-crystal-alana-claret-wine-glass-set-of-3",
-      "waterford-crystal-alana-champagne-coupe-sherbet-glass-4-1-8-pair",
-      "japanese-edo-blue-white-porcelain-scholars-soba-choko-noodle-bowl-or-tea-cup",
-      "chinese-blue-white-porcelain-soba-cup",
-      "george-hunzinger-lollipop-rocking-chair-with-reupholstered-velvet-seat",
-      "antique-late-19th-c-h-h-french-brass-carriage-clock-w-original-case-key-works",
-      "large-american-gilt-copper-galloping-horse-weathervane",
-      "vintage-chest",
-      "chinese-green-stone-chop-seal-stamp",
-      "chinese-stamp-chop-seal",
-      "chinese-boy-dolphin-shoushan-stone-chop-seal-stamp",
-      "chinese-foo-dog-seal-chop-stamp",
-      "chinese-seal-stamp",
-      "milagros-charms-cross",
-      "milagros-wood-mexican-folk-art-cross-with-nailed-charms",
-      "royal-doulton-ito-smooth-e2929-exotic-song-bird-8-salad-plate-set-of-6",
-      "lot-of-2-vintage-1930-panoramic-photographs-of-corozal-canal-zone-panama-biv",
-      "carved-bone-erotic-masked-man-early-20th-century-walking-stick-cane-copy",
-      "carved-bone-acupuncture-example-head-victorian-walking-stick-cane-copy",
-      "carved-bone-deep-sea-diver-folk-art-walking-stick-cane-copy",
-      "carved-deer-antler-grim-reaper-face-hidden-blade-folk-art-walking-stick-cane-copy",
-      "chinese-celadon-bowl",
-      "chinese-celadon-shallow-bowl",
-      "old-japanese-fushimi-ningyo-clay-hotei-laughing-jolly-buddha-figurine",
-      "betel-nut-engraved-brass-box-pair",
-      "lynn-chase-jaguar-jungle-dinner-plate-set-of-4",
-      "erte-scheherzade-suite-of-4-signed-limited-edition-serigraphs",
-      "milagros-mexico-folk-art-nailed-charms-guardian-angel-cherub-cross",
-      "royal-doulton-ito-smooth-e2929-exotic-bird-10-1-8-dinner-plate-set-of-4",
-      "royal-doulton-ito-soup-cream-cup-saucer-pair",
-      "hermes-france-carre-90-hello-dolly-silk-scarf",
-      "native-american-round-basket-with-geometric-pattern"
+      "japanese-imari-porcelain-butterfly-flower-gold-trim-10-1-4-dinner-plate-set"
     ]
   },
   "video": {
@@ -309,21 +263,7 @@
         "error": "could not parse any open dates from the Dates & Times section"
       }
     ],
-    "updated": [
-      {
-        "slug": "collector-and-decorator-dream-estate-sale",
-        "changes": [
-          "dates"
-        ]
-      }
-    ],
-    "urgent": [
-      {
-        "slug": "collector-and-decorator-dream-estate-sale",
-        "changes": [
-          "dates"
-        ]
-      }
-    ]
+    "updated": [],
+    "urgent": []
   }
 }

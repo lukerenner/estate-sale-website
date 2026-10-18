@@ -16,7 +16,7 @@ source:
 publishDate: "2026-09-20"
 shopUrl: https://shop.garygermer.com/products/jon-stuart-anderson-polymer-clay-mother-penguin-baby-chick-sculpture
 price: "$225.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/jon-stuart-anderson-polymer-millefiori-clay-mother-penguin-baby-chick-sculpture/jon-stuart-anderson-polymer-millefiori-clay-mother-penguin-baby-chick-sculpture-01-900.webp
   srcset900: /assets/images/blog/jon-stuart-anderson-polymer-millefiori-clay-mother-penguin-baby-chick-sculpture/jon-stuart-anderson-polymer-millefiori-clay-mother-penguin-baby-chick-sculpture-01-900.webp

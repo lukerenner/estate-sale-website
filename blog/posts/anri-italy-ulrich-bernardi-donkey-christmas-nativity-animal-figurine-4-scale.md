@@ -16,7 +16,7 @@ source:
 publishDate: "2026-10-15"
 shopUrl: https://shop.garygermer.com/products/anri-italy-ulrich-bernardi-donkey-nativity-figurine
 price: "$85.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/anri-italy-ulrich-bernardi-donkey-christmas-nativity-animal-figurine-4-scale/anri-italy-ulrich-bernardi-donkey-christmas-nativity-animal-figurine-4-scale-01-900.webp
   srcset900: /assets/images/blog/anri-italy-ulrich-bernardi-donkey-christmas-nativity-animal-figurine-4-scale/anri-italy-ulrich-bernardi-donkey-christmas-nativity-animal-figurine-4-scale-01-900.webp
