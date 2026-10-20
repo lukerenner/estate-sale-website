@@ -16,7 +16,7 @@ source:
 publishDate: "2026-08-14"
 shopUrl: https://shop.garygermer.com/products/indian-statue
 price: "$175.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/tibetan-buddhist-brass-vajrayogini-wisdom-and-energy-deity-goddess-india-statue/tibetan-buddhist-brass-vajrayogini-wisdom-and-energy-deity-goddess-india-statue-01-900.webp
   srcset900: /assets/images/blog/tibetan-buddhist-brass-vajrayogini-wisdom-and-energy-deity-goddess-india-statue/tibetan-buddhist-brass-vajrayogini-wisdom-and-energy-deity-goddess-india-statue-01-900.webp

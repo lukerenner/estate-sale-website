@@ -16,7 +16,7 @@ source:
 publishDate: "2026-10-18"
 shopUrl: https://shop.garygermer.com/products/chinese-longevity-spirit-lock-necklace
 price: "$350.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/chinese-longevity-spirit-lock-pure-silver-pendant-dangle-necklace/chinese-longevity-spirit-lock-pure-silver-pendant-dangle-necklace-01-900.webp
   srcset900: /assets/images/blog/chinese-longevity-spirit-lock-pure-silver-pendant-dangle-necklace/chinese-longevity-spirit-lock-pure-silver-pendant-dangle-necklace-01-900.webp

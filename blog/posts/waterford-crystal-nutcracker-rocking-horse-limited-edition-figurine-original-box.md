@@ -16,7 +16,7 @@ source:
 publishDate: "2026-09-10"
 shopUrl: https://shop.garygermer.com/products/waterford-crystal-nutcracker-figurine-original-box
 price: "$50.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/waterford-crystal-nutcracker-rocking-horse-limited-edition-figurine-original-box/waterford-crystal-nutcracker-rocking-horse-limited-edition-figurine-original-box-01-900.webp
   srcset900: /assets/images/blog/waterford-crystal-nutcracker-rocking-horse-limited-edition-figurine-original-box/waterford-crystal-nutcracker-rocking-horse-limited-edition-figurine-original-box-01-900.webp

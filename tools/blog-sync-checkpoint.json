@@ -1,15 +1,17 @@
 {
-  "ranAt": "2026-10-18T22:43:19.955Z",
+  "ranAt": "2026-10-20T00:50:26.566Z",
   "shop": {
     "created": [
-      "anri-italy-ulrich-bernardi-shepherd-with-stick-nativity-figurine",
-      "anri-italy-ulrich-bernardi-shepherd-boy-with-lamb-christmas-nativity-figurine",
-      "chinese-longevity-spirit-lock-pure-silver-pendant-dangle-necklace"
+      "christian-lacroix-paris-pink-heart-gold-tone-brooch-pin-in-c-est-la-vie-box",
+      "waterford-crystal-3-french-hens-12-days-of-christmas-gold-champagne-flute-in-box",
+      "horn-and-sterling-silver-repousse-flower-corkscrew-gadget-walking-stick-cane",
+      "victorian-floral-chased-silver-plate-cigar-smugglers-walking-stick-cane",
+      "chinese-amber-yellow-clear-peking-glass-large-rimmed-bowl"
     ],
     "updatedSold": [
-      "anri-italy-ulrich-bernardi-donkey-christmas-nativity-animal-figurine-4-scale.md",
-      "anri-italy-ulrich-bernardi-wood-shepardess-with-fruit-basket-nativity-figurine.md",
-      "jon-stuart-anderson-polymer-millefiori-clay-mother-penguin-baby-chick-sculpture.md"
+      "chinese-longevity-spirit-lock-pure-silver-pendant-dangle-necklace.md",
+      "tibetan-buddhist-brass-vajrayogini-wisdom-and-energy-deity-goddess-india-statue.md",
+      "waterford-crystal-nutcracker-rocking-horse-limited-edition-figurine-original-box.md"
     ],
     "updatedAvailable": [],
     "soldUnknown": [],
@@ -18,6 +20,8 @@
       "carved-wood-dog-or-wolf-head-walking-stick-hook-cane",
       "canada-goose-decoy-head-walking-stick-cane",
       "dog-head-carved-bone-corkscrew-gadget-walking-stick",
+      "anri-italy-ulrich-bernardi-shepherd-with-stick-nativity-figurine",
+      "anri-italy-ulrich-bernardi-shepard-boy-with-lamb-nativity-figurine",
       "anri-italy-ulrich-bernardi-camel-nativity-figurine",
       "anri-italy-ulrich-bernardi-baby-jesus-nativity-figurine",
       "anri-italy-ulrich-bernardi-joseph-nativity-figurine",
@@ -249,11 +253,6 @@
         "id": "2056385",
         "url": "https://estatesales.org/estate-sales/or/portland/97227/the-peter-abrahams-science-astronomy-2056385",
         "name": "The Peter Abrahams Science & Astronomy Estate"
-      },
-      {
-        "id": "2001805",
-        "url": "https://estatesales.org/estate-sales/or/portland/97201/margie-boul-friends-moving-sale-2001805",
-        "name": "Margie Boulé & Friends Moving Sale"
       }
     ],
     "failed": [
@@ -263,7 +262,14 @@
         "error": "could not parse any open dates from the Dates & Times section"
       }
     ],
-    "updated": [],
+    "updated": [
+      {
+        "slug": "collector-and-decorator-dream-estate-sale",
+        "changes": [
+          "address removed"
+        ]
+      }
+    ],
     "urgent": []
   }
 }
