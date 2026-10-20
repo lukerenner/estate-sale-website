@@ -16,7 +16,7 @@ source:
 publishDate: "2026-09-10"
 shopUrl: https://shop.garygermer.com/products/waterford-crystal-8-maids-milking-crimson-christmas-champagne-flute
 price: "$175.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/waterford-crystal-12-days-of-christmas-8-maids-milking-crimson-champagne-flute/waterford-crystal-12-days-of-christmas-8-maids-milking-crimson-champagne-flute-01-900.webp
   srcset900: /assets/images/blog/waterford-crystal-12-days-of-christmas-8-maids-milking-crimson-champagne-flute/waterford-crystal-12-days-of-christmas-8-maids-milking-crimson-champagne-flute-01-900.webp
