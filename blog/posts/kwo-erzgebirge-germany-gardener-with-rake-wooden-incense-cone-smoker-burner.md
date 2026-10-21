@@ -16,7 +16,7 @@ source:
 publishDate: "2026-10-09"
 shopUrl: https://shop.garygermer.com/products/steinbach-incense-smoker
 price: "$80.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/kwo-erzgebirge-germany-gardener-with-rake-wooden-incense-cone-smoker-burner/kwo-erzgebirge-germany-gardener-with-rake-wooden-incense-cone-smoker-burner-01-900.webp
   srcset900: /assets/images/blog/kwo-erzgebirge-germany-gardener-with-rake-wooden-incense-cone-smoker-burner/kwo-erzgebirge-germany-gardener-with-rake-wooden-incense-cone-smoker-burner-01-900.webp

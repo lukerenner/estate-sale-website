@@ -1,13 +1,16 @@
 {
-  "ranAt": "2026-10-20T22:48:44.781Z",
+  "ranAt": "2026-10-21T23:36:19.887Z",
   "shop": {
     "created": [
-      "kwan-wu-1993-decorative-bronze-dog-vessel"
+      "james-stafford-flight-bronze-elk-sculpture",
+      "emmanuel-villanis-phryne-art-nouveau-bronze-bust-with-paris-foundry-mark"
     ],
     "updatedSold": [
-      "waterford-crystal-12-days-of-christmas-8-maids-milking-crimson-champagne-flute.md"
+      "kwo-erzgebirge-germany-gardener-with-rake-wooden-incense-cone-smoker-burner.md"
     ],
-    "updatedAvailable": [],
+    "updatedAvailable": [
+      "dale-chihuly-2pc-parrot-green-persian-series-hand-blown-art-glass-sculpture.md"
+    ],
     "soldUnknown": [],
     "skippedExisting": [
       "christian-lacrois-paris-pink-heart-brooch-pin-in-cest-la-vie-box",
@@ -37,12 +40,12 @@
       "nice-buddy-holiday-what-you-been-a-missin-4-cd-book-bootleg-box-set",
       "dan-huber-that-dirty-sob-western-bronze-sculpture",
       "huber-fort-assinboine-trooper-1973-bronze-sculpture",
+      "kwan-wu-bronze-dog-bowl",
       "meissen-cross-swords-blue-onion-porcelain-scallop-rim-coffee-cup",
       "spode-lancaster-cobalt-blue-r8950-gold-gilt-fine-bone-china-cup-saucer",
       "mary-lehman-framed-miniature-western-etching",
       "chinese-dragon-phoenix-yellow-bowl",
       "erzgebirge-incense-smoker",
-      "steinbach-incense-smoker",
       "chinese-celadon-bowl-1",
       "steinbach-drummer-nutcracker",
       "henry-alken-fores-hunting-sketches-plate-3-the-right-wrong-sort",
@@ -92,6 +95,7 @@
       "wedgwood-colorful-floral-st-austell-china-demitasse-coffee-cup-saucer-set-1",
       "josef-frank-svenskt-tenn-1957-serving-trolley",
       "russell-woodard-mid-century-modern-cast-iron-pomegranate-nine-piece-patio-set",
+      "dale-chihuly-2pc-aspen-green-persian-art-glass",
       "chinese-small-folk-art-celadon-green-pottery-tea-bowl",
       "antique-maranao-philippines-large-brass-betel-nut-tobacco-box",
       "japanese-imari-porcelain-butterfly-flower-gold-trim-lidded-bowl-pair",
@@ -129,6 +133,7 @@
     ]
   },
   "video": {
+    "failed": true,
     "created": []
   },
   "amnw": {
