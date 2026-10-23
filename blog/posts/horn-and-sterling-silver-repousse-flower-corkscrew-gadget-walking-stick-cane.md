@@ -16,7 +16,7 @@ source:
 publishDate: "2026-10-18"
 shopUrl: https://shop.garygermer.com/products/sterling-silver-floral-repousse-ebonized-wood-walking-stick-cane
 price: "$295.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/horn-and-sterling-silver-repousse-flower-corkscrew-gadget-walking-stick-cane/horn-and-sterling-silver-repousse-flower-corkscrew-gadget-walking-stick-cane-01-900.webp
   srcset900: /assets/images/blog/horn-and-sterling-silver-repousse-flower-corkscrew-gadget-walking-stick-cane/horn-and-sterling-silver-repousse-flower-corkscrew-gadget-walking-stick-cane-01-900.webp

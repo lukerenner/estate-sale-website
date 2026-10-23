@@ -1,23 +1,28 @@
 {
-  "ranAt": "2026-10-23T00:18:03.288Z",
+  "ranAt": "2026-10-23T22:42:42.268Z",
   "shop": {
     "created": [
-      "weta-workshop-masters-collection-ltd-edition-232-589-gollum-lotr-statue-w-box",
-      "wally-schwab-pacific-nw-master-pottery-cake-dome-dessert-serving-dish-with-lid",
-      "rose-thorn-spiked-nude-woman-in-red-heels-figure-studio-pottery-statue",
-      "indian-hindu-female-attendant-abhaya-mudra-carved-wood-folk-art-statue"
+      "drexel-heritage-heirloom-collection-mahogany-bombe-chest-with-brass-hardware",
+      "leopold-stickley-10-drawer-chippendale-style-highboy-dresser-with-brass-hardware",
+      "vintage-cedar-cavalier-hope-blanket-chest-with-walnut-veneer"
     ],
-    "updatedSold": [],
+    "updatedSold": [
+      "chinese-carved-stone-calligraphy-poem-stamp-chop-seal.md",
+      "horn-and-sterling-silver-repousse-flower-corkscrew-gadget-walking-stick-cane.md"
+    ],
     "updatedAvailable": [],
     "soldUnknown": [],
     "skippedExisting": [
+      "weta-workshop-masters-collection-ltd-edition-232-589-gollum-lotr-statue-w-box",
       "james-stafford-bronze-elk-sculpture-flight",
       "emmanuel-villanis-art-nouveau-phryne-bust",
       "christian-lacrois-paris-pink-heart-brooch-pin-in-cest-la-vie-box",
       "waterford-crystal-3-french-hens-12-days-of-christmas-gold-champagne-flute",
-      "sterling-silver-floral-repousse-ebonized-wood-walking-stick-cane",
+      "wally-schwab-monumental-pottery-round-serving-tray-with-lid",
       "antique-floral-chased-silver-plate-handle-walking-stick-cane",
       "large-yellow-peking-glass-bowl",
+      "nude-female-statue",
+      "carved-wood-indian-woman-statue",
       "man-with-beard-bronze-handle-walking-stick-cane",
       "carved-wood-dog-or-wolf-head-walking-stick-hook-cane",
       "canada-goose-decoy-head-walking-stick-cane",
@@ -133,12 +138,11 @@
     ]
   },
   "video": {
-    "failed": true,
     "created": []
   },
   "amnw": {
     "created": [],
-    "checked": 24
+    "checked": 25
   },
   "estateSales": {
     "created": [],

@@ -16,7 +16,7 @@ source:
 publishDate: "2026-09-03"
 shopUrl: https://shop.garygermer.com/products/chinese-stamp-chop-seal
 price: "$95.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/chinese-carved-stone-calligraphy-poem-stamp-chop-seal/chinese-carved-stone-calligraphy-poem-stamp-chop-seal-01-900.webp
   srcset900: /assets/images/blog/chinese-carved-stone-calligraphy-poem-stamp-chop-seal/chinese-carved-stone-calligraphy-poem-stamp-chop-seal-01-900.webp
