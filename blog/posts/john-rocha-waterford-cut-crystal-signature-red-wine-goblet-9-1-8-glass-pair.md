@@ -16,7 +16,7 @@ source:
 publishDate: "2026-09-06"
 shopUrl: https://shop.garygermer.com/products/john-rocha-waterford-cut-crystal-glass-pai
 price: "$100.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/john-rocha-waterford-cut-crystal-signature-red-wine-goblet-9-1-8-glass-pair/john-rocha-waterford-cut-crystal-signature-red-wine-goblet-9-1-8-glass-pair-01-900.webp
   srcset900: /assets/images/blog/john-rocha-waterford-cut-crystal-signature-red-wine-goblet-9-1-8-glass-pair/john-rocha-waterford-cut-crystal-signature-red-wine-goblet-9-1-8-glass-pair-01-900.webp
