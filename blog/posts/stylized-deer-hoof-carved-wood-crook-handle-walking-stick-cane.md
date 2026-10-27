@@ -16,7 +16,7 @@ source:
 publishDate: "2026-09-20"
 shopUrl: https://shop.garygermer.com/products/hoof-carved-wood-walking-stick-cane
 price: "$150.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/stylized-deer-hoof-carved-wood-crook-handle-walking-stick-cane/stylized-deer-hoof-carved-wood-crook-handle-walking-stick-cane-01-900.webp
   srcset900: /assets/images/blog/stylized-deer-hoof-carved-wood-crook-handle-walking-stick-cane/stylized-deer-hoof-carved-wood-crook-handle-walking-stick-cane-01-900.webp
