@@ -1,16 +1,21 @@
 {
-  "ranAt": "2026-10-27T23:00:04.483Z",
+  "ranAt": "2026-10-29T00:58:03.318Z",
   "shop": {
     "created": [
-      "venetian-style-folk-art-glass-hutch-corner-cabinet",
-      "burgundy-leather-tufted-chesterfield-sofa"
+      "russian-mstera-frog-princess-dancing-fairy-tale-hand-painted-lacquer-trinket-box",
+      "versace-rosenthal-marqueterie-black-24k-gold-baroque-style-coffee-cup-and-saucer",
+      "ornate-italian-inlaid-marquetry-rolltop-bureau-cabinet-or-secretary-desk",
+      "drexel-heritage-heirloom-collection-inlaid-mahogany-sideboard",
+      "napoleon-iii-style-boulle-marquetry-cabinet-with-marble-top",
+      "venetian-style-folk-art-hand-painted-cabinet",
+      "pair-of-drexel-heritage-heirloom-collection-georgian-style-mahogany-nightstands-or-chests"
     ],
-    "updatedSold": [
-      "stylized-deer-hoof-carved-wood-crook-handle-walking-stick-cane.md"
-    ],
+    "updatedSold": [],
     "updatedAvailable": [],
     "soldUnknown": [],
     "skippedExisting": [
+      "venetian-style-folk-art-corner-cabinet",
+      "leather-tufted-chesterfield-sofa",
       "hermes-paris-carre-90-marche-inle-silk-scarf-w-box",
       "canadian-inuit-kneeling-walrus-shaman-hunter-soapstone-antler-sculpture",
       "pima-or-papago-native-american-coiled-round-basket-tray",
@@ -152,6 +157,7 @@
     ]
   },
   "video": {
+    "failed": true,
     "created": []
   },
   "amnw": {
