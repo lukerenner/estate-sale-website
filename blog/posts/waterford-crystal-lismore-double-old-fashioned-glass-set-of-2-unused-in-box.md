@@ -16,7 +16,7 @@ source:
 publishDate: "2026-09-12"
 shopUrl: https://shop.garygermer.com/products/waterford-crystal-lismore-double-old-fashioned-set-of-2-new-in-box
 price: "$175.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/waterford-crystal-lismore-double-old-fashioned-glass-set-of-2-unused-in-box/waterford-crystal-lismore-double-old-fashioned-glass-set-of-2-unused-in-box-01-900.webp
   srcset900: /assets/images/blog/waterford-crystal-lismore-double-old-fashioned-glass-set-of-2-unused-in-box/waterford-crystal-lismore-double-old-fashioned-glass-set-of-2-unused-in-box-01-900.webp

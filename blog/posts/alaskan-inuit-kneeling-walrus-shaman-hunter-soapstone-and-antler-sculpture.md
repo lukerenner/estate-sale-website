@@ -16,7 +16,7 @@ source:
 publishDate: "2026-10-25"
 shopUrl: https://shop.garygermer.com/products/canadian-inuit-kneeling-walrus-shaman-hunter-soapstone-antler-sculpture
 price: "$195.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/alaskan-inuit-kneeling-walrus-shaman-hunter-soapstone-and-antler-sculpture/alaskan-inuit-kneeling-walrus-shaman-hunter-soapstone-and-antler-sculpture-01-900.webp
   srcset900: /assets/images/blog/alaskan-inuit-kneeling-walrus-shaman-hunter-soapstone-and-antler-sculpture/alaskan-inuit-kneeling-walrus-shaman-hunter-soapstone-and-antler-sculpture-01-900.webp
