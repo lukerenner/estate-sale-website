@@ -20,7 +20,7 @@ source:
 publishDate: "2026-10-29"
 shopUrl: https://shop.garygermer.com/products/antique-authentic-19thc-caucasian-khanjali-dagger-gilt-silver-niello-scabbard
 price: "$2400.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/antique-authentic-19thc-caucasian-khanjali-dagger-gilt-and-silver-niello-scabbard/antique-authentic-19thc-caucasian-khanjali-dagger-gilt-and-silver-niello-scabbard-01-900.webp
   srcset900: /assets/images/blog/antique-authentic-19thc-caucasian-khanjali-dagger-gilt-and-silver-niello-scabbard/antique-authentic-19thc-caucasian-khanjali-dagger-gilt-and-silver-niello-scabbard-01-900.webp

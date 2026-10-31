@@ -16,7 +16,7 @@ source:
 publishDate: "2026-10-29"
 shopUrl: https://shop.garygermer.com/products/okuma-cavalla-15-ii-two-speed-lever-drag-4-7-1-2-0-1-gear-ratios-fishing-reel
 price: "$185.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/okuma-cavalla-15-ii-two-speed-lever-drag-4-7-1-2-0-1-gear-ratios-fishing-reel/okuma-cavalla-15-ii-two-speed-lever-drag-4-7-1-2-0-1-gear-ratios-fishing-reel-01-900.webp
   srcset900: /assets/images/blog/okuma-cavalla-15-ii-two-speed-lever-drag-4-7-1-2-0-1-gear-ratios-fishing-reel/okuma-cavalla-15-ii-two-speed-lever-drag-4-7-1-2-0-1-gear-ratios-fishing-reel-01-900.webp

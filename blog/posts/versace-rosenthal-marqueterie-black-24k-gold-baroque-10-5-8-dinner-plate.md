@@ -16,7 +16,7 @@ source:
 publishDate: "2026-10-29"
 shopUrl: https://shop.garygermer.com/products/versace-rosenthal-marqueterie-black-24k-gold-baroque-dinner-plate
 price: "$80.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/versace-rosenthal-marqueterie-black-24k-gold-baroque-10-5-8-dinner-plate/versace-rosenthal-marqueterie-black-24k-gold-baroque-10-5-8-dinner-plate-01-900.webp
   srcset900: /assets/images/blog/versace-rosenthal-marqueterie-black-24k-gold-baroque-10-5-8-dinner-plate/versace-rosenthal-marqueterie-black-24k-gold-baroque-10-5-8-dinner-plate-01-900.webp
