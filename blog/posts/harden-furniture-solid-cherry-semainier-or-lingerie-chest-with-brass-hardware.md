@@ -16,7 +16,7 @@ source:
 publishDate: "2026-10-30"
 shopUrl: https://shop.garygermer.com/products/harden-dresser
 price: "$650.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/harden-furniture-solid-cherry-semainier-or-lingerie-chest-with-brass-hardware/harden-furniture-solid-cherry-semainier-or-lingerie-chest-with-brass-hardware-01-900.webp
   srcset900: /assets/images/blog/harden-furniture-solid-cherry-semainier-or-lingerie-chest-with-brass-hardware/harden-furniture-solid-cherry-semainier-or-lingerie-chest-with-brass-hardware-01-900.webp

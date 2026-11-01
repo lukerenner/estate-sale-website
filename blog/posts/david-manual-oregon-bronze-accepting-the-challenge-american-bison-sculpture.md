@@ -16,7 +16,7 @@ source:
 publishDate: "2026-10-30"
 shopUrl: https://shop.garygermer.com/products/david-manual-bronze-accepting-the-challenge
 price: "$550.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/david-manual-oregon-bronze-accepting-the-challenge-american-bison-sculpture/david-manual-oregon-bronze-accepting-the-challenge-american-bison-sculpture-01-900.webp
   srcset900: /assets/images/blog/david-manual-oregon-bronze-accepting-the-challenge-american-bison-sculpture/david-manual-oregon-bronze-accepting-the-challenge-american-bison-sculpture-01-900.webp

@@ -16,7 +16,7 @@ source:
 publishDate: "2026-08-29"
 shopUrl: https://shop.garygermer.com/products/chinese-celadon-bowl
 price: "$95.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/antique-chinese-celadon-tang-dynasty-yue-ware-style-rimmed-bowl/antique-chinese-celadon-tang-dynasty-yue-ware-style-rimmed-bowl-01-900.webp
   srcset900: /assets/images/blog/antique-chinese-celadon-tang-dynasty-yue-ware-style-rimmed-bowl/antique-chinese-celadon-tang-dynasty-yue-ware-style-rimmed-bowl-01-900.webp
