@@ -16,7 +16,7 @@ source:
 publishDate: "2026-10-30"
 shopUrl: https://shop.garygermer.com/products/russian-hand-painted-lacquer-box
 price: "$295.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/fedoskino-russian-saint-petersburg-cityscape-hand-painted-lacquer-box/fedoskino-russian-saint-petersburg-cityscape-hand-painted-lacquer-box-01-900.webp
   srcset900: /assets/images/blog/fedoskino-russian-saint-petersburg-cityscape-hand-painted-lacquer-box/fedoskino-russian-saint-petersburg-cityscape-hand-painted-lacquer-box-01-900.webp

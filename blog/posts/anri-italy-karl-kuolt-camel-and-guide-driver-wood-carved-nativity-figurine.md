@@ -16,7 +16,7 @@ source:
 publishDate: "2026-10-15"
 shopUrl: https://shop.garygermer.com/products/anri-italy-ulrich-bernardi-camel-nativity-figurine
 price: "$375.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/anri-italy-karl-kuolt-camel-and-guide-driver-wood-carved-nativity-figurine/anri-italy-karl-kuolt-camel-and-guide-driver-wood-carved-nativity-figurine-01-900.webp
   srcset900: /assets/images/blog/anri-italy-karl-kuolt-camel-and-guide-driver-wood-carved-nativity-figurine/anri-italy-karl-kuolt-camel-and-guide-driver-wood-carved-nativity-figurine-01-900.webp

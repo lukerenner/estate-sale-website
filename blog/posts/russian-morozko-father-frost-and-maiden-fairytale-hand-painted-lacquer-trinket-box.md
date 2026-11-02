@@ -16,7 +16,7 @@ source:
 publishDate: "2026-10-30"
 shopUrl: https://shop.garygermer.com/products/russian-fairy-tale-hand-painted-lacquer-trinket-box
 price: "$225.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/russian-morozko-father-frost-and-maiden-fairytale-hand-painted-lacquer-trinket-box/russian-morozko-father-frost-and-maiden-fairytale-hand-painted-lacquer-trinket-box-01-900.webp
   srcset900: /assets/images/blog/russian-morozko-father-frost-and-maiden-fairytale-hand-painted-lacquer-trinket-box/russian-morozko-father-frost-and-maiden-fairytale-hand-painted-lacquer-trinket-box-01-900.webp
