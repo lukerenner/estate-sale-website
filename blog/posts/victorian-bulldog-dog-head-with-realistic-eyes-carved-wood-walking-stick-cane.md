@@ -16,7 +16,7 @@ source:
 publishDate: "2026-07-31"
 shopUrl: https://shop.garygermer.com/products/carved-wood-dog-walking-stick-cane
 price: "$375.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/victorian-bulldog-dog-head-with-realistic-eyes-carved-wood-walking-stick-cane/victorian-bulldog-dog-head-with-realistic-eyes-carved-wood-walking-stick-cane-01-900.webp
   srcset900: /assets/images/blog/victorian-bulldog-dog-head-with-realistic-eyes-carved-wood-walking-stick-cane/victorian-bulldog-dog-head-with-realistic-eyes-carved-wood-walking-stick-cane-01-900.webp

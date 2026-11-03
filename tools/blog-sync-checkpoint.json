@@ -1,21 +1,21 @@
 {
-  "ranAt": "2026-11-02T02:00:14.924Z",
+  "ranAt": "2026-11-03T01:56:30.446Z",
   "shop": {
-    "created": [
-      "david-doucette-white-paper-flower-3d-shadow-box-framed-media-wall-art",
-      "david-manuel-oregon-bronze-little-joe-winters-wind-native-american-horse-sculpture",
-      "oleg-stavrowsky-rustic-framed-oil-painting-big-wheels-keep-on-turnin",
-      "russian-saint-petersburg-hand-painted-1703-cityscape-lacquer-trinket-box"
-    ],
+    "created": [],
     "updatedSold": [
-      "anri-italy-karl-kuolt-camel-and-guide-driver-wood-carved-nativity-figurine.md",
-      "fedoskino-russian-saint-petersburg-cityscape-hand-painted-lacquer-box.md",
-      "russian-morozko-father-frost-and-maiden-fairytale-hand-painted-lacquer-trinket-box.md"
+      "anri-italy-ulrich-bernardi-shepherd-with-stick-nativity-figurine.md",
+      "goebel-maxcraft-wooden-christmas-nativity-barn-manger-stable-20.md",
+      "mexican-hand-carved-wood-aztec-mayan-warrior-headdress-calendar-wall-mask.md",
+      "victorian-bulldog-dog-head-with-realistic-eyes-carved-wood-walking-stick-cane.md"
     ],
     "updatedAvailable": [],
     "soldUnknown": [],
     "skippedExisting": [
+      "david-doucette-white-flower-art",
+      "david-manuel-oregon-bronze-native-american-horse-sculpture",
+      "oleg-stavrowsky-rustic-framed-painting",
       "david-manuel-oregon-bronze-teacher-native-american-sculpture",
+      "russian-saint-petersburg-lacquer-box",
       "lee-cable-gouache-gilt-framed-great-horned-owls",
       "david-manuel-oregon-bronze-in-my-fathers-honor-sculpture",
       "david-manual-oregon-bronze-moocher-sculpture",
@@ -78,7 +78,6 @@
       "carved-wood-dog-or-wolf-head-walking-stick-hook-cane",
       "canada-goose-decoy-head-walking-stick-cane",
       "dog-head-carved-bone-corkscrew-gadget-walking-stick",
-      "anri-italy-ulrich-bernardi-shepherd-with-stick-nativity-figurine",
       "anri-italy-ulrich-bernardi-shepard-boy-with-lamb-nativity-figurine",
       "anri-italy-ulrich-bernardi-baby-jesus-nativity-figurine",
       "anri-italy-ulrich-bernardi-joseph-nativity-figurine",
@@ -87,7 +86,6 @@
       "royal-danube-romanian-crystal-bacchus-etched-grape-leaves-wine-glass",
       "anri-italy-ulrich-bernardi-wiseman-king-melchior-gilt-wood-nativity-figurine",
       "anri-italy-3-wisemen-king-balthasar-ulrich-bernardi-gilt-wood-nativity-4-figurine",
-      "goebel-nativity-barn",
       "federico-del-campo-ornate-gilt-frame-venice-canal-antique-oil-painting",
       "waterford-cut-diamond-crystal-alana-water-goblet-6-7-8-glass",
       "ray-bradbury-signed-1st-edition-2001-morrow-illustrated-man-book-1",
@@ -105,7 +103,6 @@
       "steinbach-drummer-nutcracker",
       "henry-alken-fores-hunting-sketches-plate-3-the-right-wrong-sort",
       "anri-wood-madonna-christ-child",
-      "hand-carved-wooden-mask-mexican-mayan-aztec-mask-and-calendar",
       "waterford-crystal-12-days-of-christmas-calling-birds-champagne-flute",
       "napoleon-miniature-gilt-framed-porcelain-painting",
       "wally-schwab-pacific-nw-stoneware-studio-pottery-small-pot-or-punch-cup-set-of-5",
@@ -191,7 +188,9 @@
     "created": []
   },
   "amnw": {
-    "created": [],
+    "created": [
+      "antique-keris-knives-and-daggers"
+    ],
     "checked": 25
   },
   "estateSales": {

@@ -16,7 +16,7 @@ source:
 publishDate: "2026-10-18"
 shopUrl: https://shop.garygermer.com/products/anri-italy-ulrich-bernardi-shepherd-with-stick-nativity-figurine
 price: "$100.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/anri-italy-ulrich-bernardi-shepherd-with-stick-nativity-figurine/anri-italy-ulrich-bernardi-shepherd-with-stick-nativity-figurine-01-900.webp
   srcset900: /assets/images/blog/anri-italy-ulrich-bernardi-shepherd-with-stick-nativity-figurine/anri-italy-ulrich-bernardi-shepherd-with-stick-nativity-figurine-01-900.webp

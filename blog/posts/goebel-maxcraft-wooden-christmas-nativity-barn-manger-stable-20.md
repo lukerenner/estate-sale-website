@@ -16,7 +16,7 @@ source:
 publishDate: "2026-10-09"
 shopUrl: https://shop.garygermer.com/products/goebel-nativity-barn
 price: "$85.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/goebel-maxcraft-wooden-christmas-nativity-barn-manger-stable-20/goebel-maxcraft-wooden-christmas-nativity-barn-manger-stable-20-01-900.webp
   srcset900: /assets/images/blog/goebel-maxcraft-wooden-christmas-nativity-barn-manger-stable-20/goebel-maxcraft-wooden-christmas-nativity-barn-manger-stable-20-01-900.webp

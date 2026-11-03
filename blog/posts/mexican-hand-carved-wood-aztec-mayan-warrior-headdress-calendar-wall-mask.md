@@ -16,7 +16,7 @@ source:
 publishDate: "2026-10-08"
 shopUrl: https://shop.garygermer.com/products/hand-carved-wooden-mask-mexican-mayan-aztec-mask-and-calendar
 price: "$65.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/mexican-hand-carved-wood-aztec-mayan-warrior-headdress-calendar-wall-mask/mexican-hand-carved-wood-aztec-mayan-warrior-headdress-calendar-wall-mask-01-900.webp
   srcset900: /assets/images/blog/mexican-hand-carved-wood-aztec-mayan-warrior-headdress-calendar-wall-mask/mexican-hand-carved-wood-aztec-mayan-warrior-headdress-calendar-wall-mask-01-900.webp
