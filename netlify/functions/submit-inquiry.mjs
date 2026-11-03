@@ -247,6 +247,15 @@ export default async (req) => {
   const ip = req.headers.get("x-nf-client-connection-ip") || "";
   const turnstile = await verifyTurnstile(formData.get(TURNSTILE_FIELD), ip);
 
+  // No token at all, with Turnstile configured, means the POST didn't come
+  // from our widget. An explicit error (not a silent success) so a genuine
+  // visitor who submitted before the widget finished, or has JavaScript off,
+  // knows to retry or use the phone/email.
+  if (turnstile === "missing") {
+    console.warn("Rejected submission with no Turnstile token:", JSON.stringify({ form: formData.get("form"), email: formData.get("email") }));
+    return respond(req, 400, { error: "We couldn't verify your submission was sent from our website." });
+  }
+
   // Same treatment as the honeypot for everything below — a silent drop, so
   // a bot can't tune around the thresholds. The reason is logged (Netlify
   // function logs only, never shown to the sender) so a false positive can

@@ -15,11 +15,14 @@
 //                    what local dev and any pre-setup deploy get.
 //   token present  — verified against Cloudflare. A pass clears the
 //                    submission; a fail is treated as spam.
-//   token absent   — the visitor has JavaScript off (the forms still submit
-//                    natively without it), so there's no widget to produce a
-//                    token. NOT an automatic rejection — that would silently
-//                    lock out a real person. The caller falls back to the
-//                    heuristics instead.
+//   token absent   — with a secret configured, every real browser on the
+//                    site has the widget and sends a token, so a POST without
+//                    one is a script talking to the endpoint directly (the
+//                    Nov 2026 flood: ~340 plausible-English rows with a
+//                    forged Referer, which sailed through the heuristics).
+//                    Reported as "missing"; the caller turns it away with a
+//                    visible error rather than a silent drop, so the rare
+//                    no-JS or too-fast human can retry or email instead.
 const VERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
 export const TOKEN_FIELD = "cf-turnstile-response";
 
@@ -39,11 +42,12 @@ export function isConfigured() {
   return Boolean(process.env.TURNSTILE_SECRET_KEY);
 }
 
-// Returns "pass" | "fail" | "skipped". Never throws: if Cloudflare is
+// Returns "pass" | "fail" | "missing" | "skipped". Never throws: if Cloudflare is
 // unreachable we fail open to "skipped" and let the heuristics decide, rather
 // than dropping real inquiries during someone else's outage.
 export async function verify(token, ip) {
-  if (!isConfigured() || !token) return "skipped";
+  if (!isConfigured()) return "skipped";
+  if (!token) return "missing";
 
   const body = new URLSearchParams({ secret: process.env.TURNSTILE_SECRET_KEY, response: token });
   if (ip) body.set("remoteip", ip);

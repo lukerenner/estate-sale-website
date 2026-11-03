@@ -63,7 +63,8 @@ function log so false positives are findable.
    `script.js` mounts an `interaction-only` widget on every inquiry form, so
    a real visitor never sees a challenge. Needs `TURNSTILE_SITE_KEY` (build,
    read by `_data/turnstile.js`) and `TURNSTILE_SECRET_KEY` (function). With
-   either unset, no widget is emitted and the other layers carry on alone.
+   either unset, no widget is emitted and the other layers carry on alone. With the secret set, a POST with no
+   token at all is rejected outright (400): only a script skips the widget.
 3. **Origin check** (`lib/spam.mjs`) — a POST with no same-host `Origin` or
    `Referer` didn't come from a browser on this site. This is the one that
    stops a script hitting `/api/submit-inquiry` directly.
