@@ -16,7 +16,7 @@ source:
 publishDate: "2026-07-19"
 shopUrl: https://shop.garygermer.com/products/bodum-carsten-jorgensen-ottoni-green-finial-stainless-18-10-tea-kettle
 price: "$125.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/bodum-carsten-jorgensen-ottoni-green-finial-stainless-18-10-tea-kettle/bodum-carsten-jorgensen-ottoni-green-finial-stainless-18-10-tea-kettle-01-900.webp
   srcset900: /assets/images/blog/bodum-carsten-jorgensen-ottoni-green-finial-stainless-18-10-tea-kettle/bodum-carsten-jorgensen-ottoni-green-finial-stainless-18-10-tea-kettle-01-900.webp

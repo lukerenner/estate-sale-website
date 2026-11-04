@@ -16,7 +16,7 @@ source:
 publishDate: "2026-11-03"
 shopUrl: https://shop.garygermer.com/products/stained-glass-lamp
 price: "$800.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/tiffany-style-figural-native-american-bronze-and-stained-glass-lamp/tiffany-style-figural-native-american-bronze-and-stained-glass-lamp-01-900.webp
   srcset900: /assets/images/blog/tiffany-style-figural-native-american-bronze-and-stained-glass-lamp/tiffany-style-figural-native-american-bronze-and-stained-glass-lamp-01-900.webp
