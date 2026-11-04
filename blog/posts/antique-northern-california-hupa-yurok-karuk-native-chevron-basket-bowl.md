@@ -16,7 +16,7 @@ source:
 publishDate: "2026-10-02"
 shopUrl: https://shop.garygermer.com/products/antique-northern-california-hupa-yurok-karuk-native-chevron-basket-bowl
 price: "$295.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/antique-northern-california-hupa-yurok-karuk-native-chevron-basket-bowl/antique-northern-california-hupa-yurok-karuk-native-chevron-basket-bowl-01-900.webp
   srcset900: /assets/images/blog/antique-northern-california-hupa-yurok-karuk-native-chevron-basket-bowl/antique-northern-california-hupa-yurok-karuk-native-chevron-basket-bowl-01-900.webp

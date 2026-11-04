@@ -1,12 +1,13 @@
 {
-  "ranAt": "2026-11-03T01:56:30.446Z",
+  "ranAt": "2026-11-04T02:51:50.369Z",
   "shop": {
-    "created": [],
+    "created": [
+      "david-manuel-oregon-bronze-chief-looking-glass-native-american-sculpture",
+      "tiffany-style-figural-native-american-bronze-and-stained-glass-lamp"
+    ],
     "updatedSold": [
-      "anri-italy-ulrich-bernardi-shepherd-with-stick-nativity-figurine.md",
-      "goebel-maxcraft-wooden-christmas-nativity-barn-manger-stable-20.md",
-      "mexican-hand-carved-wood-aztec-mayan-warrior-headdress-calendar-wall-mask.md",
-      "victorian-bulldog-dog-head-with-realistic-eyes-carved-wood-walking-stick-cane.md"
+      "antique-northern-california-hupa-yurok-karuk-native-chevron-basket-bowl.md",
+      "versace-rosenthal-marqueterie-black-24k-gold-baroque-7-1-4-bread-and-butter-plate.md"
     ],
     "updatedAvailable": [],
     "soldUnknown": [],
@@ -36,7 +37,6 @@
       "christofle-fine-crystal-albi-glassware-water-goblet-set-of-3",
       "russian-ivan-aivazovsky-ship-at-sea-at-night-hand-painted-lacquer-box",
       "versace-rosenthal-marqueterie-black-24k-gold-baroque",
-      "versace-rosenthal-marqueterie-black-24k-gold-baroque-7-1-4-bread-butter-plate",
       "heritage-furniture-classic-server",
       "frederick-cooper-safari-lamp",
       "russian-fairy-tale-mstera-trinket-box",
@@ -106,7 +106,6 @@
       "waterford-crystal-12-days-of-christmas-calling-birds-champagne-flute",
       "napoleon-miniature-gilt-framed-porcelain-painting",
       "wally-schwab-pacific-nw-stoneware-studio-pottery-small-pot-or-punch-cup-set-of-5",
-      "antique-northern-california-hupa-yurok-karuk-native-chevron-basket-bowl",
       "schimmel-piano",
       "carl-malmsten-afors-mobel-fabriks-sweden-1957-dining-room-set",
       "josephine-miniature-antique-painting-in-ornate-gilt-frame",
@@ -188,10 +187,8 @@
     "created": []
   },
   "amnw": {
-    "created": [
-      "antique-keris-knives-and-daggers"
-    ],
-    "checked": 25
+    "created": [],
+    "checked": 24
   },
   "estateSales": {
     "created": [],

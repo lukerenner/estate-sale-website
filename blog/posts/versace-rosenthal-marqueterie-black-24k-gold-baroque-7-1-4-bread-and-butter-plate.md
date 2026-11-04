@@ -16,7 +16,7 @@ source:
 publishDate: "2026-10-29"
 shopUrl: https://shop.garygermer.com/products/versace-rosenthal-marqueterie-black-24k-gold-baroque-7-1-4-bread-butter-plate
 price: "$70.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/versace-rosenthal-marqueterie-black-24k-gold-baroque-7-1-4-bread-and-butter-plate/versace-rosenthal-marqueterie-black-24k-gold-baroque-7-1-4-bread-and-butter-plate-01-900.webp
   srcset900: /assets/images/blog/versace-rosenthal-marqueterie-black-24k-gold-baroque-7-1-4-bread-and-butter-plate/versace-rosenthal-marqueterie-black-24k-gold-baroque-7-1-4-bread-and-butter-plate-01-900.webp
