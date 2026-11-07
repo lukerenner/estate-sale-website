@@ -16,7 +16,7 @@ source:
 publishDate: "2026-10-18"
 shopUrl: https://shop.garygermer.com/products/anri-italy-ulrich-bernardi-shepard-boy-with-lamb-nativity-figurine
 price: "$95.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/anri-italy-ulrich-bernardi-shepherd-boy-with-lamb-christmas-nativity-figurine/anri-italy-ulrich-bernardi-shepherd-boy-with-lamb-christmas-nativity-figurine-01-900.webp
   srcset900: /assets/images/blog/anri-italy-ulrich-bernardi-shepherd-boy-with-lamb-christmas-nativity-figurine/anri-italy-ulrich-bernardi-shepherd-boy-with-lamb-christmas-nativity-figurine-01-900.webp

@@ -1,18 +1,34 @@
 {
-  "ranAt": "2026-11-06T00:15:25.497Z",
+  "ranAt": "2026-11-07T00:59:03.663Z",
   "shop": {
     "created": [
-      "bamboo-root-snake-rattle-crook-handle-umbrella-gadget-walking-stick-cane",
-      "victorian-natural-bone-nob-handle-wood-swagger-walking-stick-cane",
-      "antique-natural-root-cane-bird-head-beak-handle-carved-walking-stick",
-      "joe-burrow-western-lost-and-found-bronze-horse-and-cowboy-sculpture"
+      "mike-neufeld-hand-turned-segmented-wood-11-decanter-style-vase",
+      "mike-neufeld-hand-turned-segmented-wood-southwest-style-10-tall-vessel-vase-ii",
+      "carved-wood-3d-spiral-twist-crook-handle-walking-stick-shepherd-cane",
+      "milton-mike-neufeld-segmented-checkerboard-hand-turned-wood-22-tall-vessel-vase",
+      "lorenzo-e-ghiglieri-inuit-alaskan-kayak-hunter-oil-painting-1976",
+      "japanese-imari-arita-ware-porcelain-meiji-8-1-2-salad-plate-set-of-6",
+      "milton-mike-neufeld-segmented-hand-turned-wood-16-tall-vessel-vase",
+      "mike-neufeld-hand-turned-segmented-wood-southwest-style-10-tall-vessel-vase",
+      "antique-curved-bovine-horn-handle-wood-walking-stick-cane",
+      "ulla-sutton-denmark-iridescent-studio-art-pottery-lidded-round-box-jar",
+      "chinese-swatow-ware-green-blue-celadon-ming-style-11-1-4-shallow-bowl-dish",
+      "chinese-qing-blue-and-white-porcelain-swatow-5-1-2-saucer-plate"
     ],
-    "updatedSold": [],
-    "updatedAvailable": [],
+    "updatedSold": [
+      "anri-italy-ulrich-bernardi-shepherd-boy-with-lamb-christmas-nativity-figurine.md"
+    ],
+    "updatedAvailable": [
+      "tiffany-style-figural-native-american-bronze-and-stained-glass-lamp.md"
+    ],
     "soldUnknown": [],
     "skippedExisting": [
+      "walking-stick-cane-copy",
+      "victorian-bone-handle-wood-swagger-walking-stick-cane",
       "philip-laverne-coffee-table",
       "david-manuel-oregon-bronze-chief-looking-glass-native-american-sculpture",
+      "carved-wood-folk-art-cane",
+      "joe-burrow-western-lost-and-found-bronze-horse-cowboy-sculpture",
       "david-doucette-white-flower-art",
       "david-manuel-oregon-bronze-native-american-horse-sculpture",
       "oleg-stavrowsky-rustic-framed-painting",
@@ -30,7 +46,6 @@
       "clean-wwii-u-s-navy-31-spyglass-1942-qm-mark-i-16-power-bu-ships-telescope",
       "russian-saint-petersburg-hand-painted-lacquer-box-2",
       "drexel-king-sized-bedframe",
-      "harden-dresser",
       "drexel-heritage-dresser",
       "nice-vintage-carboloy-1065-m2-66-2pc-fly-fishing-rod-copy",
       "nice-clean-lamiglas-1332t-76-line-10-30lbs-fly-fishing-rod",
@@ -80,7 +95,6 @@
       "carved-wood-dog-or-wolf-head-walking-stick-hook-cane",
       "canada-goose-decoy-head-walking-stick-cane",
       "dog-head-carved-bone-corkscrew-gadget-walking-stick",
-      "anri-italy-ulrich-bernardi-shepard-boy-with-lamb-nativity-figurine",
       "anri-italy-ulrich-bernardi-baby-jesus-nativity-figurine",
       "anri-italy-ulrich-bernardi-joseph-nativity-figurine",
       "anri-italy-3-wisemen-king-balthasar-ulrich-bernardi-gilt-wood-nativity-4-figurine-1",
