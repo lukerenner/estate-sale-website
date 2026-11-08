@@ -16,7 +16,7 @@ source:
 publishDate: "2026-10-02"
 shopUrl: https://shop.garygermer.com/products/waterford-crystal-2003-songs-of-christmas-music-box
 price: "$45.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/waterford-crystal-2003-songs-of-christmas-silver-bells-music-box/waterford-crystal-2003-songs-of-christmas-silver-bells-music-box-01-900.webp
   srcset900: /assets/images/blog/waterford-crystal-2003-songs-of-christmas-silver-bells-music-box/waterford-crystal-2003-songs-of-christmas-silver-bells-music-box-01-900.webp

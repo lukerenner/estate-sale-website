@@ -1,28 +1,35 @@
 {
-  "ranAt": "2026-11-07T00:59:03.663Z",
+  "ranAt": "2026-11-08T01:49:49.608Z",
   "shop": {
     "created": [
-      "mike-neufeld-hand-turned-segmented-wood-11-decanter-style-vase",
-      "mike-neufeld-hand-turned-segmented-wood-southwest-style-10-tall-vessel-vase-ii",
-      "carved-wood-3d-spiral-twist-crook-handle-walking-stick-shepherd-cane",
-      "milton-mike-neufeld-segmented-checkerboard-hand-turned-wood-22-tall-vessel-vase",
-      "lorenzo-e-ghiglieri-inuit-alaskan-kayak-hunter-oil-painting-1976",
-      "japanese-imari-arita-ware-porcelain-meiji-8-1-2-salad-plate-set-of-6",
-      "milton-mike-neufeld-segmented-hand-turned-wood-16-tall-vessel-vase",
-      "mike-neufeld-hand-turned-segmented-wood-southwest-style-10-tall-vessel-vase",
-      "antique-curved-bovine-horn-handle-wood-walking-stick-cane",
-      "ulla-sutton-denmark-iridescent-studio-art-pottery-lidded-round-box-jar",
-      "chinese-swatow-ware-green-blue-celadon-ming-style-11-1-4-shallow-bowl-dish",
-      "chinese-qing-blue-and-white-porcelain-swatow-5-1-2-saucer-plate"
+      "baccarat-france-narcisse-crystal-water-goblet-7-1-4-glass",
+      "baccarat-france-narcisse-crystal-red-wine-6-3-4-glass-set-of-2",
+      "baccarat-france-narcisse-champagne-tall-sherbet-coupe-5-3-8-glass",
+      "thomas-turner-antique-inlaid-compactum-wardrobe",
+      "eugene-garin-framed-ship-on-rough-sea-gilt-framed-seascape-print",
+      "murano-hand-blow-glass-gondola-trinket-dish-bowl-paperweight",
+      "murano-italy-glass-2-tone-blue-dolphin-sphere-paperweight-sculpture-v-nason-and-c",
+      "philip-and-kelvin-laverne-1960s-chinoiserie-tao-end-table",
+      "philip-and-kelvin-laverne-tao-end-table",
+      "l-deane-trueblood-playmates-bronze-sculpture-of-three-young-girls",
+      "thomas-turner-antique-inlaid-victorian-dressing-table-or-vanity",
+      "drexel-heritage-heirlooms-collection-large-mahogany-breakfront-china-cabinet"
     ],
     "updatedSold": [
-      "anri-italy-ulrich-bernardi-shepherd-boy-with-lamb-christmas-nativity-figurine.md"
+      "waterford-crystal-2003-songs-of-christmas-silver-bells-music-box.md"
     ],
-    "updatedAvailable": [
-      "tiffany-style-figural-native-american-bronze-and-stained-glass-lamp.md"
-    ],
+    "updatedAvailable": [],
     "soldUnknown": [],
     "skippedExisting": [
+      "mike-neufeld-hand-turned-segmented-wood-11-vase",
+      "mike-neufeld-hand-turned-segmented-wood-southwest-style-10-tall-vessel-vase",
+      "carved-wood-spiral-twist-crook-handle-walking-stick-shepherd-cane",
+      "milton-mike-neufeld-segmented-hand-turned-wood-22-tall-vessel-vase",
+      "lorenzo-e-ghiglieri-oil-painting",
+      "japanese-imari-arita-ware-porcelain-salad-plate-set-of-6",
+      "mike-neufeld-segmented-turned-wood-vase",
+      "turned-wood-vase",
+      "walking-stick-cane-1",
       "walking-stick-cane-copy",
       "victorian-bone-handle-wood-swagger-walking-stick-cane",
       "philip-laverne-coffee-table",
@@ -86,6 +93,7 @@
       "emmanuel-villanis-art-nouveau-phryne-bust",
       "christian-lacrois-paris-pink-heart-brooch-pin-in-cest-la-vie-box",
       "waterford-crystal-3-french-hens-12-days-of-christmas-gold-champagne-flute",
+      "ulla-sutton-denmark-iridescent-studio-art-pottery-box-with-lid-eye-decor",
       "wally-schwab-monumental-pottery-round-serving-tray-with-lid",
       "antique-floral-chased-silver-plate-handle-walking-stick-cane",
       "large-yellow-peking-glass-bowl",
@@ -120,13 +128,14 @@
       "henry-alken-fores-hunting-sketches-plate-3-the-right-wrong-sort",
       "anri-wood-madonna-christ-child",
       "waterford-crystal-12-days-of-christmas-calling-birds-champagne-flute",
+      "chinese-celadon-pottery-shallow-bowl",
       "napoleon-miniature-gilt-framed-porcelain-painting",
       "wally-schwab-pacific-nw-stoneware-studio-pottery-small-pot-or-punch-cup-set-of-5",
       "schimmel-piano",
       "carl-malmsten-afors-mobel-fabriks-sweden-1957-dining-room-set",
       "josephine-miniature-antique-painting-in-ornate-gilt-frame",
       "demitasse-cup-saucer-set",
-      "waterford-crystal-2003-songs-of-christmas-music-box",
+      "chinese-qing-blue-white-porcelain-swatow-plate",
       "kieninger-mantel-clock",
       "beethoven-bronze-cast-of-franz-klein-life-mask",
       "h-alken-fores-hunting-sketches-plate-2",
@@ -199,7 +208,6 @@
     ]
   },
   "video": {
-    "failed": true,
     "created": []
   },
   "amnw": {
