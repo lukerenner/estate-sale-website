@@ -1,26 +1,22 @@
 {
-  "ranAt": "2026-11-08T01:49:49.608Z",
+  "ranAt": "2026-11-08T23:16:46.476Z",
   "shop": {
     "created": [
-      "baccarat-france-narcisse-crystal-water-goblet-7-1-4-glass",
-      "baccarat-france-narcisse-crystal-red-wine-6-3-4-glass-set-of-2",
+      "lalique-crystal-ichor-gingko-leaf-fan-sculpture-vase",
+      "murano-millefiori-rainbow-glass-dolphin-paperweight-sculpture",
+      "lalique-france-chrysalide-nude-winged-butterfly-fairy-11-crystal-vase"
+    ],
+    "updatedSold": [],
+    "updatedAvailable": [],
+    "soldUnknown": [],
+    "skippedExisting": [
+      "baccarat-france-narcisse-crystal-water-goblet-7-1-4-glass-copy",
+      "baccarat-france-narcisse-white-wine-6-3-4glass",
       "baccarat-france-narcisse-champagne-tall-sherbet-coupe-5-3-8-glass",
       "thomas-turner-antique-inlaid-compactum-wardrobe",
       "eugene-garin-framed-ship-on-rough-sea-gilt-framed-seascape-print",
       "murano-hand-blow-glass-gondola-trinket-dish-bowl-paperweight",
-      "murano-italy-glass-2-tone-blue-dolphin-sphere-paperweight-sculpture-v-nason-and-c",
-      "philip-and-kelvin-laverne-1960s-chinoiserie-tao-end-table",
-      "philip-and-kelvin-laverne-tao-end-table",
-      "l-deane-trueblood-playmates-bronze-sculpture-of-three-young-girls",
-      "thomas-turner-antique-inlaid-victorian-dressing-table-or-vanity",
-      "drexel-heritage-heirlooms-collection-large-mahogany-breakfront-china-cabinet"
-    ],
-    "updatedSold": [
-      "waterford-crystal-2003-songs-of-christmas-silver-bells-music-box.md"
-    ],
-    "updatedAvailable": [],
-    "soldUnknown": [],
-    "skippedExisting": [
+      "murano-italy-glass-dolphin-paperweight-sculpture",
       "mike-neufeld-hand-turned-segmented-wood-11-vase",
       "mike-neufeld-hand-turned-segmented-wood-southwest-style-10-tall-vessel-vase",
       "carved-wood-spiral-twist-crook-handle-walking-stick-shepherd-cane",
@@ -32,6 +28,9 @@
       "walking-stick-cane-1",
       "walking-stick-cane-copy",
       "victorian-bone-handle-wood-swagger-walking-stick-cane",
+      "philip-and-kelvin-laverne-chinoiserie-side-table",
+      "philip-and-kelvin-laverne-side-table",
+      "ldeane-trueblood-playmates-bronze-sculpture-of-three-young-girls",
       "philip-laverne-coffee-table",
       "david-manuel-oregon-bronze-chief-looking-glass-native-american-sculpture",
       "carved-wood-folk-art-cane",
@@ -54,6 +53,8 @@
       "russian-saint-petersburg-hand-painted-lacquer-box-2",
       "drexel-king-sized-bedframe",
       "drexel-heritage-dresser",
+      "thomas-turner-dressing-table",
+      "drexel-heritage-heirloom-collection-large-mahogany-china-cabinet",
       "nice-vintage-carboloy-1065-m2-66-2pc-fly-fishing-rod-copy",
       "nice-clean-lamiglas-1332t-76-line-10-30lbs-fly-fishing-rod",
       "nice-clean-lamiglas-56-1pc-bfc-5610-rt-fishing-rod-copy",
