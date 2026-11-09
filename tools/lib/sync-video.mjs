@@ -38,6 +38,34 @@ async function fetchFeedXml({ attempts = 3, delayMs = 4000 } = {}) {
   throw new Error(`YouTube RSS fetch failed: ${lastStatus} (tried ${attempts}x, both feed URLs)`);
 }
 
+// Fallback when YouTube's RSS endpoint is down (it 404s/500s for every channel during outages, seen 2026-11-08):
+// read the newest upload ids off the channel's public /videos page, then each NEW video's own watch page for
+// title / upload date / full description. Only ids not already posted are fetched, capped at the RSS window (15).
+const UA = { "user-agent": "Mozilla/5.0" };
+const decodeJsonStr = (str) => { try { return JSON.parse(`"${str}"`); } catch { return str; } };
+const decodeHtml = (str) => str.replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+
+async function scrapeEntries(existingIds, { limit = 15 } = {}) {
+  const res = await fetch(`https://www.youtube.com/channel/${CHANNEL_ID}/videos`, { headers: UA });
+  if (!res.ok) throw new Error(`YouTube channel page fetch failed: ${res.status}`);
+  const html = await res.text();
+  const ids = [...new Set([...html.matchAll(/"videoId":"([A-Za-z0-9_-]{11})"/g)].map((m) => m[1]))].slice(0, limit);
+  if (!ids.length) throw new Error("YouTube channel page had no video ids");
+  const entries = [];
+  for (const id of ids) {
+    if (existingIds.has(id)) continue;
+    const r = await fetch(`https://www.youtube.com/watch?v=${id}`, { headers: UA });
+    if (!r.ok) continue;
+    const w = await r.text();
+    const title = /<meta property="og:title" content="([^"]*)"/.exec(w)?.[1];
+    const published = /"uploadDate":"([^"]+)"/.exec(w)?.[1];
+    const desc = /"shortDescription":"((?:[^"\\]|\\.)*)"/.exec(w)?.[1];
+    if (!title || !published) continue;
+    entries.push({ id, title: decodeHtml(title), description: desc ? decodeJsonStr(desc).trim() : "", published });
+  }
+  return entries;
+}
+
 function yamlString(str) {
   return '"' + String(str).replace(/\\/g, "\\\\").replace(/"/g, '\\"') + '"';
 }
@@ -129,9 +157,14 @@ export async function syncVideo({ postsDir = "blog/posts", imagesRoot = "assets/
   if (!existsSync(postsDir)) mkdirSync(postsDir, { recursive: true });
   if (!existsSync(tmpDir)) mkdirSync(tmpDir, { recursive: true });
 
-  const xml = await fetchFeedXml();
-  const entries = parseFeedEntries(xml);
   const existingIds = existingVideoIds(postsDir);
+  let entries;
+  try {
+    entries = parseFeedEntries(await fetchFeedXml());
+  } catch (rssErr) {
+    console.warn(`${rssErr.message}; falling back to scraping the channel page`);
+    entries = await scrapeEntries(existingIds);
+  }
   const existingSlugs = readdirSync(postsDir).filter((f) => f.endsWith(".md")).map((f) => f.replace(/\.md$/, ""));
 
   for (const entry of entries) {
