@@ -17,6 +17,26 @@ import { slugify } from "./suggest-slug.mjs";
 // doesn't change.
 export const CHANNEL_ID = "UCKzrAlgXeAFrjsrDZDVok0Q";
 const FEED_URL = `https://www.youtube.com/feeds/videos.xml?channel_id=${CHANNEL_ID}`;
+// Same uploads as a playlist feed (UC... -> UU...). YouTube's RSS endpoint intermittently returns 404 for a
+// channel_id feed that is fine hours later (seen 2026-11-08); try both forms, with retries, before giving up.
+const FEED_URLS = [FEED_URL, `https://www.youtube.com/feeds/videos.xml?playlist_id=UU${CHANNEL_ID.slice(2)}`];
+
+async function fetchFeedXml({ attempts = 3, delayMs = 4000 } = {}) {
+  let lastStatus = "no response";
+  for (let i = 0; i < attempts; i++) {
+    for (const url of FEED_URLS) {
+      try {
+        const res = await fetch(url, { headers: { "user-agent": "Mozilla/5.0 (compatible; blog-sync)" } });
+        if (res.ok) return await res.text();
+        lastStatus = res.status;
+      } catch (e) {
+        lastStatus = e.message;
+      }
+    }
+    if (i < attempts - 1) await new Promise((r) => setTimeout(r, delayMs * (i + 1)));
+  }
+  throw new Error(`YouTube RSS fetch failed: ${lastStatus} (tried ${attempts}x, both feed URLs)`);
+}
 
 function yamlString(str) {
   return '"' + String(str).replace(/\\/g, "\\\\").replace(/"/g, '\\"') + '"';
@@ -109,9 +129,7 @@ export async function syncVideo({ postsDir = "blog/posts", imagesRoot = "assets/
   if (!existsSync(postsDir)) mkdirSync(postsDir, { recursive: true });
   if (!existsSync(tmpDir)) mkdirSync(tmpDir, { recursive: true });
 
-  const res = await fetch(FEED_URL);
-  if (!res.ok) throw new Error(`YouTube RSS fetch failed: ${res.status}`);
-  const xml = await res.text();
+  const xml = await fetchFeedXml();
   const entries = parseFeedEntries(xml);
   const existingIds = existingVideoIds(postsDir);
   const existingSlugs = readdirSync(postsDir).filter((f) => f.endsWith(".md")).map((f) => f.replace(/\.md$/, ""));
