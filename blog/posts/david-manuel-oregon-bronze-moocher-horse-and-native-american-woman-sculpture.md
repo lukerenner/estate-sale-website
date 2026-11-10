@@ -16,7 +16,7 @@ source:
 publishDate: "2026-10-31"
 shopUrl: https://shop.garygermer.com/products/david-manual-oregon-bronze-moocher-sculpture
 price: "$675.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/david-manuel-oregon-bronze-moocher-horse-and-native-american-woman-sculpture/david-manuel-oregon-bronze-moocher-horse-and-native-american-woman-sculpture-01-900.webp
   srcset900: /assets/images/blog/david-manuel-oregon-bronze-moocher-horse-and-native-american-woman-sculpture/david-manuel-oregon-bronze-moocher-horse-and-native-american-woman-sculpture-01-900.webp

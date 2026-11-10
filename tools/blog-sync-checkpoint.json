@@ -1,18 +1,19 @@
 {
-  "ranAt": "2026-11-08T23:16:46.476Z",
+  "ranAt": "2026-11-10T03:55:26.174Z",
   "shop": {
-    "created": [
-      "lalique-crystal-ichor-gingko-leaf-fan-sculpture-vase",
-      "murano-millefiori-rainbow-glass-dolphin-paperweight-sculpture",
-      "lalique-france-chrysalide-nude-winged-butterfly-fairy-11-crystal-vase"
+    "created": [],
+    "updatedSold": [
+      "david-manuel-oregon-bronze-moocher-horse-and-native-american-woman-sculpture.md"
     ],
-    "updatedSold": [],
     "updatedAvailable": [],
     "soldUnknown": [],
     "skippedExisting": [
+      "lalique-crystal-ichor-shell-vase",
       "baccarat-france-narcisse-crystal-water-goblet-7-1-4-glass-copy",
       "baccarat-france-narcisse-white-wine-6-3-4glass",
       "baccarat-france-narcisse-champagne-tall-sherbet-coupe-5-3-8-glass",
+      "murano-millefiori-rainbow-glass-dolphin-paperweight-sculpture",
+      "lalique-france-chyrsalide-vase",
       "thomas-turner-antique-inlaid-compactum-wardrobe",
       "eugene-garin-framed-ship-on-rough-sea-gilt-framed-seascape-print",
       "murano-hand-blow-glass-gondola-trinket-dish-bowl-paperweight",
@@ -42,7 +43,6 @@
       "russian-saint-petersburg-lacquer-box",
       "lee-cable-gouache-gilt-framed-great-horned-owls",
       "david-manuel-oregon-bronze-in-my-fathers-honor-sculpture",
-      "david-manual-oregon-bronze-moocher-sculpture",
       "stained-glass-lamp",
       "larry-braden-manuel-catch-me-if-you-can-bronze-fishing-sculpture",
       "auth-original-ww2-italian-army-model-1891-carcano-bayonet-leather-scabbard",
