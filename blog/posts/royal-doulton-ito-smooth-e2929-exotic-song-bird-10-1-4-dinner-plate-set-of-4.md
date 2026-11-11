@@ -16,7 +16,7 @@ source:
 publishDate: "2026-08-29"
 shopUrl: https://shop.garygermer.com/products/royal-doulton-ito-smooth-e2929-exotic-bird-10-1-8-dinner-plate-set-of-4
 price: "$95.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/royal-doulton-ito-smooth-e2929-exotic-song-bird-10-1-4-dinner-plate-set-of-4/royal-doulton-ito-smooth-e2929-exotic-song-bird-10-1-4-dinner-plate-set-of-4-01-900.webp
   srcset900: /assets/images/blog/royal-doulton-ito-smooth-e2929-exotic-song-bird-10-1-4-dinner-plate-set-of-4/royal-doulton-ito-smooth-e2929-exotic-song-bird-10-1-4-dinner-plate-set-of-4-01-900.webp

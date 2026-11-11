@@ -16,7 +16,7 @@ source:
 publishDate: "2026-11-08"
 shopUrl: https://shop.garygermer.com/products/lalique-crystal-ichor-shell-vase
 price: "$975.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/lalique-crystal-ichor-gingko-leaf-fan-sculpture-vase/lalique-crystal-ichor-gingko-leaf-fan-sculpture-vase-01-900.webp
   srcset900: /assets/images/blog/lalique-crystal-ichor-gingko-leaf-fan-sculpture-vase/lalique-crystal-ichor-gingko-leaf-fan-sculpture-vase-01-900.webp

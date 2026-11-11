@@ -16,7 +16,7 @@ source:
 publishDate: "2026-09-30"
 shopUrl: https://shop.garygermer.com/products/mcm-cabinet
 price: "$750.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/scandinavian-mid-century-modern-double-bodied-cabinet/scandinavian-mid-century-modern-double-bodied-cabinet-01-900.webp
   srcset900: /assets/images/blog/scandinavian-mid-century-modern-double-bodied-cabinet/scandinavian-mid-century-modern-double-bodied-cabinet-01-900.webp

@@ -1,14 +1,24 @@
 {
-  "ranAt": "2026-11-10T03:55:26.174Z",
+  "ranAt": "2026-11-11T00:44:19.125Z",
   "shop": {
-    "created": [],
+    "created": [
+      "dino-rosin-murano-art-glass-turtle-shell",
+      "drexel-heritage-heirlooms-collection-mahogany-secretary-desk-and-bookshelf",
+      "dino-rosin-seed-of-life-abstract-murano-art-glass-sculpture",
+      "dino-rosin-murano-art-glass-abstract-sculpture",
+      "dino-rosin-murano-art-glass-angel-fish",
+      "dino-rosin-murano-art-glass-turtle",
+      "dino-rosin-chalcedony-murano-art-glass-sculpture"
+    ],
     "updatedSold": [
-      "david-manuel-oregon-bronze-moocher-horse-and-native-american-woman-sculpture.md"
+      "david-doucette-white-paper-flower-3d-shadow-box-framed-media-wall-art.md",
+      "lalique-crystal-ichor-gingko-leaf-fan-sculpture-vase.md",
+      "royal-doulton-ito-smooth-e2929-exotic-song-bird-10-1-4-dinner-plate-set-of-4.md",
+      "scandinavian-mid-century-modern-double-bodied-cabinet.md"
     ],
     "updatedAvailable": [],
     "soldUnknown": [],
     "skippedExisting": [
-      "lalique-crystal-ichor-shell-vase",
       "baccarat-france-narcisse-crystal-water-goblet-7-1-4-glass-copy",
       "baccarat-france-narcisse-white-wine-6-3-4glass",
       "baccarat-france-narcisse-champagne-tall-sherbet-coupe-5-3-8-glass",
@@ -36,7 +46,6 @@
       "david-manuel-oregon-bronze-chief-looking-glass-native-american-sculpture",
       "carved-wood-folk-art-cane",
       "joe-burrow-western-lost-and-found-bronze-horse-cowboy-sculpture",
-      "david-doucette-white-flower-art",
       "david-manuel-oregon-bronze-native-american-horse-sculpture",
       "oleg-stavrowsky-rustic-framed-painting",
       "david-manuel-oregon-bronze-teacher-native-american-sculpture",
@@ -144,7 +153,6 @@
       "ram-statue",
       "kevin-peters-sea-otter-sculpture",
       "brown-jordan-three-piece-pomegranate-patio-set",
-      "mcm-cabinet",
       "pilchuk-art-glass-bowl",
       "baccarat-glass-sculpture",
       "herend-hungary-porcelain-trinket-dish-tray",

@@ -16,7 +16,7 @@ source:
 publishDate: "2026-11-01"
 shopUrl: https://shop.garygermer.com/products/david-doucette-white-flower-art
 price: "$975.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/david-doucette-white-paper-flower-3d-shadow-box-framed-media-wall-art/david-doucette-white-paper-flower-3d-shadow-box-framed-media-wall-art-01-900.webp
   srcset900: /assets/images/blog/david-doucette-white-paper-flower-3d-shadow-box-framed-media-wall-art/david-doucette-white-paper-flower-3d-shadow-box-framed-media-wall-art-01-900.webp
