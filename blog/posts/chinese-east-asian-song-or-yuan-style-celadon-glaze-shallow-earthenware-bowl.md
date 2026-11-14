@@ -16,7 +16,7 @@ source:
 publishDate: "2026-09-13"
 shopUrl: https://shop.garygermer.com/products/chinese-east-asian-song-or-yuan-style-celadon-glaze-shallow-earthenware-bowl
 price: "$85.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/chinese-east-asian-song-or-yuan-style-celadon-glaze-shallow-earthenware-bowl/chinese-east-asian-song-or-yuan-style-celadon-glaze-shallow-earthenware-bowl-01-900.webp
   srcset900: /assets/images/blog/chinese-east-asian-song-or-yuan-style-celadon-glaze-shallow-earthenware-bowl/chinese-east-asian-song-or-yuan-style-celadon-glaze-shallow-earthenware-bowl-01-900.webp

@@ -1,24 +1,40 @@
 {
-  "ranAt": "2026-11-13T00:46:06.211Z",
+  "ranAt": "2026-11-14T01:59:20.977Z",
   "shop": {
     "created": [
-      "antique-18-19th-c-indonesian-keris-kris-damascus-short-sword-intricately-14",
-      "pink-peking-glass-footed-lobed-room-nesting-lotus-bowl-and-cup-pair",
-      "antique-18-19th-c-indonesian-keris-kris-damascus-short-sword-intricately-15",
-      "antique-18-19th-c-indonesian-keris-kris-damascus-short-sword-intricately-16",
-      "chinese-export-famille-rose-medallion-porcelain-tea-bowl-cup-and-saucer",
-      "antique-18-19th-c-indonesian-keris-kris-damascus-short-sword-intricately-15-8167657242800",
-      "antique-18-19th-c-indonesian-keris-kris-damascus-short-sword-intricately-14-8167649706160",
-      "lalique-crystal-duncan-no-3-nude-dancing-figures-8-perfume-bottle",
-      "dino-rosin-chalcedony-murano-art-glass-sculpture-8166191333552",
-      "drexel-heritage-heirlooms-collection-chippendale-style-curio-cabinet-with-interior-lighting",
-      "dino-rosin-murano-art-glass-twisting-abstract-sculpture",
-      "dino-rosin-large-murano-art-glass-turtle-sculpture"
+      "japanese-imari-porcelain-butter-and-flower-gold-trim-soup-or-rice-bowl-pair",
+      "lalique-clear-crystal-champs-elysees-leaf-18-centerpiece-bowl",
+      "indian-jodhpur-raj-jaswantsingh-hunting-19th-century-gouache-painting",
+      "gold-and-green-enamel-hand-painted-crystal-mcm-style-bowl-set-of-5",
+      "antique-19th-c-indonesian-wood-dog-dagger-ceremonial-short-sword-intricately-14",
+      "antique-18-19th-c-indonesian-pedang-lurus-ceremonial-short-sword-intricately-18",
+      "antique-18-19th-c-indonesian-keris-kris-damascus-short-sword-intricately-15-8168133787824",
+      "persian-emperor-shah-jahan-holding-falcon-mughal-era-antique-painting",
+      "antique-18-19th-c-indonesian-keris-kris-damascus-short-sword-intricately-14-8167771930800",
+      "herend-porcelain-mille-fleurs-thousand-flowers-pink-ribbon-serving-tray-platter",
+      "antique-18-19th-c-indonesian-keris-kris-damascus-short-sword-intricately-15-8167761412272",
+      "dino-rosin-abstract-chalcedony-murano-glass-sculpture",
+      "loredano-rosin-pianeta-murano-art-glass-sculpture"
     ],
-    "updatedSold": [],
+    "updatedSold": [
+      "chinese-east-asian-song-or-yuan-style-celadon-glaze-shallow-earthenware-bowl.md",
+      "ray-williams-pacific-nw-eagle-clan-native-american-carved-wood-totem-pole.md"
+    ],
     "updatedAvailable": [],
-    "soldUnknown": [],
+    "soldUnknown": [
+      "japanese-edo-blue-and-white-porcelain-scholars-soba-choko-noodle-bowl-or-tea-cup.md"
+    ],
     "skippedExisting": [
+      "antique-18-19th-c-indonesian-keris-kris-damascus-short-sword-intricately-18",
+      "pink-peking-glass-footed-bowl-pair",
+      "antique-18-19th-c-indonesian-keris-kris-damascus-short-sword-intricately-17",
+      "antique-18-19th-c-indonesian-keris-kris-damascus-short-sword-intricately-16",
+      "chinese-export-rose-medallion",
+      "antique-18-19th-c-indonesian-keris-kris-damascus-short-sword-intricately-15",
+      "antique-18-19th-c-indonesian-keris-kris-damascus-short-sword-intricately-14",
+      "lalique-crystal-8-perfume-bottle",
+      "dino-rosin-murano-art-glass",
+      "drexel-heritage-heirlooms-collection-curio-cabinet",
       "dino-rosin-murano-art-glass-bullseye-sculpture",
       "dino-rosin-murano-glass-spherical-sculpture",
       "baccarat-france-narcisse-crystal-water-goblet-7-1-4-glass-copy",
@@ -31,10 +47,12 @@
       "eugene-garin-framed-ship-on-rough-sea-gilt-framed-seascape-print",
       "murano-hand-blow-glass-gondola-trinket-dish-bowl-paperweight",
       "murano-italy-glass-dolphin-paperweight-sculpture",
+      "dino-rosin-tall-curly-statue",
       "dino-rosin-murano-art-glass-turtle-shell",
       "mike-neufeld-hand-turned-segmented-wood-11-vase",
       "dino-rosin-murano-glass-cut-gem-with-flower",
       "mike-neufeld-hand-turned-segmented-wood-southwest-style-10-tall-vessel-vase",
+      "dino-turtle",
       "carved-wood-spiral-twist-crook-handle-walking-stick-shepherd-cane",
       "milton-mike-neufeld-segmented-hand-turned-wood-22-tall-vessel-vase",
       "heritage-furniture-heirlooms-collection-secretary-desk",
@@ -139,7 +157,6 @@
       "james-turner-cowboy-western-bronze-statue",
       "iroquois-sweetgrass-round-basket-with-lid",
       "carved-wood-maori-new-zealand-mask",
-      "ray-williams-native-american-carved-wood-totem-pole",
       "rosewood-pot",
       "scrimshaw-save-the-whale-polymer-reproduction-tooth",
       "elk-sterling-silver-turquoise-totem",
@@ -153,7 +170,7 @@
   },
   "amnw": {
     "created": [],
-    "checked": 24
+    "checked": 25
   },
   "estateSales": {
     "created": [],

@@ -16,7 +16,7 @@ source:
 publishDate: "2026-09-24"
 shopUrl: https://shop.garygermer.com/products/ray-williams-native-american-carved-wood-totem-pole
 price: "$375.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/ray-williams-pacific-nw-eagle-clan-native-american-carved-wood-totem-pole/ray-williams-pacific-nw-eagle-clan-native-american-carved-wood-totem-pole-01-900.webp
   srcset900: /assets/images/blog/ray-williams-pacific-nw-eagle-clan-native-american-carved-wood-totem-pole/ray-williams-pacific-nw-eagle-clan-native-american-carved-wood-totem-pole-01-900.webp
