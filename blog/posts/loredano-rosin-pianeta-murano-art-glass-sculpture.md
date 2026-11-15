@@ -16,7 +16,7 @@ source:
 publishDate: "2026-11-13"
 shopUrl: https://shop.garygermer.com/products/dino-rosin-pianeta-or-planet-series-murano-art-glass-sculpture
 price: "$4000.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/loredano-rosin-pianeta-murano-art-glass-sculpture/loredano-rosin-pianeta-murano-art-glass-sculpture-01-900.webp
   srcset900: /assets/images/blog/loredano-rosin-pianeta-murano-art-glass-sculpture/loredano-rosin-pianeta-murano-art-glass-sculpture-01-900.webp
