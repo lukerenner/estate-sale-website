@@ -16,7 +16,7 @@ source:
 publishDate: "2026-07-23"
 shopUrl: https://shop.garygermer.com/products/chinese-dream-stone
 price: "$150.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/chinese-natural-painting-dream-stone-meditational-scholars-siltstone-wood-stand/chinese-natural-painting-dream-stone-meditational-scholars-siltstone-wood-stand-01-900.webp
   srcset900: /assets/images/blog/chinese-natural-painting-dream-stone-meditational-scholars-siltstone-wood-stand/chinese-natural-painting-dream-stone-meditational-scholars-siltstone-wood-stand-01-900.webp

@@ -16,7 +16,7 @@ source:
 publishDate: "2026-11-07"
 shopUrl: https://shop.garygermer.com/products/thomas-turner-antique-inlaid-compactum-wardrobe
 price: "$3000.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/thomas-turner-antique-inlaid-compactum-wardrobe/thomas-turner-antique-inlaid-compactum-wardrobe-01-900.webp
   srcset900: /assets/images/blog/thomas-turner-antique-inlaid-compactum-wardrobe/thomas-turner-antique-inlaid-compactum-wardrobe-01-900.webp

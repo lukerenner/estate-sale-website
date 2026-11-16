@@ -16,7 +16,7 @@ source:
 publishDate: "2026-09-11"
 shopUrl: https://shop.garygermer.com/products/southwest-mountain-barn-house-signed-oil-painting-in-gilt-frame
 price: "$375.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/southwest-mountain-landscape-adobe-house-signed-oil-painting-in-gilt-frame/southwest-mountain-landscape-adobe-house-signed-oil-painting-in-gilt-frame-01-900.webp
   srcset900: /assets/images/blog/southwest-mountain-landscape-adobe-house-signed-oil-painting-in-gilt-frame/southwest-mountain-landscape-adobe-house-signed-oil-painting-in-gilt-frame-01-900.webp

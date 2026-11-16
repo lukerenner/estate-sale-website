@@ -16,7 +16,7 @@ source:
 publishDate: "2026-10-28"
 shopUrl: https://shop.garygermer.com/products/versace-rosenthal-marqueterie-black-24k-gold-baroque-style-coffee-cup-saucer
 price: "$125.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/versace-rosenthal-marqueterie-black-24k-gold-baroque-style-coffee-cup-and-saucer/versace-rosenthal-marqueterie-black-24k-gold-baroque-style-coffee-cup-and-saucer-01-900.webp
   srcset900: /assets/images/blog/versace-rosenthal-marqueterie-black-24k-gold-baroque-style-coffee-cup-and-saucer/versace-rosenthal-marqueterie-black-24k-gold-baroque-style-coffee-cup-and-saucer-01-900.webp

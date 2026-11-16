@@ -16,7 +16,7 @@ source:
 publishDate: "2026-09-10"
 shopUrl: https://shop.garygermer.com/products/waterford-crystal-brass-menorah-holiday-candle-holder-in-original-box
 price: "$295.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/waterford-crystal-and-brass-menorah-holiday-chanukah-candle-holder-original-box/waterford-crystal-and-brass-menorah-holiday-chanukah-candle-holder-original-box-01-900.webp
   srcset900: /assets/images/blog/waterford-crystal-and-brass-menorah-holiday-chanukah-candle-holder-original-box/waterford-crystal-and-brass-menorah-holiday-chanukah-candle-holder-original-box-01-900.webp

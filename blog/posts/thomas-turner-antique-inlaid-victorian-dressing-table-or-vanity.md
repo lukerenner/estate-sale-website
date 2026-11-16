@@ -16,7 +16,7 @@ source:
 publishDate: "2026-11-07"
 shopUrl: https://shop.garygermer.com/products/thomas-turner-dressing-table
 price: "$2500.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/thomas-turner-antique-inlaid-victorian-dressing-table-or-vanity/thomas-turner-antique-inlaid-victorian-dressing-table-or-vanity-01-900.webp
   srcset900: /assets/images/blog/thomas-turner-antique-inlaid-victorian-dressing-table-or-vanity/thomas-turner-antique-inlaid-victorian-dressing-table-or-vanity-01-900.webp
