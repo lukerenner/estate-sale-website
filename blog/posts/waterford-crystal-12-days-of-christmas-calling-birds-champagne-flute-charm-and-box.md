@@ -16,7 +16,7 @@ source:
 publishDate: "2026-10-04"
 shopUrl: https://shop.garygermer.com/products/waterford-crystal-12-days-of-christmas-calling-birds-champagne-flute
 price: "$50.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/waterford-crystal-12-days-of-christmas-calling-birds-champagne-flute-charm-and-box/waterford-crystal-12-days-of-christmas-calling-birds-champagne-flute-charm-and-box-01-900.webp
   srcset900: /assets/images/blog/waterford-crystal-12-days-of-christmas-calling-birds-champagne-flute-charm-and-box/waterford-crystal-12-days-of-christmas-calling-birds-champagne-flute-charm-and-box-01-900.webp
