@@ -16,7 +16,7 @@ source:
 publishDate: "2026-11-07"
 shopUrl: https://shop.garygermer.com/products/baccarat-france-narcisse-white-wine-6-3-4glass
 price: "$240.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/baccarat-france-narcisse-crystal-red-wine-6-3-4-glass-set-of-2/baccarat-france-narcisse-crystal-red-wine-6-3-4-glass-set-of-2-01-900.webp
   srcset900: /assets/images/blog/baccarat-france-narcisse-crystal-red-wine-6-3-4-glass-set-of-2/baccarat-france-narcisse-crystal-red-wine-6-3-4-glass-set-of-2-01-900.webp

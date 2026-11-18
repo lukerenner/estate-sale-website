@@ -16,7 +16,7 @@ source:
 publishDate: "2026-10-27"
 shopUrl: https://shop.garygermer.com/products/leather-tufted-chesterfield-sofa
 price: "$2050.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/burgundy-leather-tufted-chesterfield-sofa/burgundy-leather-tufted-chesterfield-sofa-01-900.webp
   srcset900: /assets/images/blog/burgundy-leather-tufted-chesterfield-sofa/burgundy-leather-tufted-chesterfield-sofa-01-900.webp
