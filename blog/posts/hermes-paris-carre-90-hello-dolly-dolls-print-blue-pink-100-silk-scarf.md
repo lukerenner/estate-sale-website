@@ -16,7 +16,7 @@ source:
 publishDate: "2025-12-07"
 shopUrl: https://shop.garygermer.com/products/hermes-france-carre-90-hello-dolly-silk-scarf
 price: "$250.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/hermes-paris-carre-90-hello-dolly-dolls-print-blue-pink-100-silk-scarf/hermes-paris-carre-90-hello-dolly-dolls-print-blue-pink-100-silk-scarf-01-900.webp
   srcset900: /assets/images/blog/hermes-paris-carre-90-hello-dolly-dolls-print-blue-pink-100-silk-scarf/hermes-paris-carre-90-hello-dolly-dolls-print-blue-pink-100-silk-scarf-01-900.webp
