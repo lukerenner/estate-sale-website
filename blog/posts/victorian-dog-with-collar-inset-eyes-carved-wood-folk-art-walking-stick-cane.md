@@ -16,7 +16,7 @@ source:
 publishDate: "2026-08-12"
 shopUrl: https://shop.garygermer.com/products/dog-head-with-red-eyes-carved-wood-antique-walking-stick-cane
 price: "$395.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/victorian-dog-with-collar-inset-eyes-carved-wood-folk-art-walking-stick-cane/victorian-dog-with-collar-inset-eyes-carved-wood-folk-art-walking-stick-cane-01-900.webp
   srcset900: /assets/images/blog/victorian-dog-with-collar-inset-eyes-carved-wood-folk-art-walking-stick-cane/victorian-dog-with-collar-inset-eyes-carved-wood-folk-art-walking-stick-cane-01-900.webp

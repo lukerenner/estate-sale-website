@@ -16,7 +16,7 @@ source:
 publishDate: "2026-10-30"
 shopUrl: https://shop.garygermer.com/products/drexel-king-sized-bedframe
 price: "$1400.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/drexel-heritage-carved-mahogany-four-poster-king-sized-bedframe/drexel-heritage-carved-mahogany-four-poster-king-sized-bedframe-01-900.webp
   srcset900: /assets/images/blog/drexel-heritage-carved-mahogany-four-poster-king-sized-bedframe/drexel-heritage-carved-mahogany-four-poster-king-sized-bedframe-01-900.webp
