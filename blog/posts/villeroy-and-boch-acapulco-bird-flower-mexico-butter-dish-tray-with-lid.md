@@ -16,7 +16,7 @@ source:
 publishDate: "2026-11-19"
 shopUrl: https://shop.garygermer.com/products/villeroy-boch-acapulco-bird-flower-mexico-butter-dish-tray-with-lid
 price: "$80.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/villeroy-and-boch-acapulco-bird-flower-mexico-butter-dish-tray-with-lid/villeroy-and-boch-acapulco-bird-flower-mexico-butter-dish-tray-with-lid-01-900.webp
   srcset900: /assets/images/blog/villeroy-and-boch-acapulco-bird-flower-mexico-butter-dish-tray-with-lid/villeroy-and-boch-acapulco-bird-flower-mexico-butter-dish-tray-with-lid-01-900.webp

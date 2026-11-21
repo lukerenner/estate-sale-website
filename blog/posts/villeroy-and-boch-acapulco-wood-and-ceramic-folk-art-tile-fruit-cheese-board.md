@@ -16,7 +16,7 @@ source:
 publishDate: "2026-11-15"
 shopUrl: https://shop.garygermer.com/products/villeroy-boch-acapulco-wood-ceramic-folk-art-tile-cheese-board
 price: "$70.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/villeroy-and-boch-acapulco-wood-and-ceramic-folk-art-tile-fruit-cheese-board/villeroy-and-boch-acapulco-wood-and-ceramic-folk-art-tile-fruit-cheese-board-01-900.webp
   srcset900: /assets/images/blog/villeroy-and-boch-acapulco-wood-and-ceramic-folk-art-tile-fruit-cheese-board/villeroy-and-boch-acapulco-wood-and-ceramic-folk-art-tile-fruit-cheese-board-01-900.webp
