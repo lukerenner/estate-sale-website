@@ -16,7 +16,7 @@ source:
 publishDate: "2026-11-07"
 shopUrl: https://shop.garygermer.com/products/baccarat-france-narcisse-crystal-water-goblet-7-1-4-glass-copy
 price: "$120.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/baccarat-france-narcisse-crystal-water-goblet-7-1-4-glass/baccarat-france-narcisse-crystal-water-goblet-7-1-4-glass-01-900.webp
   srcset900: /assets/images/blog/baccarat-france-narcisse-crystal-water-goblet-7-1-4-glass/baccarat-france-narcisse-crystal-water-goblet-7-1-4-glass-01-900.webp

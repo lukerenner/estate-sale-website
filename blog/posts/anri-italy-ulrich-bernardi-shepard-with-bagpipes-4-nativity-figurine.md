@@ -16,7 +16,7 @@ source:
 publishDate: "2026-10-11"
 shopUrl: https://shop.garygermer.com/products/anri-italy-ulrich-bernardi-shepard-with-bagpipes-4-nativity-figurine
 price: "$100.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/anri-italy-ulrich-bernardi-shepard-with-bagpipes-4-nativity-figurine/anri-italy-ulrich-bernardi-shepard-with-bagpipes-4-nativity-figurine-01-900.webp
   srcset900: /assets/images/blog/anri-italy-ulrich-bernardi-shepard-with-bagpipes-4-nativity-figurine/anri-italy-ulrich-bernardi-shepard-with-bagpipes-4-nativity-figurine-01-900.webp
