@@ -16,7 +16,7 @@ source:
 publishDate: "2026-09-03"
 shopUrl: https://shop.garygermer.com/products/chinese-seal-stamp
 price: "$125.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/chinese-orbicular-ocean-jasper-tower-chop-seal-stamp/chinese-orbicular-ocean-jasper-tower-chop-seal-stamp-01-900.webp
   srcset900: /assets/images/blog/chinese-orbicular-ocean-jasper-tower-chop-seal-stamp/chinese-orbicular-ocean-jasper-tower-chop-seal-stamp-01-900.webp

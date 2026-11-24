@@ -16,7 +16,7 @@ source:
 publishDate: "2026-07-31"
 shopUrl: https://shop.garygermer.com/products/herend-hungary-rothschild-porcelain-bird-insect-blue-scale-claw-footed-vase
 price: "$300.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/herend-hungary-rothschild-porcelain-bird-and-insect-blue-scale-claw-footed-vase/herend-hungary-rothschild-porcelain-bird-and-insect-blue-scale-claw-footed-vase-01-900.webp
   srcset900: /assets/images/blog/herend-hungary-rothschild-porcelain-bird-and-insect-blue-scale-claw-footed-vase/herend-hungary-rothschild-porcelain-bird-and-insect-blue-scale-claw-footed-vase-01-900.webp
