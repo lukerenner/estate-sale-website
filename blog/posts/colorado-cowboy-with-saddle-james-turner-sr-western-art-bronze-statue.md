@@ -16,7 +16,7 @@ source:
 publishDate: "2026-09-27"
 shopUrl: https://shop.garygermer.com/products/james-turner-cowboy-western-bronze-statue
 price: "$275.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/colorado-cowboy-with-saddle-james-turner-sr-western-art-bronze-statue/colorado-cowboy-with-saddle-james-turner-sr-western-art-bronze-statue-01-900.webp
   srcset900: /assets/images/blog/colorado-cowboy-with-saddle-james-turner-sr-western-art-bronze-statue/colorado-cowboy-with-saddle-james-turner-sr-western-art-bronze-statue-01-900.webp

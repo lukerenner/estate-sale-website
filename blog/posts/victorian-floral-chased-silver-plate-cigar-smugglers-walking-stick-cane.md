@@ -16,7 +16,7 @@ source:
 publishDate: "2026-10-18"
 shopUrl: https://shop.garygermer.com/products/antique-floral-chased-silver-plate-handle-walking-stick-cane
 price: "$225.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/victorian-floral-chased-silver-plate-cigar-smugglers-walking-stick-cane/victorian-floral-chased-silver-plate-cigar-smugglers-walking-stick-cane-01-900.webp
   srcset900: /assets/images/blog/victorian-floral-chased-silver-plate-cigar-smugglers-walking-stick-cane/victorian-floral-chased-silver-plate-cigar-smugglers-walking-stick-cane-01-900.webp
