@@ -16,7 +16,7 @@ source:
 publishDate: "2026-11-05"
 shopUrl: https://shop.garygermer.com/products/joe-burrow-western-lost-and-found-bronze-horse-cowboy-sculpture
 price: "$675.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/joe-burrow-western-lost-and-found-bronze-horse-and-cowboy-sculpture/joe-burrow-western-lost-and-found-bronze-horse-and-cowboy-sculpture-01-900.webp
   srcset900: /assets/images/blog/joe-burrow-western-lost-and-found-bronze-horse-and-cowboy-sculpture/joe-burrow-western-lost-and-found-bronze-horse-and-cowboy-sculpture-01-900.webp

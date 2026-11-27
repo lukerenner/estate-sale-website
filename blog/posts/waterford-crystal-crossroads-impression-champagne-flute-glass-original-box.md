@@ -16,7 +16,7 @@ source:
 publishDate: "2026-09-06"
 shopUrl: https://shop.garygermer.com/products/waterford-crystal-crossroads-impression-champagne-flute
 price: "$60.00"
-sold: false
+sold: true
 heroImage:
   src: /assets/images/blog/waterford-crystal-crossroads-impression-champagne-flute-glass-original-box/waterford-crystal-crossroads-impression-champagne-flute-glass-original-box-01-900.webp
   srcset900: /assets/images/blog/waterford-crystal-crossroads-impression-champagne-flute-glass-original-box/waterford-crystal-crossroads-impression-champagne-flute-glass-original-box-01-900.webp
